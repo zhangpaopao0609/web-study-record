@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object.defineProperty</title>
+</head>
+<body>
+  <div class="app" onclick="change()">
+    <p>你好<span id='name'></span></p>
+  </div>
+  
+  <script>
+    let obj = {};
+    
+    // 数据拦截
+    Object.defineProperty(obj, 'name', {
+      get: () => {
+        console.log('有人想要获取 name 属性！');
+        return document.getElementById('name').innerHTML;
+      },
+      set: (nick) => {
+        console.log('有人想要修改 name 属性！');
+        document.getElementById('name').innerHTML = nick;
+      }
+    })
+    
+    obj.name = 'arrow';
+    const change = () => {
+      obj.name = obj.name + '2';
+      console.log(obj.name);
+    }
+     
+  </script>
+</body>
+</html>
