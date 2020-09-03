@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id='app'>
+    <p>{{name}}</p>
+    <p a-text="name"></p>
+    <p>{{age}}</p>
+    <p>{{doubleAge}}</p>
+    <input type="text" a-model="name">
+    <button @click="changeName">呵呵</button>
+    <div a-html="html"></div>
+  </div>
+  
+  <script src="./src/ACompiler.js"></script>
+  <script src="./src/AVue.js"></script>
+  <script>
+    const app = new AVue({
+      el:'#app',
+      data: {
+        name: 'arrow',
+        age: 11,
+        doubleAge: 22
+      },
+      created() {
+        setTimeout(() => {
+          this.name = 'paopao';
+        }, 3000);
+      }
+    })
+    
+  </script>
+  
+</body>
+</html>
