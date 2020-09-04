@@ -68,6 +68,11 @@ class Compiler {
         const dir = attrName.substring(2); // xxx
         // 执行
         this[dir] && this[dir](node, exp);
+      } else if(attrName.indexOf('@') == 0) {
+        // 方法名
+        const fun = attrName.substring(1); // click
+        
+        this.eventHandler(node, exp, fun);
       }
     })
   }
@@ -85,7 +90,33 @@ class Compiler {
     node.textContent = value;
   }
   
+  html(node, exp) {
+    this.update(node, exp, 'html');
+  }
+  
+  htmlUpdater(node, value) {
+    node.innerHTML = value;
+  }
+  
+  // a-text
   text(node, exp) {
     this.update(node, exp, 'text')
+  }
+  // a-model
+  model(node, exp) {
+    this.update(node, exp, 'model');
+    
+    node.addEventListener('input', e => {
+      this.$vm[exp] = e.target.value;
+    })
+  }
+  
+  modelUpdater(node, value) {
+    node.value = value;
+  }
+  
+  eventHandler(node, exp, fun) {
+    let fn = this.$vm.$options.methods && this.$vm.$options.methods[exp];
+    node.addEventListener(fun, fn.bind(this.$vm));
   }
 }

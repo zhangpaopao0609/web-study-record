@@ -25,12 +25,19 @@
       data: {
         name: 'arrow',
         age: 11,
-        doubleAge: 22
+        doubleAge: 22,
+        html:"<h1>hi</h1>"
       },
       created() {
         setTimeout(() => {
           this.name = 'paopao';
         }, 3000);
+      },
+      methods: {
+        changeName() {
+          console.log(this);
+          this.name='test';
+        }
       }
     })
     
