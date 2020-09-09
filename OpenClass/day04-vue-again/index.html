@@ -6,12 +6,20 @@
     <title>vue-study-day04-again</title>
 </head>
 <body>
-    <div>
-
+    <div id="app">
+        
     </div>
 
+    <script src="./AVue.js"></script>
     <script>
-
+        const app = new AVue({
+            data: {
+                name: 'paopao',
+                age: 12
+            }
+        }) 
+        console.log(app.$data.name);  
+        app.$data.name = 2
     </script>
 </body>
 </html>
