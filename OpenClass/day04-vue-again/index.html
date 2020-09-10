@@ -7,19 +7,40 @@
 </head>
 <body>
     <div id="app">
-        
+        <p>{{name}}</p>
+        <p>{{age}}</p>
+        <p a-text="name"></p>
+        <input type="text" a-model="name">
+        <button @click="changeName">哈哈</button>
+        <div a-html="html"></div>
     </div>
 
+    <script src="./ACompile.js"></script>
     <script src="./AVue.js"></script>
     <script>
+
         const app = new AVue({
+            el:'#app',
             data: {
                 name: 'paopao',
-                age: 12
+                age: 12,
+                html:'<button>这是一个按钮</button>'
+            },
+            created() {
+                console.log('开始啦！');
+                setTimeout(() => {
+                    this.name = 'arrow!';
+                    this.age = 20
+                }, 1500);
+            },
+            methods: {
+                changeName() {
+                    this.name = "arrow-paopao";
+                    this.age = 26;
+                }
             }
         }) 
-        console.log(app.$data.name);  
-        app.$data.name = 2
+
     </script>
 </body>
 </html>
