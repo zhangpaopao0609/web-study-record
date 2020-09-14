@@ -19,10 +19,6 @@ const findCoverNum = function(arr) {
     }
     return null;
 }
-
-const res = findCoverNum([1, 5, 2, 6, 23, 8, 1, 2, 3])
-
-console.log(res);
 ```
 ## 解法2 
 可以利用哈希表来解决这个问题。从头到尾按顺序扫描数组的每个数字，每扫描到一个数字的时候，都可以用O(1) 的时间来判断哈希表里是否已经包含了该数字，如果哈希表里面没有这个数字，就把它加入哈希表。如果哈希白哦里面还没有这个数字，就把它加入哈希表。如果哈希表里面已经存在该数字，就找到一个重复的数字。这个算法的时间复杂度是 O(n), 但它提高时间效率是以一个大小为 O(n) 的哈希表为代价的。
@@ -36,11 +32,8 @@ const findCoverNum = function(arr) {
             hash[arr[i]] = true;
         }        
     }
+    return null;
 }
-
-const res = findCoverNum([2, 1, 5, 2, 6, 23, 8, 1, 2, 3])
-
-console.log(res);
 ```
 ## 解法3
 我们注意到数组中的数字都在 0~n-1 的范围内，如果这个数组中没有重复的数字，那么当数组排序之后数字 i 将出现在下标为 i 的位置。由于数组中有重复的数字，那么有些位置可能存在多个数字，也有些位置没有数字。
@@ -54,7 +47,35 @@ console.log(res);
 
 [0, 1, 2, 3, 2, 5, 3] -> [0, 1, 2, 3, 2, 5, 3]     i->0->1->2->3->4 m=2
 
+```js
+const findCoverNum = function(arr) {
+    for (let i = 0; i < arr.length; ) {
+        if(arr[i]===i) {
+            i++;
+        }else if(arr[i] !== arr[arr[i]]){
+            let temp = arr[i];
+            arr[i] = arr[arr[i]];
+            arr[temp] = temp;
+        }else {
+            return arr[i];
+        }
+    }
+    return null;
+}
+```
+
 ## 测试用例
 - 长度为n的数组里面包含一个或多个重复的数字
 - 数组中不包含重复的数字
 - 无效输入测试用例（输入空指针；长度为n的数组中包含0~n-1之外的数字）
+```js
+const res1 = findCoverNum([2, 1, 5, 2, 6, 9, 8, 1, 2, 3]);
+const res2 = findCoverNum([0, 1, 2, 3, 4, 5, 6, 7]);
+const res3 = findCoverNum([]);
+const res4 = findCoverNum([0, 2, 3, 11, 11]);
+
+console.log(res1);
+console.log(res2);
+console.log(res3);
+console.log(res4);
+```
