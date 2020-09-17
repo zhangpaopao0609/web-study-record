@@ -226,11 +226,101 @@ setTimeout(() => { console.log(123) }, 2000);
 
 ## 6. Promise.all()
 
-将多个Promise实例，包装成一个新的Promise实例
+将多个Promise实例，**包装成一个新的Promise实例**
 
 ```js
 const p = Promise.all([p1, p2, p3]);
 ```
+
+全部成功才会返回fulfilled, 只要有一个失败就会返回rejected
+
+## 7. Promise.race()
+
+同样是将多个Promise实例，包装成一个新的Promise实例
+
+```js
+const p = Promise.race([p1, ,p2, p3])
+```
+
+上面代码中，只要p1，p2，p3之中有一个实例率先改变状态，p的状态就跟着改变。那个率先改变的Promise实例的返回值，就传递给p的回调函数。
+
+## 8. Promise.allSettled()
+
+方法接受一组 Promise 实例作为参数，包装成一个新的 Promise 实例。只有等到所有这些参数实例都返回结果，而且最终的状态总是 fulfilled
+
+有时候，我们不关心异步操作的结果，只关心这些操作有没有结束。
+
+## 9. Promise.any()
+
+同样接收一组Promise返回新的Promise，只要有一个变成fulfilled，包装实例就会变成fulfilled状态。如果所有参数都变成rejected状态，实例就会变成rejected。
+
+## 10. Promise.resolve()
+
+哟时候需要将现有对象转为Promise对象，Promise.resolve()方法就起到这个作用
+
+## 11. Promise.reject()
+
+## 12. 应用
+
+### 加载图片
+
+## 13. Promise.try()
+
+实际开发中，经常遇到一种情况：不知道或者不想区分，函数`f`是同步函数还是异步操作，但是想用 Promise 来处理它。因为这样就可以不管`f`是否包含异步操作，都用`then`方法指定下一步流程，用`catch`方法处理`f`抛出的错误。一般就会采用下面的写法。
+
+```js
+Promise.resolve().then(f)
+```
+
+上面的写法有一个缺点，就是如果f是同步函数，那么它会在本轮事件循环的末尾执行
+
+```javascript
+const f = () => console.log('now');
+Promise.resolve().then(f);
+console.log('next');
+// next
+// now
+```
+
+那么，有没有一种方法，让同步函数同步执行，异步函数异步执行，并且让他们具有统一的API
+
+回答是可以的，并且还有两种写法。第一种是用async
+
+```javascript
+const f = () => console.log('now');
+(async () => f())();
+console.log('next');
+// now
+// next
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
