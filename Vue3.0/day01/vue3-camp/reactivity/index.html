@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <button id="btn">click </button>
+    <script src="./kkb-reactivity.js"></script>
+    <script>
+        const root = document.getElementById('app')
+        const btn = document.getElementById('btn')
+
+        const o = {
+            name:'kkb',
+            age:1
+        }
+        let obj = reactive(o)
+        let double = computed(()=> obj.age*2)
+        effect(()=>{
+            // 数据的修改，会通知这个函数执行
+            root.innerHTML = `
+                <h1>${obj.name}今年${obj.age}岁了， ${double.value}</h1>
+            `
+        })
+        btn.addEventListener('click',()=>{
+            obj.age+=1
+        },false)
+    </script>
+</body>
+</html>

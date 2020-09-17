@@ -181,6 +181,106 @@ pipe(3).double.pow.reverseInt.get; // 63
 
 `set`方法用来拦截某个属性的赋值操作，可以接受四个参数，依次为目标对象、属性名、属性值和 Proxy 实例本身，其中最后一个参数可选。
 
+ ### apply()
+
+方法拦截函数的调用、call和apply操作
+
+### has()
+
+`has()`方法用来拦截`HasProperty`操作，即判断对象是否具有某个属性时，这个方法会生效。
+
+典型的操作就是`in`运算符
+
+下面的例子使用`has()`方法隐藏某些属性，不被`in`运算符发现。
+
+```javascript
+var handler = {
+  has (target, key) {
+    if (key[0] === '_') {
+      return false;
+    }
+    return key in target;
+  }
+};
+var target = { _prop: 'foo', prop: 'foo' };
+var proxy = new Proxy(target, handler);
+'_prop' in proxy // false
+```
+
+### construct()
+
+用于拦截new命令
+
+### deleteProperty()
+
+拦截delete操作
+
+### defineProperty()
+
+拦截Object.defineProperty()
+
+### getOwnPropertyDescriptor()
+
+拦截Object.getOwnPropertyDescriptor()
+
+### getPrototypeOf()
+
+拦截获取对象原型
+
+### isExtensible()
+
+拦截Object.isExtensible()操作
+
+### ownKeys()
+
+用于拦截对象自身属性的读取操作
+
+### preventExtension()
+
+### setPrototypeOf
+
+## 3. Proxy.revocable()
+
+返回一个可取消的Proxy实例
+
+## 4. this 问题
+
+Proxy代理的钩子函数中的`this`指向的是Proxy代理实例（construct 钩子函数除外，该钩子函数中this指向的是handler）
+
+## 5. 实例： Web 服务的客户端
+
+Proxy对象可以拦截目标对象的任意属性，这使得它很合适用来写Web服务的客户端
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
