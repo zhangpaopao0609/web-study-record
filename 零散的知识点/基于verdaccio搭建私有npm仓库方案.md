@@ -1,6 +1,6 @@
 [toc]
 
-# 搭建私有npm-verdaccio方案及其最佳实践
+# 基于verdaccio搭建私有npm仓库方案
 
 ## 1. 前言
 
