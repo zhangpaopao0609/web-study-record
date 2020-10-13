@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <script>
+      if (!window.__POWERED_BY_QIANKUN__) {
+        let fragment = document.createDocumentFragment();
+        let _vue = document.createElement("script");
+        _vue.type = "text/javascript";
+        _vue.setAttribute('src', 'http://resource.dev.duiopen.com/console/dui-static/vue/vue.prod.js');
+        _vue.async = false;
+        let _element = document.createElement("script");
+        _element.type = "text/javascript";
+        _element.setAttribute('src', 'http://resource.dev.duiopen.com/console/dui-static/element-ui/element-ui.js');
+        _element.async = false;
+        let _duiui = document.createElement("script");
+        _duiui.type = "text/javascript";
+        _duiui.setAttribute('src', 'http://resource.dev.duiopen.com/console/dui-static/dui-ui-0.0.22.2.js');
+        _duiui.async = false;
+        fragment.appendChild(_vue);
+        fragment.appendChild(_element);
+        fragment.appendChild(_duiui);
+        document.getElementsByTagName("head")[0].appendChild(fragment);
+        let _element_css = document.createElement("link");
+        _element_css.setAttribute('rel', 'stylesheet');
+        _element_css.setAttribute('href', 'http://resource.dev.duiopen.com/console/dui-static/element-ui/element-ui.css');
+        let _head = document.getElementsByTagName("head")[0];
+        _head.insertBefore(_element_css, _head.childNodes[0]);
+      }
+    </script>
+  </body>
+</html>

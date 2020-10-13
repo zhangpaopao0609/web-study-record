@@ -21,4 +21,4 @@ yarn init
     ```js
     yarn add webpack webpack-cli webpack-dev-server ts-loader html-webpack-plugin --dev
     ```
-    - 
+    这里的版本一定要注意，webpack webpack-cli的版本一定要注意
