@@ -1,4 +1,5 @@
 // SequentialSearchST
+// 顺序查找， 基于无序链表
 let first; // 链表首节点
 
 class Node { // 链表节点
