@@ -3,11 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import ELEMENT from "ELEMENT";
-import DUIUI from "DUIUI";
-
-Vue.use(ELEMENT);
-Vue.use(DUIUI);
+import "./test";
 
 Vue.config.productionTip = false
 
