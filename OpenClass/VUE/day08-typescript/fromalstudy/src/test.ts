@@ -123,3 +123,12 @@
 
 // const p = new Parent();
 // const c = new Child();
+
+
+// 接口  仅仅约束结构，不要求实现
+// interface Person {
+//     firstName: string
+// }
+
+// 泛型
+
