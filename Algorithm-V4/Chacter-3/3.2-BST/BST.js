@@ -37,6 +37,14 @@ function size(x) {
     return x.N;
 }
 
+// 二叉树的高度
+function height(x) {
+    if(x === null) return 0;
+    let left = height(x.left);
+    let right = height(x.right);
+    return Math.max(left, right) + 1;
+}
+
 // 二叉查找树的最小key
 function min(x) {
     if(x === null) return null;
@@ -148,15 +156,17 @@ function keysQueue(x, queue, low, high) {
 }
 
 let x; 
-x = put(null, 0, 'a');
-x = put(x, 1, 'b');
-x = put(x, 2, 'c');
-x = put(x, 3, 'd');
-x = put(x, 4, 'e');
-x = put(x, 5, 'f');
-x = put(x, 6, 'g');
-x = put(x, 7, 'h');
+x = put(null, 5, 'f');
+x = put(x, 0, 'a');
 x = put(x, 8, 'i');
+x = put(x, 3, 'd');
+x = put(x, 2, 'c');
+x = put(x, 7, 'h');
+x = put(x, 6, 'g');
+x = put(x, 1, 'b');
+x = put(x, 4, 'e');
+
+
 
 const res = get(x, 4);
 console.log(res);
@@ -167,3 +177,5 @@ console.log(res1);
 print(x);
 const queue = keys(x, 1, 6);
 console.log(queue);
+
+console.log(height(x));
