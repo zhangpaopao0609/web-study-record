@@ -1,0 +1,12 @@
+{
+  "name": "auto-generate-spec-file",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^26.5.3"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
