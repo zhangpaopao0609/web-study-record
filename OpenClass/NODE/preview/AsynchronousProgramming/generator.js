@@ -8,15 +8,15 @@ function* func() {
 };
 
 const f = func();
-// const one = f.next();
-// console.log(one);
-// const two = f.next();
-// console.log(two);
-// const three = f.next();
-// console.log(three);
-// const four = f.next();
-// console.log(four);
+const one = f.next();
+console.log(one);
+const two = f.next();
+console.log(two);
+const three = f.next();
+console.log(three);
+const four = f.next();
+console.log(four);
 
-for (const [key, value] of func()) {
-  console.log(key, value);
-}
+// for (const [key, value] of func()) {
+//   console.log(key, value);
+// }
