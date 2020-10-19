@@ -47,8 +47,15 @@ const co = generator => {
   }
 }
 
-const generatorRes = co(generator('Co-Generator-'))
+const generatorRes = co(generator('Co-Generator-'));
 
-module.exports = { callback, promiseRes, generatorRes };
+const asyncAwait = async () => {
+  await promise('Async/Await 1');
+  await promise('Async/Await 2');
+  await promise('Async/Await 3');
+  await promise('Async/Await 4');
+}
+
+module.exports = { callback, promiseRes, generatorRes, asyncAwait };
 // exports.callback
 
