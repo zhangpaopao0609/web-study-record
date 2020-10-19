@@ -49,4 +49,44 @@ Generator函数
 async/await 是 es7 推出的一套关于异步的终极解决方案
 - 任何一个await语句后面的Promise对象变为reject转态，那么整个async函数都会中断执行
 - async函数返回的Promise对象，必须等到内部所有await命令后面的Promise对象执行完成，才会发生状态改变，除非遇到return语句或者抛出错误。也就是说，只有async函数内部的异步操作执行完，才会执行then方法执行的回调函数
+```js
+const asyncAwait = async () => {
+  await promise('Async/Await 1');
+  await promise('Async/Await 2');
+  await promise('Async/Await 3');
+  await promise('Async/Await 4');
+}
+```
 
+## 事件监听方式处理异步
+采用事件驱动模型。任务的执行不取决于代码的顺序，而取决于某个事件是否发生
+```js
+const asyncAwait = async () => {
+  await promise('Async/Await 1');
+  await promise('Async/Await 2');
+  await promise('Async/Await 3');
+  await promise('Async/Await 4');
+}
+
+const event = () => {
+  const asyncFun = name => event => {
+    setTimeout(() => {
+      logTime(name);
+      event.emit('end');
+    }, 100);
+    return event;
+  }
+  
+  const arr = [
+    asyncFun('event 1'),
+    asyncFun('event 2'),
+    asyncFun('event 3')
+  ]
+  
+  const { EventEmitter } = require('events');
+  const event = new EventEmitter();
+  let i = 0;
+  event.on('end', () => i < arr.length && arr[i++](event));
+  event.emit('end');
+}
+```
