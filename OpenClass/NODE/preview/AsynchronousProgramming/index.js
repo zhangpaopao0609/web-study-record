@@ -56,6 +56,28 @@ const asyncAwait = async () => {
   await promise('Async/Await 4');
 }
 
-module.exports = { callback, promiseRes, generatorRes, asyncAwait };
+const event = () => {
+  const asyncFun = name => event => {
+    setTimeout(() => {
+      logTime(name);
+      event.emit('end');
+    }, 100);
+    return event;
+  }
+  
+  const arr = [
+    asyncFun('event 1'),
+    asyncFun('event 2'),
+    asyncFun('event 3')
+  ]
+  
+  const { EventEmitter } = require('events');
+  const event = new EventEmitter();
+  let i = 0;
+  event.on('end', () => i < arr.length && arr[i++](event));
+  event.emit('end');
+}
+
+module.exports = { callback, promiseRes, generatorRes, asyncAwait, event };
 // exports.callback
 

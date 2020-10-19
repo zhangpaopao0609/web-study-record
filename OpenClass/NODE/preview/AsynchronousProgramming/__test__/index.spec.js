@@ -1,4 +1,4 @@
-const { callback, promiseRes, generatorRes, asyncAwait } = require('../index.js');
+const { callback, promiseRes, generatorRes, asyncAwait, event } = require('../index.js');
 
 // test('callback', done => {
 //   callback();
@@ -18,8 +18,14 @@ const { callback, promiseRes, generatorRes, asyncAwait } = require('../index.js'
 //   setTimeout(done, 1000);
 // });
 
-test('AsyncAwait', done => {
-  asyncAwait();
+// test('AsyncAwait', done => {
+//   asyncAwait();
+//   // 延迟一秒结束
+//   setTimeout(done, 1000);
+// });
+
+test('Event', done => {
+  event();
   // 延迟一秒结束
   setTimeout(done, 1000);
 });
