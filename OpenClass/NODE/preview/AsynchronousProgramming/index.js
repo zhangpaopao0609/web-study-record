@@ -31,6 +31,24 @@ const promiseRes = () => {
     .then(promise('Promise 3')))
 }
 
-module.exports = { callback, promiseRes };
+const generator = function* (name) {
+  yield promise(name + 1);
+  yield promise(name + 2);
+  yield promise(name + 3);
+}
+
+const co = generator => {
+  if(it = generator.next().value) {
+    it.then(res => {
+      co(generator);
+    });
+  }else {
+    return;
+  }
+}
+
+const generatorRes = co(generator('Co-Generator-'))
+
+module.exports = { callback, promiseRes, generatorRes };
 // exports.callback
 

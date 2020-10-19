@@ -1,13 +1,19 @@
-const { callback, promiseRes } = require('../index.js');
+const { callback, promiseRes, generatorRes } = require('../index.js');
 
-test('callback', done => {
-  callback();
-  // 延迟一秒结束
-  setTimeout(done, 1000);
-});
+// test('callback', done => {
+//   callback();
+//   // 延迟一秒结束
+//   setTimeout(done, 1000);
+// });
 
-test('promise', done => {
-  promiseRes();
+// test('promise', done => {
+//   promiseRes();
+//   // 延迟一秒结束
+//   setTimeout(done, 1000);
+// });
+
+test('Generator', done => {
+  generatorRes;
   // 延迟一秒结束
   setTimeout(done, 1000);
 });
