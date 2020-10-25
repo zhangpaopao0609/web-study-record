@@ -1,0 +1,26 @@
+{
+  "name": "vue-auto-router-cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "arrow": "./bin/arrow.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "paopao-arrow",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "clear": "^0.1.0",
+    "commander": "^6.1.0",
+    "download-git-repo": "^3.0.2",
+    "figlet": "^1.5.0",
+    "handlebars": "^4.7.6",
+    "inquirer": "^7.3.3",
+    "open": "^7.3.0",
+    "ora": "^5.1.0"
+  }
+}
