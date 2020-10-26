@@ -47,5 +47,7 @@ app.listen(6090, err => {
 
 ctx: context 就是对 request， response 的封装
 next() : 执行下一个中间件
-![midway](./img/01-midway.png)
+![middleware](./img/01-middleware.png)
 
+# 中间件
+Koa 中间件机制： Koa中间件机制就是函数式组合概念 Compose 的概念，将一组需要顺序执行的函数复合为一个函数，外层函数的参数实际是内层函数的返回值。洋葱圈模型就可以形象表示这种机制，是源码中的精髓和难点![middleware](./img/01-middleware.png)
