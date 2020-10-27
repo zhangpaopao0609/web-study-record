@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #a{
+      height: 200px;
+      width: 200px;
+      margin: 0 auto;
+      border:1px solid #000;
+      overflow: scroll;
+      /* overflow:; */
+    }
+    #b{
+      height: 500px;
+      width: 500px;
+      border:1px solid rgb(226, 16, 16);
+      /* margin-top: 100px; */
+    }
+  </style>
+</head>
+<body>
+  <div id='a'>
+    a
+    <div id='b'>
+      hah
+    </div>
+  </div>
+
+  <script>
+    const a = document.getElementById('a')
+    const b = document.getElementById('b')
+    console.log(b.scrollHeight);
+    console.log(b.scrollTop);
+    console.log(a.scrollHeight);
+
+    console.log(b.getBoundingClientRect());
+    a.onscroll = () => {
+      console.log(a.scrollTop, a.scrollHeight);
+    }
+
+    setTimeout(() => {
+      a.scrollTop = 100
+    }, 2000);
+  </script>
+</body>
+</html>

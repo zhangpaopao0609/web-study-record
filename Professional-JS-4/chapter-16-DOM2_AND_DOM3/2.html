@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #a{
+      height: 500px;
+      width: 500px;
+      margin: 0 auto;
+      border:1px solid #000;
+    }
+    #b{
+      height: 200px;
+      width: 200px;
+      border:1px solid #000;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id='a'>
+    <div id='b'>
+      hah
+    </div>
+  </div>
+
+  <script>
+    const a = document.getElementById('a')
+    const b = document.getElementById('b')
+    console.log(b.offsetHeight);
+    console.log(b.offsetTop);
+    console.log(b.offsetWidth);
+    console.log(b.offsetLeft);
+    console.log(b.offsetParent);
+    console.log(b.clientHeight);
+    console.log(b.clientWidth);
+
+
+  </script>
+</body>
+</html>

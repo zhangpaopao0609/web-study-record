@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag</title>
+  <style>
+    #app {
+      width: 100px;
+      height: 100px;
+      background-color: tomato;
+      cursor: pointer;
+      position: absolute;
+      top: 50px;
+      left: 50px;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'></div>
+  <script>
+    const app = document.getElementById('app');
+
+    // 块的位置top 是由 鼠标的位置 e.clientY - 鼠标相对于元素的偏移量 （e.clientY - e.target.offsetTop）
+    app.onmousedown = () => {
+      // 鼠标按下 按下的时候就需要记录这个偏移量
+
+      document.onmousemove = (e) => {
+        app.style.left = e.clientX + 'px';
+        app.style.top = e.clientY + 'px';
+      }
+    }
+
+  </script>
+</body>
+
+</html>
