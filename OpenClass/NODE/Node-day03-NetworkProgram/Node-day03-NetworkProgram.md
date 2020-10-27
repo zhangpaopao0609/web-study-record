@@ -69,5 +69,68 @@ SSL/TLS： 加密
 > Accept: */*               我想要接收什么类型的数据，通常MIME
 请求正文
 
+3. response —— 消息报头
+状态行
+消息报头
+响应正文
 
+后端请求
 
+```js
+(async () => {
+  const res = await axios.get('/api/users');
+  console.log(res);
+  document.writeln(`Response ${JSON.stringify(res)}`)
+})()
+
+// 埋点
+const img = new Image();
+img.src = '/api/users?button=123'
+```
+
+# 跨域
+浏览器同源策略引起的接口调用问题
+协议，URL，端口任意一个不同皆为跨域
+
+https://www.jianshu.com/p/b55086cbd9af
+
+# 反向代理
+以前：普通代理，访问某台服务器然后代理上网，靠近浏览器端的
+现在：请求越来越复杂，动态和静态的最好别放在同一台机器上，靠近服务器端的
+https://www.cnblogs.com/taostaryu/p/10547132.html
+正向代理：代理的是客户端，服务端不知道真实的客户端信息，比如科学上网，我们客户端请求某台服务器，这台服务器充当客户端去访问另一台服务器（google）
+1. 可访问无法访问的资源，如google
+2. 可做缓存
+3. 对客户端访问授权，上网进行认证
+4. 代理可记录用户访问记录（上网行为管理），对外隐藏用户信息
+反向代理：代理的是服务端，客户端不知道真实的服务端信息，比如外部访问内网，客户端请求的是代理服务器（公网访问地址就是这台代理服务器）
+1. 保证内网的安全，大型网站，通常将反向代理作为公网访问地址，web服务是内网
+2. 负载均衡，通过反向代理服务器来优化网站负载
+
+两种VPN
+1. 科学上网 VPN， 这是正向代理， 这是对用户来说的， 用户在正向代理一个客户端（请求）
+2. 上公司内网 VPN， 这是反向代理，这是对公司来说的， 公司在反向代理一个服务端（响应）
+
+# BodyParser
+利用流的机制来收到post请求传过来的body
+
+```js
+  else if (method === "POST" && url === "/api/save") {
+    let reqData = [];
+    let size = 0;
+    req.on('data', data => {
+      console.log('>>>req on', data);
+      reqData.push(data);
+      size += data.length;
+    });
+    req.on('end', () => {
+      console.log('end');
+      const data = Buffer.concat(reqData, size);
+      console.log('data:', size, data.toString())
+      res.end(`formdata:${data.toString()}`)
+    });
+  }
+```
+
+# 上传文件
+断点续传  分包
