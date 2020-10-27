@@ -1,3 +1,31 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.1.0/axios.js"></script>
+  <script>
+    (async () => {
+      // axios.defaults.baseURL='http://localhost:6090';
+      // axios.defaults.withCredentials = true;
+      const res = await axios.get('api/users', { headers: { 'X-Token': 'jilei' } });
+      // const res = await axios.get('http://localhost:6090/api/users');
+      console.log(res);
+      document.writeln(`Response ${JSON.stringify(res)}`)
+    })()
+
+    // 埋点
+    // const img = new Image();
+    // img.src = '/api/users?button=123';
+  </script>   
+</body>
+</html> -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +34,13 @@
   <title>Document</title>
 </head>
 <body>
-  <div>arrow-api</div>
+  <form action="/api/save" method="post">
+    <input type="text" name="name" value="arrow">
+    <input type="submit" value="save">
+  </form>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.1.0/axios.js"></script>
+  <script>
+    
+  </script>   
 </body>
 </html>
