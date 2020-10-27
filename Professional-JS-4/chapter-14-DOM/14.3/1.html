@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MutationObserver</title>
+</head>
+<body>
+  <script>
+    const observer = new MutationObserver((mutationRecord, a) => console.log(mutationRecord, a));
+
+    observer.observe(document.body, { attributes: true });
+
+    setTimeout(() => {
+      document.body.className = 'arrow1'
+    }, 2000);
+
+    setTimeout(() => {
+      document.body.className = 'arrow2'
+    }, 4000);
+
+    setTimeout(() => {
+      document.body.className = 'arrow3'
+    }, 6000);
+  </script>
+</body>
+</html>
