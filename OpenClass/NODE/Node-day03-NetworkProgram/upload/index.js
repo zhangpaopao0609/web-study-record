@@ -13,29 +13,29 @@ const server = http.createServer((request, response) => {
     const fis = fs.createWriteStream(outputFile);
 
     // 方式三： Buffer connect
-    request.on('data', data => {
-      chunk.push(data);
-      size += data.length;
-      console.log(data, size);
-    });
-
-    request.on('end', () => {
-      console.log('end......');
-      const buffer = Buffer.concat(chunk, size);
-      size = 0;
-      fs.writeFileSync(outputFile, buffer);
-      response.end();
-    })
-
-    // 方式二： 流事件写入
     // request.on('data', data => {
-    //   console.log('data', data);
-    //   fis.write(data);
+    //   chunk.push(data);
+    //   size += data.length;
+    //   console.log(data, size);
     // });
+
     // request.on('end', () => {
-    //   fis.end();
+    //   console.log('end......');
+    //   const buffer = Buffer.concat(chunk, size);
+    //   size = 0;
+    //   fs.writeFileSync(outputFile, buffer);
     //   response.end();
     // });
+
+    // 方式二： 流事件写入
+    request.on('data', data => {
+      console.log('data', data);
+      fis.write(data);
+    });
+    request.on('end', () => {
+      fis.end();
+      response.end();
+    });
 
     // 方式一： 流事件写入
     // request.pipe(fis);
