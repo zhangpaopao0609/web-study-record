@@ -1,6 +1,4 @@
 const Koa = require('koa');
-const { resolve } = require('path');
-const { reject } = require('lodash');
 const app = new Koa();
 // const bodyparser = require('koa-bodyparser');
 const router = require('koa-router')();
