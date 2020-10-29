@@ -60,8 +60,10 @@ rl.on('close', () => {
 - 安装mysql模块： npm i mysql -S
 - mysql 模块基本使用
 
-
-
+# Node.js ORM - Seqelize
+- 概述： 基于 Promise 的 ORM (Object Realation Mapping), 是一种数据库中间件，支持多种数据库、事务、关联等。
+- 安装：npm i sequelize mysql2 -S 
+- 基本使用：
 
 
 
