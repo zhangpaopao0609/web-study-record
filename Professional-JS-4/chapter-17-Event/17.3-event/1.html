@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="a">
+    <div id="b">
+      diandianidna
+    </div>
+  </div>
+  <script>
+    const b = document.getElementById('a');
+    b.addEventListener('click', e => {
+      console.log(e.eventPhase, e.cancelable);
+      console.log(e.currentTarget, e.target);
+      console.log(e.currentTarget === e.target);
+    })
+  </script>
+</body>
+</html>

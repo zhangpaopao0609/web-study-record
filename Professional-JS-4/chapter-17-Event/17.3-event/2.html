@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="ul">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  <script>
+    const ul = document.getElementById('ul');
+    ul.addEventListener('click', e => {
+      console.log(e.eventPhase);
+      console.log(e.target);
+      e.target.style.color = 'red';
+    })
+
+    setTimeout(() => {
+      const li = document.createElement('li');
+      li.innerHTML = 6;
+      ul.appendChild(li)
+    }, 2000);
+  </script>
+</body>
+</html>
