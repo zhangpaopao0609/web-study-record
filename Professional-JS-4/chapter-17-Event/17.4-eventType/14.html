@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="http://www.baidu.com">百度</a>
+  <script>
+    window.addEventListener('beforeunload', e => {
+      e.returnValue = 'do you want to leave';
+      return 'do you want to leave';
+    })
+    // document.addEventListener('readystatechange', e => {
+    //   console.log(e.readyState);
+    // })
+    document.onreadystatechange = e => {
+      console.log(document.readyState);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <button id='btn'>点击</button>
+  </div>
+  <script>
+    const btn = document.getElementById('btn');
+    btn.addEventListener('click', e => {
+      console.log(e);
+    })
+
+    const event = document.createEvent('MouseEvents');
+    event.initMouseEvent('click', true, true, document.defaultView, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+    btn.dispatchEvent(event);
+
+  </script>
+</body>
+</html>

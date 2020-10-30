@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id='a'>
+    <li id="b">1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+  </ul>
+  <script>
+    const a = document.getElementById('a');
+    a.onclick = e => {
+      e.stopPropagation();
+      console.log(e.currentTarget, e.target, e.eventPhase);
+    }
+    const b = document.getElementById('b');
+    b.onclick = e => {
+      e.stopPropagation();
+      console.log(e.currentTarget, e.target, e.eventPhase);
+    }
+  </script>
+</body>
+</html>

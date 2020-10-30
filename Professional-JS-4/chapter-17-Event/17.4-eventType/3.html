@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div style="height: 200px;overflow-y: scroll;border: 1px solid #000;" id="a">
+    <div style="height: 500px;border: 1px solid red;" id="b">
+      11
+    </div>
+  </div>
+  <script>
+    const a = document.getElementById('a');
+    const b = document.getElementById('b');
+
+    a.addEventListener('scroll', (e) => {
+      console.log(a.scrollTop);
+    })
+  </script>
+</body>
+</html>
