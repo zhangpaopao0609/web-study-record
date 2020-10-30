@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #a{
+      width: 500px;
+      height: 2000px;
+      border: 1px solid #000;
+      margin: 0 auto;
+    }
+    #b{
+      width: 200px;
+      height: 200px;
+      border: 1px solid rgb(209, 53, 53);
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="a">
+    <div id="b">
+      b
+    </div>
+  </div>
+  <script>
+    const a = document.getElementById('a');
+    const b = document.getElementById('b');
+    b.addEventListener('mouseout', e => {
+      console.log(e.target, e.relatedTarget);
+    })
+    a.addEventListener('click', e => {
+      console.log(e.button);
+    })
+    document.addEventListener('mousewheel', e => {
+      console.log(e.wheelDelta);
+    })
+  </script>
+</body>
+</html>

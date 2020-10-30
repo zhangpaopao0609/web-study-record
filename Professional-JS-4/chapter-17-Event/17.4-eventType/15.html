@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    window.onhashchange = e => {
+      console.log(e.oldURL);
+      console.log(e.newURL);
+      console.log(location.hash);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <button id='btn'>点击</button>
+  </div>
+  <script>
+    const btn = document.getElementById('btn');
+    // 创建一个自定义事件对象
+    const myevent = document.createEvent('CustomEvent');
+    // 初始化自定义事件
+    myevent.initCustomEvent('myevent', true, false, 'hello world!');
+    // 挂载到元素上
+    btn.addEventListener('myevent', e => {
+      console.log(e, e.detail);
+    });
+    // 执行
+    btn.dispatchEvent(myevent)
+  </script>
+</body>
+</html>

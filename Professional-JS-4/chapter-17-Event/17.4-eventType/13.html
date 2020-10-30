@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #myMenu {
+      position: absolute;
+      visibility: hidden;
+      background-color: silver;
+    }
+  </style>
+</head>
+<body>
+  <div id='myDiv'>
+    click me ctrl+clicl (mac)
+  </div>
+  <ul id="myMenu">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  <script>
+    const div = document.getElementById('myDiv');
+    const menu = document.getElementById('myMenu');
+
+    // div_.addEventListener('contxetmenu', e => {
+    //   console.log(e);
+    // })
+
+    div.oncontextmenu = e => {
+      console.log(e);
+      e.preventDefault();
+      menu.style.visibility = 'visible';
+    }
+    document.addEventListener('click', e => {
+      menu.style.visibility = 'hidden';
+    })
+
+  </script>
+</body>
+</html>

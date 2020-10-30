@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #a{
+      width: 500px;
+      height: 500px;
+      border: 1px solid #000;
+      margin: 0 auto;
+    }
+    #b{
+      width: 200px;
+      height: 200px;
+      border: 1px solid rgb(209, 53, 53);
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="a">
+    <div id="b">
+      b
+    </div>
+  </div>
+  <script>
+    const a = document.getElementById('a');
+    const b = document.getElementById('b');
+    b.addEventListener('mouseout', () => {
+      console.log('b');
+    })
+    a.addEventListener('focusin', () => {
+      console.log('a');
+    })
+  </script>
+</body>
+</html>
