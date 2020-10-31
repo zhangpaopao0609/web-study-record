@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="134.175.53.155" method="post" id='form'>
+    <input type="text" name="name">
+    <!-- <input type="submit" value="Submit Form"> -->
+    <button type="submit">Submit Form</button>
+    <!-- <input type="image" src="./img/WX20201031-160346.png" alt=""> -->
+  </form>
+
+  <script>
+    const form = document.getElementById('form');
+    form.addEventListener('submit', e => {
+      console.log(e);
+    // 阻止表单提交
+      e.preventDefault()
+    })
+
+    // from.submit() 提交表单 
+    // setTimeout(() => {
+    //   form.submit();
+    // }, 2000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="134.175.53.155" method="post" id='form' target="submitFrame">
+    <div>
+      <input type="text" name="input">
+    </div>
+    <div>
+      <textarea name="textarea" id="" cols="30" rows="10"></textarea>
+    </div>
+    <div>
+      <select name="select" id="">
+        <option value="">1</option>
+        <option value="">2</option>
+        <option value="">3</option>
+      </select>
+    </div>
+  </form>
+
+  <script>
+    const form = document.getElementById('form');
+
+    const input = form.elements['input'];
+    input.addEventListener('input', e => {
+      console.log(e);
+      console.log(e.target);
+    })
+
+    const textarea = form.elements['textarea'];
+    textarea.addEventListener('input', e => {
+      console.log(e);
+      console.log(e.target);
+    })
+
+    const select = form.elements['select'];
+    select.addEventListener('change', e => {
+      console.log(e);
+      console.log(e.target);
+    })
+  </script>
+</body>
+</html>
