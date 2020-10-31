@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="134.175.53.155" method="post" id='form' target="submitFrame">
+    <input type="text" name="name">
+    <textarea name="textareaaa" id="" cols="30" rows="10"></textarea>
+    <input type="submit" value="Submit">
+  </form>
+  <iframe  id="submitFrame" style="display: none;width:0; height:0" name="submitFrame"  src="about:blank"></iframe>
+
+  <script>
+    const form = document.getElementById('form');
+    form.addEventListener('submit', e => {
+      console.log(e);
+    })
+  </script>
+</body>
+</html>
