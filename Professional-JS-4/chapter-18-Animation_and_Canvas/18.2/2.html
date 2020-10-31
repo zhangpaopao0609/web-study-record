@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #drawing {
+      height: 200px;
+      width: 200px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <canvas id='drawing'>a drawing of something</canvas>
+    <img src="../img/WX20201031-084128.png" alt="" id='img'>
+  </div>
+
+  <script>
+    // const img = document.getElementById('img');
+    const img = document.images[0];
+    const drawing = document.getElementById('drawing');
+    const context = drawing.getContext('2d');
+    console.log(context.drawImage);
+    console.log(img);
+    context.drawImage(img, 10, 10, 30, 30);
+  </script>
+</body>
+</html>
