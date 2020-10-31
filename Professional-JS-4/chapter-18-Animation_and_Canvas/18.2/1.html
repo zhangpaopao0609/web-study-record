@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #drawing {
+      height: 200;
+      width: 200;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <canvas id='drawing'>a drawing of something</canvas>
+  </div>
+
+  <script>
+    const drawing = document.getElementById('drawing');
+    const context = drawing.getContext('2d');
+    console.log(drawing, context);
+    context.strokeStyle = 'red';
+    context.fillStyle = 'blue';
+    context.fillRect(10, 10, 50, 50);
+
+    context.fillStyle = "rgba(0, 255, 0, 0.5)";
+    context.fillRect(30, 30, 50, 50);
+
+    context.strokeRect(110, 110, 20, 20);
+  </script>
+</body>
+</html>
