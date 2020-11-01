@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARROW-DESKTOP-CLOCK</title>
+  <style>
+    body {
+      background: #0d1320;
+      overflow: hidden;
+    }
+
+    div {
+      text-align: center;
+      font-weight: bold;
+      color: #e2ecfd;
+    }
+
+    #name {
+      font-size: 12vh;
+      line-height: 20vh;
+    }
+
+    #date {
+      font-size: 26vh;
+      line-height: 28vh;
+    }
+
+    #timer {
+      font-size: 52vh;
+      line-height: 52vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="name">张跑跑  要加油哟</div>
+  <div id="date">00月00日</div>
+  <div id="timer">06:12</div>
+
+  <script>
+    let showSymbl = true
+    function clock() {
+      const now = new Date()
+      const hour = now.getHours() + ''
+      const minute = now.getMinutes() + ''
+      const month = (now.getMonth() + 1) + ''
+      const day = now.getDate() + ''
+      if (showSymbl) {
+        document.getElementById('timer').innerHTML = `${hour.padStart(2, '0')}<span>:</span>${minute.padStart(2, '0')}`
+
+      } else {
+        document.getElementById('timer').innerHTML = `${hour.padStart(2, '0')}<span style="color:#0d1320">:</span>${minute.padStart(2, '0')}`
+      }
+      document.getElementById('date').innerHTML = `${month.padStart(2, '0')}月${day.padStart(2, '0')}日`
+
+      showSymbl = !showSymbl
+    }
+    clock()
+    setInterval(() => {
+      clock()
+    }, 1000)
+  </script>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a8baaf55cb517a031547310e64e9ff39";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</body>
+
+</html>
