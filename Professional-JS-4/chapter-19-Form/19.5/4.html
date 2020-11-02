@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WYSIWYG</title>
+</head>
+<body>
+  <iframe src="./1.html" frameborder="0" style="width: 200px; height: 200px;" name="arrow"></iframe>
+
+  <script>
+    window.onload = () => {
+      frames['arrow'].document.designMode = 'on';
+      frames['arrow'].document.execCommand('italic', false, null)
+      const a = frames['arrow'].getSelection();
+      console.log(a);
+    }
+
+    setTimeout(() => {
+      frames['arrow'].document.execCommand('italic', false, null)
+      const a = frames['arrow'].getSelection();
+      console.log(a);
+    }, 2000);
+  </script>
+</body>
+</html>
