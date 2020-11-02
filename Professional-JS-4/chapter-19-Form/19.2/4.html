@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <input type="text" name="" id="arrow">
   <p id='p'>dsadsadsdad</p>
@@ -22,16 +24,17 @@
 
     const arrow = document.getElementById('p');
 
-arrow.addEventListener('beforecopy', e => {
-  console.log('beforecopy');
-})
+    arrow.addEventListener('beforecopy', e => {
+      console.log('beforecopy');
+    })
 
-arrow.addEventListener('paste', e => {
-  const clipboardData = e.clipboardData
-  console.log(clipboardData.getData('text'));
-})
-
+    arrow.addEventListener('paste', e => {
+      // const res = e.clipboardData.setData('text/plain', 'arrow')
+      // console.log(e.clipboardData.getData('text'));
+      // console.log(e.dataTransfer);
+    })
 
   </script>
 </body>
+
 </html>
