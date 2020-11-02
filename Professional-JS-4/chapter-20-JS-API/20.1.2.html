@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const sharedArrayBuffer = new SharedArrayBuffer(1);
+    console.log(sharedArrayBuffer);
+    const typedArray = new Uint8Array(sharedArrayBuffer);
+    console.log(typedArray);
+    const index = 0;
+    Atomics.or(typedArray, index, 0b1111);
+    console.log(typedArray);
+    Atomics.and(typedArray, index, 0b1100);
+    console.log(typedArray);
+    Atomics.xor(typedArray, index, 0b1111);
+    console.log(typedArray);
+  </script>
+</body>
+</html>
