@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <select name="" id="arrow">
+    <option value="">1</option>
+    <option value="">2</option>
+    <option value="">3</option>
+    <option value="">4</option>
+    <option value="">5</option>
+  </select>
+  <script>
+    const arrow = document.getElementById('arrow');
+    console.log(arrow);
+    console.log(arrow.options);
+    console.log(arrow.selectedIndex);
+    arrow.addEventListener('change', e => {
+      console.log(arrow.selectedIndex);
+      console.log(arrow.options[arrow.selectedIndex]);
+    })
+
+    setTimeout(() => {
+      arrow.options[3].selected = true;
+      arrow.remove(0)
+    }, 2000);
+  </script>
+</body>
+
+</html>
