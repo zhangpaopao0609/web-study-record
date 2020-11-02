@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const sharedArrayBuffer = new SharedArrayBuffer(4);
+    const typedArray = new Uint32Array(sharedArrayBuffer);
+    console.log(sharedArrayBuffer);
+    console.log(typedArray);
+
+    Atomics.store(typedArray, 0, 3);
+
+    console.log(Atomics.exchange(typedArray, 0, 4));
+
+    console.log(Atomics.load(typedArray, 0));
+
+  </script>
+</body>
+</html>
