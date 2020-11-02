@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>post</title>
+</head>
+<body>
+  <iframe src="./20.2.2.html" frameborder="0" id='post'></iframe>
+  <script>
+    window.onload = () => {
+      const post = document.getElementById('post');
+      const postWindow = post.contentWindow;
+      postWindow.postMessage('post', '*');
+
+      window.onmessage = e => {
+        console.log(e);
+        console.log(e.data);
+        console.log(e.source);
+      }
+    }
+  </script>
+</body>
+</html>
