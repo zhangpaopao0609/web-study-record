@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="" id='arrow'>
+    <input type="file" name="" id="" multiple>
+  </form>
+  <div id='progress'>progress</div>
+  <div id='output'>output</div>
+  <script>
+    const arrow = document.getElementById('arrow');
+    const output = document.getElementById('output');
+    const progress = document.getElementById('progress');
+
+    arrow.addEventListener('change', e => {
+      const files = e.target.files;
+      console.log('file is :' + files[0].name);
+      const reader = new FileReader();
+      let type = 'default';
+
+      if(/image/.test(files[0].type)) {
+        reader.readAsDataURL(files[0]);
+        type = 'image'
+      }else {
+        reader.readAsText(files[0], 'UTF-8');
+        type = 'text';
+      };
+
+      reader.onerror = () => {
+        output.innerHTML = `Could not read file, error code is ${reader.error.code}`;
+      };
+
+      reader.onprogress = e => {
+        if(e.lengthComputable) {
+          progress.innerHTML = `${e.loaded}/${e.total}`;
+        }
+      };
+
+      reader.onload = () => {
+        let html = '';
+        switch(type) {
+          case 'image':
+            html = `<img src="${reader.result}">`;
+            break;
+          case 'text':
+            html = reader.result;
+            break;
+        }
+        output.innerHTML = html;
+      }
+    });
+
+  </script>
+</body>
+</html>
