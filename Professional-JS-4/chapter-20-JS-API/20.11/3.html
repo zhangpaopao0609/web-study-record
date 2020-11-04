@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    hello
+    <div id='content'>
+
+    </div>
+  </div>
+
+  <template id='arrow'>
+    <p>this is inside a template 1</p>
+    <p>this is inside a template 2</p>
+  </template>
+
+  <script>
+    const content = document.getElementById('content');
+    const arrow = document.getElementById('arrow');
+
+    console.log(arrow.content);
+    setTimeout(() => {
+      content.appendChild(document.importNode(arrow.content, true))
+    }, 2000);
+
+  </script>
+</body>
+</html>

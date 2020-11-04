@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shadow</title>
+</head>
+
+<body>
+  <template id='arrow-bullet'>
+    <p>I am inside a custo element</p>
+  </template>
+
+  <script>
+    const template = document.querySelector('#arrow-bullet');
+
+    class FooElement extends HTMLElement {
+      constructor() {
+        super();
+        console.log('constructor');
+      }
+
+      connectedCallback() {
+        console.log('connected');
+      }
+
+      disconnectedCallback() {
+        console.log('disconnected');
+      }
+    };
+
+    customElements.define('arrow-bullet', FooElement);
+
+    const fooElement = document.createElement('arrow-bullet');
+
+    document.body.appendChild(fooElement);
+
+    document.body.removeChild(fooElement)
+  </script>
+</body>
+
+</html>

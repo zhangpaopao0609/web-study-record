@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <template id='arrow'>
+    <p>this is inside a template</p>
+  </template>
+
+  <script>
+    const arrow = document.getElementById('arrow');
+
+    console.log(arrow.content);
+    console.log(arrow.content.querySelector('p'));
+    console.log(document.querySelector('p'));
+
+  </script>
+</body>
+</html>

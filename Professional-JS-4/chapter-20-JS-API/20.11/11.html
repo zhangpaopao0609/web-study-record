@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shadow</title>
+</head>
+
+<body>
+  <template id='arrow-bullet'>
+    <p>I am inside a custo element</p>
+  </template>
+
+  <script>
+    const template = document.querySelector('#arrow-bullet');
+
+    class FooElement extends HTMLElement {
+      constructor() {
+        super();
+
+        // this 引用 Web 组件节点
+        this.attachShadow({ mode: 'open' });
+
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+      }
+    };
+
+    customElements.define('arrow-bullet', FooElement);
+
+    document.body.innerHTML += `<arrow-bullet></arrow-bullet><arrow-bullet></arrow-bullet>`
+  </script>
+</body>
+
+</html>
