@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      text-align: center;
+      line-height: 200px;
+      margin: 50px auto;
+      border: 1px solid #ccc;
+      font-size: 80px;
+      cursor: pointer;
+    }
+
+    #output {
+      font-size: 20px;
+      line-height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id='droptarget'> 
+    +
+  </div>
+
+  <div id='output'> 
+  </div>
+
+  <script>
+    const droptarget = document.getElementById('droptarget');
+    const output = document.getElementById('output');
+
+    const handleEvent = e => {
+      let info = "";
+      let files, i, len;
+      e.preventDefault();
+
+      if(e.type === 'drop') {
+        files = e.dataTransfer.files;
+        i = 0;
+        len = files.length;
+
+        while(i < len) {
+          info += `${files[i].name} (${files[i].type}), ${files[i].size} bytes <br>`;
+          i++;
+        }
+        output.innerHTML = info;
+      };
+    };
+
+    droptarget.addEventListener('dragenter', handleEvent);
+    droptarget.addEventListener('dragover', handleEvent);
+    droptarget.addEventListener('drop', handleEvent);
+  </script>
+</body>
+</html>
