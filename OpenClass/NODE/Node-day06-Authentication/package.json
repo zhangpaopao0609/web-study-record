@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "co-redis": "^2.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-jwt": "^4.0.0",
+    "koa-redis": "^4.0.1",
+    "koa-router": "^10.0.0",
+    "koa-session": "^6.1.0",
+    "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.6",
+    "redis": "^3.0.2"
+  }
+}
