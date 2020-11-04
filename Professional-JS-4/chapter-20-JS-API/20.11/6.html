@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shadow</title>
+</head>
+
+<body>
+
+  <script>
+    document.body.innerHTML = `
+      <div>
+        <p id='foo'>Move me</p>
+      </div>
+    `;
+
+      setTimeout(() => {
+        document.querySelector('div').attachShadow({ mode: 'open' }).innerHTML = '11'
+      }, 2000);
+  </script>
+</body>
+
+</html>

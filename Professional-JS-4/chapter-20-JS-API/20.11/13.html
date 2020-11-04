@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shadow</title>
+</head>
+
+<body>
+  <script>
+    class FooElement extends HTMLElement {
+      constructor() {
+        super();
+        this.bar = true;
+      }
+
+      get bar() {
+        return this.getAttribute('bar');
+      };
+
+      set bar(val) {
+        this.setAttribute('bar', val);
+      }
+    };
+
+    customElements.define('arrow-bullet', FooElement);
+
+    document.body.innerHTML = '<arrow-bullet></arrow-bullet>';
+
+    setTimeout(() => {
+      const inner = document.body.innerHTML;
+      console.log(inner);
+      console.log(inner);
+    }, 5000);
+  </script>
+</body>
+
+</html>
