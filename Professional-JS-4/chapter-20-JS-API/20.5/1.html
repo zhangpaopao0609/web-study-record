@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video</title>
+</head>
+<body>
+  <video height="200" width="300" id='player'>
+    <source src="./mda-kk2recdnj062uqgw.mp4" type="">
+  </video>
+  <div>
+    <input type="button" name="" id="video-btn" value="Play">
+    <span id='curtime'>0</span>
+    <span id='duiration'>0</span>
+  </div>
+
+  <script>
+    const player = document.getElementById('player');
+    const btn = document.getElementById('video-btn');
+    const curtime = document.getElementById('curtime');
+    const duiration = document.getElementById('duiration');
+
+    player.addEventListener('loadedmetadata', () => {
+      console.log(1);
+      duiration.innerHTML = player.duration;
+    })
+
+    btn.addEventListener('click', e => {
+      console.log(player.paused);
+      if(player.paused) {
+        player.play();
+        btn.value = 'Pause';
+      }else {
+        player.pause();
+        btn.value = 'Play';
+      }
+    });
+
+    setInterval(() => {
+      curtime.innerHTML = player.currentTime;
+    }, 250);
+
+  </script>
+</body>
+</html>
