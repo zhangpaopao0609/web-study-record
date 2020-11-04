@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <textarea name="" id="dragtarget" cols="30" rows="10">dragtarget</textarea>
+  <div id='droptarget'>
+    droptarget
+  </div>
+  <script>
+    const dragtarget = document.getElementById('dragtarget');
+    const droptarget = document.getElementById('droptarget');
+    
+    droptarget.ondragenter = e => {
+      e.dataTransfer.dropEffect = 'move'
+    };
+
+    dragtarget.ondragstart = e => {
+      e.dataTransfer.effectAllowed = 'move'
+    };
+    
+  </script>
+</body>
+</html>

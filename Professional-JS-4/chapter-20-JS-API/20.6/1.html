@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #dragtarget {
+      height: 100px;
+      width: 100px;
+      border: 1px solid #000;
+    }
+    
+    #droptarget {
+      margin: 200px 0 0 200px;
+      height: 200px;
+      width: 200px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="dragtarget">
+    
+  </div>
+
+  <div id='droptarget'>
+    
+  </div>
+  <script>
+    const dragtarget = document.getElementById('dragtarget');
+    const droptarget = document.getElementById('droptarget');
+    droptarget.addEventListener('dragover', e => {
+      console.log(e);
+      console.log('over');
+    });
+    droptarget.addEventListener('dragenter', e => {
+      console.log('enter');
+      e.dataTransfer.dropEffect = 'move'
+      console.log(e);
+    });
+  </script>
+</body>
+</html>
