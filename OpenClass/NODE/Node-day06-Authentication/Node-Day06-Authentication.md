@@ -54,5 +54,11 @@ const app = http.createServer((req, res) => {
 这样做，数据保存在了后端，不仅不需要前端保存数据了，同时也没有了安全风险，前端永远也拿不到对应的敏感数据
 这也就是session的原理的解析
 
+# 哈希 HASH -SHA MD5
+- 把一个不定长摘要成定长结果
+- 摘要
+- 雪崩效应
+hash算法
 
-
+# redis
+键值服务器， 存储session
