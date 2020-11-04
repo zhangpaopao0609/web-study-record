@@ -1,20 +1,27 @@
 const Koa = require('koa');
 const app = new Koa();
 const session = require('koa-session');
+const redisStore = require('koa-redis');
+const redis = require('redis');
+const redisClient = redis.createClient(6379, '134.175.53.155');
+
+const wrapper = require('co-redis');
+const client = wrapper(redisClient);
 
 app.keys = ['some secret'];
 
-// 配置
-const SESSION_CONFIG = {
+app.use(session({
   key: 'arrow',
-  maxAge: 86400000,
-  httpOnly: true,   // 仅能服务器端修改，JS无法读取
-  // signed: false     // 防止session被篡改 
-  signed: true     // 防止session被篡改， 签名 cookie
-};
+  store: redisStore({ client })
+}, app));
 
-// 注册
-app.use(session(SESSION_CONFIG, app));
+app.use(async (ctx, next) => {
+  const keys = await client.keys('*');
+  keys.forEach(async key => {
+    console.log(await client.get(key));
+  });
+  await next();
+});
 
 // 测试
 app.use(ctx => {
@@ -22,7 +29,6 @@ app.use(ctx => {
   // 获取
   let count = ctx.session.count || 0;
   let num = ctx.session.num || 0;
-  console.log(ctx.session, count);
   // 设置
   ctx.session.count = ++count;
   ctx.session.num = ++num;
