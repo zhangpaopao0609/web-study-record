@@ -62,3 +62,9 @@ hash算法
 
 # redis
 键值服务器， 存储session
+
+# Token 验证
+- session 不足
+  - 服务器有状态
+  - 不灵活如果 APP 该怎么办， 跨域怎么办
+  
