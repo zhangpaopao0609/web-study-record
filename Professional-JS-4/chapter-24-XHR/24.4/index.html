@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  test
+  <div id='progress'></div>
+<img id='image' alt="" >
+
+  <script>
+    fetch('/test').then(res => {
+      console.log(res);
+      res.text().then(data => {
+        console.log(data);
+      })
+    })
+
+    fetch('/send-me-params', {
+      method: 'POST',
+      body:'foo=bar&baz=11',
+      headers:new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' })
+    }).then(res => {
+      console.log(res.url);
+    }, err => {
+      console.log(err);
+    });
+
+    const image = document.getElementById('image')
+    fetch('/image')
+      .then(res => res.blob())
+      .then(blob => {
+        console.log(URL.createObjectURL(blob));
+        image.src = URL.createObjectURL(blob)
+      })
+  </script>
+</body>
+
+</html>

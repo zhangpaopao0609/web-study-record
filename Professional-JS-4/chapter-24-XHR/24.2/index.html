@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  test
+  <div id='progress'></div>
+
+  <script>
+    const XHR = (method, url, body = null) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+            console.log(xhr.responseText);
+          } else {
+            console.log(xhr.status);
+          }
+        }
+      };
+      xhr.onload = () => {
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+          console.log(xhr.responseText);
+        } else {
+          console.log(xhr.status);
+        }
+      }
+      xhr.onprogress = (e) => {
+        const progress = document.getElementById('progress');
+        if(e.lengthComputable) {
+          console.log(e);
+          progress.innerHTML += 'Received' + e.position + 'of' + e.totalSize
+        };
+      };
+      
+      xhr.open(method, url, true);
+      xhr.send(body);
+    };
+
+    XHR('get', '/test');
+  </script>
+</body>
+
+</html>
