@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const image = new Image();
+
+    image.addEventListener('load', e => {
+      console.log('loaded');
+    });
+
+    image.addEventListener('error', e => {
+      console.log('not');
+    })
+
+    image.src = 'arrow.png'
+  </script>
+</body>
+</html>
