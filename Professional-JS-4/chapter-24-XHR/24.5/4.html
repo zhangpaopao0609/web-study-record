@@ -1,0 +1,11 @@
+<script>
+  const res1 = new Response('arrow');
+  const res2 = new Response(res1.body);
+
+  console.log(res1.bodyUsed);
+  console.log(res2.bodyUsed);
+
+  res2.text();
+  res1.text();
+
+</script>

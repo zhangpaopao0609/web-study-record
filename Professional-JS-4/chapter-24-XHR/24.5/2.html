@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  test
+  <div id='progress'></div>
+  <img id='image' alt="">
+
+  <script>
+    const r1 = new Request('https://www.baidu.com', {
+      method: 'POST',
+      body: '1'
+    });
+    // const r2 = new Request(r1);
+    const r3 = r1.clone()
+    console.log(r1);
+    // console.log(r2);
+    console.log(r3);
+
+    // r1.text();
+
+    // const r3 = new Request(r1);
+  </script>
+</body>
+
+</html>
