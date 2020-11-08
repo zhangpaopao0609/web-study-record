@@ -1,0 +1,12 @@
+<script>
+  const res1 = new Response();
+  console.log(res1);
+
+  const res2 = new Response('arrow', {
+    status: 418,
+    statusText: 'test'
+  });
+  console.log(res2);
+
+  res2.text().then(console.log);
+</script>
