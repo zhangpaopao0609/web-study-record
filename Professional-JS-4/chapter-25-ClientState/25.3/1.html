@@ -1,0 +1,16 @@
+<script>
+  const dbName = 'arrow';
+  const version = 2;
+
+  const req = indexedDB.open(dbName, version);
+
+  req.onerror = e => {
+    console.log(e.target.errorCode);
+  };
+
+  req.onsuccess = e => {
+    const db = e.target.result;
+    console.log(db);
+  };
+
+</script>

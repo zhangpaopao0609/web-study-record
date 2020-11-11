@@ -1,0 +1,17 @@
+<script>
+  window.addEventListener('storage', e => {
+    console.log(e);
+  })
+
+  setTimeout(() => {
+    sessionStorage.setItem('name', 'arrow');
+    const name = sessionStorage.getItem('name');
+    console.log(name);
+
+    localStorage.setItem('name', 'arrow');
+    const name2 = localStorage.getItem('name');
+    console.log(name2);
+  }, 1000);
+
+
+</script>
