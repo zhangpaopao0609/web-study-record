@@ -1,0 +1,7 @@
+<script>
+  const woker = new Worker('./6.js')
+
+  woker.addEventListener('message', ({data}) => {
+    console.log(data);
+  })
+</script>

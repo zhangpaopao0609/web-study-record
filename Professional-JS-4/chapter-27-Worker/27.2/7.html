@@ -1,0 +1,14 @@
+<script>
+  const scriptString = `
+  self.onmessage = ({data}) => console.log(data);
+  `;
+
+  const workerBlob = new Blob([scriptString]);
+
+  const workerBlobURL = URL.createObjectURL(workerBlob);
+
+  const worker = new Worker(workerBlobURL);
+
+  worker.postMessage('arrpw');
+
+</script>
