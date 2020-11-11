@@ -1,0 +1,81 @@
+<html>
+<style>
+  .first-container {
+    .city-item {
+      display: flex;
+      .second-container {
+        flex: 1;
+        .gender-item {
+          display: flex;
+          .third-container {
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
+</style>
+
+<body>
+  <div class="first-container">
+    <div class="city-item" v-for="(item, index) in test" :key="index">
+      <div>{{ item.category }}</div>
+      <div class="second-container">
+        <div class="gender-item" v-for="(v, i) in item.data" :key="i">
+          <div>{{ v.item }}</div>
+          <div class="third-container">
+            <div class="person-item" v-for="(data, inx) in v.data" :key="inx">
+              <span>{{ data.name }}</span>
+              <span>{{ data.description }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  const test = [
+    {
+      category: '四川',
+      data: [
+        {
+          category: '男',
+          data: [
+            { name: 'A', description: 'A' },
+            { name: 'B', description: 'B' }
+          ]
+        },
+        {
+          category: '女',
+          data: [
+            { name: 'C', description: 'C' },
+            { name: 'D', description: 'D' }
+          ]
+        }
+      ]
+    },
+    {
+      category: '上海',
+      data: [
+        {
+          category: '男',
+          data: [
+            { name: 'E', description: 'E' },
+            { name: 'F', description: 'F' }
+          ]
+        },
+        {
+          category: '女',
+          data: [
+            { name: 'G', description: 'G' },
+            { name: 'H', description: 'H' }
+          ]
+        }
+      ]
+    }
+  ]
+</script>
