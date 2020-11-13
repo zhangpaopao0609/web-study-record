@@ -1,0 +1,36 @@
+<html>
+  <head>
+  </head>
+
+  <body>
+    <div></div>
+    <script>
+      // 清空主体
+      // document.body.innerHTML = '';
+      const d = document.getElementsByTagName('div')[0]
+      let observer = new MutationObserver(
+        (mutationRecords) => console.log(mutationRecords)
+      );
+
+      observer.observe(document.body, { childList: true });
+
+      // document.body.appendChild(document.createElement('div'));
+      document.body.removeChild(d)
+
+
+// [
+//   {
+//     addedNodes: NodeList [],
+//     attributeName: null,
+//     attributeNamespace: null,
+//     nextSibling: text,
+//     oldValue: null,
+//     previousSibling: text,
+//     removedNodes: NodeList [div],
+//     target: body,
+//     type: "childList"
+//   }
+// ]
+    </script>
+  </body>
+</html>
