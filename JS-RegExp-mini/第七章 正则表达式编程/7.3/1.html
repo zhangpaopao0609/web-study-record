@@ -1,0 +1,29 @@
+<html>
+
+<body>
+  <p class="high">1111</p>
+  <p class="high">2222</p>
+  <p>3333</p>
+</body>
+
+<script>
+  function getElementsByClassName(className) {
+    const elements = document.getElementsByTagName("*");
+    const regex = new RegExp(`(^|\\s)${className}(\\s|$)`);
+    const result = [];
+    for (let i = 0; i < elements.length; i++) {
+      const element = elements[i];
+      if(regex.test(element.className)) {
+        result.push(element);
+      }
+    }
+    return result;
+  }
+
+  const highs = getElementsByClassName('high');
+  highs.forEach(item => {
+    item.style.color = 'red'
+  })
+</script>
+
+</html>
