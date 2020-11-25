@@ -1,0 +1,23 @@
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 300px;
+  padding:0 200px;
+}
+
+section * {
+  min-height: 30px;
+}
+
+#err {
+  color: red;;
+}
+
+#result {
+  line-height: 30px;
+}
+
+.info {
+  background: #00c5ff;
+}
