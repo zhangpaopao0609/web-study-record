@@ -12,7 +12,7 @@ git init
 git clone
 ```
 
-## 2.2 记录每次更新到仓库
+## 2.2 记录每次更新到仓库 
 
 ```bash
 git status
@@ -24,7 +24,7 @@ git status -s
 git add 
 ```
 
-#### 忽略文件
+### 1. 忽略文件
 
 .gitignore 
 
@@ -34,7 +34,7 @@ git add
 cat .gitignore
 ```
 
-#### 查看已暂存和未暂存的修改
+### 2. 查看已暂存和未暂存的修改
 
 ```bash
 git diff 
@@ -46,7 +46,7 @@ git diff --staged
 # 查看已暂存的将要添加到下次提交里的内容
 ```
 
-#### 提交更新
+### 3. 提交更新
 
 ```bash
 git commit
@@ -61,7 +61,7 @@ git commit -m "message"
 # -m 的意思是将提交信息与命令放在同一行
 ```
 
-跳过使用暂存区域
+### 4. 跳过使用暂存区域
 
 尽管是一个暂存区域的方式可以精心准备要提交的细节，但有时候这么做略显繁琐。Git 提供了一个跳过使用暂存区域的方式，只要在提交的时候，给 git commit 加上 -a 的选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从未跳过git add 步骤
 
@@ -70,7 +70,7 @@ git commit -a -m "message"
 # git commit -am "message"
 ```
 
-#### 移除文件
+### 5. 移除文件
 
 ```bash
 git rm
@@ -82,11 +82,50 @@ git rm --cached
 # 只把文件从Git仓库中删除（亦即从暂存区域移除），但仍然希望保留咋当前工作目录中
 ```
 
-#### 重命名文件
+### 6. 重命名文件
 
 ```bash
 git mv filename newname
 ```
+
+## 2.3 查看提交历史
+
+### 1. 查看提交历史
+
+```bash
+git log
+```
+
+```bash
+git log -p
+# 显示每次提交的内容差异
+```
+
+```bash
+git log -p -2
+```
+
+```bash
+git log --stat
+# 总结性选项
+```
+
+```bash
+git log --pretty=oneline
+# 使用不同于默认格式的方式展示提交历史
+```
+
+```bash
+git log --pretty=format:"%h -%an, %ar : %s"
+# 定制要显示的记录格式
+```
+
+```bash
+git log --graph
+# 使用一些 ASCII 字符串来形象地展示你的分支、合并历史
+```
+
+
 
 
 
