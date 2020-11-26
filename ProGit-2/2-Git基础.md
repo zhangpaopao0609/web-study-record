@@ -46,3 +46,13 @@ git diff --staged
 # 查看已暂存的将要添加到下次提交里的内容
 ```
 
+#### 提交更新
+
+```bash
+git commit
+```
+
+```bash
+git commit -v
+```
+
