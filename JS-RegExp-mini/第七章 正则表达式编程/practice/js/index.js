@@ -40,6 +40,7 @@
       };
 
       // 倒序
+      // 这里设计得还是比较巧妙的，倒序来给匹配到的结果添加class
       for(let i = results.length - 1; i >= 0; i--) {
         const result = results[i];
         const match = result[0];
@@ -50,6 +51,7 @@
               + match 
               + '</span>'
               + suffix;
+        console.log(text);
       }
       resultBox.innerHTML = "匹配到" + results.length + "个结果： <br>" + text;
     }
