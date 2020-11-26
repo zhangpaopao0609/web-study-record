@@ -56,3 +56,17 @@ git commit
 git commit -v
 ```
 
+```bash
+git commit -m "message"
+# -m 的意思是将提交信息与命令放在同一行
+```
+
+跳过使用暂存区域
+
+尽管是一个暂存区域的方式可以精心准备要提交的细节，但有时候这么做略显繁琐。Git 提供了一个跳过使用暂存区域的方式，只要在提交的时候，给 git commit 加上 -a 的选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从未跳过git add 步骤
+
+```bash
+git commit -a -m "message"
+# git commit -am "message"
+```
+
