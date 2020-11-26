@@ -70,3 +70,23 @@ git commit -a -m "message"
 # git commit -am "message"
 ```
 
+#### 移除文件
+
+```bash
+git rm
+# 直接移除某个文件，从工作目录和暂存区均移除
+```
+
+```bash
+git rm --cached 
+# 只把文件从Git仓库中删除（亦即从暂存区域移除），但仍然希望保留咋当前工作目录中
+```
+
+#### 重命名文件
+
+```bash
+git mv filename newname
+```
+
+
+
