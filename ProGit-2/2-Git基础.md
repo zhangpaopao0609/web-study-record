@@ -186,6 +186,20 @@ git restore --staged <file>
 git restore <file>
 ```
 
+## 2.5 远程仓库的使用
+
+### 1. 查看远程仓库
+
+```bash
+git remote
+# 查看已经配置的远程仓库服务器
+git remote -v
+# 显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL
+# aispeechdeMacBook-Air:ProGit-2 aispeech$ git remote -v
+# origin	git@github.com:Arrow-zb/web-study-record.git (fetch)
+# origin	git@github.com:Arrow-zb/web-study-record.git (push)
+```
+
 
 
 
