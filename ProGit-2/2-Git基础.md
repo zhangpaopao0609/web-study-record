@@ -200,6 +200,53 @@ git remote -v
 # origin	git@github.com:Arrow-zb/web-study-record.git (push)
 ```
 
+### 2. 添加远程仓库
+
+```bash
+git remote add <shortname> <url>
+# 添加一个新的远程 Git 仓库，同时指定要一个可以轻松引用的简写,假设为test
+# 在命令行中可以使用字符串 test 来代替整个 URL。
+git fetch test
+# aispeechdeMacBook-Air:simplegit-progit aispeech$ git fetch test
+# warning: no common commits
+# remote: Enumerating objects: 634, done.
+# remote: Total 634 (delta 0), reused 0 (delta 0), pack-reused 634
+# Receiving objects: 100% (634/634), 88.93 KiB | 7.00 KiB/s, done.
+# Resolving deltas: 100% (261/261), done.
+# From https://github.com/paulboone/ticgit
+#  * [new branch]      master     -> test/master
+#  * [new branch]      ticgit     -> test/ticgit
+# 可以通过 test/master 访问到
+git checkout test/master
+```
+
+### 3. 从远程仓库中抓取与拉取
+
+```bash
+git fetch [remote-name]
+# 这个命令会访问远程仓库，从中拉取所有你还没有的数据。执行完成后，将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看
+```
+
+```bash
+# 使用 clone 命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认以 “origin” 为简写。所以，git fetch origin 会抓取克隆（或上一次抓取）后新推送的所有工作。
+# 默认情况下，git clone 命令会自动设置本地 master 分支跟踪克隆的远程仓库的 master 分支（或不管是什么名字的默认分支）
+```
+
+### 4. 推送到远程仓库
+
+```bash
+git push [remote-name] [branch-name]
+```
+
+### 5. 查看远程仓库
+
+```bash
+# 简单查看信息
+git remote -v
+# 查看某一个仓库的更多信息
+git remote show [remote-name]
+```
+
 
 
 
