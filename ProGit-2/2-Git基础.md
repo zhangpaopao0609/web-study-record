@@ -151,6 +151,41 @@ git log --pretty=oneline --grep=fix --author=vv --all-match
 git log -- path
 ```
 
+## 2.4 撤销操作
+
+### 1. 撤销操作
+
+```bash
+# 有时候我们提交完了才发现漏掉了几个文件没有提交，或者提交信息写错了。此时，可以运行带有 --amend 选项的提交命令尝试重新提交
+git commit --amend
+# 这个命令会将暂存区的文件提交。
+# 例如：你提交后发现忘记了暂存某些需要的修改，可以像下面这样操作
+git commit -m "initial commit"
+git add forgotten_file
+git commit --amend
+# 最终你只会有一个提交，第二次提交将代替第一次提交的结果
+```
+
+### 2. 取消暂存的文件
+
+```bash
+# git status 已经给出了提示
+# Changes to be committed:
+#  (use "git restore --staged <file>..." to unstage)
+git restore --staged <file>
+```
+
+### 3. 撤销对文件的修改
+
+```bash
+# 不希望保留当前工作目录对某个文件的修改，还原为上一次提交的样子
+# git status 中已经给出了提示
+# Changes not staged for commit:
+#  (use "git add <file>..." to update what will be committed)
+#  (use "git restore <file>..." to discard changes in working directory)
+git restore <file>
+```
+
 
 
 
