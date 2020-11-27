@@ -325,6 +325,26 @@ git checkout -b [branchname] [tagname]
 
 在特定分支上创建一个新分支
 
+## 2.7 Git 别名
+
+可以通过 git config 文件来轻松为每一个命令设置一个别名
+
+```bash
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+```
+
+```bash
+git config --global ailas.unstage 'reset HEAD --'
+# 这会使得以下两个命令等价
+git unstage fileA
+git reset HEAD --fileA
+```
+
+
+
 
 
 
