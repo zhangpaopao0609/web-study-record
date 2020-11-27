@@ -260,7 +260,70 @@ git remote rename
 git remote rm [remote-name]
 ```
 
+## 2.6 打标签
 
+### 1. 打标签
+
+### 2. 列出标签
+
+```bash
+git tag
+# 特定模式查找标签
+git tag -l 'v1.8.5'
+```
+
+### 3. 创建标签
+
+轻量标签 (lightweight) 和附注标签 (annotated)
+
+轻量标签很像一个不会改变的分支-它只是一个特定提交的引用
+
+#### 3.1 附注标签
+
+```bash
+# 附注标签
+git tag -a v1.4 -m "my version 1.4"
+# 查看
+git show v1.4
+```
+
+#### 3.2 轻量标签
+
+```bash
+git tag v1.4-lw
+```
+
+#### 3.3 后期打标签
+
+假设忘记了给项目打标签，可以在之后不上标签。要在哪个提交上打标签，只需要在命令的末尾指定提交的校验和（commit hash）
+
+```bash
+git tag -a v1.2 92fc02
+```
+
+#### 3.4 共享标签
+
+默认情况下 git push 不会推送标签到远程仓库服务器中。创建完标签后必须显示地推送标签到共享服务器上。就类似于推送共享远程分支一样
+
+```bash
+git push origin [tagname]
+```
+
+也可以一次性推送很多标签，使用 --tags 的 git push 实现
+
+```bash
+git push origin --tags
+```
+
+#### 3.5 检出标签
+
+在 Git 中并不能真的检出一个标签，因为他们并不能像分支一样来回移动，如果你想要工作目录与仓库中特定的标签版本完全一样，可以使用 
+
+```bash 
+git checkout -b [branchname] [tagname]
+```
+
+在特定分支上创建一个新分支
 
 
 
