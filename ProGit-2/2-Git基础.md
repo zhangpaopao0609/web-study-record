@@ -125,6 +125,32 @@ git log --graph
 # 使用一些 ASCII 字符串来形象地展示你的分支、合并历史
 ```
 
+### 2. 限制输出长度
+
+```bash
+git log -<n> 
+# 但不推荐使用，Git 在输出所有提交时会自动调用分页程序，所以一次只会看到一页的内容
+```
+
+```bash
+# 按照时间作限制的选项 --since --until
+git log --since=2.weeks
+# 这个命令可以在多种格式下工作比如某一天“2020-02-02”， 或者是相对地多久以前
+# “2 years 1 day 3 minutes ago”
+```
+
+```bash
+# 可以用--author选项显示指定作者的提交
+# 用 --grep 选项搜索提交说明的关键字
+# 如果需要同时满足，需要使用 --all-match
+git log --pretty=oneline --grep=fix --author=vv --all-match
+```
+
+```bash
+# git log 选项是路径 path， 如果只关心某些文件或者目录的历史提交，可以在 git log 选项的最后指定他们的路径。因为是放在最后位置上的选项，所以用两个短划线（--）隔开之前的选项和后面限定的路径名
+git log -- path
+```
+
 
 
 
