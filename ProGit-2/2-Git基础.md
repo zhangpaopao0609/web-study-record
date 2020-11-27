@@ -247,6 +247,37 @@ git remote -v
 git remote show [remote-name]
 ```
 
+### 6. 远程仓库的移除与重命名
+
+```bash
+# 重命名引用的名字
+git remote rename 
+# git remote rename origin test
+```
+
+```bash
+# 移除一个远程仓库
+git remote rm [remote-name]
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
