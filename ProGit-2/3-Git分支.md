@@ -45,3 +45,16 @@ git checkout [branch-name]
 
 这样，HEAD 就指向切换的分支了
 
+修改后再次提交，会发现 HEAD 分支会随着提交操作自动向前移动
+
+再 切回分支 git checkout master
+
+这条命令就会做两件事情。一是使 HEAD 指回 master 分支，二是将工作目录回复成 master 分支所指向的快照内容。也就是说，你现在做修改的话，项目将始于一个较旧的版本。本质上来讲，这就是忽略 [banch-name]分支所做的修改，以便于向另一个方向进行开发。
+
+然后再修改再提交，提交历史就会产生分叉。可以通过一下命令查看
+
+```bash
+git log --online --decorate --graph --all
+# 仔细看，能看懂的
+```
+
