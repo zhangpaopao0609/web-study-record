@@ -58,3 +58,15 @@ git log --online --decorate --graph --all
 # 仔细看，能看懂的
 ```
 
+## 3.2 分支的新建与合并
+
+```bash
+git checkout -b iss53
+```
+
+在切换分支之前，保持好一个干净的状态。切换分支之前需要留意工作目录和暂存区里那些还没有提交的修改，它可能会和即将检出的分支产生冲突从而阻止 Git 切换到该分支。有一些方法可以绕过这个问题（即，保存进度（stashing）和修补提交（commit amending））
+
+```bash
+git merge
+```
+
