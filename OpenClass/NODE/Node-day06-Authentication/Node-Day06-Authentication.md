@@ -67,4 +67,28 @@ hash算法
 - session 不足
   - 服务器有状态
   - 不灵活如果 APP 该怎么办， 跨域怎么办
-  
+![token-process](./img/token-process.png)
+1. 客户端使用用户名跟密码请求登录
+2. 服务端收到请求，去验证用户名和密码
+3. 验证成功后，服务端会签发一个令牌（Token）,再把这个 Token 发送给客户端
+4. 客户端收到 Token 以后可以把它存储起来，比如放在 Cookie 里或者 Local Storage 里面
+5. 客户端每次向服务端请求资源的时候需要带着服务端签发的 Token
+6. 服务端接收到请求，然后去验证客户端请求里面带着的Token，如果验证成功，就想客户端返回请求的数据
+
+```bash
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGVzdCIsImV4cCI6MTYwNjU1ODk2MCwiaWF0IjoxNjA2NTU1MzYwfQ.OdiZ-tJfQ1-X3PcG2hl7OKmU-gOF-jB6DG49xIwZwBw
+```
+Bearer Token 包含三个组成部分： 令牌头、payload、哈希
+
+第一段： base64 编码   
+头部、申明部分
+![jwt-01](./img/jwt-01.png)
+
+第二段： base64 编码
+body， 密文结果
+![jwt-02](./img/jwt-02.png)
+
+第三段： 不是base64编码， 哈希
+也就是对前面部分的一个签名，防止整个令牌被篡改，进行伪造
+
+**也就是说，前面两个部分和后面一部分是一一对应的，是存在对应关系的，这个对应关系有一个中间件，就是设置的secret， 加密的密钥**，也就是说，后面部分的哈希是通过前面两个部分和一个密钥通过加密算法计算出来的，那么jwt在验证的时候，就用前面两部分和密钥使用加密算法进行加密，然后计算出结果，如果结果和后面的哈希相同，那说明验证通过，反之。当然，在payload里面是存在有效期，验证成功后，自然也就可以根据有效期来返回结果了，如果没有验证通过，直接就可以返回结果false了
