@@ -119,8 +119,6 @@ git merge
    # Automatic merge failed; fix conflicts and then commit the result
    ```
 
-   
-
 删除分支
 
 ```bash
