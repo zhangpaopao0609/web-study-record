@@ -266,3 +266,26 @@ Branch 'feature/sprint-10' set up to track remote branch 'feature/sprint-10' fro
 Switched to a new branch 'feature/sprint-10'
 ```
 
+### 3. 跟踪分支
+
+从远程跟踪分支检出一个本地分支会自动创建一个叫做“跟踪分支”（有时候也叫做’上游分支‘）。跟踪分支是与远程分支有直接关系的本地分支。如果在一个跟踪分支上输入 git pull,  Git 能自动地识别去哪个服务器上抓取、合并到哪个分支
+
+当克隆一个仓库时，通常会自动地创建一个跟踪 origin/master 的 master 分支。然而，也可以设置其他的跟踪分支-其他远程仓库的跟踪分支或者不跟踪master分支。最简单的例子就是运行 git checkout -b [branch-name] [remotename]/[branch-name]。同时，Git 还提供了 --track 来设置跟踪
+
+```bash
+git checkout --track origin/arrow
+# Branch arrow set up to track remote branch arrow from origin. 
+# Switched to a new branch 'arrow'
+```
+
+设置已有本地分支跟踪一个刚刚拉取下来的远程分支，或者想要修改正在跟踪的上游分支，你可以在任意时间使用 -u 或 --set-upstream-to 选项运行 git branch 来显示的设置
+
+```bash
+git branch -u origin/arrow
+# Branch arrow set up to track remote branch arrow from origin.
+```
+
+```bash
+git branch -vv
+```
+
