@@ -125,3 +125,35 @@ git merge
 git branch -d [branch-name]
 ```
 
+## 3.3 分支管理
+
+```bash
+git branch
+# 查看每个分支的最后一次提交
+git branch -v
+# 查看哪些分支已经合并到当前分支
+git branch --merged
+#  arrow-ci
+#  ci-to-beta
+#  feature/sprint-13
+#  full-link-on-shelf
+#  release
+#* test
+# 因为之前已经合并了这些分支，所以现在看到它在列表中。在这个列表中分支名字前没有 * 号的分支通常可以使用 git branch -d 删除掉；因为你已经将他们的工作整合到了另一个分支，所以并不会失去任何东西
+
+# 查看所有包含未合并工作的分支，
+git branch --no-merged
+# aispeechdeMacBook-Air:odcp-console-product aispeech$ git checkout release
+# aispeechdeMacBook-Air:odcp-console-product aispeech$ git branch --no-merged
+#  arrow-ci
+#  ci-to-beta
+#  feature/sprint-13
+#  full-link-on-shelf
+#  test
+# 这里显示了其他分支。因为它包含了还未合并的工作，尝试使用 git branch -d 命令删除它时会失败
+# aispeechdeMacBook-Air:odcp-console-product aispeech$ git branch -d test
+# error: The branch 'test' is not fully merged
+# If you are sure you want to delete it, run 'git branch -D test'
+# 如果真的想要删除分支并丢掉那些工作，如同帮助信息里面所指出的，可以使用 -D 选项强制删除它
+```
+
