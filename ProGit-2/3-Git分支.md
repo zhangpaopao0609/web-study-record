@@ -172,8 +172,97 @@ git ls-remote (remote)
 git remote show (remote) 
 ```
 
-利用远程跟踪分支
+### 1. 利用远程跟踪分支
 
 远程跟踪分支时远程分支状态的引用。它们是不能移动的本地引用，当做任何网络通信操作时，它们会自动移动。远程跟踪分支就像是你上次连接到远程仓库时，那些分支所处状态的书签。
 
 它们以 （remote）/ （branch）形式命名。
+
+```bash
+# aispeechdeMacBook-Air:ProGit-2 aispeech$ git branch -a
+# * master
+#  remotes/origin/master
+```
+
+我在本地master分支上已经提交了3次，也就是说与远程分支的状态不一样了，这里的 remotes/origin/master 就是最后一次与远程仓库连接时的 master 分支的状态，那么想要查看，直接checkout就可以了
+
+```bash
+# aispeechdeMacBook-Air:ProGit-2 aispeech$ git checkout origin/master
+# Note: switching to 'origin/master'.
+# HEAD is now at 92fc352 feat: authentication
+```
+
+这时候当前分支就到了最后一次与远程仓库连接时的 master 分支的状态了。
+
+```bash
+# 在git clone 时会自动将远程命名为origin，创建一个指向它的master分支的指针，并在本地将其命名为 origin/master， 同时git也会给一个与origin的master分支在指向同一个地方的mster分支，这样就有了工作的基础分支
+
+# origin 没有特殊含义，只是使用广泛，默认的
+git clone -o arrow
+# 这样默认的远程分支就成就会是 arrow/master
+```
+
+如果你在本地的master分支做了一些工作，然而在同一时间，其他人推送提交到远程仓库并更新了它的master分支，那么你的提交历史将向不同的方向前进。当然，只要你不与远程仓库服务器连接，那么本地的 origin/master 指针就不会移动。
+
+如果要同步你的工作，运行
+
+```bash
+git fetch origin
+# 这个命令查找 origin 是哪一个服务器，从中抓取本地没有的数据，并且更新本地数据库，移动 origin/master 指针指向新的、更新后的位置
+```
+
+```bash
+# 复习一下 添加远程仓库
+git remote add origin_2 UTL
+# 拉取
+git fetch origin_2
+```
+
+### 2. 推送
+
+```bash
+# 当从服务器上抓取数据时，会在本地生成远程分支
+# 特别注意的一点是当抓取到新的远程跟踪分支时，本地不会自动生成一份可编辑的副本。换句话说，这种情况下不会有一个新的分支，只会有一个不可修改的origin/fenzhi
+# 可以通过merge 将这写工作合并到当前所在分支或者自己新建一个分支建立在远程跟踪分支之上
+git checkout -b [branch-name] origin/[branch-name]
+```
+
+但是好像现在不一样了
+
+```bash
+# 查看所有分支
+git branch -a
+# aispeechdeMacBook-Air:odcp-console-product aispeech$ git branch -a
+#  arrow-ci
+#  ci-to-beta
+#  feature/sprint-13
+#  full-link-on-shelf
+#  release
+#* test
+#  remotes/origin/HEAD -> origin/test
+#  remotes/origin/arrow-ci
+#  remotes/origin/ci-to-beta
+#  remotes/origin/custom-resource
+#  remotes/origin/feature/bigdata-1029
+#  remotes/origin/feature/bugfix-0226
+#  remotes/origin/feature/head_link
+#  remotes/origin/feature/hechengyin-1125
+#  remotes/origin/feature/sprint-10
+#  remotes/origin/feature/sprint-11
+#  remotes/origin/feature/sprint-13
+#  remotes/origin/feature/sprint-2
+#  remotes/origin/feature/sprint-20
+#  remotes/origin/feature/sprint-21
+#  remotes/origin/feature/sprint-22
+#  remotes/origin/feature/sprint-3
+#  remotes/origin/feature/sprint-5
+#  remotes/origin/feature/sprint-6
+#  remotes/origin/feature/sprint-7
+
+# 然后可以直接 checkout 分支 
+# 切出来的分支就是建立在对应的远程分支上的
+aispeechdeMacBook-Air:odcp-console-product aispeech$ git checkout feature/sprint-10
+Branch 'feature/sprint-10' set up to track remote branch 'feature/sprint-10' from 'origin'.
+Switched to a new branch 'feature/sprint-10'
+```
+
