@@ -36,3 +36,37 @@ I :eyes: that :bug: and I :cold_sweat:
 
 2.  CONTRIBUTING
 
+## 6.5 脚本 GitHub
+
+### 1. 钩子
+
+GitHub 仓库管理中的钩子与服务区块是 GitHub 与 外部系统交互最简单的方式
+
+- 整合持续集成服务
+- BUG 与 问题追踪系统
+- 聊天室系统与文档系统
+
+指定一个 URL 然后 GitHub 在任一期望的事件发生时就会发送一个 HTTP 请求到哪个 URL
+
+### 2. GitHub API
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
