@@ -259,7 +259,80 @@ aispeechdeMacBook-Air:web-study-record aispeech$ git log -G 10.12.6.144 --onelin
 ed4fc50 feat: agg-v4
 ```
 
+## 7.5 重写历史
 
+### 1. 修改最后一次提交
+
+对于最近一次提交，往往是做两件事：修改提交信息，或者修改添加、修改和移除的文件的快照
+
+```bash
+# 修改最近一次提交的提交信息
+git commit --amend
+```
+
+如果之前提交忘记添加一个新创建的文件，想通过添加或修改文件来更改提交的快照，也可以通过类似的操作来完成。通过修改文件然后运行 `git add` 或 `git rm` 一个已追踪的文件，随后运行 `git commit --amend` 拿走当前的暂存区域并使其作为新提交的快照。
+
+### 2. 修改多个提交信息
+
+为了修改在提交历史中较远的提交。
+
+通过变基来实现
+
+```bash
+git rebase -i 
+```
+
+如果想要修改最近三次提交信息，或者那组提交中的任意一个提交信息，将想要修改的最近一次提交的提交作为参数传递给 `git rebease -i`命令，即 `HEAD~2^` 或 `HEAD~3`。
+
+```bash
+git rebase -i HEAD~3
+```
+
+### 3. 重新排序提交
+
+### 4. 压缩提交
+
+### 5. 拆分提交
+
+拆分一个提交其实很简单，首先撤销这个提交，然后多次地部分地暂存与提交直到完成你所需次数的提交。
+
+```bash
+$ git reset HEAD^ 
+$ git add README 
+$ git commit -m 'updated README formatting' 
+$ git add lib/simplegit.rb 
+$ git commit -m 'added blame' 
+$ git rebase --continue
+```
+
+### 6. 核武器级选项： filter-branch
+
+- 从每一个提交移除一个文件
+
+  为了从整个提交历史中移除一个叫做 passwaord.txt 的文件，可以使用 `--tree-filter` 选项给 `filter-branch`:
+
+  ```bash
+  git filter-branch --tree-filter 'rm -f passwaord.txt' HEAD
+  ```
+
+- 全局修改邮箱地址
+
+  通过 filter-branch 来一次性修改多个提交中的邮箱地址。需要小心的是只修改自己的邮箱地址，所以使用 `--commit-filter`
+
+  ```bash
+  git filter-branch --commit-filter '
+  	if [ "$GIT_AUTHOR_EMAIL" = "bo.zhang@aispeech.com" ];
+  	then
+  		GIT_AUTHOR_NAME="arrow_zb";
+  		GIT_AUTHOR_EMAIL="arrow_zb@outlook.com";
+  		git commit-tree "$@";
+  	else
+  		git commit-tree "$@";
+  	fi' HEAD
+  '
+  ```
+
+  
 
 
 
