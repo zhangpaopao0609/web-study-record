@@ -1,0 +1,15 @@
+{
+  "name": "Node-day08-EggJs-Better-Practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "paopao-arrow",
+  "license": "MIT",
+  "dependencies": {
+    "egg-init": "^2.2.0"
+  }
+}
