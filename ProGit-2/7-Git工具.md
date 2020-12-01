@@ -407,7 +407,16 @@ git merge -Xignore-space-change [branch-name]
 
   
 
+### 7.9 Rerere
 
+```bash
+git rerere
+# reuse recorded resolution
+```
+
+### 7.10 使用Git调试
+
+`
 
 
 
