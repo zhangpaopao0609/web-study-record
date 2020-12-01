@@ -332,7 +332,56 @@ $ git rebase --continue
   '
   ```
 
-  
+
+## 7.7 重置揭密
+
+### 1. 三棵树
+
+```bash
+# --soft ,仅仅撤销上一次的 commit,保留暂存区（索引）和工作区域，于是回到了git commit 的命令执行之前
+git reset --soft HEAD~
+# --mixed, 这也是默认行为，撤销上一次的 commit, 并且取消暂存所有的东西，于是回到了git  add 和 git commit 的命令执行之前
+git reset [--mixed] HEAD~
+# --hard 是 reset 命令唯一危险的用法，也是 Git 会真正销毁数据的仅有的几个操作之一 
+git reset --hard 
+```
+
+回顾
+
+`reset` 命令会以特定的顺序重写三棵树，在你指定以下选项时停止：
+
+- 移动 HEAD 分支的指向（若指定了 `--soft`，则到此停止）
+- 使索引看起来像 HEAD （若为指定 `--hard`, 则到此停止）
+- 使工作目录看起来像索引
+
+### 2. 检出
+
+checkout 和 reset 之间的区别。和 reset 一样，checkout 也操作三棵树，不过它有一点不同，这取决于你是否传给该命令一个文件路径。
+
+不带路径
+
+运行 `git checkout [branch]` 与运行 `git reset --hard [branch]` 非常相似
+
+带路径
+
+## 7.8 高级合并
+
+```bash
+# git merge --abort 选项会尝试恢复到你运行合并前的状态。但当运行命令前，在工作目录中有为储藏、未提交的修改时它不能完美处理，除此之外它都工作地很好
+git merge --abort
+```
+
+### 1. 忽略空白
+
+默认合并策略可以带有参数
+
+```bash
+# -Xignore-all-space 忽略任意数量的已有空白的修改
+# -Xignore-space-change 忽略所有空白修改
+git merge -Xignore-space-change [branch-name]
+```
+
+
 
 
 
