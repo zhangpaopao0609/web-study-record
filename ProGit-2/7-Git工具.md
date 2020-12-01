@@ -416,9 +416,27 @@ git rerere
 
 ### 7.10 使用Git调试
 
-`
+### 1. 文件标注
 
+追踪代码的bug，并且想知道什么时候以及为何会引入。git blame 标注这个文件，查看这个方法每一行的最后修改时间以及是被谁修改的。
 
+```bash
+aispeechdeMacBook-Air:magic-desktop aispeech$ git blame -L 2,10 ./docker-compose.yml 
+974da998 (bo.zhang 2020-11-25 21:07:37 +0800 2) services: 
+974da998 (bo.zhang 2020-11-25 21:07:37 +0800 3)   nginx:
+974da998 (bo.zhang 2020-11-25 21:07:37 +0800 4)     image: docker.v2.aispeech.com/aispeech/nginx:1.11.10
+974da998 (bo.zhang 2020-11-25 21:07:37 +0800 5)     restart: always
+974da998 (bo.zhang 2020-11-25 21:07:37 +0800 6)     ports: 
+974da998 (bo.zhang 2020-11-25 21:07:37 +0800 7)       - 50000:80
+974da998 (bo.zhang 2020-11-25 21:07:37 +0800 8)     volumes: 
+974da998 (bo.zhang 2020-11-25 21:07:37 +0800 9)       - ./today/:/usr/share/nginx/html
+```
+
+### 2. 二分查找
+
+```bash
+git bisect
+```
 
 
 
