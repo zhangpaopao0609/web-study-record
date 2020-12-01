@@ -178,7 +178,86 @@ git stash --all
 # 来移除每一样东西并存放到栈中
 ```
 
+## 7.4 签署工作
 
+GPG 来签署和验证工作的方式
+
+## 7.5 搜索
+
+Git 提供两个有用的工具来快速地从它的数据库中浏览代码和提交。
+
+### 1. Git Grep
+
+默认情况下 Git 会查找你的工作目录的文件。可以传入 `-n` 参数来输出 Git 所找到的匹配行行号
+
+```bash
+aispeechdeMacBook-Air:web-study-record aispeech$ git grep -n paopao
+OpenClass/NODE/Node-day01-NodeJSBasic/vue-auto-router-cli/package.json:13:  "author": "paopao-arrow",
+OpenClass/NODE/Node-day02-Koa/package.json:10:  "author": "paopao-arrow",
+OpenClass/NODE/Node-day03-NetworkProgram/package.json:10:  "author": "paopao-arrow",
+OpenClass/NODE/Node-day04-DataPersistence-Mysql/package.json:10:  "author": "paopao-arrow",
+OpenClass/NODE/Node-day05-DataPersistence-Mongodb/package.json:10:  "author": "paopao-arrow",
+OpenClass/NODE/preview/AsynchronousProgramming/package.json:10:  "author": "paopao-arrow",
+OpenClass/NODE/preview/helloworld/package.json:10:  "author": "paopao-arrow",
+OpenClass/VUE/day01-vue/src/App.vue:6:      <template v-slot:arrow="{ paopao  }">
+OpenClass/VUE/day01-vue/src/App.vue:8:        {{ paopao.try }}
+OpenClass/VUE/day01-vue/src/views/Home.vue:5:    <slot name="arrow" :paopao="paopao"></slot>
+OpenClass/VUE/day01-vue/src/views/Home.vue:17:      paopao : { try: 99 }
+OpenClass/VUE/day01-vue/笔记.md:105:    {{ paopao.try }}
+OpenClass/VUE/day01-vue/笔记.md:117:  <slot name="arrow" :paopao="data"></slot>
+OpenClass/VUE/day01-vue/笔记.md:122:  <template v-slot:arrow="{ paopao }">
+OpenClass/VUE/day01-vue/笔记.md:124:    {{ paopao }}
+OpenClass/VUE/day04-vue-again/index.html:25:                name: 'paopao',
+OpenClass/VUE/day04-vue-again/index.html:38:                    this.name = "arrow-paopao";
+OpenClass/VUE/day04-vue/index.html:33:          this.name = 'paopao';
+OpenClass/VUE/day06-vue/day06-vue/vue.config.js:2:const title = 'paopao';
+OpenClass/VUE/day08-typescript/PreView/package.json:9:  "author": "paopao-arrow",
+Professional-JS-4/chapter-24-XHR/package.json:10:  "author": "paopao-arrow",
+```
+
+grep 命令的一些有趣选项
+
+```bash
+# --count 来使 Git 输出概述的信息
+git grep --count []
+
+aispeechdeMacBook-Air:web-study-record aispeech$ git grep --count 10.12.6.144
+OpenClass/NODE/Node-day07-EggJs/agg-v4-router-controller-service-mysql/config/index.js:1
+OpenClass/NODE/Node-day07-EggJs/agg-v5-router-controller-service-mysql-middle/config/index.js:1
+OpenClass/NODE/Node-day07-EggJs/agg-v6-router-controller-service-mysql-middle-schedule/config/index.js:1
+OpenClass/NODE/Node-day07-EggJs/egg/config/config.default.js:1
+aispeechdeMacBook-Air:web-study-record aispeech$ 
+```
+
+查看匹配的的行是输入哪一个方法或函数，可以使用 `-p`
+
+使用 `--and` 标志来查看复杂的字符串组合，也就是在同一行同时包含多个匹配。
+
+### 2. Git 日志搜索
+
+想知道某一项什么时候存在或者引入的。
+
+例如： 想知道10.12.6.144是什么时候引入的，可以使用 `-S` 选项来显示新增和删除该字符的提交
+
+```bash
+aispeechdeMacBook-Air:web-study-record aispeech$ git log -S 10.12.6.144 --oneline
+83576e3 feat: egg
+5705bd6 feat: agg-v6
+4424280 feat: agg-v5
+ed4fc50 feat: agg-v4
+```
+
+然后查看这些提交的diff, 就可以知道何时引入的
+
+如果你希望得到更精确的结果，你可以使用 -G 选项来使用正则表达式搜索。
+
+```bash
+aispeechdeMacBook-Air:web-study-record aispeech$ git log -G 10.12.6.144 --oneline
+83576e3 feat: egg
+5705bd6 feat: agg-v6
+4424280 feat: agg-v5
+ed4fc50 feat: agg-v4
+```
 
 
 
