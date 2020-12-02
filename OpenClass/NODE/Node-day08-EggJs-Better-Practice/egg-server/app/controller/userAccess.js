@@ -13,7 +13,7 @@ class UserAccessController extends Controller {
    * @router post /auth/jwt/login
    * @request body loginRequest *body
    * @response 200 baseResponse 创建成功
-   */
+   */ 
   async login() {
     const { ctx, service } = this
     // 校验参数
