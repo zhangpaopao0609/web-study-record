@@ -16,12 +16,12 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1606827390313_8758';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = ['errorHandler'];
 
   config.swaggerdoc = {
     dirScanner: './app/controller',
     apiInfo: {
-      title: '跑跑张',
+      title: '跑跑',
       description: 'arrow swagger-ui for egg',
       version: '1.0.0',
     },
@@ -32,6 +32,22 @@ module.exports = appInfo => {
     // enableValidate: true,
     routerMap: true,
     enable: true,
+  }
+
+  config.mongoose = {
+    url: 'mongodb://admin:123456@10.12.6.144:3308/admin',
+    options: {
+      // useMongoClient: true,
+      autoReconnect: true,
+      reconnectTries: Number.MAX_VALUE,
+      bufferMaxEntries: 0,
+    }
+  }
+
+  config.jwt = {
+    secret: 'Great4-M',
+    enable: true, // default is false
+    match: /^\/api/, // optional
   }
 
   // add your user config here
