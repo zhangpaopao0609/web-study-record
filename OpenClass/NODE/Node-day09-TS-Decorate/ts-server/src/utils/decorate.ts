@@ -44,7 +44,7 @@ export const load = (folder: string, options: LoadOptions = {}): KoaRouter => {
     require(item);
   });
   return router;
-}
+};
 
 
 

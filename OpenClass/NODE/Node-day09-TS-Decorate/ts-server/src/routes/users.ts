@@ -1,5 +1,5 @@
 import * as Koa from "koa";
-import { get, post } from "../utils/decorate"
+import { get, post } from "../utils/decorate";
 
 const users = [{
   name: 'arrow'
