@@ -1,8 +1,7 @@
 import * as Koa from "koa";
 import * as bodify from "koa-body";
 import * as serve from "koa-static";
-
-import Users from "./routes/users";
+import * as path from 'path';
 
 const app = new Koa();
 
@@ -13,11 +12,9 @@ app.use(bodify({
   strict: false
 }));
 
-app.use((ctx: Koa.Context) => {
-  ctx.body = 'Hello Koa';
-});
-
-const router = new Users();
+import { load } from './utils/decorate';
+const router = load(path.resolve(__dirname, './routes'));
+app.use(router.routes());
 
 const port = 6090;
 app.listen(port, err => {

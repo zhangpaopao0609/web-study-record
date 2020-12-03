@@ -1,5 +1,5 @@
 import * as Koa from "koa";
-import { get } from "../utils/decorate"
+import { get, post } from "../utils/decorate"
 
 const users = [{
   name: 'arrow'
@@ -13,7 +13,7 @@ export default class User {
       data: users
     }
   }
-
+  @post('/user')
   public add(ctx: Koa.Context) {
     users.push(ctx.request.body);
     ctx.body = { ok: 1 };
