@@ -5,7 +5,7 @@ const process = require('process');
 const numCPUs = os.cpus().length;
 const workers = {};
 
-if(cluster.isMaster) {
+if(cluster.isMaster) {  // 这就是守护进程  进程守护
   cluster.on('exit', (worker, code, signal) => {
     console.log(`工作进程错误。。。重启！`);
     delete workers[worker.process.pid];
