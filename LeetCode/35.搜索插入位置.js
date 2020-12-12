@@ -14,7 +14,23 @@
  * @return {number}
  */
 // 二分
-const searchInsert = function(nums, target) {
+const searchInsert = (nums, target) => {
+  const n = nums.length;
+  let left = 0, right = n - 1, ans = n;
+  while (left <= right) {
+      let mid = ((right - left) >> 1) + left;
+      if (target <= nums[mid]) {
+          ans = mid;
+          right = mid - 1;
+      } else {
+          left = mid + 1;
+      }
+  }
+  return ans;
+};
+// @lc code=end
+
+const searchInsert_1 = function(nums, target) {
   const len = nums.length;
   if(!len) return 0;
   let left = 0;
@@ -32,5 +48,4 @@ const searchInsert = function(nums, target) {
   }
   return Math.max(left, right);
 };
-// @lc code=end
 
