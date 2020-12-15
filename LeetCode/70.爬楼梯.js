@@ -14,6 +14,19 @@
 // 动态规划
 // https://www.zhihu.com/question/39948290
 const climbStairs = n => {
+  let p = 0, q = 0, r = 1;
+  for (let i = 1; i <= n; ++i) {
+    p = q;
+    q = r;
+    r = p + q;
+  };
+  return r;
+};
+// @lc code=end
+
+// 动态规划
+// https://www.zhihu.com/question/39948290
+const climbStairs = n => {
   const way = Array(n+1).fill(0);
   way[n] = 1;
   way[n-1] = 2;
@@ -23,5 +36,8 @@ const climbStairs = n => {
   }
   return way[1];
 };
-// @lc code=end
 
+
+// 矩阵快速幂
+// square root
+// sqrt
