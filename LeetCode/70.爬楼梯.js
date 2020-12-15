@@ -10,6 +10,9 @@
  * @param {number} n
  * @return {number}
  */
+
+// 动态规划
+// https://www.zhihu.com/question/39948290
 const climbStairs = n => {
   const way = Array(n+1).fill(0);
   way[n] = 1;
