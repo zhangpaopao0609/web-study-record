@@ -22,11 +22,15 @@
 // 第一感觉就是二叉树的遍历
 // 但是不需要遍历完，只需要一步一步的比较即可
 const isSameTree = (p, q) => {
-  if(p === null && q === null) return true;
-  if(p === null || q === null) return false;
-  if(p.val !== q.val) return false;
-
-  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
+  if(p === null && q === null) {
+    return true;
+  }else if(p === null || q === null) { 
+    return false;
+  }else if(p.val !== q.val) {
+    return false;
+  }else {
+    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+  }
 };
 // @lc code=end
 
