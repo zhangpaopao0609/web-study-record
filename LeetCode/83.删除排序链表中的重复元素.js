@@ -17,11 +17,26 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+const deleteDuplicates = head => {
+  let current = head;
+  while(current !== null && current.next !== null) {
+    if(current.val === current.next.val ) {
+      current.next = current.next.next;
+    }else {
+      current = current.next;
+    }
+  }
+  return head;
+};
+// @lc code=end
+
+
+// 以为自己很完美了，其实还差了些
 function ListNode(val) {
   this.val = val;
   this.next = null;
 }
-const deleteDuplicates = head => {
+const deleteDuplicates_1 = head => {
   const prehead = new ListNode(-Infinity);
   let prev = prehead;
 
@@ -34,5 +49,4 @@ const deleteDuplicates = head => {
   }
   return prehead.next;
 };
-// @lc code=end
 
