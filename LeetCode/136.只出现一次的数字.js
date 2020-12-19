@@ -19,6 +19,7 @@ const singleNumber = nums => {
   }
   return res;
 };
+
 // @lc code=end
 
 
@@ -35,5 +36,18 @@ const singleNumber_1 = nums => {
   let ans;
   Object.keys(res).forEach(item => ans = res[item]);
   return ans;
+};
+
+// 使用map
+const singleNumber_2 = nums => {
+  const res = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    if(res.has(nums[i])) {
+      res.delete(nums[i]);
+    }else {
+      res.set(nums[i]);
+    }
+  }
+  return [...res][0][0]
 };
 
