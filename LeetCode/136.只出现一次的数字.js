@@ -10,12 +10,19 @@
  * @param {number[]} nums
  * @return {number}
  */
-const singleNumber = nums => {
 
+ // 看看位运算的魅力
+const singleNumber = nums => {
+  let res = 0;
+  for (const key of nums) {
+    res ^= key;
+  }
+  return res;
 };
 // @lc code=end
 
 
+// 这样需要额外的空间复杂度
 const singleNumber_1 = nums => {
   const res = {};
   for (let i = 0; i < nums.length; i++) {
