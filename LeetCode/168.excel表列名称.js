@@ -10,6 +10,8 @@
  * @return {string}
  */
 // 这道题的思路就是26进制
+// 不过要注意，一般进制是指这样 a0*26^0 + a1*26^1 + ... + an*26^n
+// 但是这里没有零这一位 
 const convertToTitle = n => {
   let res = "";
   while(n) {
