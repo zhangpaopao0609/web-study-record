@@ -10,14 +10,14 @@
  * @param {number[]} nums
  * @return {number}
  */
-// 利用排序
-// 拍完序后下标为 n>>1 的元素一定是众数
+// 
+
 const majorityElement = nums => {
-  // 这里就不用归并排了，直接使用内置api sort 排序
-  return nums.sort((a,b) => a - b)[nums.length >> 1];
+  
 };
 // @lc code=end
 
+// ---------------------------------------------------------------------------------------------
 // 利用hash
 const majorityElement_1 = nums => {
   const len = nums.length;
@@ -36,8 +36,10 @@ const majorityElement_1 = nums => {
   }
 };
 
+
+// ---------------------------------------------------------------------------------------------
 // 优化hash  用打擂台方式把值保存下来，这样就可以不用遍历hash表了
-const majorityElement = nums => {
+const majorityElement_2 = nums => {
   const len = nums.length;
   const hashMap = new Map();
   let max = 0;
@@ -58,10 +60,44 @@ const majorityElement = nums => {
   return maxKey;
 };
 
-
+// ---------------------------------------------------------------------------------------------
 // 利用排序
 // 拍完序后下标为 n>>1 的元素一定是众数
-const majorityElement = nums => {
+const majorityElement_3 = nums => {
   // 这里就不用归并排了，直接使用内置api sort 排序
   return nums.sort((a,b) => a - b)[nums.length >> 1];
+};
+
+// 随机
+// 随机的时间复杂度为 O(n)  这是期望值了
+const majorityElement_4 = nums => {
+  
+};
+
+// ---------------------------------------------------------------------------------------------
+// 利用分治的思想，数组nums的众数至少是左或者右其中一个的众数
+// 因此，如果左右众数相同，那么就是了，如果不同，那就比较左右众数在左右数组合并中出现的次数
+// 关键在于思想
+const findTheWinner = (nums, l, r, num) => {
+  let res = 0;
+  for (let i = l; i <= r; i++) {
+    if(nums[i] === num) res++;
+  };
+  return res;
+};
+
+const devideAndConquer = (nums, l, r) => {
+  if(l === r) return nums[l];
+  const m = (l + r) >> 1;
+  const leftNum = devideAndConquer(nums, l, m);
+  const rightNum = devideAndConquer(nums, m+1, r);
+  if(leftNum === rightNum) return leftNum;
+
+  const leftNumCount = findTheWinner(nums, l, r, leftNum);
+  const rightNumCount = findTheWinner(nums, l, r, rightNum);
+  return leftNumCount > rightNumCount ? leftNum : rightNum;
+}
+
+const majorityElement_5 = nums => {
+  return devideAndConquer(nums, 0, nums.length - 1);
 };
