@@ -12,6 +12,11 @@
  */
 // 
 
+// 投票算法证明：
+
+// 如果候选人不是maj 则maj,会和其他非候选人一起反对候选人,所以候选人一定会下台(maj==0时发生换届选举)
+// 如果候选人是maj , 则maj会支持自己，其他候选人会反对，同样因为maj 票数超过一半，所以maj一定会成功当选
+
 // Boyer-Moore 投票
 const majorityElement = nums => {
   let candidate = null;
