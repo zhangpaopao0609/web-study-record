@@ -12,17 +12,27 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 
-// 使用一个新数组
-// 完全可以优化的
+// 使用环状替换
 const rotate = (nums, k) => {
-  const newOne = [];
-  const len = nums.length;
-  for (let i = 0; i < len; i++) {
-    newOne[(i+k) % len] = nums[i];
-  };
-  for (let i = 0; i < len; i++) {
-    nums[i] = newOne[i];
-  } 
+  let l = count = nums.length;
+  k = k % l;
+  let prev = next = record = 0;
+  let prevNum = nums[0], nextNum = null;
+  
+  while(count) {
+    next = (prev+k) % l;
+    nextNum = nums[next];
+    nums[next] = prevNum;
+    if(next === record){
+      record++; 
+      prev = record;
+      prevNum = nums[record];
+    }else{
+      prev = next;
+      prevNum = nextNum; 
+    }
+    count--;
+  }
 };
 // @lc code=end
 
