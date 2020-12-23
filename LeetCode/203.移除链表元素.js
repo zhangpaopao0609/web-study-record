@@ -18,22 +18,20 @@
  * @param {number} val
  * @return {ListNode}
  */
-// 利用哨兵模式
+// 利用递归  recursion
 const removeElements = (head, val) => {
-  const sentinel = new ListNode(0);
-  sentinel.next = head;
-
-  let prev = sentinel, curr = head;
-  while(curr) {
-    if(curr.val === val) {
-      prev.next = curr.next;
-    }else {
-      prev = curr;
-    }
-    curr = curr.next;
+  if(!head) return null;
+  head.next = removeElements(head.next, val);
+  if(head.val === val) {
+    return head.next;
+  }else{
+    return head;
   }
-  return sentinel.next;
 };
+// Accepted
+// 65/65 cases passed (88 ms)
+// Your runtime beats 99.44 % of javascript submissions
+// Your memory usage beats 54.5 % of javascript submissions (42.4 MB)
 // @lc code=end
 
 // 指针这种地址引用实在是太神奇了
