@@ -17,11 +17,38 @@
  * @param {TreeNode} root
  * @return {TreeNode}
  */
+// 迭代
 const invertTree = root => {
   if(!root) return null;
+  const q = [];
+  q.push(root);
+
+  while(q.length) {
+    let size = q.length;
+    while(size) {
+      const next = q.shift();
+      const left = next.left;
+      const right = next.right;
+
+      next.left = right;
+      next.right = left;
+
+      next.left && q.push(next.left);
+      next.right && q.push(next.right);
+      size--;
+    }
+  }
+  return root;
+};
+
+// @lc code=end
+
+// 递归
+const invertTree_1 = root => {
+  if(!root) return null;
   const tree = new TreeNode(root.val);
-  tree.left = invertTree(root.right);
-  tree.right = invertTree(root.left);
+  tree.left = invertTree_1(root.right);
+  tree.right = invertTree_1(root.left);
   return tree;
 };
 
@@ -29,5 +56,4 @@ const invertTree = root => {
 // 68/68 cases passed (72 ms)
 // Your runtime beats 97.87 % of javascript submissions
 // Your memory usage beats 35.25 % of javascript submissions (38.9 MB)
-// @lc code=end
 
