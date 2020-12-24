@@ -15,9 +15,12 @@
 // 因此，若 x 是 2 的幂，那么二进制中就只会存在一个1
 const isPowerOfTwo = n => {
   if(n <= 0) return false;
-  return (n & (n-1)) === 0
+  return (n & (-n)) === n;
 };
-
+// Accepted
+// 1108/1108 cases passed (84 ms)
+// Your runtime beats 98.36 % of javascript submissions
+// Your memory usage beats 57.76 % of javascript submissions (39.1 MB)
 // @lc code=end
 
 // 原始的除以2
@@ -33,6 +36,14 @@ const isPowerOfTwo_1 = n => {
 // 1108/1108 cases passed (80 ms)
 // Your runtime beats 99.56 % of javascript submissions
 // Your memory usage beats 73.35 % of javascript submissions (39 MB)
+
+// 利用位运算
+// 因为 x & (-x) 会得到 x 最右边的 1
+// 因此，若 x 是 2 的幂，那么二进制中就只会存在一个1
+const isPowerOfTwo_2 = n => {
+  if(n <= 0) return false;
+  return (n & (n-1)) === 0
+};
 
 
 
