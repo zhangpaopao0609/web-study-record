@@ -17,12 +17,12 @@
  * @param {ListNode} head
  * @return {boolean}
  */
-// 将链表复制到数组列表中 O(n)
-// 然后使用双指针来判断回文 O(n)
+// 反转后半部分链表，然后将前半部分和后半部分进行比较。比较完成后应该将链表恢复原样。虽然不需要恢复也能通过测试用例，但是使用该函数的人通常不希望链表结构被更改
+// 
 const isPalindrome = head => {
   if(!head || !head.next) return true;
-  const q = [];
-  
+  frontPointer = head;
+  return recursivelyCheck(head);  
 };
 // @lc code=end
 
@@ -42,4 +42,27 @@ const isPalindrome_1 = head => {
     if(q[start++] !== q[end--]) return false;
   };
   return true;  
+};
+
+// ---------------------------------------------
+// 递归
+let frontPointer;
+
+const recursivelyCheck = currentNode => {
+  if(currentNode !== null) {
+    if(!recursivelyCheck(currentNode.next)) {
+      return false;
+    };
+    if(currentNode.val !== frontPointer.val) {
+      return false;
+    }
+    frontPointer= frontPointer.next;
+  };
+  return true;
+};
+
+const isPalindrome_2 = head => {
+  if(!head || !head.next) return true;
+  frontPointer = head;
+  return recursivelyCheck(head);  
 };
