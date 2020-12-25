@@ -11,6 +11,23 @@
  * @param {string} t
  * @return {boolean}
  */
+const isAnagram = (s, t) => {
+  if(s.length !== t.length) return false;
+  const table = Array(26).fill(0);
+
+  for (let i = 0; i < s.length; i++) {
+    // table[s.codePointAt(i) - 'a'.charCodeAt()]++;
+    table[s.codePointAt(i) - 97]++;
+  };
+  for (let i = 0; i < s.length; i++) {
+    table[t.codePointAt(i) - 97]--;
+    if(table[t.codePointAt(i) - 97] < 0) return false;
+  };
+  return true;
+};
+
+// @lc code=end
+
 const hashMap = s => {
   const hashMap = new Map();
   for (let i = 0; i < s.length; i++) {
@@ -24,7 +41,7 @@ const hashMap = s => {
   return hashMap;
 }
 
-const isAnagram = (s, t) => {
+const isAnagram_1 = (s, t) => {
   if(s.length !== t.length) return false;
   const S = hashMap(s);
   const T = hashMap(t);
@@ -36,10 +53,4 @@ const isAnagram = (s, t) => {
   };
   return true;  
 };
-
-// Accepted
-// 34/34 cases passed (92 ms)
-// Your runtime beats 89.55 % of javascript submissions
-// Your memory usage beats 90.12 % of javascript submissions (38.9 MB)
-// @lc code=end
 
