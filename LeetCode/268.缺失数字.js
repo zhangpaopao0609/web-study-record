@@ -17,13 +17,17 @@
 
 // 解析第二种方法是用的位运算，因为一个数的两次异或为零
 // 所以，只需要异或数组中的数 和 0-n 异或就可以了
+
+// 第四种其实最简单，我去，跪了
+// 其实就用0-n 和 减去 数组和就不完了
 const missingNumber = nums => {
   const len = nums.length;
-  let res = len;
+  const sumN = (len * (len+1)) >> 1;
+  let sumArr = 0;
   for (let i = 0; i < len; i++) {
-    res ^= i^nums[i];
-  };
-  return res;
+    sumArr += nums[i];
+  } 
+  return sumN - sumArr;
 };
 // @lc code=end
 
