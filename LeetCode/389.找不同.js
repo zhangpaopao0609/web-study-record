@@ -13,22 +13,21 @@
  * @param {string} t
  * @return {character}
  */
-// 可以用 ASCII求和
+// 如果将两个字符串拼接成一个字符串，则问题转换成字符串中出现奇数词的字符，类似于只出现一次的数字，使用位运算
 const findTheDifference = (s, t) => {
-  let sumS = 0;
-  let sumT = 0;
+  let res = 0;
   const len = s.length;
   for (let i = 0; i < len; i++) {
-    sumS += s.codePointAt(i);
-    sumT += t.codePointAt(i);
+    res ^= s.codePointAt(i);
+    res ^= t.codePointAt(i);
   };
-  sumT += t.codePointAt(len);
-  return String.fromCharCode(sumT - sumS);
+  res ^= t.codePointAt(len);
+  return String.fromCharCode(res);
 };
 // Accepted
-// 54/54 cases passed (80 ms)
-// Your runtime beats 93.64 % of javascript submissions
-// Your memory usage beats 98.44 % of javascript submissions (38.2 MB)
+// 54/54 cases passed (88 ms)
+// Your runtime beats 73.31 % of javascript submissions
+// Your memory usage beats 97.06 % of javascript submissions (38.1 MB)
 // @lc code=end
 
 const findTheDifference = (s, t) => {
@@ -68,4 +67,17 @@ const findTheDifference = (s, t) => {
       return t.charAt(i);
     }
   }
+};
+
+// 可以用 ASCII求和
+const findTheDifference = (s, t) => {
+  let sumS = 0;
+  let sumT = 0;
+  const len = s.length;
+  for (let i = 0; i < len; i++) {
+    sumS += s.codePointAt(i);
+    sumT += t.codePointAt(i);
+  };
+  sumT += t.codePointAt(len);
+  return String.fromCharCode(sumT - sumS);
 };
