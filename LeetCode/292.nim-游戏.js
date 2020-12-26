@@ -12,7 +12,10 @@
  */
 // 重点在于给对手留下4块石头
 const canWinNim = n => {
-  return (n % 4 !== 0);
+  return !!(n & 3);
 };
 // @lc code=end
 
+const canWinNim_1 = n => {
+  return (n % 4 !== 0);
+};
