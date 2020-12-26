@@ -21,9 +21,8 @@ const firstUniqChar = s => {
   }
   return -1;
 };
-// Accepted
-// 104/104 cases passed (92 ms)
-// Your runtime beats 97.44 % of javascript submissions
-// Your memory usage beats 51.76 % of javascript submissions (41.2 MB)
+// 104/104 cases passed (76 ms)
+// Your runtime beats 99.85 % of javascript submissions
+// Your memory usage beats 83.76 % of javascript submissions (40.8 MB)
 // @lc code=end
 
