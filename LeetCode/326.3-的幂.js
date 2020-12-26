@@ -10,11 +10,9 @@
  * @param {number} n
  * @return {boolean}
  */
-// 将数字转换成3进制的
+// 利用对数的性质
 const isPowerOfThree = n => {
-  const threeN = n.toString(3);
-  const regex = /^10*$/
-  return regex.test(threeN);
+  return n > 0 && 1162261467 % n == 0;
 };
 // @lc code=end
 
@@ -27,3 +25,15 @@ const isPowerOfThree_1 = n => {
   return n === 1;
 };
 
+// 将数字转换成3进制的
+const isPowerOfThree_2 = n => {
+  const threeN = n.toString(3);
+  const regex = /^10*$/
+  return regex.test(threeN);
+};
+
+
+// 利用对数的性质
+const isPowerOfThree_3 = n => {
+  return (Math.log10(n) / Math.log10(3)) % 1 === 0;
+};
