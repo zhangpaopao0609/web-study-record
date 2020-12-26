@@ -12,10 +12,11 @@
  */
 const firstUniqChar = s => {
   const arr = new Array(26).fill(0);
-  for (let i = 0; i < s.length; i++) {
+  const len = s.length;
+  for (let i = 0; i < len; i++) {
     arr[s.codePointAt(i) - 97]++;
   };
-  for (let i = 0; i < s.length; i++) {
+  for (let i = 0; i < len; i++) {
     if(arr[s.codePointAt(i) - 97] === 1) return i;
   }
   return -1;
