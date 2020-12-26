@@ -10,7 +10,7 @@
  * @param {number} n
  * @return {boolean}
  */
-// 利用对数的性质
+// 方法四让我想起了和尚住的地方,庙啊~
 const isPowerOfThree = n => {
   return n > 0 && 1162261467 % n == 0;
 };
