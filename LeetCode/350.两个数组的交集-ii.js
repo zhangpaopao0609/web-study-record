@@ -15,28 +15,53 @@ const intersect = (nums1, nums2) => {
   const l1 = nums1.length;
   const l2 = nums2.length;
   if(!l1 || !l2) return [];
+
+  const hash = new Map();
+  const res = [];
+
+  for (let i = 0; i < l1; i++) {
+    if(!hash.has(nums1[i])) {
+      hash.set(nums1[i], 1);
+    }else {
+      hash.set(nums1[i], hash.get(nums1[i])+1);
+    }
+  }
+  for (let i = 0; i < l2; i++) {
+    if(hash.has(nums2[i]) && hash.get(nums2[i])) {
+      res.push(nums2[i]);
+      hash.set(nums2[i], hash.get(nums2[i])-1);
+    }
+  };
+  return res;
+};
+// @lc code=end
+
+const intersect = (nums1, nums2) => {
+  const l1 = nums1.length;
+  const l2 = nums2.length;
+  if(!l1 || !l2) return [];
   if(l1 > l2) {
-    n1 = nums1;
-    n2 = nums2;
+    nums1 = nums1;
+    nums2 = nums2;
   }else {
-    n1 = nums2;
-    n2 = nums1;
+    nums1 = nums2;
+    nums2 = nums1;
   }
 
   const hash = new Map();
   const res = [];
 
-  for (let i = 0; i < n1.length; i++) {
-    if(!hash.has(n1[i])) {
-      hash.set(n1[i], 1);
+  for (let i = 0; i < nums1.length; i++) {
+    if(!hash.has(nums1[i])) {
+      hash.set(nums1[i], 1);
     }else {
-      hash.set(n1[i], hash.get(n1[i])+1);
+      hash.set(nums1[i], hash.get(nums1[i])+1);
     }
   }
-  for (let i = 0; i < n2.length; i++) {
-    if(hash.has(n2[i]) && hash.get(n2[i])) {
-      res.push(n2[i]);
-      hash.set(n2[i], hash.get(n2[i])-1);
+  for (let i = 0; i < nums2.length; i++) {
+    if(hash.has(nums2[i]) && hash.get(nums2[i])) {
+      res.push(nums2[i]);
+      hash.set(nums2[i], hash.get(nums2[i])-1);
     }
   };
   return res;
@@ -45,5 +70,3 @@ const intersect = (nums1, nums2) => {
 // 61/61 cases passed (80 ms)
 // Your runtime beats 92.33 % of javascript submissions
 // Your memory usage beats 5.83 % of javascript submissions (40.4 MB)
-// @lc code=end
-
