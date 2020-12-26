@@ -28,6 +28,10 @@ const findTheDifference = (s, t) => {
 // 54/54 cases passed (88 ms)
 // Your runtime beats 73.31 % of javascript submissions
 // Your memory usage beats 97.06 % of javascript submissions (38.1 MB)
+// Accepted
+// 54/54 cases passed (76 ms)
+// Your runtime beats 97.99 % of javascript submissions
+// Your memory usage beats 98.81 % of javascript submissions (38 MB)
 // @lc code=end
 
 const findTheDifference = (s, t) => {
