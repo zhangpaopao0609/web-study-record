@@ -13,25 +13,22 @@
  * @param {string} t
  * @return {character}
  */
-// 可以用数组的嘛，我咋就是不长记性呢？
+// 可以用 ASCII求和
 const findTheDifference = (s, t) => {
-  const arr = new Array(26).fill(0);
+  let sumS = 0;
+  let sumT = 0;
   const len = s.length;
   for (let i = 0; i < len; i++) {
-    arr[s.codePointAt(i) - 97]++;
+    sumS += s.codePointAt(i);
+    sumT += t.codePointAt(i);
   };
-  for (let i = 0; i < len + 1; i++) {
-    if(arr[t.codePointAt(i) - 97]) {
-      arr[t.codePointAt(i) - 97]--;
-    }else{
-      return t.charAt(i);
-    }
-  }
+  sumT += t.codePointAt(len);
+  return String.fromCharCode(sumT - sumS);
 };
 // Accepted
-// 54/54 cases passed (76 ms)
-// Your runtime beats 97.99 % of javascript submissions
-// Your memory usage beats 91.71 % of javascript submissions (38.4 MB)
+// 54/54 cases passed (80 ms)
+// Your runtime beats 93.64 % of javascript submissions
+// Your memory usage beats 98.44 % of javascript submissions (38.2 MB)
 // @lc code=end
 
 const findTheDifference = (s, t) => {
@@ -56,3 +53,19 @@ const findTheDifference = (s, t) => {
   }
 };
 
+
+// 可以用数组的嘛，我咋就是不长记性呢？
+const findTheDifference = (s, t) => {
+  const arr = new Array(26).fill(0);
+  const len = s.length;
+  for (let i = 0; i < len; i++) {
+    arr[s.codePointAt(i) - 97]++;
+  };
+  for (let i = 0; i < len + 1; i++) {
+    if(arr[t.codePointAt(i) - 97]) {
+      arr[t.codePointAt(i) - 97]--;
+    }else{
+      return t.charAt(i);
+    }
+  }
+};
