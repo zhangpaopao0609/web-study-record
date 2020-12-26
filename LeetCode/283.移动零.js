@@ -11,7 +11,7 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 // for循环，非零往前移动
-// 移动的跨度又由零的个数来决定
+// 移动的跨度由零的个数来决定
 const moveZeroes = nums => {
   let count = 0;
   for (let i = 0; i < nums.length; i++) {
