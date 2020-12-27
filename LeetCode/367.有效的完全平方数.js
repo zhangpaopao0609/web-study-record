@@ -24,7 +24,7 @@ const isPerfectSquare = num => {
 
 const isPerfectSquare = num => {
   if(num <= 0) return false;
-  if(num===1) return true;
+  if(num === 1) return true;
   let end = num;
   let start = 0;
   while(start < end) {
