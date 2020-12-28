@@ -11,9 +11,12 @@
  * @return {number}
  */
 const countSegments = s => {
-  const trimmed = s.trim();
-  if(trimmed === '') return 0;
-  return trimmed.split(/\s+/).length;
+  let res = 0;
+  for (let i = 0; i < s.length; i++) {
+    if((i === 0 || s.charAt(i-1) === ' ') && s.charAt(i) !== ' ') 
+      res++;
+  };
+  return res;
 };
 // @lc code=end
 
