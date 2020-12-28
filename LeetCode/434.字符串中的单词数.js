@@ -11,6 +11,13 @@
  * @return {number}
  */
 const countSegments = s => {
+  const trimmed = s.trim();
+  if(trimmed === '') return 0;
+  return trimmed.split(/\s+/).length;
+};
+// @lc code=end
+
+const countSegments = s => {
   s = s.trim();
   if(!s) return 0;
   let res = 0;
@@ -20,5 +27,10 @@ const countSegments = s => {
   };
   return res;
 };
-// @lc code=end
+
+const countSegments = s => {
+  const trimmed = s.trim();
+  if(trimmed === '') return 0;
+  return trimmed.split(/\s+/).length;
+};
 
