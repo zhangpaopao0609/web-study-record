@@ -10,7 +10,9 @@
  * @param {number} num
  * @return {string}
  */
-// 16进制，4位变为
+// 16进制
+// 这个思路是真的清晰，明天早上我要来写题解
+// https://leetcode-cn.com/problems/convert-a-number-to-hexadecimal/solution/zen-yao-zhuan-hua-16jin-zhi-by-vailing/
 const toHex = num => {
   if(!num) return '0';
   let calc = 0xf;
