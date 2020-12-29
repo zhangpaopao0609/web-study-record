@@ -17,6 +17,30 @@
  * @param {TreeNode} root
  * @return {number}
  */
+// 迭代 BFS
+const sumOfLeftLeaves = root => {
+  if(!root) return 0;
+  const q = [];
+  let sum = 0;
+  q.push(root);
+
+  while(q.length) {
+    let size= q.length;
+
+    while(size) {
+      const next = q.shift();
+      
+      next.left && q.push(next.left);
+      next.right && q.push(next.right);
+
+      if(next.left && !next.left.left && !next.left.right) sum+= next.left.val;
+      size--;
+    }
+  };
+  return sum;
+};
+// @lc code=end
+
 // 递归
 const sumOfLeftLeaves = root => {
   if(!root) return 0;
@@ -30,5 +54,31 @@ const sumOfLeftLeaves = root => {
     return sumOfLeftLeaves(root.right)
   }
 };
-// @lc code=end
+// Accepted
+// 102/102 cases passed (76 ms)
+// Your runtime beats 97.43 % of javascript submissions
+// Your memory usage beats 46.38 % of javascript submissions (39.6 MB)
+
+// 迭代 BFS
+const sumOfLeftLeaves = root => {
+  if(!root) return 0;
+  const q = [];
+  let sum = 0;
+  q.push(root);
+
+  while(q.length) {
+    let size= q.length;
+
+    while(size) {
+      const next = q.shift();
+      
+      next.left && q.push(next.left);
+      next.right && q.push(next.right);
+
+      if(next.left && !next.left.left && !next.left.right) sum+= next.left.val;
+      size--;
+    }
+  };
+  return sum;
+};
 
