@@ -11,7 +11,25 @@
  * @return {string}
  */
 // 16进制，4位变为
+const toHex = num => {
+  if(!num) return '0';
+  let calc = 0xf;
+  let trans = 0;
+  let res = '';
 
+  while(trans <= 28) {
+    const now = (num & calc) >>> trans;
+    res = (now > 9 ? String.fromCharCode(now + 87) : now) +res;
+    calc <<= 4;
+    trans += 4;
+  }
+  
+  while(res.charAt(0) === '0') {
+    res = res.substr(1)
+  }
+
+  return res;
+};
 
 // @lc code=end
 
