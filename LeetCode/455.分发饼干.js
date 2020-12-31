@@ -19,12 +19,14 @@ const findContentChildren = (g, s) => {
   while(i < g.length && j < s.length) {
     if(g[i] <= s[j]) {
       i++;
-      j++;
-    }else{
-      j++;
     }
+    j++;
   };
   return i;
 };
+// Accepted
+// 21/21 cases passed (108 ms)
+// Your runtime beats 94.29 % of javascript submissions
+// Your memory usage beats 37.32 % of javascript submissions (40.4 MB)
 // @lc code=end
 
