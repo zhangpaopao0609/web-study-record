@@ -15,10 +15,21 @@ const hammingDistance = (x, y) => {
   let res = 0;
   let start = x ^ y;
   while(start) {
+    if(start & 1)
+      res++;
+    start >>= 1;
+  };
+  return res;
+};
+// @lc code=end
+
+const hammingDistance = (x, y) => {
+  let res = 0;
+  let start = x ^ y;
+  while(start) {
     start = start & (start - 1);
     res++;
   };
   return res;
 };
-// @lc code=end
 
