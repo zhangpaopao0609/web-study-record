@@ -10,9 +10,22 @@
  * @param {number} n
  * @return {number}
  */
-// 二分法
+// 二分法 也是可以的
 const arrangeCoins = n => {
-  return Math.floor(Math.sqrt(2*n + 1/4) -1/2);
+  let l = 0;
+  let r = n;
+  while(l <= r) {
+    const m = l + ((r - l) >> 1);
+    const sum = m * (m + 1) >> 1;
+    if(sum > n) {
+      r = m - 1;
+    }else if(sum < n) {
+      l = m + 1;
+    }else {
+      return m;
+    }
+  };
+  return r;
 };
 // @lc code=end
 // 我觉得吧我这算是完美
@@ -25,3 +38,22 @@ const arrangeCoins = n => {
 // Your runtime beats 90.22 % of javascript submissions
 // Your memory usage beats 78.31 % of javascript submissions (39.1 MB)
 
+
+// 二分法 也是可以的 
+// 只是在 JS 中不知道如何处理 长整型
+const arrangeCoins = n => {
+  let l = 0;
+  let r = n;
+  while(l <= r) {
+    const m = l + ((r - l) >> 1);
+    const sum = m * (m + 1) >> 1;
+    if(sum > n) {
+      r = m - 1;
+    }else if(sum < n) {
+      l = m + 1;
+    }else {
+      return m;
+    }
+  };
+  return r;
+};
