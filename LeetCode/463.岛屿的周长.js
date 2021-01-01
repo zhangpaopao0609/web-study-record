@@ -27,9 +27,9 @@ const dfs = (grid, r, c) => {
 
   grid[r][c] = 2;
   return dfs(grid, r-1, c)
-  + dfs(grid, r+1, c)
-  + dfs(grid, r, c-1)
-  + dfs(grid, r, c+1);
+    + dfs(grid, r+1, c)
+    + dfs(grid, r, c-1)
+    + dfs(grid, r, c+1);
 }
 
 const islandPerimeter = grid => {
