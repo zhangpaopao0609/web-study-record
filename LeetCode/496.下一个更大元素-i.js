@@ -15,13 +15,11 @@
 const nextGreaterElement = (nums1, nums2) => {
   const stack = [], res = [];
   const hashMap = new Map();
-  for (let i = 0; i < nums2.length; ) {
-    if(stack.length !== 0 && stack[0] < nums2[i]) {
+  for (let i = 0; i < nums2.length; i++) {
+    while(stack.length !== 0 && stack[0] < nums2[i]) {
       hashMap.set(stack.shift(), nums2[i]);
-    } else {
-      stack.unshift(nums2[i]);
-      i++;
     }
+    stack.unshift(nums2[i]);
   };
   for (let i = 0; i < nums1.length; i++) {
     if(hashMap.has(nums1[i])) {
