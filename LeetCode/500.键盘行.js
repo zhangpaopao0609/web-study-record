@@ -12,8 +12,7 @@
  */
 // 现在，我要写一个正则模式，然后优化一下
 const findWords = words => {
-  const re = /(^[qwertyuiop]+$)|(^[asdfghjkl]+$)|(^[zxcvbnm]+$)/;
-  return words.filter(i => re.test(i.toLowerCase()));
+  return words.filter(i => /(^[qwertyuiop]+$)|(^[asdfghjkl]+$)|(^[zxcvbnm]+$)/.test(i.toLowerCase()));
 };
 // @lc code=end
 // 这是hash表模式，但是麻烦，所以我没写完
