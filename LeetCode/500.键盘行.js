@@ -11,8 +11,9 @@
  * @return {string[]}
  */
 // 现在，我要写一个正则模式，然后优化一下
+// 在优化一波
 const findWords = words => {
-  return words.filter(i => /(^[qwertyuiop]+$)|(^[asdfghjkl]+$)|(^[zxcvbnm]+$)/.test(i.toLowerCase()));
+  return words.filter(i => /(^[qwertyuiop]+$)|(^[asdfghjkl]+$)|(^[zxcvbnm]+$)/i.test(i));
 };
 // @lc code=end
 // 这是hash表模式，但是麻烦，所以我没写完
@@ -47,4 +48,9 @@ const findWords = words => {
     }
   });
   return res;
+};
+
+// 现在，我要写一个正则模式，然后优化一下
+const findWords = words => {
+  return words.filter(i => /(^[qwertyuiop]+$)|(^[asdfghjkl]+$)|(^[zxcvbnm]+$)/.test(i.toLowerCase()));
 };
