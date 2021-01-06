@@ -10,6 +10,20 @@
  * @param {number} num
  * @return {boolean}
  */
+// 欧几里得-欧拉定理
+const pn = p => {
+  return (1 << (p-1)) * ((1 <<p) -1);
+}
+
+const checkPerfectNumber = num => {
+  const arr = [2, 3, 5, 7, 13];
+  for (let i = 0; i < arr.length; i++) {
+    if(pn(arr[i]) === num) return true;
+  };
+  return false;
+};
+// @lc code=end
+
 // 迭代
 const checkPerfectNumber = num => {
   if(num === 1) return false; 
@@ -27,5 +41,3 @@ const checkPerfectNumber = num => {
   };
   return false;
 };
-// @lc code=end
-
