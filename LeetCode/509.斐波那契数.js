@@ -13,13 +13,13 @@
 // 动态规划
 const fib = n => {
   if(n < 2) return n;
-  let p = 0, q = 1;
+  let p = 0, q = 0, r = 1;
   for (let i = 2; i <= n; i++) {
-    const temp = q;
-    q = p + q;
-    p = temp;
+    p = q;
+    q = r;
+    r = q + p;
   };
-  return q;
+  return r;
 };
 // @lc code=end
 const fib = n => {
@@ -37,3 +37,13 @@ const fib = n => {
   return dp[n];
 };
 
+const fib = n => {
+  if(n < 2) return n;
+  let p = 0, q = 1;
+  for (let i = 2; i <= n; i++) {
+    const temp = q;
+    q = p + q;
+    p = temp;
+  };
+  return q;
+};
