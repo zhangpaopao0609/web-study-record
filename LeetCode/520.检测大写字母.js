@@ -11,11 +11,9 @@
  * @return {boolean}
  */
 // 想了几种方法
-// 一、判断ascii是不是都小于97还是只有第一个小于97
+// 一、判断 ascii 是不是都小于 97 还是只有第一个小于 97
 // 二、正则
-const detectCapitalUse = word => {
-  return /(^[A-Z]+$)|(^[A-Z]?[a-z]*$)/.test(word);
-};
+// 要么全大写，要么全小写，要么第一个大写
 // @lc code=end
 
 const detectCapitalUse = word => {
