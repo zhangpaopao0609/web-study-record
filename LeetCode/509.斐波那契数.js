@@ -12,11 +12,14 @@
  */
 // 动态规划
 const fib = n => {
-  const dp = [0, 1];
+  if(n < 2) return n;
+  let p = 0, q = 1;
   for (let i = 2; i <= n; i++) {
-    dp[i] = dp[i-1] + dp[i-2];
+    const temp = q;
+    q = p + q;
+    p = temp;
   };
-  return dp[n];
+  return q;
 };
 // @lc code=end
 const fib = n => {
