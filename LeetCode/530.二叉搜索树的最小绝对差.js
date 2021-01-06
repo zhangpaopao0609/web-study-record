@@ -20,6 +20,22 @@
 // 1. 中序遍历
 // 2. 递归
 
+const getMinimumDifference = root => {
+  let min = Infinity;
+  let before = -Infinity;
+  const res = tree => {
+    if(!tree) return;
+    res(tree.left);
+    if(tree.val - before < min) {
+      min = tree.val - before;
+    };
+    before = tree.val;
+    res(tree.right);
+  };
+  res(root);
+  return min;
+};
+// @lc code=end
 
 const getMinimumDifference = root => {
   let ans = [], min = Infinity;
@@ -35,5 +51,19 @@ const getMinimumDifference = root => {
   }
   return min;
 };
-// @lc code=end
 
+const getMinimumDifference = root => {
+  let min = Infinity;
+  let before = -Infinity;
+  const res = tree => {
+    if(!tree) return;
+    res(tree.left);
+    if(tree.val - before < min) {
+      min = tree.val - before;
+    };
+    before = tree.val;
+    res(tree.right);
+  };
+  res(root);
+  return min;
+};
