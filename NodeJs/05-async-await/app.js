@@ -40,4 +40,4 @@ const main = dir => {
   });
 };
 
-main(path.join(__dirname, 'wwwroot'))
+main(path.join(__dirname, 'wwwroot'));
