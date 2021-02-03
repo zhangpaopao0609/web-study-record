@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 // 配置静态资源目录
@@ -9,6 +10,7 @@ app.set("view engine", "ejs");
 // 配置三方中间件
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cookieParser("arrow"));
 
 // 应用级中间件(可用于权限判断)
 app.use((req, res, next) => {
@@ -19,8 +21,15 @@ app.use((req, res, next) => {
 
 app.get("/", (req, res) => {
   let title = "首页";
+  // 设置cookie 
+  res.cookie("username", "arrow", { maxAge: 1000*60*60, signed: true  })
   res.render("index", { title });
 });
+
+app.get("/info", (req, res) => {
+  const { username } = req.signedCookies;
+  res.send(username);
+})
 
 app.get("/login", (req, res) => {
   res.render("login");
