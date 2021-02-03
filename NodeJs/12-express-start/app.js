@@ -1,46 +1,22 @@
 const express = require('express');
 
 const app = express();
+// 配置静态资源目录
+app.use(express.static("static"));
+app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.send("hi express");
+  let title = "hello"
+  res.render("index", { title })
 });
 
-app.get("/article", (req, res) => {
-  res.send("article");
+app.get("/news", (req, res) => {
+  let msg = {
+    name: 'arrow', age: 26
+  };
+  let hl = "<h1 style='color: red'>hl</h1>"
+  res.render("news", {...msg, hl})
 });
-
-app.get("/login", (req, res) => {
-  res.send("login");
-});
-
-app.get("/register", (req, res) => {
-  res.send("login");
-});
-
-app.post("/doLogin", (req, res) => {
-  res.send("do login");
-});
-
-app.put("/editUser", (req, res) => {
-  res.send("修改成功！");
-});
-
-app.delete("/deleteUser", (req, res) => {
-  res.send("修改成功！");
-});
-
-app.get("/article/:id", (req, res) => {
-  res.send("动态路由1111： " + req.params["id"]);
-})
-
-app.get("/article/:id/a", (req, res) => {
-  res.send("动态路由1111A： " + req.params["id"]);
-})
-
-app.get("/article/:id/:d", (req, res) => {
-  res.send("动态路由22222： " + req.params["id"] + req.params["d"]);
-})
 
 const port = 6090;
 app.listen(port, err => {
