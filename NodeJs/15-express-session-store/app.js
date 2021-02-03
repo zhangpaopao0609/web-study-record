@@ -1,5 +1,8 @@
 const express = require('express');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+// 对应的也可以保存在 redis  mysql 中
+// connect-redis  connect-mongo
 const app = express();
 
 app.use(session({
@@ -9,7 +12,10 @@ app.use(session({
   cookie: { 
     maxAge: 1000*60,
     secure: false 
-  }
+  },
+  store: new MongoStore({
+    url: 'mongodb://10.12.6.144:3308/users',
+})
 }));
 
 app.get("/", (req, res) => {
@@ -28,15 +34,7 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/loginOut", (req, res) => {
-  // 1. 这种方式会把所有的 session 都销毁
-  // req.session.cookie.maxAge = 0;
-
-  // 2. 将指定的 session 销毁
-  // req.session.username = ""
-
-  // 3. destory 销毁所有 session
-  // req.session.destroy();
-  
+  req.session.destroy();
   res.send("退出登录！");
 });
 
