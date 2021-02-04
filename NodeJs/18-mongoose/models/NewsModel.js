@@ -5,6 +5,12 @@ const NewsSchema = mongoose.Schema({
   des: {
     type: String,
     default: "this is default info!"
+  },
+  link: {
+    type: String,
+    set(data) {
+      return `${data}-arrow`
+    }
   }
 });
 

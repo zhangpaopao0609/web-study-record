@@ -7,7 +7,8 @@ UsersModel.find({}, (err, data) => {
 });
 
 const newsOne = new NewsModel({
-  title: "arrow-new"
+  title: "arrow-new",
+  link: 'bo'
 });
 newsOne.save((err, data) => {
   if(err) return;
