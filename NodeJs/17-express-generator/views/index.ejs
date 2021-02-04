@@ -5,7 +5,15 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <form action="/doLogin" method="post" enctype="multipart/form-data">
+      <input type="text" name="username" id="username">
+      <br>
+      <input type="password" name="password" id="">
+      <br>
+      <input type="file" name="avatar" />
+      <br>
+      <input type="submit" value="提交">
+
+    </form>
   </body>
 </html>
