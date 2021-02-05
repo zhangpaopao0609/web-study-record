@@ -1,13 +1,10 @@
 const Koa = require('koa');
-const Router = require('koa-router');
+const router = require('koa-router')();
 
 const app = new Koa();
-const router = new Router();
 
-router.get('/article/:id', (ctx, next) => {
-  console.log(ctx.params);
-  const {id} = ctx.params
-  ctx.body = "test-dynamic" + id || "no-query";
+router.get('/article', (ctx, next) => {
+  ctx.body = "what";
 });
 
 app
