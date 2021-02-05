@@ -1,22 +1,22 @@
 const Koa = require('koa');
+const Router = require('koa-router');
+
 const app = new Koa();
+const router = new Router();
 
-app.use(async (ctx, next) => {
-  await next();
-  const rt = ctx.response.get("X-Response-Time");
-  console.log(`${ctx.method} ${ctx.url} - ${rt}`);
+// 应用级中间件
+app.use((ctx, next) => {
+  console.log(new Date().toLocaleString());
+  next();
 });
 
-app.use(async (ctx, next) => {
-  const start  = Date.now();
-  await next();
-  const ms = Date.now() - start;
-  ctx.set("X-Response-Time", `${ms}ms`)
-});
+router.get("/", ctx => {
+  ctx.body = "get/"
+})
 
-app.use(async ctx => {
-  ctx.body = "hello koa"
-});
+app
+  .use(router.routes())
+  .use(router.allowedMethods());
 
 const port = 6090;
 app.listen(port, err => {
