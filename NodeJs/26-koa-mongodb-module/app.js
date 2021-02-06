@@ -3,6 +3,8 @@ const Koa = require('koa');
 const KoaRouter = require('koa-router');
 const render = require('koa-art-template');
 
+const DB = require('./module/db');
+
 const app = new Koa();
 const router = new KoaRouter();
 
@@ -12,11 +14,21 @@ render(app, {
   debug: process.env.NODE_ENV !== "production"
 })
 
-router.get("/", ctx => {
+router.get("/", async ctx => {
+  const res = await DB.find("users", {});
+  console.log(res);
   ctx.body = "text";
 });
 
 router.get("/login", async ctx => {
+  const res = await DB.insert("users", {name: 'zhang', age: 10});
+  console.log(res);
+  await ctx.render("login", {msg: 1});
+});
+
+router.get("/update", async ctx => {
+  const res = await DB.update("users", {name: 'zhang'}, {$set: {name: "zhang1"}});
+  console.log(res);
   await ctx.render("login", {msg: 1});
 });
 
