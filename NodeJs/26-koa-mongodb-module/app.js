@@ -1,36 +1,26 @@
 const path = require('path');
 const Koa = require('koa');
 const KoaRouter = require('koa-router');
+const serve = require('koa-static');
 const render = require('koa-art-template');
+const bodyParser = require('koa-bodyparser');
 
-const DB = require('./module/db');
+const usersRouter = require("./routes/users");
 
 const app = new Koa();
 const router = new KoaRouter();
+
+app.use(serve(__dirname + '/public'));
+app.use(bodyParser());
 
 render(app, {
   root: path.join(__dirname, 'views'),
   extname: '.html',
   debug: process.env.NODE_ENV !== "production"
-})
-
-router.get("/", async ctx => {
-  const res = await DB.find("users", {});
-  console.log(res);
-  ctx.body = "text";
 });
 
-router.get("/login", async ctx => {
-  const res = await DB.insert("users", {name: 'zhang', age: 10});
-  console.log(res);
-  await ctx.render("login", {msg: 1});
-});
-
-router.get("/update", async ctx => {
-  const res = await DB.update("users", {name: 'zhang'}, {$set: {name: "zhang1"}});
-  console.log(res);
-  await ctx.render("login", {msg: 1});
-});
+// 导出的路由需要采用中间件的方式
+app.use(usersRouter.routes());
 
 app
   .use(router.routes())

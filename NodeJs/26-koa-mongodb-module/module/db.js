@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectID } = require('mongodb');
 const Config = require('./config');
 
 class DB {
@@ -19,7 +19,7 @@ class DB {
       if(this.dbClient) { /* 解决数据库多次连接的问题 */ 
         resolve(this.dbClient);
       }else {
-        MongoClient.connect(Config.dbUrl, (err, client) => {
+        MongoClient.connect(Config.dbUrl, { useUnifiedTopology: true }, (err, client) => {
           if(err) {
             reject(err);
           }else {
@@ -63,7 +63,7 @@ class DB {
   update(collectionName, query, json) {
     return new Promise((resolve, reject) => {
       this.connect().then(db => {
-        db.collection(collectionName).update(query, json, (err, result) => {
+        db.collection(collectionName).update(query, {$set: json}, (err, result) => {
           if(err) {
             reject(err);
           }else {
@@ -72,6 +72,24 @@ class DB {
         });
       })
     })
+  }
+
+  remove(collectionName, query) {
+    return new Promise((resolve, reject) => {
+      this.connect().then(db => {
+        db.collection(collectionName).remove(query, (err, result) => {
+          if(err) {
+            reject(err);
+          }else {
+            resolve(result);
+          }
+        });
+      })
+    })
+  }
+
+  getObjectId(id) {
+    return new ObjectID(id);
   }
 };
 

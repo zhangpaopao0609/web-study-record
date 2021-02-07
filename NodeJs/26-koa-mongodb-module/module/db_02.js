@@ -75,3 +75,12 @@ console.timeEnd("start1");
 //   console.log(data);
 // })
 // console.timeEnd("start1")
+
+MongoClient.connect(Config.dbUrl, (err, client) => {
+  if(err) {
+    reject(err);
+  }else {
+    this.dbClient = client.db(Config.dbName);
+    this.dbClient.collection("aa").update({age: 10}, {$set: {}})
+  }
+})

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>list</title>
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+  <h2>用户列表</h2>
+  <div class="add">
+    <button class="addUser">点击增加用户</button>
+  </div>
+  <table>
+    <tr>
+      <th>姓名</th>
+      <th>性别</th>
+      <th>年龄</th>
+      <th>操作</th>
+    </tr>
+    {{each list item}}
+      <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.gender}}</td>
+        <td>{{item.age}}</td>
+        <td>
+          <a href="/editUser/{{@item._id}}">编辑</a>
+          <a href="/deleteUser/{{@item._id}}">删除</a>
+        </td>
+      </tr>
+    {{/each}}
+  </table>
+
+  <script>
+    const addUser = document.getElementsByClassName("addUser")[0];
+    addUser.onclick = function() {
+      window.location = "/addUser";
+    }
+  </script>
+</body>
+</html>

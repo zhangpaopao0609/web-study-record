@@ -13,7 +13,9 @@
     "art-template": "^4.13.2",
     "koa": "^2.13.1",
     "koa-art-template": "^1.1.1",
+    "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.0.0",
+    "koa-static": "^5.0.0",
     "mongodb": "^3.6.4"
   }
 }
