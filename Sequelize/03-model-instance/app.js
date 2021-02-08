@@ -1,66 +1,25 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 const db = require('./config');
-
 const sequelize = new Sequelize(db.database, db.username, db.password, db.options);
 
-const User = sequelize.define('User', {
-  flag: { 
-    type: DataTypes.BOOLEAN, 
-    allowNull: false, 
-    defaultValue: true
+const User = sequelize.define("User", {
+  name: DataTypes.TEXT,
+  favoriteColor: {
+    type: DataTypes.TEXT,
+    defaultValue: 'green'
   },
-  myDate: {
-    type: DataTypes.DATE, 
-    defaultValue: DataTypes.NOW
-  },
-  title: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  uniqueOne: {
-    type: DataTypes.STRING,
-    unique: "compositeIndex"
-  },
-  uniqueTwo: {
-    type: DataTypes.INTEGER,
-    unique: "compositeIndex"
-  },
-  someUnique: {
-    type: DataTypes.STRING,
-    unique: true
-  },
-  identifier: {
-    type: DataTypes.STRING
-  },
-  incrementMe: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
-  fieldWithUnderscores: {
-    type: DataTypes.STRING,
-    field:'field_with_underscores'
-  },
-  // bar_id: {
-  //   type: DataTypes.INTEGER,
-  //   references: {
-  //     model: Bar,
-  //     key: 'id',
-  //   }
-  // }
-  commentMe: {
-    type: DataTypes.INTEGER,
-    comment: '这是带有注释的列'
-  }
-}, {
-  indexes:[{unique: true, fields: ['someUnique']}]
+  age: DataTypes.INTEGER,
+  cash: DataTypes.INTEGER
 });
 
 (async () => {
   await sequelize.sync({ force: true });
   // 这里是代码
+  const jane = await User.create({ name: 'Jane', age: 100, cash:1213232312 });
+  const incrementResult = await jane.increment('age', { by: 2 });
+  console.log(jane.toJSON());
+  await jane.reload();
+  console.log(jane.toJSON());
+  // await jane.destroy();
 })();
-
-// `sequelize.define` 会返回模型
-console.log(User === sequelize.models.User); // true
