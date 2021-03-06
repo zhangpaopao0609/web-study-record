@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>属性选择器</title>
+  <style>
+    a::before {
+      display: inline-block;
+      width: 40px;
+    }
+    a[href$=doc]::before{
+      content: "doc:";
+    }
+    a[href$=pdf]::before{
+      content: "pdf:";
+    }
+    a[href$=ppt]::before{
+      content: "ppt:";
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li><a href="test.doc">下载 doc 文件</a></li>
+    <li><a href="test.pdf">下载 pdf 文件</a></li>
+    <li><a href="test.ppt">下载 ppt 文件</a></li>
+  </ul>
+</body>
+</html>
