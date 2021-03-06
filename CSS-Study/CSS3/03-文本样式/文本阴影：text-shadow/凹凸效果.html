@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>text-shadow</title>
+  <style type="text/css"> 
+    div {
+      font-size: 32px;
+      font-weight: bold;
+      background-color: #ccc;
+      color: #ddd;
+    }
+    .one {
+      text-shadow: -1px 0 0 #333, /* 左*/
+                  0 -1px 0 #333,  /* 上*/
+                  1px 0 0 #333, /* 右*/
+                  0 1px  #333;  /* 下*/
+    }
+    .two {
+      text-shadow: -1px 0 0 #fff, /* 左*/
+                  0 -1px 0 #fff,  /* 上*/
+                  1px 0 0 #333, /* 右*/
+                  0 1px  #333;  /* 下*/
+    }
+    .three {
+      text-shadow: -1px 0 0 #333, /* 左*/
+                  0 -1px 0 #333,  /* 上*/
+                  1px 0 0 #fff, /* 右*/
+                  0 1px  #fff;  /* 下*/
+    }
+  </style>
+</head>
+<body>
+  <div class="one">别担心，可以的</div>
+  <div class="two">别担心，可以的</div>
+  <div class="three">别担心，可以的</div>
+</body>
+</html>

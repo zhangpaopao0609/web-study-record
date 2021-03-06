@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>text-overflow</title>
+  <style type="text/css"> 
+    p {
+      font-size: 20px;
+      width: 200px;
+      height: 60px;
+    }
+
+    .oneline {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .multiline {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <p class="oneline">别担心，可以的, 我是最棒的哪一个仔！</p>
+  <p class="multiline">别担心，可以的, 我是最棒的哪一个仔！最最棒的哪一个哟！</p>
+</body>
+</html>
