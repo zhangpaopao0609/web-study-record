@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>radial-gradient</title>
+  <style type="text/css"> 
+    div {
+      width: 200px;
+      height: 100px;
+      margin-bottom: 20px;
+    }
+
+    .one {
+      background: -webkit-radial-gradient(center, circle , orange, blue);
+    }
+
+    .two {
+      background: -webkit-radial-gradient(center, circle closest-side, orange, blue);
+    }
+
+    .three {
+      background: -webkit-radial-gradient(center, circle closest-corner, orange, blue);
+    }
+
+    .four {
+      background: -webkit-radial-gradient(center, circle farthest-side, orange, blue);
+    }
+
+    .five {
+      background: -webkit-radial-gradient(center, circle farthest-corner, orange, blue);
+    }
+
+    .six {
+      background: -webkit-radial-gradient(center, circle, orange, blue);
+    }
+  </style>
+</head>
+<body>
+  <div class="one"></div>
+  <div class="two"></div>
+  <div class="three"></div>
+  <div class="four"></div>
+  <div class="five"></div>
+  <div class="six"></div>
+</body>
+</html>
