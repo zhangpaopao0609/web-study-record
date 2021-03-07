@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        div
+        {
+            width:170px;
+            height:110px;
+            line-height:110px;
+            text-align: center;
+            border:30px solid gray;
+            margin-top:20px;
+        }
+        /*第1个div平铺方式为：repeat*/
+        #div1{border-image:url(img/border.png) 30 repeat;}
+        /*第2个div平铺方式为：round*/
+        #div2{border-image:url(img/border.png) 30 round;}
+        /*第3个div平铺方式为：stretch*/
+        #div3{border-image:url(img/border.png) 30 stretch;}
+    </style>
+</head>
+<body>
+    <div id="div1">repeat</div>
+    <div id="div2">round</div>
+    <div id="div3">stretch</div>
+</body>
+</html>
