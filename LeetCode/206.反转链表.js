@@ -16,13 +16,16 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-// 递归
 const reverseList = head => {
-  if(!head || !head.next) return head;
-  const p = reverseList(head.next);
-  head.next.next = head;
-  head.next =null;
-  return p;
+  let curr = null;
+  let prev = head;
+  while(prev) {
+    const next = prev.next;
+    prev.next = curr;
+    curr = prev;
+    prev = next;
+  };
+  return curr;
 };
 // @lc code=end
 
@@ -53,4 +56,13 @@ const reverseList_2 = head => {
     curr = temp;
   }
   return rev;
+};
+
+// 递归
+const reverseList_3 = head => {
+  if(!head || !head.next) return head;
+  const p = reverseList(head.next);
+  head.next.next = head;
+  head.next =null;
+  return p;
 };
