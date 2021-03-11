@@ -28,6 +28,7 @@ class Stack {
   shift() {
     const oldFirst = this.first;
     this.first = this.first.next;
+    this.N--;
     return oldFirst.val;
   }
 }
