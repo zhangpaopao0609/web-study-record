@@ -11,7 +11,6 @@ function Sort(arr, low, high) {
     Sort(arr, K + 1, high);
 }
 
-
 function Partition(arr, low, high) {
     let [i, j] = [low, high+1];
     let num = arr[low];
