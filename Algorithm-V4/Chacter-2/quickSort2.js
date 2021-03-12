@@ -24,20 +24,20 @@ function partition(arr, left, right) {
   return j;
 };
 
-function quickSort(arr, left, right) {
+function Sort(arr, left, right) {
   if(left >= right) return;
   const p = partition(arr, left, right);
-  quickSort(arr, left, p-1);
-  quickSort(arr, p+1, right);
+  Sort(arr, left, p-1);
+  Sort(arr, p+1, right);
 };
 
-function quick(arr) {
-  quickSort(arr, 0, arr.length-1);
+function QuickSort(arr) {
+  Sort(arr, 0, arr.length-1);
   return arr;
 }
 
 const arr = [9, 3, 4, 1, 6, 12, 6, 4, 8, 2, 5, 3, 7, 1];
 
-const res = quick(arr);
+const res = QuickSort(arr);
 
 console.log(res);
