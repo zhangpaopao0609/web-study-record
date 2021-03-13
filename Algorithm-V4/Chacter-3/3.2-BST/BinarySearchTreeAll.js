@@ -50,6 +50,14 @@ function max(tree) {
   return tree.key;
 };
 
+function minNode(tree) {
+  if(!tree) return null;
+  while(tree.left) {
+    tree = tree.left;
+  };
+  return tree;
+}
+
 function min(tree) {
   if(!tree) return null;
   while(tree.left) {
@@ -125,6 +133,24 @@ function deleteMin(tree) {
   return tree;
 }
 
+function deleteNode(tree, key) {
+  if(!tree) return null;
+  if(tree.key > key) {
+    tree.left = deleteNode(tree.left, key);
+  }else if(tree.key < key) {
+    tree.right = deleteNode(tree.right, key);
+  }else {
+    if(!tree.left) return tree.right;
+    if(!tree.right) return tree.left;
+    const t = tree;
+    tree = minNode(tree.right);
+    tree.left = t.left;
+    tree.right = deleteMin(t.right);
+  };
+  tree.N = size(tree.left) + size(tree.right) + 1;
+  return tree;
+}
+
 let tree = null;
 tree = put(tree, 4, 'd');
 tree = put(tree, 1, 'a');
@@ -142,3 +168,6 @@ console.log("select:", select(tree, 2));
 console.log("rank:", rank(tree, 1));
 console.log("deleteMax", deleteMax(tree));
 console.log("deleteMin", deleteMin(tree));
+console.log("deleteNode", deleteNode(tree, 3));
+console.log("deleteNode", deleteNode(tree, 6));
+console.log("deleteNode", deleteNode(tree, 4));
