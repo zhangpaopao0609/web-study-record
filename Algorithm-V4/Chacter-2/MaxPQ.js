@@ -88,6 +88,7 @@ pq.insert(0)
 pq.insert(3)
 pq.insert(2)
 pq.insert(10)
+console.log(pq.pq);
 pq.delete()
 pq.delete()
 console.log(pq.pq);
