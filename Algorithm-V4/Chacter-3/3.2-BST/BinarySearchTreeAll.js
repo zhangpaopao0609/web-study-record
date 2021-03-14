@@ -1,3 +1,5 @@
+const { MiddleOrderTraversal_iteration, MiddleOrderTraversal } = require('./BST_Traversal');
+
 // BST 
 class Node {
   constructor(key, val, N) {
@@ -178,6 +180,8 @@ tree = put(tree, 6, 'f');
 tree = put(tree, 7, 'g');
 let h = height(tree);
 console.log(tree);
+console.log("MiddleOrderTraversal",MiddleOrderTraversal(tree));
+console.log("MiddleOrderTraversal_iteration",MiddleOrderTraversal_iteration(tree));
 console.log("height:",h);
 console.log("max:", max(tree));
 console.log("min:", min(tree));
