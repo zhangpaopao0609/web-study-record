@@ -5,3 +5,4 @@ function MiddleOrderTraversal(tree) {
   console.log(tree.val);
   MiddleOrderTraversal(tree.right);
 }
+
