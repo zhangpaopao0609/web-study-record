@@ -151,6 +151,24 @@ function deleteNode(tree, key) {
   return tree;
 }
 
+function MiddleTraversal(tree) {
+  if(tree == null) return;
+  MiddleTraversal(tree.left);
+  console.log(tree.val);
+  MiddleTraversal(tree.right);
+}
+
+function keys(tree, low, high) {
+  if(tree == null) return;
+  if(tree.key > low) {
+    keys(tree.left, low, high);
+  }
+  if(tree.key >= low && tree.key <= high) console.log(tree.val);
+  if(tree.key < high) {
+    keys(tree.right, low, high);
+  }
+}
+
 let tree = null;
 tree = put(tree, 4, 'd');
 tree = put(tree, 1, 'a');
@@ -166,8 +184,10 @@ console.log("min:", min(tree));
 console.log("floor:", floor(tree, 5));
 console.log("select:", select(tree, 2));
 console.log("rank:", rank(tree, 1));
-console.log("deleteMax", deleteMax(tree));
-console.log("deleteMin", deleteMin(tree));
-console.log("deleteNode", deleteNode(tree, 3));
-console.log("deleteNode", deleteNode(tree, 6));
-console.log("deleteNode", deleteNode(tree, 4));
+// console.log("deleteMax", deleteMax(tree));
+// console.log("deleteMin", deleteMin(tree));
+// console.log("deleteNode", deleteNode(tree, 3));
+// console.log("deleteNode", deleteNode(tree, 6));
+// console.log("deleteNode", deleteNode(tree, 4));
+// MiddleTraversal(tree)
+keys(tree, 1, 5)
