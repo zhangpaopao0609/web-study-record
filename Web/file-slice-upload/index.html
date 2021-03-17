@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>切片上传</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <input type="file" name="file" id="file">
+  <button id="upload">上传</button>
+
+  <script>
+    const upload = document.getElementById("upload");
+    upload.onclick = function() {
+      const blob = document.getElementById("file").files[0];
+      // 文件唯一标识符，反之多个用户一起上传文件时切片混乱 
+      const uuidfolder = "1";
+      // 
+      let start = 0;
+      let end;
+
+      let index = 0;
+      let count = 0;
+      const fileSize = blob.size;
+
+      const fileName = blob.name;
+
+      const bytesPerPiece = 1024 * 1024;
+      const totalPieces = Math.ceil(fileSize / bytesPerPiece);
+
+      while(start < fileSize) {
+        end = start + bytesPerPiece;
+        if(end > fileSize) {
+          end = fileSize;
+        };
+        const chunk = blob.slice(start, end);
+        const sliceIndex = blob.name + index;
+
+        const formData = new FormData();
+        formData.append("file", chunk, sliceIndex);
+        formData.append("uuidfolder", uuidfolder);
+        formData.append("imgorder", index);
+
+        axios({
+          method:'post',
+          url:'/upload',
+          responseType:'stream'
+        })
+          .then(function(response) {
+          response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
+        });
+      }
+    }
+  </script>
+</body>
+</html>
