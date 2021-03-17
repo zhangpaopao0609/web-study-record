@@ -13,4 +13,3 @@ var lengthOfLongestSubstring = function(s) {
 
 };
 // @lc code=end
-
