@@ -1,0 +1,16 @@
+{
+  "name": "authentication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "paopao-arrow",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.13.1",
+    "koa-session": "^6.2.0"
+  }
+}

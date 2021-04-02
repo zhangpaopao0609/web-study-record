@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jsonp</title>
+</head>
+<body>
+  <section>body</section>
+  <div class="jsonpData"></div>
+  <script>
+    function cb(data) {
+      const jsonpData = document.getElementsByClassName("jsonpData")[0];
+      jsonpData.innerHTML = data;
+    }
+  </script>
+  <script src="http://localhost:6090/?callback=cb"></script>
+</body>
+</html>
