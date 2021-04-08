@@ -286,7 +286,7 @@ it('完整版 Promise 返回失败测试', done => {
 });
 ```
 
-``![image-20210329115743236](/Users/aispeech/Desktop/MyGitHub/web-study-record/JS-Study/img/promise-test.png)
+``![image-20210329115743236](/Users/aispeech/Desktop/MyGitHub/magic-wheel/img/promise-test.png)
 
 ## 5. 源码地址
 
