@@ -9,7 +9,6 @@ function getInfo(name: string, age: number): string {
 
 console.log(getInfo('arrow', 2));
 
-
 // 可选参数
 function optionParameters(name: string, age?: number): string {
   if(age) {
@@ -20,7 +19,6 @@ function optionParameters(name: string, age?: number): string {
 };
 
 console.log(optionParameters('arrow'));
-
 
 // 可选参数
 function defaultParameters(name: string, age: number = 20): string {
