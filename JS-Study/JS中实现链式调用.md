@@ -33,7 +33,7 @@ man.work().sleep(1000).firstSleep(5000).work().sleep(1000);
 ```js
 class Man {
   constructor() {
-    this.stack = [];  // 记录调用的函数,全部是同步收集然后依次执行
+    this.queue = [];  // 记录调用的函数,全部是同步收集然后依次执行
     this.index = 0;   // 执行函数的索引
     this.firstSleepWatch = false;   // 检查 firstSleep 调用次数,最多调用一次
     this.init();     
@@ -45,7 +45,7 @@ class Man {
   }
 
   run() {
-    const fn = this.stack[this.index++];
+    const fn = this.queue[this.index++];
     fn && fn();
   }
 
@@ -53,7 +53,7 @@ class Man {
     if(this.firstSleepWatch) {
       throw Error("Already declared firstSleep!!");
     }
-    this.stack.unshift(() => {
+    this.queue.unshift(() => {
       setTimeout(() => {
         console.log('firstSleep end!!');
         this.run();
@@ -64,7 +64,7 @@ class Man {
   }
 
   sleep(delay) {
-    this.stack.push(() => {
+    this.queue.push(() => {
       setTimeout(() => {
         console.log('sleep end!!');
         this.run();
@@ -74,7 +74,7 @@ class Man {
   }
 
   work() {
-    this.stack.push(() => {
+    this.queue.push(() => {
       console.log('work runing!!');
       this.run();
     });
