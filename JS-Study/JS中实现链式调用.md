@@ -46,6 +46,7 @@ class Man {
 
   run() {
     const fn = this.queue[this.index++];
+    // 最后一个 fn 为 undefined, 因此需要做处理
     fn && fn();
   }
 
