@@ -70,7 +70,7 @@ interface Animal {
   eat(str: string): void;
 };
 
-class Dog implements Animal {
+class Dog implements Animal {   // 实现接口
   public name: string = 'init';
   constructor(name: string) {
     this.name = name;
@@ -85,13 +85,34 @@ class Dog implements Animal {
 const d = new Dog('wumi');
 d.eat('meat');
 
+/**
+ * 5. 接口扩展，接口（类 类型）可以继承接口（类 类型）
+ */
 
+interface Person {
+  star: string;
+  getName(name: string): void;
+};
 
+interface Man extends Person {
+  getGender(): void;
+};
 
+class Arrow implements Man {    // 实现接口
+  star: string = 'Earth';
 
+  getGender() {
+    console.log('I am a man!!');
+  };
 
+  getName(name: string) {
+    console.log(`my name is ${name}!!`);
+  };
+};
 
-
+const a = new Arrow();
+a.getGender();
+a.getName('arrow');
 
 
 

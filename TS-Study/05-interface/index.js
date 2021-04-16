@@ -48,3 +48,23 @@ var Dog = /** @class */ (function () {
 ;
 var d = new Dog('wumi');
 d.eat('meat');
+;
+;
+var Arrow = /** @class */ (function () {
+    function Arrow() {
+        this.star = 'Earth';
+    }
+    Arrow.prototype.getGender = function () {
+        console.log('I am a man!!');
+    };
+    ;
+    Arrow.prototype.getName = function (name) {
+        console.log("my name is " + name + "!!");
+    };
+    ;
+    return Arrow;
+}());
+;
+var a = new Arrow();
+a.getGender();
+a.getName('arrow');
