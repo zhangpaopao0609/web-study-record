@@ -113,6 +113,3 @@ class Arrow implements Man {    // 实现接口
 const a = new Arrow();
 a.getGender();
 a.getName('arrow');
-
-
-
