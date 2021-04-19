@@ -30,7 +30,6 @@
 2. 方法的名字
 3. 参数在函数参数列表中的索引
 
-
 ## 装饰器的执行顺序
 1. 属性装饰器
 2. 方法装饰器
@@ -43,7 +42,6 @@
  * 装饰器执行的顺序
  * Sequence of decorator execution
  */
-
 
 function propertyDecorator_1(target: any, propertyName: any) {
   console.log("1. propertyDecorator_1");
