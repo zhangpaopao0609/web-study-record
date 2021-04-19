@@ -12,3 +12,4 @@ typeScript 中为了使编写的代码更加规范，更加利于维护，增加
 - null 和 undefined 
 - void 类型 
 - never 类型
+- symbol 类型（表示独一无二的值）

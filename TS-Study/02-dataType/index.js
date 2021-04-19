@@ -1,4 +1,5 @@
 "use strict";
+var _a;
 var stat = false;
 var n = 1;
 var str = "this is string";
@@ -49,6 +50,34 @@ foo();
 // never 类型表示的是那些永不存在的值的类型。
 // 例如，never类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型
 var a;
-a = (function () {
-    throw Error("never type test!");
-})();
+// a = (() => {
+//   throw Error("never type test!");
+// })();
+var s1 = Symbol('arrow');
+console.log(s1);
+var obj = (_a = {},
+    _a[s1] = 'try',
+    _a.age = 1,
+    _a.name = 'arr',
+    _a);
+console.log(obj);
+for (var key in obj) {
+    console.log(key);
+}
+;
+console.log(Object.keys(obj));
+console.log(Object.getOwnPropertyNames(obj));
+console.log(JSON.stringify(obj, null, 2));
+console.log(Object.getOwnPropertySymbols(obj));
+console.log(Reflect.ownKeys(obj));
+// Symbol.for()  Symbol.keyFor()
+Symbol.hasInstance;
+Symbol.isConcatSpreadable;
+Symbol.match;
+Symbol.replace;
+Symbol.search;
+Symbol.split;
+Symbol.iterator;
+Symbol.toPrimitive;
+Symbol.toString;
+Symbol.unscopables;
