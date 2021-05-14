@@ -1,0 +1,10 @@
+{
+  "root": true,
+  // 当设置了 root: true 时，就会停止往父级寻找，因此，env, parserOptions 都是默认的 
+  // "parserOptions": {
+  //   "ecmaVersion": 12
+  // },
+  "rules": {
+      "no-unused-vars": "warn"
+  }
+}
