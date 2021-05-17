@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>multi</title>
+</head>
+<body>
+  
+  <div id="app">
+    <button @click="handleClick_1('god', $event), handleClick_2('what', $event), handleClick_3($event)">来呀！！</button>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const App = {
+      methods: {
+        handleClick_1(str, e) {
+          console.log(str);
+          console.log(e.target);
+        },
+        handleClick_2(str, e) {
+          console.log(str);
+          console.log(e.target);
+        },
+        handleClick_3(e) {
+          console.log(e.target);
+        },
+      },
+    };
+
+    Vue.createApp(App).mount('#app');
+  </script>
+</body>
+</html>

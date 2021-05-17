@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>modifiers</title>
+</head>
+<body>
+  
+  <div id="app">
+    <div @click="handleClickParent">
+      <button @click="handleClickSon">来呀！！</button>
+    </div>
+
+    <div @click="handleClickParent">
+      <button @click.stop="handleClickSon">来呀2！！</button>
+    </div>
+
+    <div @click="handleClickParent">
+      <button @click.self="handleClickSon">来呀3！！</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const App = {
+      methods: {
+        handleClickSon(){
+          console.log('son');
+        },
+        handleClickParent(){
+          console.log('parent');
+        },
+      },
+    };
+
+    Vue.createApp(App).mount('#app');
+  </script>
+</body>
+</html>
