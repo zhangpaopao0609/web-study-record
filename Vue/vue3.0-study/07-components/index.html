@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>components</title>
+</head>
+<body>
+  
+  <div id="app">
+    <div :style="{ fontSize: blogFontSize + 'em' }">
+      <blog-post 
+        v-for="item in blogData" 
+        :key="item.id" 
+        :title="item.title"
+        @enlarge-post="handleEnlargePost"
+      />
+    </div>
+    <p>this is all</p>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const App = {
+      data() {
+        return {
+          blogData: [
+            { id: 1, title: '111' },
+            { id: 2, title: '222' },
+            { id: 3, title: '333' },
+          ],
+          blogFontSize: 1,
+        }
+      },
+      methods: {
+        handleEnlargePost(data) {
+          this.blogFontSize += data;
+        },
+      },
+    };
+
+    const vm = Vue.createApp(App);
+
+    vm.component("blog-post", {
+      props: ['title'],
+      template: "<h2>{{ title }}</h2><button @click='handleEnlarge'>enlarge fontsize</button>",
+      methods: {
+        handleEnlarge() {
+          this.$emit('enlarge-post', 0.2);
+        },
+      },
+    });
+
+    vm.mount("#app");
+  </script>
+</body>
+</html>

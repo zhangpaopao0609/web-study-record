@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>custom-input</title>
+</head>
+<body>
+  
+  <div id="app">
+    <custom-input
+      v-model="customInputValue"
+    />
+    <!-- <custom-input
+      :model-value="customInputValue"
+      @update:model-value="customInputValue=$event"
+    /> -->
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const App = {
+      data() {
+        return {
+          customInputValue: 'start',
+        }
+      },
+      methods: {
+        
+      },
+    };
+
+    const vm = Vue.createApp(App);
+
+    vm.component("custom-input", {
+      props: ['modelValue'],
+      template: "<input type='text' :value='modelValue' @input='handleUpdateModelValue' />",
+      methods: {
+        handleUpdateModelValue(e) {
+          this.$emit('update:model-value', e.target.value);
+        },
+      },
+    });
+
+    vm.mount("#app");
+  </script>
+</body>
+</html>
