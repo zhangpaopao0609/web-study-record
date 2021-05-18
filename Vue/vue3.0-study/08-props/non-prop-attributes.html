@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>non-prop-attributes</title>
+</head>
+<body>
+  
+  <div id="app">
+    <div id="date-picker" class="demo">
+      <date-picker @change="showChange" class="ok"></date-picker>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const App = {
+      methods: {
+        showChange(event) {
+          console.log(event.target.value) // 将记录所选选项的值
+        },
+      },
+    };
+
+    const vm = Vue.createApp(App);
+
+    vm.component('date-picker', {
+      template: `
+        <select>
+          <option value="1">Yesterday</option>
+          <option value="2">Today</option>
+          <option value="3">Tomorrow</option>
+        </select>
+      `
+    });
+
+    vm.mount("#app");
+  </script>
+</body>
+</html>
