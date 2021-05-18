@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>slot</title>
+</head>
+<body>
+  
+  <div id="app">
+    <alert-box>
+      Something bad happened.
+    </alert-box>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const App = {
+      data() {
+        return {
+        
+        }
+      },
+      methods: {
+        
+      },
+    };
+
+    const vm = Vue.createApp(App);
+
+    vm.component("alert-box", {
+      template: `
+        <div>
+          <strong>Error!!</strong>
+          <slot />  
+        </div>
+      `,
+      methods: {
+        handleEnlarge() {
+          this.$emit('enlarge-post', 0.2);
+        },
+      },
+    });
+
+    vm.mount("#app");
+  </script>
+</body>
+</html>

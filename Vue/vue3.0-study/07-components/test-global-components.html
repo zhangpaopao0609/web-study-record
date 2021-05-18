@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dynamic-components</title>
+</head>
+<body>
+  
+  <div id="dynamic-component-demo" class="demo">
+    <tab-home />
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const app = Vue.createApp({});
+
+    app.component('tab-home', {
+      template: `<div class="demo-tab">Home component <tab-home /></div>`
+    });
+
+    app.mount('#dynamic-component-demo');
+  </script>
+</body>
+</html>

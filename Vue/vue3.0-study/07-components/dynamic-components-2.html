@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dynamic-components</title>
+  <style>
+    .demo {
+      font-family: sans-serif;
+      border: 1px solid #eee;
+      border-radius: 2px;
+      padding: 20px 30px;
+      margin-top: 1em;
+      margin-bottom: 40px;
+      user-select: none;
+      overflow-x: auto;
+    }
+
+    .tab-button {
+      padding: 6px 10px;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      background: #f0f0f0;
+      margin-bottom: -1px;
+      margin-right: -1px;
+    }
+
+    .tab-button:hover {
+      background: skyblue;
+    }
+
+    .tab-button.active {
+      background: skyblue;
+    }
+
+    .demo-tab {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="dynamic-component-demo" class="demo">
+    <button 
+      v-for="tab in tabs" 
+      :key="tab" 
+      v-bind:class="['tab-button', { active: currentTab === tab }]"
+      @click="currentTab = tab"
+    >
+      {{ tab.name }}
+    </button>
+
+    <component :is="currentTab.component"></component>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const tabs = [
+      {
+        name: 'Home',
+        component: {
+          template: `<div class="demo-tab">Home component</div>`
+        }
+      },
+      {
+        name: 'Posts',
+        component: {
+          template: `<div class="demo-tab">Posts component</div>`
+        }
+      },
+      {
+        name: 'Archive',
+        component: {
+          template: `<div class="demo-tab">Archive component</div>`
+        }
+      }
+    ]
+
+    const app = Vue.createApp({
+      data() {
+        return {
+          tabs,
+          currentTab: tabs[0]
+        }
+      },
+    })
+
+    app.mount('#dynamic-component-demo')
+  </script>
+</body>
+
+</html>
