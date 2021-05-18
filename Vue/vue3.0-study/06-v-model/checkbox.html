@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>checkbox</title>
+</head>
+<body>
+  
+  <div id="app">
+    <input 
+      type="checkbox" 
+      name="InOrOut" 
+      id="InOrOut" 
+      v-model="InOrOut"
+      false-value='in'
+      true-value="out"
+    >
+    <label for="InOrOut">InOrOut</label>
+    <br>
+    <input 
+      type="radio" 
+      name="InOrOutMust" 
+      id="InOrOutMust" 
+      v-model="InOrOutMust"
+      false-value='in'
+      true-value="out"
+    >
+    <label for="InOrOutMust">InOrOutMust</label>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const App = {
+      data() {
+        return {
+          InOrOut: 'out',
+          InOrOutMust: 'in'
+        }
+      },
+      methods: {
+        
+      },
+      updated() {
+        console.log(this.InOrOut);
+        console.log(this.InOrOutMust);
+      }
+    }
+
+    Vue.createApp(App).mount('#app')
+  </script>
+</body>
+</html>
