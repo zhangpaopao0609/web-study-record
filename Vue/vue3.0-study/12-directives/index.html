@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>directives</title>
+  
+</head>
+<body>
+  <script src="https://unpkg.com/vue@next"></script>
+
+  <div id="app">
+    <input type="text" name="" id="" v-focus>
+  </div>
+  
+  <script>
+    const App = {
+      created() {
+        console.log('component created!!');
+      }
+    };
+
+    const vm = Vue.createApp(App);
+    vm.directive('focus', {
+      mounted(el) { el.focus(); }
+    });
+
+    vm.mount('#app');
+  </script>
+</body>
+</html>
