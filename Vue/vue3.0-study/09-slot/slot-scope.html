@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>slot</title>
+</head>
+<body>
+  
+  <div id="app">
+    <todo-list>
+      <template v-slot:default="slotProps">
+        <i>{{ slotProps.item }}</i>
+      </template>
+      <template v-slot:deconstruction="{ item }">
+        <b>{{ item }}</b>
+      </template>
+    </todo-list>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const App = {
+      data() {
+        return {
+          test: 'this is test for parent data in slot'
+        }
+      }
+    }
+
+    const vm = Vue.createApp(App);
+
+    vm.component('todo-list', {
+      data(){
+        return {
+          items: [1, 2, 3]
+        }
+      },
+      template: `
+      <ul>
+        <li v-for="item in items" :key="item">
+          <slot :item="item"></slot>
+          <slot name="deconstruction" :item="item"></slot>
+        </li>
+      </ul>
+      `
+    })
+
+    vm.mount("#app");
+  </script>
+</body>
+</html>

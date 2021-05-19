@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>slot</title>
+</head>
+<body>
+  
+  <div id="app">
+    <base-layout>
+      <template v-slot:header>
+        this is header with named slot!
+      </template>
+      <template v-slot:footer>
+        this is footer with named slot!
+      </template>
+      <template v-slot:default>
+        this is main with named slot!
+        <hr>
+        {{ test }}
+      </template>
+    </base-layout>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const App = {
+      data() {
+        return {
+          test: 'this is test for parent data in slot'
+        }
+      }
+    }
+
+    const vm = Vue.createApp(App);
+
+    vm.component('base-layout', {
+      template: `
+        <div>
+          <header>
+            <slot name="header">header</slot>
+          </header>  
+          <main>
+            <slot>main</slot>
+          </main>  
+          <footer>
+            <slot name="footer">footer</slot>
+          </footer>  
+        </div>
+      `
+    })
+
+    vm.mount("#app");
+  </script>
+</body>
+</html>
