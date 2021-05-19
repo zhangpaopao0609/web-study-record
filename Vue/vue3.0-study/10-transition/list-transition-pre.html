@@ -1,0 +1,69 @@
+<html>
+
+<head>
+  <title>list-transition-pre</title>
+  <style>
+    .flip-list-leave-active {
+      position: absolute;
+    }
+
+    .flip-list-enter-active,
+    .flip-list-leave-active {
+      transition: all 1s ease;
+    }
+
+    .flip-list-enter-from,
+    .flip-list-leave-to {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+
+    .flip-list-move {
+      transition: transform 0.8s ease;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://unpkg.com/vue@next"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+
+  <div id="flip-list-demo">
+    <button @click="shuffle">Shuffle</button>
+    <button @click="add">add</button>
+    <button @click="del">del</button>
+    <transition-group name="flip-list" tag="ul">
+      <li v-for="item in items" :key="item">
+        {{ item }}
+      </li>
+    </transition-group>
+  </div>
+
+  <script>
+    const Demo = {
+      data() {
+        return {
+          items: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        }
+      },
+      methods: {
+        shuffle() {
+          this.items = _.shuffle(this.items)
+        },
+        add() {
+          const len = this.items.length;
+          this.items.splice(Math.round(Math.random()*len), 0, len) 
+        },
+        del() {
+          const len = this.items.length-1;
+          this.items.splice(Math.round(Math.random()*len), 1) 
+        }
+      }
+    }
+
+    Vue.createApp(Demo).mount('#flip-list-demo')
+  </script>
+</body>
+
+</html>
