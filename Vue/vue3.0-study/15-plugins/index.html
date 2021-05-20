@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>vnode</title>
+  <title>plugin</title>
   <style>
     
   </style>
@@ -13,61 +13,11 @@
   <script src="https://unpkg.com/vue@next"></script>
 
   <div id="app">
-    <anchored-heading :level='2'>
-      <template #name>
-        what the slot
-        <span>sad   sa</span>
-        <ul>
-          <li>2 </li>
-          <li>3</li>
-        </ul>
-      </template>
-    </anchored-heading>
+    
   </div>
   
   <script>
-const app = Vue.createApp({})
-
-/** Recursively get text from children nodes */
-function getChildrenTextContent(children) {
-  return children
-    .map(node => {
-      return typeof node.children === 'string'
-        ? node.children
-        : Array.isArray(node.children)
-        ? getChildrenTextContent(node.children)
-        : ''
-    })
-    .join('')
-}
-
-app.component('anchored-heading', {
-  render() {
-    // create kebab-case id from the text contents of the children
-    const headingId = getChildrenTextContent(this.$slots.name())
-      .toLowerCase()
-      .replace(/\W+/g, '-') // replace non-word characters with dash
-      .replace(/(^-|-$)/g, '') // remove leading and trailing dashes
-
-    return Vue.h('h' + this.level, [
-      Vue.h(
-        'a',
-        {
-          name: headingId,
-          href: '#' + headingId
-        },
-        this.$slots.name()
-      )
-    ])
-  },
-  props: {
-    level: {
-      type: Number,
-      required: true
-    }
-  }
-})
-
+    const app = Vue.createApp({});
 
     app.mount("#app");
   </script>
