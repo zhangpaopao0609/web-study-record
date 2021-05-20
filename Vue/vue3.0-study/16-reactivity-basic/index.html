@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reactivity</title>
+</head>
+<body>
+  
+  <script>
+    const dinner = {
+      meal: 'tacos'
+    }
+
+    const handler = {
+      get(target, prop, receiver) {
+        return Reflect.get(...arguments)
+      }
+    }
+
+    const proxy = new Proxy(dinner, handler)
+    console.log(proxy.meal)
+  </script>
+</body>
+</html>
