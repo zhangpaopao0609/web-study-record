@@ -1,0 +1,9 @@
+{
+  "name": "02-ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "tsc": "npx typescript --watch"
+  }
+}
