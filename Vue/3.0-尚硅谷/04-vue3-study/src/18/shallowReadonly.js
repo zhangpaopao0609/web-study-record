@@ -3,6 +3,7 @@
 function shallowReadonly(target) {
   const shallowReadonlyHandler = {
     get(target, key) {
+      if(key === '_is_readonly') return true;
       console.log("获取数据！！");
       return Reflect.get(target, key);
     },

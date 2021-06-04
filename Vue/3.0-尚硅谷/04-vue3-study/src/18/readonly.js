@@ -3,6 +3,7 @@
 function readonly(target) {
   const readonlyHandler = {
     get(target, key) {
+      if(key === '_is_readonly') return true;
       console.log("获取数据！！");
       return readonly(Reflect.get(target, key));
     },

@@ -29,6 +29,7 @@ function ref(target) {
   const copy = reactive(target);
   return {
     _value: copy,
+    _is_ref: true,
     get value() {
       console.log('获取数据拦截！！');
       return this._value;

@@ -3,6 +3,7 @@
 function shallowReactive(target) {
   const shallowReactiveHandler = {
     get(target, key) {
+      if(key === '_is_reactive') return true;
       const res = Reflect.get(target, key);
       console.log('数据获取：', key, res);
       return res;
