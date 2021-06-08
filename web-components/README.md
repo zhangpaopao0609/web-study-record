@@ -25,3 +25,40 @@ web components 旨在解决这些问题 —— 它由三项主要技术组成，
 
 ## 2. 使用 custom elements
 
+
+
+## 3. 使用生命周期回调函数
+
+在 custom element 的构造函数中，可以指定多个不同的回调含糊，它们将会在元素的不同生命时期被调用：
+
+- connectedCallback: 当 custom element 首次被插入文档 DOM 时，被调用
+- disconnectedCallback: 当custom element 从文档 DOM 中删除时，被调用
+- adoptedCallback: 当custom element 被移动到新的文档时，被调用
+- attributeChangedCallback: 当 custom element 增加、删除、修改自身属性时，被调用
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
