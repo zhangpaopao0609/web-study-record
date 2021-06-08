@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>micro-frontend-web-components</title>
+</head>
+<body>
+  <template id="micro-frontend-web-components">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <div id="app">
+      <el-button @click="visible = true" type="primary">Button</el-button>
+      <el-dialog :visible.sync="visible" title="Hello world">
+        <p>Try Element</p>
+      </el-dialog>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script></script>
+  </template>
+
+  <micro-frontend-web-components></micro-frontend-web-components>
+
+  <script src="./index.js"></script>
+</body>
+</html>
