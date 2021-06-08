@@ -94,6 +94,101 @@ shadow.appendChild(para);
 
 
 
+## 5. 使用 templates and slots
+
+使用 `<template>`和`<slot>`元素创建一个可以用来灵活填充 Web 组件的 shadow DOM 的模板
+
+### 5.1 关于模板（Templates）
+
+当您必须在网页上重复使用相同的标记结构时，使用某种模板而不是一遍又一遍地重复相同的结构时有意义的。以前这是可行的，但 HTML `<template>` 元素使它更容易实现，此元素及其内容不会在 DOM 中呈现，但仍可使用 JS 去引用它。
+
+让我们来看一个简单的示例：
+
+```html
+<template id='my-paragraph'>
+	<p>My paragraph</p>
+</template>
+```
+
+上面的代码不会展示在你的页面中，直到你使用 JS 获取它的引用，然后再添加到 DOM 中，如下：
+
+```js
+let template = document.getEmelentById('my-paragraph');
+let tempalteContent = tempalte.content;
+document.body.appednChild(templateContent);
+```
+
+### 5.2 在 web components 中使用模板
+
+模板（templates） 本身就是有用的，而组件（web component）一起使用效果更好。我们定义一个 web 组件使用模板作为 shadow DOM 的内容，叫它 `<my-paragraph>`
+
+```js
+class MyParagraph extends HTMLElement {
+  constructor() {
+    super();
+    this.init();
+  };
+
+  init() {
+    const template = document.getElementById('my-paragraph');
+    const templateContent = template.content;
+
+    const shadowRoot = this.attachShadow({ mode: 'open' });
+    // shadowRoot.appendChild(templateContent);
+    shadowRoot.appendChild(templateContent.cloneNode(true));
+
+  };
+};
+
+customElements.define('my-paragraph', MyParagraph);
+```
+
+要注意的关键是我们使用 `Node.cloneNode()` 方法添加了模板的拷贝到 Shadow DOM 的根节点上
+
+>为什么不使用 appendChild 呢？因为appendChild 是将要添加的 node 给移过来，也就是说，原来的 node 是移动了，会消失
+
+因为我们添加了模板的内容到 shadow DOM，所以我们可以加入一些样式信息到模板的 `<style>`标签里，这些样式信息稍后会封装到自定义的元素中。如果只给它添加到一个标准的 DOM 是不起作用的。
+
+```html
+<template id='my-paragraph'>
+  <style>
+    p {
+      color: white;
+      background-color: #666;
+      padding: 5px;
+    }
+  </style>
+  <p>this is my-paragraph I built with the template tag</p>
+</template>
+<my-paragraph></my-paragraph>
+```
+
+### 5.3 使用槽(slots)添加灵活度
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

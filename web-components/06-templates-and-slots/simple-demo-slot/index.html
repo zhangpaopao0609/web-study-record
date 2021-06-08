@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>simple template</title>
+</head>
+<body>
+  <h1>simple template</h1>
+
+  <template id='my-paragraph'>
+    <style>
+      p {
+        color: white;
+        background-color: #666;
+        padding: 5px;
+      }
+    </style>
+    <p><slot name='my-text'>My default text</slot></p>
+  </template>
+
+  <my-paragraph>
+    <span slot="my-text">This is my-test slots content!!</span>
+  </my-paragraph>
+
+  <my-paragraph>
+    <ul slot="my-text">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  </my-paragraph>
+
+  <script src="./index.js"></script>
+</body>
+</html>
