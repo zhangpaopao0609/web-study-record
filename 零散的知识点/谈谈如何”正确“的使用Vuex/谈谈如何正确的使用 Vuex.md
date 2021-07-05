@@ -180,7 +180,59 @@ export default {
 
 同样下面以就拿 [2.1, 2.2](#2.1) 节中的需求来说，正如 [3.1.2 ](#3.1.2 ) 中谈到，当设计从嵌套组件改为同层级组件后，是否仍然需要 `Vuex` 呢？[3.1.2 ](#3.1.2 ) 节仍然选择的是使用 `Vuex`，下面就采用另一种思路，采用 `props` 传值的方式来实现以对比究竟怎么实现是更”正确的“呢？
 
+1. 在 `App.vue` 组件中定义状态而不是使用 `Vuex` 在 `Store` 中定义，同时扁平化所有组件，将场景拆分成三个组件，以及将状态通过 `props` 方式传到子组件和监听子组件事件 `stateChange` 以将子组件的修改传递回父组件单向修改状态。
 
+```vue
+// App.vue 组件
+<template>
+  <basic-info	:activeInfo="activeInfo" @stateChange="handleStateChange" />
+  <store-list :activeInfo="activeInfo" @stateChange="handleStateChange" />
+	<active-content :activeInfo="activeInfo" @stateChange="handleStateChange" />
+</template>
+
+<script>
+export default {
+  data() { return { activeInfo: { key: value } } },		// 数据定义
+  methods: {
+    handleStateChange(key, val) {		// 父组件更新状态
+      this.activeInfo = { ...this.activeInfo, [key]: val, };
+    },
+    handleClearAll() { this.activeInfo = { key: '' } }		// 清空
+  },
+}
+</script>
+```
+
+2. `BasicInfo.vue` 接收来自父组件的 `props` 显示以及通过触发父组件监听的子组件方法 `stateChange` 将修改传递回父组件，这里使用了两种方式来实现， `value` 和 `input` 事件实现方式和 `computed get set` 方法实现。
+
+```vue
+<template>
+	<el-input :value="activeInfo.activeName" @input="(val) => handleStateChange('activeName', val)" />
+  <el-date-picker v-model="activeTime" />
+</template>
+
+<script>
+export default {
+  props: {
+    activeInfo: {
+      type: Object,
+      required: true,
+    },
+  },
+  computed: {
+    activeTime: {
+      get() { return this.activeInfo.activeTime },
+      set(val) { this.handleStateChange('activeTime', val) }
+    }
+  },
+  methods: {
+    handleStateChange(key, val) { this.$emit("stateChange", key, val); },
+  },
+};
+</script>
+```
+
+其它的组件实现方式都类似，
 
 
 

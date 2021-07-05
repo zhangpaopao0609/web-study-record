@@ -76,10 +76,6 @@ export default {
       }
     },
   },
-  
-  created() {
-    
-  },
 }
 </script>
 
