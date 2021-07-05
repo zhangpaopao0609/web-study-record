@@ -1,10 +1,12 @@
 <template>
   <div class="basic-info">
-    <h3>活动基本信息</h3>
-
     <div class="item">
       <p class="title">活动名称: </p>
-      <el-input v-model="activeName" placeholder="请输入内容"></el-input>
+      <el-input
+        :value="activeInfo.activeName"
+        placeholder="请输入内容"
+        @input="(val) => handleStateChange('activeName', val)"
+      ></el-input>
     </div>
 
     <div class="item">
@@ -15,31 +17,33 @@
         align="right"
         start-placeholder="开始日期"
         end-placeholder="结束日期"
-        :default-time="['12:00:00', '08:00:00']">
+        value-format="yyyy-MM-dd-HH-mm-ss"
+       >
       </el-date-picker>
     </div>
-
-    <div class="item">
-      <p class="title">活动投放商家: </p>
-      <store-list />
-    </div>
-
   </div>
 </template>
 
 <script>
-import StoreList from "./StoreList/index.vue";
 
 export default {
   name: 'BasicInfo',
-  components: {
-    StoreList,
+  props: {
+    activeInfo: {
+      type: Object,
+      required: true,
+    },
   },
-  data() {
-    return {
-      activeName: "",
-      activeTime: [],
+  computed: {
+    activeTime: {
+      get() { return this.activeInfo.activeTime },
+      set(val) { this.handleStateChange('activeTime', val) }
     }
+  },
+  methods: {
+    handleStateChange(key, val) {
+      this.$emit("stateChange", key, val);
+    },
   },
 };
 </script>
