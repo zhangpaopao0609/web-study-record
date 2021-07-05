@@ -36,7 +36,7 @@
 
 ### 2.1 场景描述
 
-场景如下：配置商品活动详情：包括名称、投放时间、商家以及对应的宣传页和产品类型。真实的场景远远比这个复杂，包括大量的配置项和复杂逻辑，有的还需要多页才能完成配置，但是几乎大部分后台配置页都是如此，因此这里简化成这个原型，此原型也是从实际的业务中总结得出的，如下图。
+场景如下：配置（新增和编辑）商品活动详情：包括名称、投放时间、商家以及对应的宣传页和产品类型。真实的场景远远比这个复杂，包括大量的配置项和复杂逻辑，有的还需要多页才能完成配置，但是几乎大部分后台配置页都是如此，因此这里简化成这个原型，此原型也是从实际的业务中总结得出的，如下图。
 
 <img src="./img/使用vuex场景描述图1.png" alt="使用vuex场景描述图1" style="zoom:26%;" align="left" />
 
@@ -46,9 +46,51 @@
 
 <img src="./img/使用vuex场景描述图2.png" alt="使用vuex场景描述图2" style="zoom:26%;" align="left" />
 
-如图所示的组件划分应该是最为简单、直接且一目了然的了，
+如图所示的组件划分应该是最为简单、直接且一目了然的了。按照这样的组件划分且使用 `Vuex` 来共享全局的状态，下面进行代码的演示。
 
 #### 2.2.2 代码演示
+
+`App.vue` 组件异步获取到活动数据（编辑时）并保存到全局状态，
+
+```vue
+// App.vue
+<template>
+  <div id="app">
+    <basic-info />
+    <active-content />
+  </div>
+</template>
+
+<script>
+  export default {
+    created() {		// 编辑时异步获取活动数据并且保存到全局状态
+      this.$store.commit('active/UPDATE_ACTIVE', { ...异步获取的活动数据 });
+    },
+  }
+</script>
+```
+
+其它的组件自主从 `Store` 中获取数据以及更新时调用 `commit` 方法，所有的子组件都是同样的思路，因为都是从全局获取并且调用全局 `commit` 方法更新，因此写法都是一致的，就不再多赘述。
+
+```vue
+// BasicInfo.vue
+<script>
+export default {
+  computed: {
+    activeName:  {		
+      get() {	return this.$store.state.active.activeInfo.activeName; },	// 从全局状态获取
+      set(val) { this.$store.commit('active/UPDATE_ACTIVE', { activeName: val }); } // 调用 commit 方法更新
+    },
+    activeTime:  {
+      get() { return this.$store.state.active.activeInfo.activeTime; },	// 从全局状态获取
+      set(val) { this.$store.commit('active/UPDATE_ACTIVE', { activeTime: val, }); }	// 调用 commit 方法更新
+    },
+  },
+};
+</script>
+```
+
+完整的代码可以点击查看
 
 ### 2.3 问题分析
 
