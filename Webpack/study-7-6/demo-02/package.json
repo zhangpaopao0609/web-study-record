@@ -1,0 +1,17 @@
+{
+  "name": "demo-02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "webpack build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.3.2",
+    "webpack": "^5.42.1",
+    "webpack-cli": "^4.7.2"
+  }
+}
