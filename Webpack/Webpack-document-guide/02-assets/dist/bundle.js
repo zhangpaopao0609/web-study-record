@@ -42,6 +42,16 @@ eval("\n\nmodule.exports = function (url, options) {\n  if (!options) {\n    // 
 
 /***/ }),
 
+/***/ "./src/data.csv":
+/*!**********************!*\
+  !*** ./src/data.csv ***!
+  \**********************/
+/***/ ((module) => {
+
+eval("module.exports = [[\"to\",\"from\",\"heading\",\"body\"],[\"Mary\",\"John\",\"Reminder\",\"Call Cindy on Tuesday\"],[\"Zoe\",\"Bill\",\"Reminder\",\"Buy orange juice\"],[\"Autumn\",\"Lindsey\",\"Letter\",\"I miss you\"]]\n\n//# sourceURL=webpack://01-start/./src/data.csv?");
+
+/***/ }),
+
 /***/ "./node_modules/lodash/lodash.js":
 /*!***************************************!*\
   !*** ./node_modules/lodash/lodash.js ***!
@@ -107,6 +117,16 @@ eval("\n\n/* istanbul ignore next  */\nfunction apply(style, options, obj) {\n  
 
 /***/ }),
 
+/***/ "./src/data.xml":
+/*!**********************!*\
+  !*** ./src/data.xml ***!
+  \**********************/
+/***/ ((module) => {
+
+eval("module.exports = {\"note\":{\"to\":[\"Mary\"],\"from\":[\"John\"],\"heading\":[\"Reminder\"],\"body\":[\"Call Cindy on Tuesday\"]}}\n\n//# sourceURL=webpack://01-start/./src/data.xml?");
+
+/***/ }),
+
 /***/ "./src/font/iconfont.ttf?t=1625649801246":
 /*!***********************************************!*\
   !*** ./src/font/iconfont.ttf?t=1625649801246 ***!
@@ -147,7 +167,7 @@ eval("module.exports = __webpack_require__.p + \"5116d7d6bd49c6d01bac.woff?t=162
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.css */ \"./src/index.css\");\n/* harmony import */ var _suoluo04_jpeg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./suoluo04.jpeg */ \"./src/suoluo04.jpeg\");\n\n\n\n\nfunction component() {\n  const element = document.createElement('div');\n\n  // lodash 在当前 script 中使用 import 引入\n  element.innerHTML = lodash__WEBPACK_IMPORTED_MODULE_0___default().join(['Hello', 'webpack'], ' ');\n  element.classList.add('hello');\n\n  // 将图像添加到我们已经存在的 div 中\n  const mySuoluo = new Image();\n  mySuoluo.src = _suoluo04_jpeg__WEBPACK_IMPORTED_MODULE_2__;\n\n  element.appendChild(mySuoluo);\n\n  const span = document.createElement('span');\n  span.innerHTML = '&#xe61b;';\n  span.classList.add('iconfont');\n  element.appendChild(span);\n\n  return element;\n}\n\ndocument.body.appendChild(component());\n\n//# sourceURL=webpack://01-start/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.css */ \"./src/index.css\");\n/* harmony import */ var _suoluo04_jpeg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./suoluo04.jpeg */ \"./src/suoluo04.jpeg\");\n/* harmony import */ var _data_xml__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./data.xml */ \"./src/data.xml\");\n/* harmony import */ var _data_xml__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_data_xml__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _data_csv__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./data.csv */ \"./src/data.csv\");\n/* harmony import */ var _data_csv__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_data_csv__WEBPACK_IMPORTED_MODULE_4__);\n\n\n\n\n\n\nfunction component() {\n  const element = document.createElement('div');\n\n  // lodash 在当前 script 中使用 import 引入\n  element.innerHTML = lodash__WEBPACK_IMPORTED_MODULE_0___default().join(['Hello', 'webpack'], ' ');\n  element.classList.add('hello');\n\n  // 将图像添加到我们已经存在的 div 中\n  const mySuoluo = new Image();\n  mySuoluo.src = _suoluo04_jpeg__WEBPACK_IMPORTED_MODULE_2__;\n\n  element.appendChild(mySuoluo);\n\n  const span = document.createElement('span');\n  span.innerHTML = '&#xe61b;';\n  span.classList.add('iconfont');\n  element.appendChild(span);\n\n  console.log((_data_xml__WEBPACK_IMPORTED_MODULE_3___default()));\n  console.log((_data_csv__WEBPACK_IMPORTED_MODULE_4___default()));\n\n  return element;\n}\n\ndocument.body.appendChild(component());\n\n//# sourceURL=webpack://01-start/./src/index.js?");
 
 /***/ }),
 

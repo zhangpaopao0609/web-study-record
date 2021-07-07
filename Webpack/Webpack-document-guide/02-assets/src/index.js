@@ -1,6 +1,8 @@
 import _ from "lodash";
 import './index.css';
 import Suoluo04 from "./suoluo04.jpeg";
+import Data from "./data.xml";
+import Notes from "./data.csv";
 
 function component() {
   const element = document.createElement('div');
@@ -19,6 +21,9 @@ function component() {
   span.innerHTML = '&#xe61b;';
   span.classList.add('iconfont');
   element.appendChild(span);
+
+  console.log(Data);
+  console.log(Notes);
 
   return element;
 }
