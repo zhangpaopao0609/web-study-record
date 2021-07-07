@@ -3,6 +3,7 @@ import './index.css';
 import Suoluo04 from "./suoluo04.jpeg";
 import Data from "./data.xml";
 import Notes from "./data.csv";
+import Toml from "./data.toml";
 
 function component() {
   const element = document.createElement('div');
@@ -24,6 +25,7 @@ function component() {
 
   console.log(Data);
   console.log(Notes);
+  console.log(Toml);
 
   return element;
 }

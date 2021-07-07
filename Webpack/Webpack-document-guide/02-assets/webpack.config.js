@@ -1,4 +1,5 @@
 const path = require('path');
+const toml = require('toml');
 
 module.exports = {
   entry: './src/index.js',
@@ -29,6 +30,13 @@ module.exports = {
       {
         test: /\.xml$/i,
         use: ['xml-loader'],
+      },
+      {
+        test: /\.toml$/i,
+        type: 'json',
+        parser: {
+          parse: toml.parse
+        },
       },
     ]
   },
