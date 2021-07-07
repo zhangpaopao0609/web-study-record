@@ -8,7 +8,9 @@ module.exports = {
     index: './src/index.js',
     print: './src/print.js',
   },
-
+  devServer: {
+    contentBase: './dist',
+  },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
