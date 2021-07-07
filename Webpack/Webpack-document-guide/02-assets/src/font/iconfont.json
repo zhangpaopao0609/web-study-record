@@ -1,0 +1,93 @@
+{
+  "id": "1428432",
+  "name": "musicplayer_arrow",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "17457916",
+      "name": "狐狸-01",
+      "font_class": "huli-01",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "17457917",
+      "name": "松鼠-01",
+      "font_class": "songshu-01",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "6207817",
+      "name": "音乐",
+      "font_class": "ziyuanldpi",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "816492",
+      "name": "向右",
+      "font_class": "xiangyou",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "1488892",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "2154282",
+      "name": "循环播放_32",
+      "font_class": "xunhuanbofang",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "2154283",
+      "name": "单曲循环_32",
+      "font_class": "danquxunhuan",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "3216218",
+      "name": "随机",
+      "font_class": "icon--",
+      "unicode": "e77d",
+      "unicode_decimal": 59261
+    },
+    {
+      "icon_id": "6129082",
+      "name": "46第一页、首页、上一首",
+      "font_class": "diyiyeshouyeshangyishou",
+      "unicode": "e76c",
+      "unicode_decimal": 59244
+    },
+    {
+      "icon_id": "6129084",
+      "name": "47最后一页、末页、下一首",
+      "font_class": "zuihouyiyemoyexiayishou",
+      "unicode": "e76d",
+      "unicode_decimal": 59245
+    },
+    {
+      "icon_id": "6268303",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "8353894",
+      "name": "暂停",
+      "font_class": "zanting",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    }
+  ]
+}
