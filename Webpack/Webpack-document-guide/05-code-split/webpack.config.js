@@ -6,7 +6,6 @@ module.exports = {
 
   entry: {
     index: './src/index.js',
-    another: './src/another-module.js',
   },
 
   devServer: {
@@ -25,10 +24,5 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
-
-  optimization: {
-     splitChunks: {
-       chunks: 'all',
-     },
-   },
+  
 };
