@@ -6,6 +6,17 @@ module.exports = {
   output: {
     filename: 'webpack-numbers.js',
     path: path.resolve(__dirname, 'dist'),
-    library: 'webpackNumbers',
+    library: {
+      name: 'webpackNumbers',
+      type: 'umd',
+    },
+  },
+  externals: {
+    lodash: {
+      commonjs: 'lodash',
+      commonjs2: 'lodash',
+      amd: 'lodash',
+      root: '_',
+    }
   },
 };
