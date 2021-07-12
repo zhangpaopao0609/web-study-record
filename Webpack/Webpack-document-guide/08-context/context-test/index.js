@@ -1,17 +1,11 @@
-// const context = require.context('./', false, /[^index]\.js$/);
+const modules = {};
 
-const importAll = context => {
-  const map = {}
+const res = require.context('./', true, /\.js/);
+res.keys().forEach(module => {
+  const m = module.replace(/(\.\/|\.js)/g, '');
+  if(m !== 'index') {
+    modules[m] = res(module);
+  };
+});
 
-  for (const key of context.keys()) {
-    const keyArr = key.split('/')
-    keyArr.shift() // 移除.
-    map[keyArr.join('.').replace(/\.js$/g, '')] = context(key)
-  }
-
-  return map
-};
-
-const res = importAll(require.context('./', true, /\.js$/));
-
-export default res;
+export { modules as default };

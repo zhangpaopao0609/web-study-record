@@ -24,9 +24,21 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!***************************!*\
   !*** ./context-test/b.js ***!
   \***************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("\n\n//# sourceURL=webpack://01-start/./context-test/b.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"b\": () => (/* binding */ b)\n/* harmony export */ });\nconst b = 2;\n\n//# sourceURL=webpack://01-start/./context-test/b.js?");
+
+/***/ }),
+
+/***/ "./context-test/index-old.js":
+/*!***********************************!*\
+  !*** ./context-test/index-old.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"a\": () => (/* reexport safe */ _a__WEBPACK_IMPORTED_MODULE_0__.a),\n/* harmony export */   \"b\": () => (/* reexport safe */ _b__WEBPACK_IMPORTED_MODULE_1__.b)\n/* harmony export */ });\n/* harmony import */ var _a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./a */ \"./context-test/a.js\");\n/* harmony import */ var _b__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./b */ \"./context-test/b.js\");\n\n\n\n\n\n//# sourceURL=webpack://01-start/./context-test/index-old.js?");
 
 /***/ }),
 
@@ -37,17 +49,17 @@ eval("\n\n//# sourceURL=webpack://01-start/./context-test/b.js?");
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// const context = require.context('./', false, /[^index]\\.js$/);\n\nconst importAll = context => {\n  const map = {}\n\n  for (const key of context.keys()) {\n    const keyArr = key.split('/')\n    keyArr.shift() // 移除.\n    map[keyArr.join('.').replace(/\\.js$/g, '')] = context(key)\n  }\n\n  return map\n};\n\nconst res = importAll(__webpack_require__(\"./context-test sync recursive \\\\.js$\"))\nconsole.log(res);\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (res);\n\n//# sourceURL=webpack://01-start/./context-test/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ modules)\n/* harmony export */ });\nconst modules = {};\n\nconst res = __webpack_require__(\"./context-test sync recursive \\\\.js\");\nres.keys().forEach(module => {\n  const m = module.replace(/(\\.\\/|\\.js)/g, '');\n  if(m !== 'index') {\n    modules[m] = res(module);\n  };\n});\n\n\n\n\n//# sourceURL=webpack://01-start/./context-test/index.js?");
 
 /***/ }),
 
-/***/ "./context-test sync recursive \\.js$":
-/*!**********************************!*\
-  !*** ./context-test/ sync \.js$ ***!
-  \**********************************/
+/***/ "./context-test sync recursive \\.js":
+/*!*********************************!*\
+  !*** ./context-test/ sync \.js ***!
+  \*********************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("var map = {\n\t\"./a.js\": \"./context-test/a.js\",\n\t\"./b.js\": \"./context-test/b.js\",\n\t\"./index.js\": \"./context-test/index.js\"\n};\n\n\nfunction webpackContext(req) {\n\tvar id = webpackContextResolve(req);\n\treturn __webpack_require__(id);\n}\nfunction webpackContextResolve(req) {\n\tif(!__webpack_require__.o(map, req)) {\n\t\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\t\te.code = 'MODULE_NOT_FOUND';\n\t\tthrow e;\n\t}\n\treturn map[req];\n}\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = \"./context-test sync recursive \\\\.js$\";\n\n//# sourceURL=webpack://01-start/./context-test/_sync_\\.js$?");
+eval("var map = {\n\t\"./a.js\": \"./context-test/a.js\",\n\t\"./b.js\": \"./context-test/b.js\",\n\t\"./index-old.js\": \"./context-test/index-old.js\",\n\t\"./index.js\": \"./context-test/index.js\"\n};\n\n\nfunction webpackContext(req) {\n\tvar id = webpackContextResolve(req);\n\treturn __webpack_require__(id);\n}\nfunction webpackContextResolve(req) {\n\tif(!__webpack_require__.o(map, req)) {\n\t\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\t\te.code = 'MODULE_NOT_FOUND';\n\t\tthrow e;\n\t}\n\treturn map[req];\n}\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = \"./context-test sync recursive \\\\.js\";\n\n//# sourceURL=webpack://01-start/./context-test/_sync_\\.js?");
 
 /***/ }),
 
@@ -68,7 +80,7 @@ eval("/* module decorator */ module = __webpack_require__.nmd(module);\nvar __WE
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _context_test_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context-test/index.js */ \"./context-test/index.js\");\n\n\n\nfunction component() {\n  const element = document.createElement('div');\n\n  // lodash 在当前 script 中使用 import 引入\n  element.innerHTML = lodash__WEBPACK_IMPORTED_MODULE_0___default().join(['Hello', 'webpack'], ' ');\n  console.log(_context_test_index_js__WEBPACK_IMPORTED_MODULE_1__.default);\n  return element;\n}\n\ndocument.body.appendChild(component());\n\n//# sourceURL=webpack://01-start/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _context_test_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context-test/index */ \"./context-test/index.js\");\n/* harmony import */ var _context_test_index_old__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context-test/index-old */ \"./context-test/index-old.js\");\n\n\n\n\nfunction component() {\n  const element = document.createElement('div');\n\n  // lodash 在当前 script 中使用 import 引入\n  element.innerHTML = lodash__WEBPACK_IMPORTED_MODULE_0___default().join(['Hello', 'webpack'], ' ');\n  return element;\n};\n\nconsole.log(_context_test_index__WEBPACK_IMPORTED_MODULE_1__.default, _context_test_index_old__WEBPACK_IMPORTED_MODULE_2__.a);\n\ndocument.body.appendChild(component());\n\n\n//# sourceURL=webpack://01-start/./src/index.js?");
 
 /***/ })
 
