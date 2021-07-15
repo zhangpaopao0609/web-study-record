@@ -104,13 +104,13 @@ define("./service-worker.js",['./workbox-2a8a8a96'], function (workbox) { 'use s
    */
 
   workbox.precacheAndRoute([{
-    "url": "index.bundle.js",
-    "revision": "f45b2c47554b7a0a9e1f433acbaa4477"
+    "url": "./index.bundle.js",
+    "revision": "d27d67bca308b8400afc6d0c62d81197"
   }, {
-    "url": "index.html",
-    "revision": "91079495c5f7b642fd1a221e56248c2b"
+    "url": "./index.html",
+    "revision": "12438d3630ed430bb4a0e129c69cf1c6"
   }, {
-    "url": "print.bundle.js",
+    "url": "./print.bundle.js",
     "revision": "388d615ca687bdc94c4c7f7327cf3ea6"
   }], {});
 
