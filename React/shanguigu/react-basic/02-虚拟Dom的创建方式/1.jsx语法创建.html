@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>使用 JSX 创建 VDOM</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.js"></script>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script type="text/babel">
+    // 1. 创建虚拟 DOM
+    let VDOM = <h1>Hello, React</h1>;
+    // 2. 让 React 将 虚拟 DOM-VDOM 转为真实 DOM, 渲染到页面
+    ReactDOM.render(VDOM, document.getElementById('test'));
+
+    /*
+      关于 jsx， 我们要知道的：
+      1. JSX 的出现就是为了让程序员更加方便的创建虚拟 DOM
+      2. JSX 最终经过 babel 的编译，变成了最原始的 js 写法
+    */
+  </script>
+</body>
+</html>

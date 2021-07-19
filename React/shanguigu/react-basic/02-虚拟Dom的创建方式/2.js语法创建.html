@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>使用 JS 创建 VDOM</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script type="text/javascript">
+    // 1. 创建虚拟 DOM
+    const VDOM = React.createElement('h1', {
+      id: 'arrow',
+    }, 'hello React!!');
+    // 2. 渲染 VDOM 到页面
+    ReactDOM.render(VDOM, document.getElementById('test'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>使用 JSX 创建 VDOM</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.js"></script>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script type="text/babel">
+    let VDOM = <h1>Hello, React</h1>;
+    ReactDOM.render(VDOM, document.getElementById('test'));
+    console.log(VDOM);
+    console.log(Object.prototype.toString.call(VDOM));
+    const TDOM = document.getElementById('test')
+    console.log(TDOM);
+    debugger;
+
+    /*
+      关于虚拟 DOM 和真实 DOM
+      1. 虚拟 DOM 比较“轻”，真实 DOM 比较“重”，因为虚拟 DOM 是 React 在用的， 无需真实 DOM 上那么多的属性
+      2. 虚拟 DOM 最终一定会转化为真实 DOM 放入页面
+    */
+  </script>
+</body>
+</html>
