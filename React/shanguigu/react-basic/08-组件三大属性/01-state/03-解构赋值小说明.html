@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03-解构赋值小说明</title>
+</head>
+<body>
+  <script>
+    // 普通解构赋值
+    const obj = {
+      a: 1,
+      b: 2,
+      c() {
+        console.log(1);
+      },
+    };
+
+    const { b } = obj;
+
+    const arr = [1, 2, 5 ,3];
+
+    const [, , three] = arr;
+    console.log(three);   // 5
+
+    // 连续结构赋值
+    const s = {
+      a: 1,
+      b: 2,
+      c: {
+        x: 3,
+        y: 4,
+      },
+    };
+
+    const { c: { x } } = s;   // 相当于 const x = s.c.x, 所以 c 根本就没有定义
+    console.log(x);   // 3
+    // console.log(c);   // is not defined
+
+
+    // 连续结构赋值+重命名
+    const t = {
+      a: 1,
+      b: 2,
+      c: {
+        x: 3,
+        y: 4,
+      },
+    };
+
+    const { c: { x: value } } = t;
+    console.log(value);
+  </script>
+</body>
+</html>
