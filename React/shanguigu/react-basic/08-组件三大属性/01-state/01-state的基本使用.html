@@ -17,6 +17,7 @@
         this.state = {
           isHot: true,
         };
+        // 给实例自身追加一个同名的changeHotState方法，这个方法是根据原型上的changeHotState用bind生成的
         this.changeHotState = this.changeHotState.bind(this);
       };
 
