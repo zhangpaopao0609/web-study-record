@@ -2,46 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>04-JSX的语法规则</title>
+  <title>06-JSX小练习</title>
   <script src="../js/react.development.js"></script>
   <script src="../js/react-dom.development.js"></script>
   <script src="../js/babel.js"></script>
-  <style>
-    .title {
-      background-color: aquamarine;
-    }
-  </style>
 </head>
 <body>
   <div id="test"></div>
 
   <script type="text/babel">
-    // 模拟数据
-    const data = 'Hello React!!'
-    // 1. 创建虚拟 DOM
+    const data = ['Angular1', 'React', 'Vue'];
+
     const VDOM = (
       <div>
-        <h1 className="title" style={{ color : 'white', fontSize: '60px' }}>{ data }</h1>
-        <h2>T</h2>
-        <input type="button" value="12" />
+        <h1>前端框架</h1>
+        <ul>
+          { 
+            data.map((item ,index) => <li key={ index }>{ item }</li> )
+          }
+        </ul>
       </div>
     );
-    // 2. 渲染虚拟 DOM 到页面
-    ReactDOM.render(VDOM, document.getElementById('test'));
 
-    /*
-      jsx 语法规则
-      1. 创建虚拟 DOM 时，不要写引号
-      2. 标签中要混入 js 表达式，要用 {}
-      3. 标签中样式的类名要用 className
-      4. 标签中的内联样式要用 style={{ key: value }},注意属性名转为小驼峰
-      5. 只能有一个根标签
-      6. 标签必须闭合 
-      7. 关于标签首字母
-        1. 若首字母小写，那么 React 就会去寻找与之同名的 html 标签，若找见，直接编译，若为找见，报错
-        2. 若首字母大写， 那么 React 就会去寻找与之同名的组件
-        若找见，编译，为找见，报错
-    */
+    ReactDOM.render(VDOM, document.getElementById('test'));
   </script>
 </body>
 </html>

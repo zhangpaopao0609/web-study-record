@@ -1,4 +1,14 @@
-JSX 
-- 全称 JavaScript XML
-- React 是一种类似于 XML 的 JS 扩展语法：JS + XML，本质是 React.createElement(component, props, ...children) 方法的语法题
-- 作用：用来简化创建虚拟 DOM
+一定注意要区分： 【JS 语句（代码）】与【js 表达式】
+1. 表达式：一个表达式会产生一个值，可以放在任何一个需要值的地方
+  下面这些都是表达式：
+  - a
+  - a+b
+  - demo(1)
+  - arr.map()
+  - function test(){}
+
+2. 语句（代码）
+  下面这些都是语句（代码）
+  - if(){}
+  - for() {}
+  - switch() { case: xxxx }
