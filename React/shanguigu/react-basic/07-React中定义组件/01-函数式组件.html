@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01-函数式组件</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.js"></script>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script type="text/babel">
+    // 1. 定义一个组件（函数式）
+    function MyComponent() {
+      console.log(this);    // undefined, 为什么你？ 因为经过 babel 翻译，开启了严格模式， use strict
+      return (
+        <h2>我是用函数定义的组件，适用于简单组件的定义！！</h2>
+      );
+    };
+    // 2. 渲染组件到页面
+    ReactDOM.render(<MyComponent />, document.getElementById('test'));
+
+    /*
+      执行了 ReactDOM.render(<Mycomponent />....) 后发生了什么？
+      1. React 解析组件标签，寻找 MyComponent 组件的定义位置
+      2. React 发现 MyComponent 组件是用函数定义的，随后 React 去直接调用 MyComponent 函数，将返回的虚拟 DOM 渲染到页面
+    */
+  </script>
+</body>
+</html>
