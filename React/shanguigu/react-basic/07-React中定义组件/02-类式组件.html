@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02-类式组件</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.js"></script>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script type="text/babel">
+    // 1. 定义一个组件（类式）
+    class MyComponent extends React.Component {
+      // constructor() {
+      //   super();
+      // };
+      /*
+        1. render 方法是放在那里的 —————— MyComponent 的原型对象上，供实例使用
+        2. render 中的 this 是谁， —————— MyComponent 的实例对象
+      */
+      render() {
+        console.log(this);  // MyComponent 的实例对象  === MyComponent 组件的实例对象  === MyComponent 组件对象
+        return (
+          <h2>我是用类定义的组件，适用于复杂组件的定义</h2>
+        );
+      };
+    };
+
+    // 2. 渲染组件到页面
+    ReactDOM.render(<MyComponent />, document.getElementById('test'));
+
+    /*
+      执行了 ReactDOM.render(<Mycomponent />....) 后发生了什么？
+      1. React 解析组件标签，寻找 MyComponent 组件的定义位置
+      2. React 发现 MyComponent 组件是用类定义的，React 创建了一个 MyComponent 实例对象 ———— D
+      3. 通过 D 去调用到了原型上的 render 方法
+      4. 
+    */
+  </script>
+</body>
+</html>
