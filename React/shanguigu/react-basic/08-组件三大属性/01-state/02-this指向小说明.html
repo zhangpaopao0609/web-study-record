@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>This 指向小说明</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    // 普通对象
+    const obj = {
+      a: 1,
+      b: 2,
+      c() {
+        console.log(this);
+      },
+    };
+
+    obj.c();    // obj
+    const t = obj.c;
+    t();    // window
+
+
+
+    // class 对象
+    class Dog {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      };
+
+      cry() {
+        console.log(this);
+        console.log(`我的姓名是${this.name}我的年龄是${this.age}`);
+      };
+      
+    };
+
+    const d = new Dog('小黑', 4);
+    d.cry();    // Dog {name: "小黑", age: 4}
+    const ct = d.cry;
+    ct();   // undefined
+
+    // 为什么会这样呢？
+      // 首先此处属于 cry 的直接调用，
+      // 其次，类中所有定义的方法，浏览器在运行时，全部都加上了 ‘use strict’， 所以这里不是指向 window，而是 undefined
+  </script>
+</body>
+
+</html>
