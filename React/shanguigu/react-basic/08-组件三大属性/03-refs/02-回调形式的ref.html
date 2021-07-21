@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02-回调形式的ref</title>
+  <script src="../../js/react.development.js"></script>
+  <script src="../../js/react-dom.development.js"></script>
+  <script src="../../js/babel.js"></script>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script type="text/babel">
+    class ShowInput extends React.Component {
+      showDataByRef = ref => {
+        console.log(this);
+        console.log(this[ref].value);
+      };
+
+      render() {
+        return (
+          <div>
+            <input type="text" ref={ c => this.input1 = c }/>
+            <button onClick={ () => this.showDataByRef('input1') } >点我提示左侧数据</button>
+            <input type="text" onBlur={ () => this.showDataByRef('input2') } ref={ c => this.input2 = c } placeholder="失去焦点提示数据！！"/> 
+           
+          </div>
+        );
+      };
+      
+    };
+    
+    ReactDOM.render(<ShowInput />, document.getElementById('test'));
+  </script>
+</body>
+</html>
