@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>10-React中的事件处理</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.js"></script>
+  <style>
+    .container {
+      width: 400px;
+      height: 400px;
+      background-color: aquamarine;
+    }
+
+    .child {
+      width: 200px;
+      height: 200px;
+      background-color: grey;
+    }
+  </style>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script type="text/babel">
+    class MyComponent extends React.Component {
+      /*
+        1. 通过 onXxx 属性指定事件处理函数（注意大小写）
+          1） React 使用的是自定义事件(合成)事件，而不是使用的原生DOM 事件  —— 为了更好的兼容性
+          2） React 中的事件是通过事件委托方式处理的(委托给组件最外层的元素) —— 为了更好的性能
+        2. 通过 event.target 获取到DOM节点
+      */
+
+      showElement1 = e => {
+        console.log(e);   // 接到的 event 是 React 自定义的事件对象，这个 event 拥有着和原生event 同样的属性，并且更加轻量
+        console.log('按钮1');
+      };
+
+      showElement2 = e => {
+        console.log(e.target.innerText);
+        console.log('按钮2');
+      };
+
+      showElement3 = () => {
+        console.log('按钮3');
+      };
+
+      render() {
+        return (
+          <div className="container">
+            <button onClick={ this.showElement1 }>按钮1</button>
+            <button onClick={ this.showElement2 }>按钮2</button>
+            <div onClick={ this.showElement3 } className="child">xxxxx</div> 
+          </div>
+        );
+      };
+    };
+
+    // 2. 渲染组件到页面
+    ReactDOM.render(<MyComponent />, document.getElementById('test'));
+  </script>
+</body>
+</html>

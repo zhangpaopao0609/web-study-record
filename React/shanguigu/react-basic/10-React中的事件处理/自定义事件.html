@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>自定义事件</title>
+</head>
+<body>
+  <div id="test">
+    哈哈
+  </div>
+
+  <script type="text/javascript">
+    const div = document.getElementById('test');
+    const hahaEvent = new Event('hahaEvent');
+
+    div.addEventListener("hahaEvent", () => {
+      alert('你笑了！！');
+    });
+
+    setTimeout(() => {
+      div.dispatchEvent(hahaEvent);
+    }, 3000);
+  </script>
+</body>
+</html>
