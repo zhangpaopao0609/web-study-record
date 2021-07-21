@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02-对props进行限制</title>
+  <script src="../../js/react.development.js"></script>
+  <script src="../../js/react-dom.development.js"></script>
+  <script src="../../js/babel.js"></script>
+  <!-- 引入 prop-type， 用于对组件属性进行类型检查 -->
+  <script src="../../js/prop-types.js"></script>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script type="text/babel">
+    class Person extends React.Component {
+      static propTypes = {
+        name: PropTypes.string.isRequired,
+        sex: PropTypes.string,
+        age: PropTypes.number,
+      };
+
+      static defaultProps = {
+        age: 20,
+      };
+
+      render() {
+        const { name, sex, age } = this.props;
+        return (
+          <ul>
+            <li>姓名: { name }</li>
+            <li>性别: { sex }</li>
+            <li>年龄: { age }</li>
+          </ul>
+        )
+      };
+    };
+
+    const info = { name: 'Tom', sex: 'Man', age: 19 };
+    ReactDOM.render(<Person {...info}/>, document.getElementById('test'));
+  </script>
+</body>
+</html>
