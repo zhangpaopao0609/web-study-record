@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>受控组件——收集表单数据</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.js"></script>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script type="text/babel">
+    // 受控组件： 表单中输入类的 DOM，随着用户的输入，将值收集到 state 中，那么就成为受控组件
+    class Login extends React.Component {
+      state = {
+        username: '',
+        password: '',
+      };
+
+      handleSubmit = e => {
+        const { username, password } = this.state;
+        console.log(`用户名是： ${ username }，密码是： ${ password }`);
+        e.preventDefault();
+      };
+
+      handleChange = (e, type) => {
+        const newVal = e.target.value;
+        this.setState(state => ({
+          [type]: newVal,
+        }));
+      };
+
+      render() {
+        const { username, password } = this.state;
+        return (
+          <form onSubmit={ this.handleSubmit }>
+            <div >
+              <label htmlFor="username">用户名：</label>
+              <input
+                id="username"
+                type="text"
+                value={ username }
+                onChange={ e => this.handleChange(e, 'username') }
+              />
+            </div>
+            <div>
+              <label htmlFor="password">密码：</label>
+              <input
+                id="password"
+                type="password"
+                value={ password }
+                onChange={ e => this.handleChange(e, 'password') }
+              />
+            </div>
+            <div>
+              <button>登陆</button>
+            </div>
+          </form>
+        );
+      };
+    };
+
+    // 2. 渲染组件到页面
+    ReactDOM.render(<Login />, document.getElementById('test'));
+  </script>
+</body>
+</html>
