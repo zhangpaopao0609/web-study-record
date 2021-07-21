@@ -12,7 +12,7 @@
 
   <script type="text/babel">
     class Weather extends React.Component {
-      constructor(props) {
+      constructor(props) {    // 只会调用1次
         super(props);
         this.state = {
           isHot: true,
@@ -27,7 +27,7 @@
         }));
       };
 
-      render() {
+      render() {    // 调用 1+n 次
         const { isHot } = this.state;
         return (
           <h1 onClick={ this.changeHotState }>
