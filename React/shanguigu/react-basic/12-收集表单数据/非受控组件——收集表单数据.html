@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>非受控组件——收集表单数据</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.js"></script>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script type="text/babel">
+    class Login extends React.Component {
+      userNameRef = React.createRef();
+      passwordRef = React.createRef();
+
+      handleSubmit = e => {
+        const { current: username } = this.userNameRef;
+        const { current: password } = this.passwordRef;
+        console.log(`用户名是： ${ username.value }，密码是： ${ password.value }`);
+        e.preventDefault();
+      };
+
+      // 非受控组件：
+        // 表单中的数据，在需要的时候， ’现用现取‘(通过 ref 获得节点，进而访问到 value 值)  没有受到状态的控制
+
+      render() {
+        return (
+          <form onSubmit={ this.handleSubmit }>
+            <div >
+              <label htmlFor="username">用户名：</label>
+              <input id="username" type="text" ref={ this.userNameRef }/>
+            </div>
+            <div>
+              <label htmlFor="password">密码：</label>
+              <input id="password" type="password" ref={ this.passwordRef }/>
+            </div>
+            <div>
+              <button>登陆</button>
+            </div>
+          </form>
+        );
+      };
+    };
+
+    // 2. 渲染组件到页面
+    ReactDOM.render(<Login />, document.getElementById('test'));
+  </script>
+</body>
+</html>
