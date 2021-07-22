@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01-引出生命周期</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.js"></script>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script type="text/babel">
+    class LifeCycle extends React.Component {
+      timer = null;
+      state = {
+        opacity: 1,
+      };
+      
+      changeOpacity = () => {
+        let { opacity } = this.state;
+        opacity -= 0.05;
+        if(opacity <= 0) opacity = 1;
+        this.setState({
+          opacity: opacity,
+        });
+      };
+      
+      handleDeath = () => {
+        // 卸载组件
+        ReactDOM.unmountComponentAtNode(document.getElementById('test'));
+      };
+
+      render() {
+        const { opacity } = this.state;
+        // , transition: 'liner 1s'
+        return (
+          <div>
+            <h1 style={{ opacity }}>分手了怎么办？？</h1>
+            <button onClick={ this.handleDeath }>不活了</button>
+          </div>
+        );
+      };
+      
+      // 只调用 1 次
+      componentDidMount() {
+        this.timer = setInterval(this.changeOpacity, 100);
+      };
+
+      componentWillUnmount() {
+        clearInterval(this.timer);
+        this.timer = null;
+      };
+    };
+
+    // 2. 渲染组件到页面
+    ReactDOM.render(<LifeCycle />, document.getElementById('test'));
+  </script>
+</body>
+</html>
