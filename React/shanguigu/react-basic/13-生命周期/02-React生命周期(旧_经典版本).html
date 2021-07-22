@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02-React生命周期(旧_经典版本)</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.js"></script>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script type="text/babel">
+    // 生命周期
+    class Count extends React.Component {
+      constructor() {
+        console.log('01-constructor!!');
+        super();
+        this.state = { count: 0 };
+      };
+
+      addCount = () => {
+        this.setState({
+          count: this.state.count + 1,
+        });
+      };
+
+      handleDeath = () => {
+        ReactDOM.unmountComponentAtNode(document.getElementById('test'));
+      };
+
+      // 一般来说，我们调用 setState 
+          // 首先更新状态       这里补充一句
+          // 然后执行 render
+      // 有时候我们就是希望调一下 render，这时候就是用 forceUpdate
+      forceCallRender = () => {
+        this.forceUpdate();
+      };
+
+      componentWillMount() {
+        console.log('02-conponentWillMount!!');
+      };
+
+      render() {
+        console.log('--render--');
+        const { count } = this.state;
+        return (
+          <div>
+            <h1>当前求和为：{ count }</h1>
+            <button onClick={ this.addCount }>点击加1！！</button>
+            <button onClick={ this.handleDeath }>消失吧！！</button>
+            <button onClick={ this.forceCallRender }>不加不减就是强制调用一下render!!</button>
+          </div>
+        );
+      };
+    
+      componentDidMount() {
+        console.log('03-componentDidMount');
+      };
+      
+
+      // 这里补充一句，setState 会执行两件事情，1， 更新状态 2. 调用render
+      // shouldComponentUpdate 并没有阻止更新状态，阻止的是render调用
+      // 也就是说，在调用 render 前 react 问了一句 shouldComponentUpdate，我能不能往下走
+      shouldComponentUpdate() {   // 组件优化
+        console.log('--shouldComponentUpdate--');
+        return true;
+      };
+
+      componentWillUpdate() {
+        console.log('04-componentWillUpdate');
+      };
+
+      componentDidUpdate() {
+        console.log('05-componentDidUpdate');
+      };
+
+      componentWillUnmount() {
+        console.log('06-componentWillUnmount');
+      };
+    };
+
+    // 2. 渲染组件到页面
+    ReactDOM.render(<Count />, document.getElementById('test'));
+  </script>
+</body>
+</html>
