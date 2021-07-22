@@ -1,9 +1,14 @@
-# 高阶函数
-如果一个函数符合下面 2 个规范中的任何一个，那么该函数就是高阶函数
-1. 若 A 函数，接受的参数是一个函数，那么 A 就可以称为高阶函数
-  - promise, setTimeout, arr.map
-2. 若 A 函数，调用的返回值依然是一个函数，那么 A 就可以称为高阶函数
-  - bind
+1. 初始化阶段： 由 ReactDOM.render() 触发 —————— 初次渲染
+  - constructor()
+  - componentWillMount()
+  - render()
+  - componentDidMount()
 
-# 函数的柯里化
-通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式
+2. 更新阶段： 由组件内部的 this.setState() 或者 父组件重新 render 触发
+  - shouldComponentUpdate()
+  - componentWillUpdate()
+  - render()
+  - componentDidUpdate()
+
+3. 卸载组件： 由 ReactDOM.unmountComponentAtNode() 触发
+  - componentWillUnmount() 
