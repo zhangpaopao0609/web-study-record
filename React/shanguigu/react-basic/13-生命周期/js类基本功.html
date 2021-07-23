@@ -1,0 +1,22 @@
+<script>
+  class Person {}
+
+  class Tom extends Person {
+    bar = 1;    // 实例对象
+    foo() {};   // 原型对象
+    static tBar = 2;    // 构造函数本身
+    static tFoo() {};   // 构造函数本身
+
+    init() {
+      console.log(this);
+    };
+  };
+
+  Tom.prototype.pBar = 4;   // 原型对象
+
+  const t = new Tom();
+  t.init();
+
+  const s = new Tom();
+  s.init();
+</script>

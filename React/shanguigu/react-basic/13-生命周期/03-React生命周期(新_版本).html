@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03-React生命周期(新_版本)</title>
+  <script src="../js/17.0.2/react.development.js"></script>
+  <script src="../js/17.0.2/react-dom.development.js"></script>
+  <script src="../js/babel.js"></script>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script type="text/babel">
+    // 生命周期
+    class Count extends React.Component {
+      constructor() {
+        console.log('01-constructor!!');
+        super();
+        this.state = { count: 0 };
+      };
+
+      addCount = () => {
+        this.setState({
+          count: this.state.count + 1,
+        });
+      };
+
+      handleDeath = () => {
+        ReactDOM.unmountComponentAtNode(document.getElementById('test'));
+      };
+
+      forceCallRender = () => {
+        this.forceUpdate();
+      };
+
+      // 从 props 中获取衍生的状态
+      // 当组件中的 state 完全取决于： 外部传来的 props 时，就要用该 钩子
+      static getDerivedStateFromProps() {
+        console.log('getDerivedStateFromProps');
+        return null;
+      };
+
+      render() {
+        console.log('--render--');
+        console.log(this);
+        const { count } = this.state;
+        return (
+          <div>
+            <h1>当前求和为：{ count }</h1>
+            <button onClick={ this.addCount }>点击加1！！</button>
+            <button onClick={ this.handleDeath }>消失吧！！</button>
+            <button onClick={ this.forceCallRender }>不加不减就是强制调用一下render!!</button>
+          </div>
+        );
+      };
+      
+    };
+
+
+    class Parent extends React.Component {
+      state = { carname: '阿首都' };
+
+      re
+    };
+    // 2. 渲染组件到页面
+    ReactDOM.render(<Count />, document.getElementById('test'));
+  </script>
+</body>
+</html>
