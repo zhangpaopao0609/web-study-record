@@ -42,7 +42,6 @@
 
       render() {
         console.log('--render--');
-        console.log(this);
         const { count } = this.state;
         return (
           <div>
@@ -52,6 +51,15 @@
             <button onClick={ this.forceCallRender }>不加不减就是强制调用一下render!!</button>
           </div>
         );
+      };
+
+      getSnapshotBeforeUpdate() {
+        console.log('getSnapshotBeforeUpdate');
+        return '跑跑很棒哟！！';
+      };
+
+      componentDidUpdate(prevProps, prevState, snapshotValue) {
+        console.log('componentDidUpdate', prevProps, prevState, snapshotValue);
       };
       
     };
