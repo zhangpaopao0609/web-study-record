@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01-验证diffing算法</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.js"></script>
+</head>
+<body>
+  <div id="test"></div>
+
+  <script type="text/babel">
+    class Time extends React.Component {
+      timer = null;
+      state = {
+        time: new Date(),
+      };
+
+      changeTime = () => {
+        this.setState({
+          time: new Date(),
+        });
+      };
+      
+      render() {
+        const { time } = this.state;
+        return (
+          <div>
+            <h1>Hello</h1>
+            <div><input type="text"/></div>
+            <p>
+              现在是: { time.toTimeString() }
+              <input type="text" />
+            </p>
+          </div>
+        );
+      };
+      
+      // 只调用 1 次
+      componentDidMount() {
+        this.timer = setInterval(this.changeTime, 100);
+      };
+
+      componentWillUnmount() {
+        clearInterval(this.timer);
+        this.timer = null;
+      };
+    };
+
+    // 2. 渲染组件到页面
+    ReactDOM.render(<Time />, document.getElementById('test'));
+  </script>
+</body>
+</html>
