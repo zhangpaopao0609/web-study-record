@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>04-getSnapshotBeforeUpdate-example</title>
+  <script src="../js/17.0.2/react.development.js"></script>
+  <script src="../js/17.0.2/react-dom.development.js"></script>
+  <script src="../js/babel.js"></script>
+  <style>
+    .list {
+      width: 300px;
+      height: 300px;
+      margin: 200px auto;
+      background-color: aquamarine;
+      overflow-y: auto;
+    }
+
+    .list li {
+      line-height: 60px;
+      background-color: cadetblue;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script type="text/babel">
+    class News extends React.Component {
+      state = {
+        newsList: [0],
+      };
+
+      addNewsList = () => {
+        const { newsList } = this.state;
+        const len = newsList.length;
+        this.setState({
+          newsList: [len, ...newsList],
+        });
+      };
+
+      componentDidMount() {
+        this.timmer = setInterval(this.addNewsList, 1000);
+        this.refs.list.scrollTop = 300;
+      };
+
+      render() {
+        const { newsList } = this.state;
+        return (
+          <ul className="list" ref="list">
+            {
+              newsList.map((item, index) => (
+                <li key={ index }>新闻{ item }</li>
+              ))
+            }
+          </ul>
+        );
+      };
+      
+      getSnapshotBeforeUpdate() {
+        return this.refs.list.scrollHeight;
+      };
+
+      componentDidUpdate(_, __, snapshotValue) {
+        this.refs.list.scrollTop += this.refs.list.scrollHeight - snapshotValue;
+      };
+
+      componentWillUnmount() {
+        clearInterval(this.timmer);
+        this.timmer = null;
+      };
+    };
+
+    ReactDOM.render(<News />, document.getElementById('app'));
+  </script>
+</body>
+</html>
