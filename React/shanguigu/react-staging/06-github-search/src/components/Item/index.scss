@@ -1,0 +1,19 @@
+.user-item {
+  display: inline-block;
+  margin: 30px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5%;
+  overflow: hidden;
+
+  .avator {
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+
+    img {
+      width: 100%;
+      vertical-align: bottom;
+    }
+  }
+
+}

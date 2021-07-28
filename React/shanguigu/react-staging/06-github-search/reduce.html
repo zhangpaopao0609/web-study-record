@@ -1,0 +1,34 @@
+<script>
+  // 数组的 reduce 方法
+  // arr.reduce((prevValue, current, index, arr) => {}, initialValue);
+  // arr: 当前操作的数组
+  // prevValue: 第一次执行回调时为给定的初始值 initialValue, 以后是上一次执行回调时的返回值。备注： 若没有传入 initialValue, 则第一次的 prevValue 值是数组中第一个元素的值。
+  // current： 表示当前正在处理的元素
+  // index：表示当前正在处理的数组元素的索引，若传入了 initialValue 值，则从 0 开始， 否则从 1 开始；
+  // array 当前操作的数组，也就是 arr
+  // initialValue 表示初始值，
+
+  const arr = [1, 2, 3, 4, 6, 7, 9];
+
+  const sum = arr.reduce((prevValue, item, index) => {
+    console.log(index);
+    return prevValue + item;
+  }, 0);
+
+  console.log(sum);
+
+  const person = [
+    { id: '001', age: 18 },
+    { id: '002', age: 12 },
+    { id: '003', age: 32 },
+    { id: '004', age: 35 },
+    { id: '005', age: 7 },
+  ];
+
+  const ageGt18 = person.reduce((prevValue, item) => {
+    if(item.age > 18) prevValue.push(item);
+    return prevValue;
+  }, []);
+
+  console.log(ageGt18);
+</script>
