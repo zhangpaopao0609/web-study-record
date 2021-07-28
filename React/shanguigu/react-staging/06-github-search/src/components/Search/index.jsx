@@ -42,8 +42,7 @@ export default class Search extends Component {
       userList: res.data.items,
       userRequestStatus: 2, 
     });
-
-  };
+  }; 
 
   render() {
     const { searchValue } = this.state;
