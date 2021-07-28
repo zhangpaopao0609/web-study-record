@@ -10,25 +10,14 @@ export default class App extends Component {
     userRequestStatus: 0,   // 0 初始；1请求中；2请求完成；3请求失败
   };
 
-  getUserRequestStatus = userRequestStatus => {
-    this.setState({
-      userRequestStatus,
-    });
-  };
-
-  getUserList = list => {
-    this.setState({
-      userList: list,
-    });
+  updateUserState = obj => {
+    this.setState(obj);
   };
 
   render() {
     return (
       <div className="container">
-        <Search
-          getUserList={ this.getUserList }
-          getUserRequestStatus={ this.getUserRequestStatus }
-        />
+        <Search updateUserState={ this.updateUserState }/>
         <List { ...this.state }/>
     </div>
     )

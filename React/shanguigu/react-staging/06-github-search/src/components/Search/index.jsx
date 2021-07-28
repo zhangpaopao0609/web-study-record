@@ -32,14 +32,17 @@ export default class Search extends Component {
       alert('输入不能为空！');
       return;
     };
-    this.props.getUserRequestStatus(1);
+    this.props.updateUserState({ userRequestStatus: 1 });
     const res = await this.searchAction(
       'https://api.github.com/search/users',
       { q: searchValue },
     );
     this.setStateSearchValue('');
-    this.props.getUserList(res.data.items);
-    this.props.getUserRequestStatus(2);
+    this.props.updateUserState({ 
+      userList: res.data.items,
+      userRequestStatus: 2, 
+    });
+
   };
 
   render() {
