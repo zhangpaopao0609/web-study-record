@@ -1,4 +1,5 @@
-const { override, fixBabelImports, addLessLoader } = require('customize-cra');
+const { override, fixBabelImports, addLessLoader, addPostcssPlugins } = require('customize-cra');
+const postcssPx2Rem = require('postcss-px2rem');
 
 module.exports = override(
   fixBabelImports('import', {
@@ -12,4 +13,9 @@ module.exports = override(
       modifyVars: { '@primary-color': '#1DA57A' },
     }
   }),
+  addPostcssPlugins([
+    postcssPx2Rem({
+      remUnit: 375/10
+    }),
+  ])
 );

@@ -9,6 +9,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="container">
+        Lorem ipsum dolor
         <Switch>
           <Route path="/login" component={ Login }/>
           <Route path="/user" component={ User }/>
