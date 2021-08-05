@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import "./App.less";
-import Login from "./views/Login/index";
-import User from "./views/User/index";
+import routes from "./config/routes.js";
 
 export default class App extends Component {
   render() {
     return (
       <div className="container">
-        Lorem ipsum dolor
         <Switch>
-          <Route path="/login" component={ Login }/>
-          <Route path="/user" component={ User }/>
+          { routes.map(item => <Route key={ item.path } {...item}/>) }
+          <Redirect to="/login"/>
         </Switch>
       </div>
-    )
-  }
-}
+    );
+  };
+};
