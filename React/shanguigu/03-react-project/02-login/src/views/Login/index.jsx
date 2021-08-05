@@ -45,8 +45,10 @@ export default class Login extends Component {
   };
 
   getValidateNumber = () => {
-    const { status } = this.state;
+    const { status, phoneNumber } = this.state;
     if(!status) return;
+    if(!phoneNumberReg.test(phoneNumber))
+      return Toast.fail('请输入合法的手机号码');
     this.setState({
       status: false,
     });
