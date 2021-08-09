@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="./js/axios.js"></script>
+</head>
+<body>
+  <button id='btn1'>
+    按钮1 -- 发 GET 请求 -- 不携带参数
+  </button>
+  <hr>
+  <button id='btn2'>
+    按钮2 -- 发 GET 请求 -- 携带 query 参数
+  </button>
+  <hr> 
+  <button id='btn3'>
+    按钮3 -- 发 GET 请求 -- 携带 params 参数
+  </button>
+  <hr> 
+  <button id='btn4'>
+    按钮4 -- 发 POST 请求 -- 携带 query 参数
+  </button>
+  <hr> 
+  <button id='btn5'>
+    按钮5 -- 发 POST 请求 -- 携带 params 参数
+  </button>
+  <hr> 
+  <button id='btn6'>
+    按钮6 -- 发 POST 请求 -- 携带 body 参数
+  </button>
+  <hr> 
+  <button id='btn7'>
+    按钮7 -- 发 PUT 请求 -- 携带query, params, body 参数
+  </button>
+  <script>
+    const btn1 = document.getElementById("btn1");
+    // 发送 get 请求且不带参数
+    btn1.onclick = () => {
+      axios({
+        url: 'http://localhost:6090/test1'
+      }).then(
+        res => { console.log('成功', res.data); }, 
+        err => { console.log('失败', err); }
+      );
+    };
+
+
+    const btn2 = document.getElementById("btn2");
+    btn2.onclick = () => {
+      axios({
+        url: 'http://localhost:6090/test2',
+        params: {
+          name: 'ardor',
+          age: 16,
+        },
+      }).then(
+        res => { console.log('成功', res.data); }, 
+        err => { console.log('失败', err); }
+      );
+    };
+
+    const btn3 = document.getElementById("btn3");
+    btn3.onclick = () => {
+      axios({
+        url: 'http://localhost:6090/test3/ardor/16',
+      }).then(
+        res => { console.log('成功', res.data); }, 
+        err => { console.log('失败', err); }
+      );
+    };
+    
+    const btn4 = document.getElementById("btn4");
+    btn4.onclick = () => {
+      axios({
+        url: 'http://localhost:6090/test4',
+        method: 'POST',
+        params: { name: 'ardor' },
+      }).then(
+        res => { console.log('成功', res.data); }, 
+        err => { console.log('失败', err); }
+      );
+    };
+
+    const btn5 = document.getElementById("btn5");
+    btn5.onclick = () => {
+      axios({
+        method: 'POST',
+        url: 'http://localhost:6090/test5/ardor/11',
+      }).then(
+        res => { console.log('成功', res.data); }, 
+        err => { console.log('失败', err); }
+      );
+    };
+
+    const btn6 = document.getElementById("btn6");
+    btn6.onclick = () => {
+      axios({
+        method: 'POST',
+        url: 'http://localhost:6090/test6',
+        data: {
+          name: 'ardor',
+          age: '16',
+        },   // data 的值如果是对象，那么请求参数自动使用 json 编码
+        // 当然，也可以自己写 urlenconded 编码
+      }).then(
+        res => { console.log('成功', res.data); }, 
+        err => { console.log('失败', err); }
+      );
+    };
+
+    const btn7 = document.getElementById("btn7");
+    btn7.onclick = () => {
+      axios({
+        method: 'PUT',
+        url: 'http://localhost:6090/test7/arrow/18',
+        params: {
+          page: 1,
+          size: 10,
+        },
+        data: {
+          name: 'ardor',
+          age: '16',
+        },   // data 的值如果是对象，那么请求参数自动使用 json 编码
+        // 当然，也可以自己写 urlenconded 编码
+      }).then(
+        res => { console.log('成功', res.data); }, 
+        err => { console.log('失败', err); }
+      );
+    };
+  </script>
+</body>
+</html>
