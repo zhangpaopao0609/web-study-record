@@ -1,14 +1,13 @@
-// action 函数
-export function increaseAction(data=0) {
-  return {
-    type: 'increase',
-    data,
-  };
-};
+import { INCREASE, DECREASE } from "../constant";
 
-export function decreaseAction(data=0) {
-  return {
-    type: 'decrease',
-    data,
-  };
+export const increaseAction = (data=0) => ({type: INCREASE, data});
+
+export const decreaseAction = (data=0) => ({type: DECREASE, data});
+
+export const increaseAsyncAction = (data=0, delay=500) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(increaseAction(data));
+    }, delay);
+  });
 };

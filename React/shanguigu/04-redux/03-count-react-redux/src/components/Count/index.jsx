@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Store from "../../redux/index.js";
-import { increaseAction, decreaseAction } from "../../redux/count/actions";
+import { 
+  increaseAction,
+  decreaseAction,
+  increaseAsyncAction
+} from "../../redux/count/actions";
 
 export default class Count extends Component {
   state = {
@@ -25,8 +29,9 @@ export default class Count extends Component {
       this.handleIncrease();
   };
  
-  handleIncreaseWithAsnc = () => {
-    setTimeout(this.handleIncrease, 1000);
+  handleIncreaseWithAsnc = async () => {
+    const { selectValue } = this.state;
+    Store.dispatch(await increaseAsyncAction(selectValue*1, 1000));
   };
 
   render() {
