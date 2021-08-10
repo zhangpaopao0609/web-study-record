@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Store from "../../redux/index.js";
+import { INCREASE, DECREASE } from "../../redux/constant";
+
 
 export default class Count extends Component {
   state = {
@@ -11,23 +13,22 @@ export default class Count extends Component {
 
   handleIncrease = () => {
     const { selectValue } = this.state;
-    // action 对象
-    const action = {
-      type: 'increase',
+    Store.dispatch({
+      type: INCREASE,
       data: selectValue*1,
-    };
-    Store.dispatch(action);
-    this.setState({});
+    });
   };
 
   handleDecrease = () => {
-    const { sum, selectValue } = this.state;
-    this.setState({ sum: sum - selectValue*1 });
+    const { selectValue } = this.state;
+    Store.dispatch({
+      type: DECREASE,
+      data: selectValue*1,
+    });
   };
 
   handleIncreaseIfOdd = () => {
-    const { sum } = this.state;
-    if(sum % 2 !== 0) 
+    if(Store.getState() % 2 !== 0) 
       this.handleIncrease();
   };
  
