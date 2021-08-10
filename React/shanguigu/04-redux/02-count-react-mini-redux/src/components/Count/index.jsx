@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Store from "../../redux/index.js";
 
 export default class Count extends Component {
   state = {
-    sum: 0,
     selectValue: 0,
   };
 
@@ -10,8 +10,14 @@ export default class Count extends Component {
     e => this.setState({ [prop]: e.target.value });
 
   handleIncrease = () => {
-    const { sum, selectValue } = this.state;
-    this.setState({ sum: sum + selectValue*1 });
+    const { selectValue } = this.state;
+    // action 对象
+    const action = {
+      type: 'increase',
+      data: selectValue*1,
+    };
+    Store.dispatch(action);
+    this.setState({});
   };
 
   handleDecrease = () => {
@@ -24,16 +30,16 @@ export default class Count extends Component {
     if(sum % 2 !== 0) 
       this.handleIncrease();
   };
-
+ 
   handleIncreaseWithAsnc = () => {
     setTimeout(this.handleIncrease, 1000);
   };
 
   render() {
-    const { sum, selectValue } = this.state;
+    const { selectValue } = this.state;
     return (
       <div>
-        <h2>当前求和为：{ sum }</h2>
+        <h2>当前求和为：{ Store.getState() }</h2>
         <select
           value={ selectValue }
           onChange={ this.handleStateChange('selectValue') }
