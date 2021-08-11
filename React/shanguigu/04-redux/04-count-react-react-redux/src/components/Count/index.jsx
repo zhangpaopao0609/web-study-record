@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 
 import { 
   increaseAction,
   decreaseAction,
-  increaseAsyncAction
+  increaseAsyncAction,
 } from "../../redux/count/actions";
 
-export default class Count extends Component {
+class CountUI extends Component {
   state = {
     selectValue: 0,
   };
@@ -21,20 +22,22 @@ export default class Count extends Component {
 
   handleDecrease = () => {
     const { selectValue } = this.state;
+    this.props.decreaseAction(selectValue*1);
   };
 
   handleIncreaseIfOdd = () => {
-    // if(Store.getState() % 2 !== 0) 
-    //   this.handleIncrease();
+    const { selectValue } = this.state;
+    if(this.props.sum % 2 !== 0) 
+      this.props.increaseAction(selectValue*1);
   };
  
   handleIncreaseWithAsnc = async () => {
     const { selectValue } = this.state;
+    this.props.increaseAsyncAction(selectValue*1)
   };
 
   render() {
     const { selectValue } = this.state;
-    console.log(this.props);
     return (
       <div>
         <h2>当前求和为：{ this.props.sum }</h2>
@@ -56,4 +59,13 @@ export default class Count extends Component {
       </div>
     )
   }
-}
+};
+
+export default connect(
+  state => ({ sum: state }),
+  {
+    increaseAction,
+    decreaseAction,
+    increaseAsyncAction,
+  },
+)(CountUI);
