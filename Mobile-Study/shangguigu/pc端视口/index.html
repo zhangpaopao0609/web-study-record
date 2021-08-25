@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PC端视口</title>
+  <style>
+    div {
+      height: 2000px;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    console.log('最干净的显示区域', document.documentElement.clientWidth);
+    console.log('最干净的显示区域 + 滚动条', window.innerWidth);
+    console.log('最干净的显示区域 + 滚动条 + 浏览器边框', window.outerWidth);
+    console.log('与浏览器无关，当前设备显示分辨率横向的值', screen.width);
+  </script>
+</body>
+
+</html>

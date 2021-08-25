@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片的高清显示</title>
+  <style>
+    .logo {
+      width: 200px;
+      height: 200px;
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio: 2) {
+      .logo {
+        content: url(../img/logo@2x.png);
+      }
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio: 3) {
+      .logo {
+        content: url(../img/logo@3x.png);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <img src="../img/logo.png" alt="" class="logo">
+</body>
+
+</html>
