@@ -103,3 +103,38 @@
 - 视觉视口变大
 
 移动端缩放不会影响页面布局，因为缩放的时候，布局视口大小没有变化
+
+### viewport 
+meta-viewport 标签是苹果公司在 2007 年引进的，用于移动端布局视口的控制
+使用示例：
+`<meta name='viewport' content='width=device-width, initial-scale=1.0'>`
+
+viewport 相关选项
+1. width 布局视口的宽度
+2. initial-scale 【系统】初始缩放比列
+3. maximum-scale 允许 【用户】 缩放的最大比例
+4. minimum-scale 允许 【用户】 缩放的最大比例
+5. user-scale 是否允许用户缩放
+6. viewport-fit 设置为 cover 值可以解决刘海屏的留白问题
+
+#### 1. width
+width 值可以使 device-width,也可以是具体值，但是有些安卓手机不支持， ios 全系列都支持
+#### 2. initial-scale
+- initial-scale 为页面初始化时的显示比例
+- initial-scale = 屏幕宽度(设备独立像素) / 布局视口像素
+- 只写 initial-scale=1.0 也可以实现完美视口，但为了更好的兼容性，`width=device-width, initial-scale=1.0` 都写上
+
+#### 3. maximum-scale
+- 设置允许用户最大缩放比例，苹果浏览器 safari 不认识该属性
+- maximum-scale=屏幕宽度（设备独立像素）/ 视觉视口宽度值
+
+#### 4. minimum-scale
+- 设置允许用户最小缩放比例，苹果浏览器 safari 不认识该属性
+- maximum-scale=屏幕宽度（设备独立像素）/ 视觉视口宽度值 
+
+#### 5. user-scalable
+- 是否允许用户通过手指缩放页面。苹果浏览器 safari 不认识该属性
+
+#### 6. vueport-fit
+- 解决刘海屏问题
+viewport-fit 设置为 cover 值可以解决刘海屏的留白问题
