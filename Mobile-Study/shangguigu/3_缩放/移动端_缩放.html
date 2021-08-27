@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+</head>
+<body>
+  <img src="../img/dpr.png" alt="" srcset="">
+
+  <script>
+    console.log('布局视口为：', document.documentElement.clientWidth);
+    console.log('视觉视口为：', window.innerWidth);
+    // 在移动端， onresize 监测的是布局视口的变化
+    window.onresize = () => {
+      console.log('布局视口为：', document.documentElement.clientWidth);
+      console.log('视觉视口为：', window.innerWidth);
+    };
+  </script>
+</body>
+</html>
