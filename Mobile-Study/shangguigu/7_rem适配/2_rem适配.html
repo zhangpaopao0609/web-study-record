@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2_rem适配</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    html, body {
+      font-size: 26.66666667vw;
+    }
+
+    .a {
+      width: 4rem;
+      height: 4rem;
+      font-size: 40px;
+      background-color: aquamarine;
+    }
+
+    .b {
+      width: 5em;
+      height: 5em;
+      background-color: gray;
+    }
+  </style>
+</head>
+<body>
+  <div class="a">
+    <div class="b">
+      em 参考父元素的字体大小
+    </div>
+    rem 参考 html 或 body 的字体大小
+  </div>
+</body>
+</html>
