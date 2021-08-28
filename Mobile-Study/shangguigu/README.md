@@ -236,3 +236,36 @@ vw 和 vh 是两个相对单位
 touch 事件结束后会默认触发元素的 click 事件，如果没有设置完美视口，则事件触发的时间间隔为 300 ms 左右，如果设置完美视口则时间间隔为 30ms 左右（当然也得看具体的设备的特性）
 
 如果 touch 事件隐藏了元素，则 click 动作将作用到新的元素上，触发新元素的 click 事件或页面调转，此现象称为点击穿透
+解决方法共有4种，但是第一种是最简单也是最直接有效的，其它的只是考一些边边角角的知识点。
+1. 阻止默认事件
+```js
+node.addEventListener('touchstart', e => {
+   e.preventDefault();
+})
+```
+2. 使背后的元素不具备 click 特性，用 touchXXXX 来代替 click
+如将 a 标签改写成 touchend 事件
+```js
+btn.addEventListener('touchend', () => {
+   window.location.href = 'https://www.baidu.co'
+});
+```
+3. 让背后的元素暂时失去 click 事件， 300 毫秒左右在恢复
+其实这只是一个非常老的知识点，元素的样式上有一个 ‘pointer-events’属性，设置为 'none' 后将不再响应任何事件
+```js
+btn.addEventListener('touchend', e => {
+   baidu.style.pointerEvents = 'none';
+   mask.style.display = 'none';
+   setTimeout(() => {
+      baidu.style.pointerEvents = 'auto';
+   }, 300);
+});
+```
+4. 让隐藏元素延迟 300 毫秒再隐藏
+```js
+btn.addEventListener('touchend', e => {
+   setTimeout(() => {
+      mask.style.display = 'none';
+   }, 300);
+});
+```
