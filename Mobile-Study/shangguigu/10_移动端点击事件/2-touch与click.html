@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2-touch与click</title>
+  <style>
+    #a {
+      width: 100%;
+      height: 300px;
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+<body>
+  <div id="a"></div>
+
+  <script>
+    const a = document.getElementById('a');
+    let time;
+    a.addEventListener('touchstart', () => {
+      time = Date.now();
+      console.log('touchstart 所指定的回调执行了');
+    }); 
+
+    a.addEventListener('click', () => {
+      console.log('click  所指定的回调执行了', Date.now() - time);
+    }); 
+  </script>
+</body>
+</html>
