@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1_1物理像素边框_直接设置</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      font-size: 100px;
+    }
+
+    .a {
+      width: 3.45rem;
+      height: 1.5rem;
+      margin: 1px auto 0;
+      background-color: aquamarine;
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio: 2){
+      .a {
+        margin: 0.5px auto 0;
+      }
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio: 3){
+      .a {
+        margin: 0.3333px auto 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="a">
+  </div>
+
+  <script>
+    function adapter() {
+      // 获取手机横向的设备独立像素
+      const dip = document.documentElement.clientWidth;
+      // 100 是我们指定的，375 是设计稿宽度
+      const val = (100 / 375) * dip;
+      document.documentElement.style.fontSize = `${val}px`;
+    };
+    adapter();
+
+    window.onresize = adapter;
+  </script>
+</body>
+</html>

@@ -178,3 +178,35 @@ vw 和 vh 是两个相对单位
 - 1vw = 等于布局视口宽度的 1%
 - 1vh = 等于布局视口高度的 1%
 不过 vw 和 vh 有一定的兼容性问题[查看](https://www.caniuse.com)
+
+### 1物理像素边框
+高清屏幕下 1px 对应更多的物理像素， 所以 1 像素边框看起来比较粗，解决方法两种如下：
+1. 媒体查询直接设置大小
+```css
+@media screen and (-webkit-min-device-pixel-ratio: 2){
+   .a {
+      margin: 0.5px auto 0;
+   }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 3){
+   .a {
+      margin: 0.3333px auto 0;
+   }
+}
+```
+2. 媒体查询以及伪元素缩放
+```css
+@media screen and (-webkit-min-device-pixel-ratio: 2){
+   .a::after {
+      transform: scaleY(0.5)
+   }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 3){
+   .a::after {
+      transform: scaleY(0.3333)
+   }
+}
+```
+但目前很多移动端网站已经不再做边框的，所以这个用处其实不大，因为本身移动端屏幕就小，没必要加边框了
