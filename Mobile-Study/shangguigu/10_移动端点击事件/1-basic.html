@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>basic</title>
+  <style>
+    #a {
+      width: 100%;
+      height: 300px;
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+<body>
+  <div id="a"></div>
+
+  <script>
+    const a = document.getElementById('a');
+    a.addEventListener('touchstart', () => {
+      console.log('你开始摸我了！！');
+    }); 
+    a.addEventListener('touchmove', () => {
+      console.log('你开始在我身上移动了！！');
+    }); 
+    a.addEventListener('touchend', () => {
+      console.log('你从我身上拿开了！！');
+    }); 
+    a.addEventListener('touchcancel', () => {
+      console.log('触摸被打断了！！');
+    }); 
+    setTimeout(() => {
+      alert('打断触摸！！')
+    }, 2000);
+  </script>
+</body>
+</html>
