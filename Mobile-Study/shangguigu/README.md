@@ -177,4 +177,4 @@ viewport-fit 设置为 cover 值可以解决刘海屏的留白问题
 vw 和 vh 是两个相对单位
 - 1vw = 等于布局视口宽度的 1%
 - 1vh = 等于布局视口高度的 1%
-不过 vw 和 vh 有一定的兼容性问题
+不过 vw 和 vh 有一定的兼容性问题[查看](https://www.caniuse.com)
