@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4-rem适配方案2</title>
+  <style>
+    html, body {
+      font-size: 37.5px;
+    }
+
+    .a {
+      width: 9.2rem;
+      height: 4rem;
+      margin: 0.4rem auto 0;
+      background-color: aquamarine;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="a">
+  </div>
+
+  <script>
+    function adapter() {
+      // 获取手机横向的设备独立像素
+      const dip = document.documentElement.clientWidth;
+      document.documentElement.style.fontSize = `${dip / 10}px`;
+    };
+    adapter();
+
+    window.onresize = adapter;
+  </script>
+</body>
+</html>
