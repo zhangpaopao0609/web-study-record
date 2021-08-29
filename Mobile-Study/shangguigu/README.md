@@ -70,7 +70,7 @@ css 像素又名：逻辑像素，css 像素是一个抽象的长度单位，单
 
 > 来看一个场景，
 >
-> 程序猿写： width = 2排序， height = 2px 的盒子，若 1 个 css 像素直接对应一个物理像素，由于 iPhone3G/S 与 iPhone4 屏幕尺寸相同，但是 iPhone4 的屏幕能够容纳更多的物理像素点，所以 iPhone4 的物理像素点比  iPhone3G/S 小很多，那么理论上这个盒子在 iPhone4 屏幕上也就会比 iPhone3G/S 屏幕上小很多，而事实是在 iPhone3G/S 与 iPhone4 下这个盒子显示时一样大的！！！只不过在 iPhone4 上更加细腻、清晰。那是如何做到的呢？这就要靠设备独立像素。
+> 程序猿写： width = 2px， height = 2px 的盒子，若 1 个 css 像素直接对应一个物理像素，由于 iPhone3G/S 与 iPhone4 屏幕尺寸相同，但是 iPhone4 的屏幕能够容纳更多的物理像素点，所以 iPhone4 的物理像素点比  iPhone3G/S 小很多，那么理论上这个盒子在 iPhone4 屏幕上也就会比 iPhone3G/S 屏幕上小很多，而事实是在 iPhone3G/S 与 iPhone4 下这个盒子显示时一样大的！！！只不过在 iPhone4 上更加细腻、清晰。那是如何做到的呢？这就要靠设备独立像素。
 
 <img src="/Users/ardor/Desktop/MyGitHub/web-study-record/Mobile-Study/shangguigu/img/iPhone3-4-c.png" alt="image-20210828224458137" style="zoom:67%;" />
 
