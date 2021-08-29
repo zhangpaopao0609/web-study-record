@@ -11,32 +11,16 @@
       padding: 0;
     }
     
-    html, body {
-      font-size: 37.5px;
-    }
-
     .a { 
-      width: 9.2rem;
-      height: 4rem;
-      margin: 0.4rem auto 0;
+      width: 9.2vw;
+      height: 4vw;
+      margin: 0.4vw auto 0;
       background-color: aquamarine;
     }
     
   </style>
 </head>
 <body>
-  <div class="a">
-  </div>
-
-  <script>
-    function adapter() {
-      // 获取手机横向的设备独立像素
-      const dip = document.documentElement.clientWidth;
-      document.documentElement.style.fontSize = `${dip / 10}px`;
-    };
-    adapter();
-
-    window.onresize = adapter;
-  </script>
+  <div class="a"></div>
 </body>
 </html>

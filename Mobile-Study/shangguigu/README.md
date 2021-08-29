@@ -2,6 +2,10 @@
 
 # 移动端基础知识详解
 
+## 0. 前言
+
+对于 Web 而言，移动端的开发已是基本功，但是很多概念，基础知识确实我们在 pc 端开发中完全接触不到的。今次有机会系统的学习移动端的基础知识，在此记录和分享。
+
 ## 1. 相关基本概念
 
 ### 1.1 屏幕相关
@@ -109,68 +113,171 @@ css 像素又名：逻辑像素，css 像素是一个抽象的长度单位，单
 
 ### 1.3 图片的高清显示
 
-1. 位图像素
+#### 1.3.1 位图像素
 
-   位图和矢量图
+位图和矢量图
 
-   - 位图，又称点阵图像或栅格图像，是由 n 个像素点组成的。放大后会失真。
-   - 矢量图，又称面向对象图或回执图像，在数学上定义为一系列曲线连接的点，放大后不会失真，常见 svg
+- 位图，又称点阵图像或栅格图像，是由 n 个像素点组成的。放大后会失真（常见有：png、jpeg、jpg、gif）。
+- 矢量图，又称面向对象图或回执图像，在数学上定义为一系列曲线连接的点，放大后不会失真，常见 svg。
+
+位图像素也是一个长度单位，位图像素可以理解为位图中的一个“小格子”，是位图的最小单元。
+
+> 注意：1 个位图像素对应 1 个物理像素，图片就会得到完美清晰地展示
+>
+> 具体编码时借助媒体查询：`@media screen and (-webkit-min-device-pixel-ratio:x)`
+
+#### 1.3.2 图片的高清显示
+
+其实图片的高清显示是指在不同分辨率下展示不同分辨率的图片，低分辨率上展示低位图像素的图片，高分辨率上展示高位图像素的图片。
+
+如下示例，在 dpr 越高的屏幕下，展示的图片的位图像素就越高
+
+```html
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片的高清显示</title>
+  <style>
+    @media screen and (-webkit-min-device-pixel-ratio: 2) {
+      .logo {
+        content: url(../img/logo@2x.png);
+      }
+    }
+    @media screen and (-webkit-min-device-pixel-ratio: 3) {
+      .logo {
+        content: url(../img/logo@3x.png);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <img src="../img/logo.png" alt="" class="logo">
+</body>
+```
+
+
 
 ### 1.4 视口相关
 
 #### 1.4.1 pc 端视口
 
-在 pc 端，视口的默认宽度和浏览器窗口的宽度一致。在 css 标准文档中，视口又被称为：初始包含块。它是 所有 css 百分比宽度推算的根源，在 pc 端可通过如下几种方式获取宽度
+在 pc 端，视口的默认宽度和浏览器窗口的宽度一致。在 css 标准文档中，视口又被称为：初始包含块。它是 所有 css 百分比宽度推算的根源，在 pc 端可通过如下几种方式获取宽度。
+
+```js
+console.log('最干净的显示区域', document.documentElement.clientWidth);
+console.log('最干净的显示区域 + 滚动条', window.innerWidth);
+console.log('最干净的显示区域 + 滚动条 + 浏览器边框', window.outerWidth);
+console.log('与浏览器无关，当前设备显示分辨率横向的值', screen.width);
+```
 
 #### 1.4.2 移动端视口
 
-在移动端，浏览器厂商面临着一个比较大的问题，他们如何将数以万计的 pc 端网页完整的显示在移动端设备上，并且不会出现横向滚动条呢？那就要引出移动端的三个概念：1. 布局视口，2. 视觉视口，3. 理想视口
+在移动端，浏览器厂商面临着一个比较大的问题，他们如何将数以万计的 pc 端网页完整的显示在移动端设备上，并且不会出现横向滚动条呢？那就要引出移动端的三个概念：**1. 布局视口，2. 视觉视口，3. 理想视口**
 
-1. 布局视口
+1. **布局视口**
 
-   用于解决早起的页面在手机上显示的问题，早期的时候我们这样做： pc 端网页宽度一般都为： 960px ~ 1024px 这个范围，就算超出了改范围， 960px ~ 1024px 这个区域也依然是版心的位置，浏览器厂商针对移动端设备设计了一个容器，先用这个容器去承接 pc 端网页，这个容器的宽度一般是 980 px，不同的设备可能有所差异，但相差并不大；随后将这个容器等比例的压缩到与手机等宽，这样就可以保证没有横向滚动条且完整呈现页面，但是这样做依然有问题：网页内容被压缩得太小，严重影响用户体验。
+   用于解决早起的页面在手机上显示的问题，早期的时候我们这样做： pc 端网页宽度一般都为： 960px ~ 1024px 这个范围，就算超出了改范围， 960px ~ 1024px 这个区域也依然是版心的位置，浏览器厂商针对移动端设备设计了一个容器，先用这个容器去承接 pc 端网页，这个容器的宽度一般是 980px，不同的设备可能有所差异，但相差并不大；随后将这个容器**等比例的压缩到与手机等宽**，这样就可以**保证没有横向滚动条且完整呈现页面**，但是这样做依然有问题：网页内容被压缩得太小，严重影响用户体验。
 
-   移动端获取布局视口方式：`document.documentElement.clientWidth`
+   移动端获取布局视口方式：
 
-   注意： 布局视口经过压缩后，横向的宽度用 css 像素表达就不再是 375px 了，而是 980px， 因为布局视口是被压缩而不是截图。
+   ```js
+   document.documentElement.clientWidth
+   ```
 
+   注意： 布局视口经过压缩后，**横向的宽度用 css 像素表达就不再是 375px 了，而是 980px**， 因为布局视口是被压缩而不是截图。
+
+   <img src="/Users/ardor/Desktop/MyGitHub/web-study-record/Mobile-Study/shangguigu/img/layout-viewport.png" alt="image-20210829093846079" style="zoom:80%;" />
+
+   >在使用 980px 这个容器的情况下，再描述一下自己的屏幕
+   >
+   >以 iPhone6 为例，描述一下屏幕（横向上）：
+   >
+   >- 物理像素： 750px
+   >- 设备独立像素： 375px
+   >- css 像素 980px
+
+2. **视觉视口**
+
+   视觉视口就是用户可见的区域，**它的绝对宽度永远和设备(这里的设备用布局视口来衡量)一样宽**，但是这个宽度里所包含的 css 像素值是变化的，例如：一般手机会将 980 个 css 像素放入视觉视口中，而 ipad Pro 会将 1024 个 css 像素放入视觉视口中.
+
+   移动端获取视觉视口方式： 
+
+   ```js
+   window.innerWidth
+   ```
+
+   不过在 Android2、Opera mini、UC8 中无法正确获取（一般不通过代码看视觉视口，因为和布局视口一样宽，直接用查看布局视口即可）。
+
+   ![image-20210829094221434](/Users/ardor/Desktop/MyGitHub/web-study-record/Mobile-Study/shangguigu/img/visual-viewport.png)
+
+3. **理想视口标准**
+   **与屏幕等宽(用设备独立像素来衡量)的布局视口**，称之为理想视口。所以也可以说理想视口是一种标准：让布局视口与屏幕等宽（设备独立像素），这就靠 `meta` 标签实现。
    
-
-2. 视觉视口
-
-   视觉视口就是用户可见的区域，它的绝对宽度永远和设备(这里的设备用布局视口来衡量)一样宽，但是这个宽度里所包含的 css 像素值是变化的，例如：一般手机会将 980 个 css 像素放入视觉视口中，而 ipad Pro 会将 1024 个 css 像素放入视觉视口中
-
-   移动端获取视觉视口方式： `window.innerWidth`
-
-3. 理想视口标准
-   与屏幕等宽(用设备独立像素来衡量)的布局视口，称之为理想视口。所以也可以说理想视口是一种标准：让布局视口与屏幕等宽（设备独立像素），靠 meta 标签实现
    理想视口的特点：
+   
    - 布局视口和屏幕等宽，以 iphone6 为例，符合理想视口标准之后
-      - 设备独立像素： 375px
-      - 布局视口宽度： 375px
+     - 设备独立像素： 375px
+     - 布局视口宽度： 375px
    - 用户不需要缩放、滚动就能看到网站的全部内容
-   - 要为移动端设备单独设计一个移动端网站
+   - **<font color='red'>要为移动端设备单独设计一个移动端网站</font>**
+   
    设置理想视口的具体方法
-   `<meta name='viewport' content='width=device-width'>`
+   
+   ```html
+   <meta name='viewport' content='width=device-width' />
+   ```
+
+【总结】
+
+不写 `meta` 标签(不符合理想视口标准)
+
+> 1. 描述屏幕：物理像素：750px、设备独立像素：375px、css像素： 980px
+> 2. 优点：元素在不同设备上，呈现效果几乎一样，因为都是通过布局容器等比缩放的
+> 3. 缺点：缩放后元素太小，页面文字不清楚，用户体验不好
+
+写 `meta` 标签 (符合理想视口标准)
+
+> 1. 描述屏幕：物理像素：750px、设备独立像素：375px、**css像素： 375px**
+> 2. 优点： 页面清晰展示，内容不再小到难以观察，用户体验较好
+> 3. 缺点：同一个元素，在不同屏幕（设备）上，呈现效果不一样，比如程序猿写的 375px，这个 css 像素在 iPhone6 上展示 375/375， 也就是横向满屏，但是在 iPhone6Plus 上展示 375/414，那么不到满屏，**所以这时候就需要我们做适配去解决了**
 
 ### 1.5 缩放
 
-### 移动端缩放
+#### 1.5.1 PC 端缩放
 
-放大时
-- 布局视口不变
-- 视觉视口变小
+1. 放大时
 
-缩小时
-- 布局视口不变
-- 视觉视口变大
+   - 视口变小
+   - 元素的 css 像素值不变，但是一个 css 像素所占面积变大了
 
-移动端缩放不会影响页面布局，因为缩放的时候，布局视口大小没有变化
+   > 放大时，视口变小了，但是元素的 css 像素值是不变的，横向能放下的元素就少了，所以 pc 端放大时会有元素被挤到下一行
+   >
+   > 但是为什么视口变小了我们看到还是屏幕那么大呢？当然是因为浏览器做了铺满浏览器窗口的处理
 
-### viewport 
-meta-viewport 标签是苹果公司在 2007 年引进的，用于移动端布局视口的控制
+2. 缩小时
+
+   - 视口变大
+   - 元素的 css 像素值不变，但是一个 css 像素所占面积变小了
+
+#### 1.5.2 移动端缩放
+
+1. 放大时
+   - 布局视口不变
+   - 视觉视口变小
+
+2. 缩小时
+   - 布局视口不变
+   - 视觉视口变大
+
+移动端缩放不会影响页面布局，因为缩放的时候，**布局视口大小没有变化**
+
+## 2. viewport 
+`meta-viewport` 标签是苹果公司在 2007 年引进的，用于移动端布局视口的控制
 使用示例：
-`<meta name='viewport' content='width=device-width, initial-scale=1.0'>`
+
+```html
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+```
 
 viewport 相关选项
 1. width 布局视口的宽度
@@ -180,108 +287,280 @@ viewport 相关选项
 5. user-scale 是否允许用户缩放
 6. viewport-fit 设置为 cover 值可以解决刘海屏的留白问题
 
-#### 1. width
-width 值可以使 device-width,也可以是具体值，但是有些安卓手机不支持， ios 全系列都支持
-#### 2. initial-scale
+**1. width**
+
+width 值可以是 device-width,也可以是具体值，但是有些安卓手机不支持， ios 全系列都支持。
+
+当设置 `width=device-width` 时，**就是在设置 布局视口宽度 等于 设备独立像素**。
+
+**2. initial-scale**
+
 - initial-scale 为页面初始化时的显示比例
 - initial-scale = 屏幕宽度(设备独立像素) / 布局视口像素
-- 只写 initial-scale=1.0 也可以实现完美视口，但为了更好的兼容性，`width=device-width, initial-scale=1.0` 都写上
+- 只写 initial-scale=1.0 也可以实现理想视口，但为了更好的兼容性，`width=device-width, initial-scale=1.0` 都写上
 
-#### 3. maximum-scale
+**3. maximum-scale**
+
 - 设置允许用户最大缩放比例，苹果浏览器 safari 不认识该属性
 - maximum-scale=屏幕宽度（设备独立像素）/ 视觉视口宽度值
 
-#### 4. minimum-scale
+**4. minimum-scale**
+
 - 设置允许用户最小缩放比例，苹果浏览器 safari 不认识该属性
 - maximum-scale=屏幕宽度（设备独立像素）/ 视觉视口宽度值 
 
-#### 5. user-scalable
+**5. user-scalable**
+
 - 是否允许用户通过手指缩放页面。苹果浏览器 safari 不认识该属性
 
-#### 6. vueport-fit
+**6. vueport-fit**
+
 - 解决刘海屏问题
 viewport-fit 设置为 cover 值可以解决刘海屏的留白问题
 
 
-# 适配
-## 为什么要做适配？
-由于移动端设备的屏幕尺寸大小不一，会出现：同一个元素在两个不同的手机上显示效果不一样（比例不容）。要想让同一个元素在不同设备上显示效果一样，就需要适配，无论采用何种适配方案，中心原则永远是： 等比！
-主要的适配方案又是那种
-- viewport 适配方案
-- rem 适配
+## 3. 适配
+### 3.1 为什么要做适配？
+由于移动端设备的屏幕尺寸大小不一，会出现：同一个元素在两个不同的手机上显示效果不一样（比例不容）。要想让同一个元素在不同设备上显示效果一样，就需要适配，无论采用何种适配方案，中心原则永远是： **等比**！
+主要的适配方案有三种：
 
-### viewport 适配 方案
-- 方法： 拿到设计稿之后，设置布局视口宽度为设计稿宽度，然后直接按照设计稿给出宽高进行布局即可
+- viewport 适配方案
+- rem 适配 (目前主流方式，几乎完美适配)
+- vw 适配
+
+### 3.2 viewport 适配 方案
+- 方法： 拿到设计稿之后，**设置布局视口宽度为设计稿宽度**，然后直接按照设计稿给出宽高进行布局即可
 ```html
 <meta name="viewport" content="width=375">
 ```
 - 优点：不用复杂的计算，直接使用图稿上标注的 px 值
 - 缺点：
-   - 不能使用完整的 meat 标签，会导致在某些安卓手机上有兼容性问题
+   - 不能使用完整的 meat 标签，会导致在某些安卓手机上**有兼容性问题**
    - 不希望适配的东西，例如边框，也强制参与了适配
 
-### rem 适配方案
-共有两种方案
-1. 
-核心过程：
-- 根字体 = （设备横向独立像素 / 设计稿宽度）* 100
-- 编写样式时：
-   - 直接以 rem 为单位
-   - 值为：设计值 / 100
+### 3.3 rem 适配方案
 
-2. 
-核心过程：
-- 根字体 = 设备横向独立像素 / 10
-- 编写样式时：
-   - 直接以 rem 为单位
-   - 值为： 设计值 / (设计稿宽度 / 10)  
+#### 3.3.1 em 和 rem
 
-### vw 适配方案
+em 和 rem 都是 css 中的长度单位。而且两个都是相对长度单位，不过两个有点区别
+
+- em 相对的是父级元素的字体大小
+- rem 相对的是根元素的字体大小（`html，body`）
+
+rem 适配的原理：**编写样式时统一使用 rem 为单位，在不同设备上动态调整根字体大小**
+
+#### 3.3.2 rem 适配
+
+1. 方案一：目前淘宝、百度移动端页面用的此方案
+
+   - 设置完美视口 `meta viewport` 标签
+
+   - 通过 js 设置根字体大小 = （设备横向独立像素 / 设计稿宽度）* 100
+
+     > 这里的 100 是为了计算时简单，比如设计稿写 300px，那么设置根字体大小为 100px， 在程序里只需要写 3 rem 既可以了。不同设备上，设备独立像素变化，那么根字体大小也会成比例的变化（相对与设计稿），那么元素的大小因为是设置的 rem，所以也就成比例变化了。
+
+   - 编写样式时：
+     - 直接以 rem 为单位
+     - 值为：设计值 / 100
+
+   示例如下：
+
+   ```html
+   <head>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <style>
+       .a {
+         width: 3.45rem;
+         height: 1.5rem;
+         margin: 0.15rem auto 0;
+         background-color: aquamarine;
+       }
+     </style>
+   </head>
+   <body>
+     <div class="a"></div>
+     <script>
+       function adapter() {
+         // 获取手机横向的设备独立像素
+         const dip = document.documentElement.clientWidth;
+         // 100 是我们指定的，375 是设计稿宽度
+         const val = (100 / 375) * dip;
+         document.documentElement.style.fontSize = `${val}px`;
+       };
+       adapter();
+   
+       window.onresize = adapter;
+     </script>
+   </body>
+   </html>
+   ```
+
+2. 方案二：目前搜狐、唯品会移动端页面用的此方案
+
+  - 设置完美视口 `meta viewport` 标签
+
+  - 通过 js 设置根字体大小 = 设备横向独立像素 / 10
+
+  - 编写样式时：
+
+    - 直接以 rem 为单位
+    - 值为： 设计值 / (设计稿宽度 / 10)  
+
+    > 这种方案相比较方案二的优点就在于设置根字体的方法简单，但是缺点在于程序猿在写 css 样式的时候就麻烦了，需要计算，比如设计值 345，那么需要 345/(375/10)rem，这种计算就麻烦了，不过这也能很好的解决，用 less 就可以完美解决了，但是总的来说，还是方案一更简单实用
+
+  示例如下：
+
+  less 文件
+
+  ```less
+  @font: 375/10rem;
+  
+  .a {
+    width: 345/@font;
+    height: 150/@font;
+    margin: 15/@font auto 0;
+    background-color: aquamarine;
+  }
+  ```
+
+  html 文件
+
+  ```html
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 此处引入由 less 转化而成的 css 文件 -->
+  </head>
+  <body>
+    <div class="a"></div>
+    <script>
+      function adapter() {
+        // 获取手机横向的设备独立像素
+        const dip = document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = `${dip / 10}px`;
+      };
+      adapter();
+  
+      window.onresize = adapter;
+    </script>
+  </body>
+  </html>
+  ```
+
+  
+### 3.4 vw 适配方案
 vw 和 vh 是两个相对单位
 - 1vw = 等于布局视口宽度的 1%
 - 1vh = 等于布局视口高度的 1%
-不过 vw 和 vh 有一定的兼容性问题[查看](https://www.caniuse.com)
 
-### 1物理像素边框
-高清屏幕下 1px 对应更多的物理像素， 所以 1 像素边框看起来比较粗，解决方法两种如下：
-1. 媒体查询直接设置大小
-```css
-@media screen and (-webkit-min-device-pixel-ratio: 2){
-   .a {
-      margin: 0.5px auto 0;
-   }
-}
+不过 vw 和 vh 有一定的兼容性问题 [查看](https://www.caniuse.com)
 
-@media screen and (-webkit-min-device-pixel-ratio: 3){
-   .a {
-      margin: 0.3333px auto 0;
-   }
-}
+示例如下：
+
+```html
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1-vw适配方案</title>
+  <style>
+    .a { 
+      width: 9.2vw;
+      height: 4vw;
+      margin: 0.4vw auto 0;
+      background-color: aquamarine;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="a"></div>
+</body>
 ```
-2. 媒体查询以及伪元素缩放
-```css
-@media screen and (-webkit-min-device-pixel-ratio: 2){
-   .a::after {
-      transform: scaleY(0.5)
-   }
-}
 
-@media screen and (-webkit-min-device-pixel-ratio: 3){
-   .a::after {
-      transform: scaleY(0.3333)
-   }
-}
+> 计算的问题同样可以使用 less 解决，但是兼容性的确存在问题
+
+### 3.5 1 物理像素边框
+高清屏幕下 1px 对应更多的物理像素， 所以 1 像素边框看起来比较粗，那如果就是希望仅仅是 1 物理像素的边框呢，也就是只亮一个灯泡来显示边框，解决方法两种如下：
+1. 媒体查询直接设置大小，比例根据 dpr 来设计
+```css
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1_1物理像素边框_直接设置</title>
+  <style>
+    .a {
+      margin: 1px auto 0;
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio: 2){
+      .a {
+        margin: 0.5px auto 0;
+      }
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio: 3){
+      .a {
+        margin: 0.3333px auto 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="a"></div>
+</body>
+```
+2. 媒体查询以及伪元素缩放（当然设置的边框也需要使用伪元素来实现）
+```css
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2_1物理像素边框_伪元素</title>
+  <style>
+    .a {
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .a::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #000;
+      height: 1px;
+    }
+ 
+    @media screen and (-webkit-min-device-pixel-ratio: 2){
+      .a::after {
+        transform: scaleY(0.5);
+      }
+    }
+   
+    @media screen and (-webkit-min-device-pixel-ratio: 3){
+      .a::after {
+        transform: scaleY(0.3333);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="a"></div>
+</body>
 ```
 但目前很多移动端网站已经不再做边框的，所以这个用处其实不大，因为本身移动端屏幕就小，没必要加边框了
 
-### 移动端点击事件
+## 4. 移动端事件
+### 4.1 事件基本概念
+
 移动端兼容 pc 端的所以事件，但 pc 端不兼容 移动端事件
 移动端事件列表
+
 - touchstart 元素上触摸开始时触发
 - touchmove 元素上触摸移动时触发
 - touchend 手指从元素上离开时触发
 - touchcancel 触摸被打断时触发
-这几个事件最早出现在 IOS safari 中，为了想开发人员转达一些特殊的信息
+
+这几个事件最早出现在 IOS safari 中，为了向开发人员转达一些特殊的信息。
 
 应用场景
 - touchstart 事件可以用于元素触摸的交互，比如页面跳转，标签页切换
@@ -295,11 +574,13 @@ vw 和 vh 是两个相对单位
 - 事件的作用在于实现移动端的界面交互
 
 
-### 点击穿透
-touch 事件结束后会默认触发元素的 click 事件，如果没有设置完美视口，则事件触发的时间间隔为 300 ms 左右，如果设置完美视口则时间间隔为 30ms 左右（当然也得看具体的设备的特性）
+### 4.2 点击穿透
+**touch 事件结束后会默认触发元素的 click 事件**，如果没有设置完美视口，则事件触发的时间间隔为 300 ms 左右，如果设置完美视口则时间间隔为 30ms 左右（当然也得看具体的设备的特性）
 
-如果 touch 事件隐藏了元素，则 click 动作将作用到新的元素上，触发新元素的 click 事件或页面调转，此现象称为点击穿透
+**如果 touch 事件隐藏了元素，则 click 动作将作用到新的元素上，触发新元素的 click 事件或页面调转，此现象称为点击穿透。**[点击可查看点击穿透示例代码](https://github.com/Ardor-Zhang/web-study-record/blob/master/Mobile-Study/shangguigu/11_%E7%82%B9%E5%87%BB%E7%A9%BF%E9%80%8F%E9%97%AE%E9%A2%98/0_%E5%BC%95%E5%87%BA%E7%82%B9%E5%87%BB%E7%A9%BF%E9%80%8F%E9%97%AE%E9%A2%98.html)
+
 解决方法共有4种，但是第一种是最简单也是最直接有效的，其它的只是考一些边边角角的知识点。
+
 1. 阻止默认事件
 ```js
 node.addEventListener('touchstart', e => {
@@ -333,7 +614,13 @@ btn.addEventListener('touchend', e => {
 });
 ```
 
-### 移动端真机调试
-1. 内网穿透
-- ngrok
-- uTools
+## 5. 移动端真机调试
+
+要实现移动端的真机调试，也就是手机能够访问开发的页面，可以用内网穿透实现。
+
+- ngrok： 这是一个内网穿透的可免费使用软件
+- uTools： uTools 上的内网穿透插件可实现（貌似下线了）
+
+## 6. 总结
+
+很多年前写移动端，总是迷迷糊糊的，对其不甚了解，今次有次机会全面的学习，有种豁然开朗的清爽，做此记录，分享给初学移动端的朋友们。
