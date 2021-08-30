@@ -4,7 +4,7 @@
 
 ## 1. 前言
 
-在 2021.8.10 日，官方发布了 Vue3.2，尤大大称之为 "Quintessential Quintuplets"，直译过来是“经典的五胞胎”，但是通过 twitter 上 Vue.js 的推文和 [Vue3.2 Released](https://blog.vuejs.org/posts/vue-3.2.html) 这篇博客一看便知，是指 3.2 版本拥有 5 个具有重大意译的新特性和功能。
+在 2021.8.10 日，官方发布了 Vue3.2，尤大大称之为 "Quintessential Quintuplets"，直译过来是“经典的五胞胎”，但是通过 twitter 上 Vue.js 的推文和 [Vue3.2 Released](https://blog.vuejs.org/posts/vue-3.2.html) 这篇博客一看便知，是指 3.2 版本拥有 5 个具有重大意义的新特性和功能。
 
 <img src="/Users/ardor/Desktop/MyGitHub/web-study-record/Vue/Vue3.2-released/img/vue-qq.png" alt="image-20210829153532618" style="zoom:50%;" />
 
@@ -56,6 +56,11 @@ button {
 
 单单是这两点，在开发过程中就会节省大量的代码和时间，接下来我会在另一篇博文中详细的讲解这一部分并给出示例，等完成后再来本文给出链接。
 
+也可先点击文档查看:
+
+-  [`<script setup>`](https://v3.vuejs.org/api/sfc-script-setup.html#basic-syntax)
+-  [`<style> v-bind`](https://v3.vuejs.org/api/sfc-style.html#state-driven-dynamic-css)
+
 ### 2.2 Web Components
 
 Vue 3.2 引入了一个新的 `defineCustomElement` 方法，可以使用 Vue 组件 API 轻松创建原生自定义元素：
@@ -91,7 +96,7 @@ customElements.define('my-vue-element', MyVueElement)
 - 创建普通元素 VNode 的速度提高了约 200%
 - 其它的提升 [[1]](https://github.com/vuejs/vue-next/commit/b7ea7c148552874e8bce399eec9fbe565efa2f4d) [[2]](https://github.com/vuejs/vue-next/commit/02339b67d8c6fab6ee701a7c4f2773139ed007f5)
 
-最后，还引入了一个新的 [`v-memo` 指令]((https://v3.vuejs.org/api/directives.html#v-memo))，它提供了记忆一部分模板树的能力。 `v-memo` 指令使得这部分模板可以跳过虚拟 `DOM` 的 `diff` 比较，同时还完全跳过新 `VNode` 的创建。 虽然很少需要，但它提供了一种在某些情况下想要得到最大性能的方案，例如大型 `v-for` 列表。
+最后，还引入了一个新的 [`v-memo` 指令](https://v3.vuejs.org/api/directives.html#v-memo)，它提供了记忆一部分模板树的能力。 `v-memo` 指令使得这部分模板可以跳过虚拟 `DOM` 的 `diff` 比较，同时还完全跳过新 `VNode` 的创建。 虽然很少需要，但它提供了一种在某些情况下想要得到最大性能的方案，例如大型 `v-for` 列表。
 
 直接单行添加 `v-memo` 即可生效，这也使得 Vue 成为 [js-framework-benchmark](https://github.com/krausest/js-framework-benchmark) 中最快的主流框架：
 
