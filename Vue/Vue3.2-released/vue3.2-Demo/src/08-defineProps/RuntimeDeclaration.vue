@@ -17,9 +17,12 @@ const props = defineProps({
 </script>
 
 <template>
-  <p></p>
+  <p>{{ title }}</p>
   <ul>
-    <li></li>
+    <li v-for="item in list">
+      <span>{{ item.content }}</span>
+      <input type="checkbox" :checked="item.isDone"/>
+    </li>
   </ul>
 </template>
 
