@@ -1,6 +1,6 @@
-<!-- <script lang="ts">
+<script lang="ts">
 export default { name: 'TestDefineExpose' }
-</script> -->
+</script>
 
 <script setup lang="ts">
 import { reactive, ref } from "@vue/reactivity";
@@ -21,13 +21,8 @@ const rules = {
 };
 const ruleFormRef = ref<{ validate: () => boolean } | null>(null);
 const validate = () => ruleFormRef.value?.validate();
-
-// defineExpose({
-//   rules,
-//   validate,
-// });
-
 </script>
+
 <template>
   <el-form :model="ruleForm" :rules="rules" ref="ruleFormRef" label-width="100px" class="demo-ruleForm">
     <el-form-item label="活动名称" prop="name">

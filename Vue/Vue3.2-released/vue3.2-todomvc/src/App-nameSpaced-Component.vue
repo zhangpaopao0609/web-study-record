@@ -1,6 +1,3 @@
-<script lang="ts">
-  export default { name: 'App' }
-</script>
 <script setup lang="ts">
 import HelloWorld from "./components/HelloWorld.vue";
 import Todo from "./components";
