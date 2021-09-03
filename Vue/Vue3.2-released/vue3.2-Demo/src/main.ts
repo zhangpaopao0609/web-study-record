@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
+
 // import App from "./scriptSetup/01-basicSyntax/index.vue";
 // import App from "./scriptSetup/02-toplevel-bindings-exposed-to-template/index.vue";
 // import App from "./scriptSetup/03-using-components/index.vue";
