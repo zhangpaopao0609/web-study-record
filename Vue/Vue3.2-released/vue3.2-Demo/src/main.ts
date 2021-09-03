@@ -14,7 +14,8 @@ import 'element-plus/dist/index.css';
 // import App from "./04-widthDefaults/index.vue";
 // import App from "./05-defineExpose/index.vue";
 // import App from "./06-useSlots-and-useAttrs/index.vue";
-import App from "./08-top-level-await/index.vue";
+// import App from "./08-top-level-await/index.vue";
+import App from "./styleFeature/02-module-style/index.vue";
 
 
 const app = createApp(App);
