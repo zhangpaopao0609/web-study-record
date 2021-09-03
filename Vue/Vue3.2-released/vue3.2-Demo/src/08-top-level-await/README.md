@@ -36,3 +36,9 @@ export default __sfc__
 >
 > 所以，思想才是关键，做法是次要的
 
+
+
+## 限制：`<script setup> `下建议不使用 Src 导入
+
+由于模块执行语义的差异，`<script setup>` 中的代码依赖单文件组件的上下文。当将其移动到外部的 `.js` 或者 `.ts` 文件中的时候，对于开发者和工具来说都会感到混乱。因而 **`<script setup>`** 不能和 `src` attribute 一起使用。
+
