@@ -1,10 +1,16 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 import { ref } from "vue";
+const color = ref('red');
 
-const a = ref(1);
-console.log('Hello Script Setup!!!');
+setTimeout(() => color.value = 'blue' , 2000);
 </script>
 
 <template>
-  <h1>{{ a }}</h1>
+  <p>hello</p>
 </template>
+
+<style scoped>
+p {
+  color: v-bind(color);
+}
+</style>

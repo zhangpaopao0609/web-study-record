@@ -1,15 +1,57 @@
 [toc]
 
-# 01-Basic Syntax
-要选择加入这个语法，需要将 `setup` attribute 添加到 `<script>` 代码块上：
+# 状态驱动的动态 CSS
+单文件组件的 `<style>` 标签可以通过 `v-bind` 这一 CSS 函数将 CSS 的值关联到动态的组件状态上：
 
 ```vue
-<script setup>
-const a = ref(1);
-console.log('hello script setup')
+<script setup lang="ts">
+import { ref } from "vue";
+const color = ref('red');
+
+setTimeout(() => color.value = 'blue' , 2000);
 </script>
+
+<template>
+  <p>hello</p>
+</template>
+
+<style scoped>
+p {
+  color: v-bind(color);
+}
+</style>
 ```
 
-里面的代码会被编译成组件 `setup()` 函数的内容。
+实际的值会被编译成 hash 的 CSS 自定义 property，CSS 本身仍然是静态的。**自定义 property 会通过内联样式的方式应用到组件的根元素上，并且在源值变更的时候响应式更新**。
 
-这也就意味着与普通的 `<script>` 只在组件被首次引入的时候仅执行一次不同，`<script setup>` 中的代码会在**每次组件实例被创建的时候执行**。这一点非常的重要，也就是写在 `<script setup>` 中的代码，例如初始化的赋值等在组件每次实例创建时都重新执行一次。
+上述代码编译后的结果如下：
+
+编译后的 css
+
+```css
+p[data-v-f13b4d11] {
+  color: var(--f13b4d11-color);		/* 通过 css 的 var 函数去获取到自定义属性的值 */
+}
+```
+
+编译后的 js
+
+```js
+const __sfc__ = /*#__PURE__*/_defineComponent({
+  setup(__props) {
+    _useCssVars(_ctx => ({
+      "f13b4d11-color": (color.value)		// 可以看到，编译后的值 和 一个 hash 值映射，并且具备响应式， css 的 var 便可以获取到这个 hash 映射的值
+    }))
+
+    const color = ref('red');
+    setTimeout(() => color.value = 'blue' , 2000);
+
+    return (_ctx,_cache) => {
+      return (_openBlock(), _createElementBlock("p", null, "hello"))
+    }
+  }
+})
+```
+
+
+
