@@ -2,6 +2,8 @@
 
 # 03-using-components
 
+### 1. 普通组件的使用
+
 `<script setup>` 中引入组件后可直接在模板使用，不再需要注册了。 
 
 ```vue
@@ -34,4 +36,23 @@ import SaySomething from "./Components/SaySomething.vue";
 > __sfc__.__file = "App.vue"
 > export default __sfc__
 > ```
+
+### 2. 动态组件
+
+动态组件的使用仍然 `is`，相对于 vue2.x 没有变化
+
+```vue
+<script setup lang='ts'>
+import { ref } from "vue";
+import Bar from "./Components/Bar.vue";
+import Foo from "./Components/Foo.vue";
+
+const condition = ref(false);
+setTimeout(() => condition.value = true, 2000);
+</script>
+
+<template>
+  <component :is="condition ? Bar : Foo"/>
+</template>
+```
 
