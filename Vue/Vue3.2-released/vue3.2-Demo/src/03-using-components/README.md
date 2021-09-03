@@ -2,7 +2,7 @@
 
 # 03-using-components
 
-### 1. 普通组件的使用
+## 1. 普通组件的使用
 
 `<script setup>` 中引入组件后可直接在模板使用，不再需要注册了。 
 
@@ -37,7 +37,7 @@ import SaySomething from "./Components/SaySomething.vue";
 > export default __sfc__
 > ```
 
-### 2. 动态组件
+## 2. 动态组件
 
 动态组件的使用仍然 `is`，相对于 vue2.x 没有变化
 
@@ -53,6 +53,42 @@ setTimeout(() => condition.value = true, 2000);
 
 <template>
   <component :is="condition ? Bar : Foo"/>
+</template>
+```
+
+## 3. 递归组件
+
+因为自动命名推断的缘故，一个单文件组件可以通过它的文件名被其自己所引用。例如：名为 `Foo.vue` 的组件可以在其模板中用 `<Foo/>` 引用它自己。
+
+请注意这种方式相比于 import 导入的组件和自主注册的组件优先级更低。所有如果有命名的 import 导入和组件的推断名冲突了，可以使用 import 别名导入：
+
+```js
+import { Foo as FooChild } from './components'
+```
+
+## 4. 命名空间组件
+
+可以使用带点的组件标记，例如 `<Foo.Bar>` 来引用嵌套在对象属性中的组件。这在需要从单个文件中导入多个组件的时候非常有用：
+
+`Components/index.ts` 用于导出组件
+
+```ts
+import Foo from './Foo.vue';
+import Bar from './Bar.vue';
+
+export { Foo, Bar };
+```
+
+`index.vue` 基于命名空间使用组件
+
+```vue
+<script setup lang='ts'>
+import * as Form from "../Components";
+</script>
+
+<template>
+  <Form.Foo />
+  <Form.Bar />
 </template>
 ```
 
