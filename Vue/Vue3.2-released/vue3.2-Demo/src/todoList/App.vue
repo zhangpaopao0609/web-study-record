@@ -2,10 +2,10 @@
   export default { name: 'App' }
 </script>
 <script setup lang="ts">
+import { ref } from 'vue';
 import HelloWorld from './components/HelloWorld.vue';
 import UserInput from "./components/UserInput/index.vue";
 import ListItem from "./components/ListItem/index.vue";
-import { ref } from '@vue/reactivity';
 
 interface Item {
   id: number,
@@ -28,7 +28,7 @@ const handleDelete = (id: number) => {
 };
 </script>
 <template>
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" title="Vue3.2 TodoMVC"/>
+  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" title="Vue3.2 TodoList"/>
   <UserInput @handle-input="handleInput"/>
   <ListItem :list="list" @handle-delete="handleDelete"/>
 </template>
