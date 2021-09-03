@@ -1,7 +1,4 @@
-
-
 [toc]
-
 # Vue3.2 新特性详解
 
 ## 1. 前言
@@ -124,7 +121,7 @@ export default __sfc__
 
 例如：名为 `Foo.vue` 的文件可以在模板中用 `<Foo/>` 引用它自己，在 devtools 中看到的组件名称也是 `Foo`。
 
-<img src="/Users/ardor/Desktop/MyGitHub/web-study-record/Vue/Vue3.2-released/vue3.2-Demo/src/scriptSetup/03-automatic-name-inference/img/Foo.vue.png" alt="image-20210903105628629" style="zoom:50%;" />
+<img src="./vue3.2-Demo/src/scriptSetup/03-automatic-name-inference/img/Foo.vue.png" alt="image-20210903105628629" style="zoom:50%;" />
 
 **注意**，这种推断的方式比显示注册或 `import` 的组件的优先级要低，所以，当遇到注册或引入的组件和推断名称冲突你，可以对注册或引入的组件重命名以避免冲突。
 
@@ -794,7 +791,7 @@ const __sfc__ = /*#__PURE__*/_defineComponent({
 
    在 [caniuse](https://caniuse.com/?search=var) 上查看结果如下，整体来说兼容性还是不错的。虽然已经明确不再支持 IE，但相信我们的尤大大肯定还是有做兼容处理的，这里先留一个任务给自己，去源码中查看这一部分的兼容处理，然后再分享出来。
 
-<img src="/Users/ardor/Desktop/MyGitHub/web-study-record/Vue/Vue3.2-released/vue3.2-Demo/src/styleFeature/03-state-driven-dynamic-css/img/caniuse-var.png" alt="image-20210903165734483" style="zoom:30%;" />
+<img src="./vue3.2-Demo/src/styleFeature/03-state-driven-dynamic-css/img/caniuse-var.png" alt="image-20210903165734483" style="zoom:30%;" />
 
 以上部分内容来自 MDN，关于 `var` 的更多内容可[点击查看](https://developer.mozilla.org/zh-CN/docs/Web/CSS/var())。
 
@@ -807,4 +804,3 @@ const __sfc__ = /*#__PURE__*/_defineComponent({
 细细的品了 `<script setup>` 以及 `<style> v-bind`，这些新的写法以及完美的 ts 类型推断和检查，再配上 `Volar`，写起来真实如丝般顺滑。
 
 说起来，`Volar` 也是 3.2 版本推出后的必备插件了，下一篇文章就来好好讲讲 `Volar` 吧，从体验、使用以及和 `Ventur` 的区别聊聊吧！		
-
