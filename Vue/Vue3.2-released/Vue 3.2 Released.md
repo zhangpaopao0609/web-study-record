@@ -1,6 +1,6 @@
 [toc]
 
-# Vue 3.2 Released
+# Vue 3.2 Released —— Vue3.2正式发布的五大特性
 
 ## 1. 前言
 

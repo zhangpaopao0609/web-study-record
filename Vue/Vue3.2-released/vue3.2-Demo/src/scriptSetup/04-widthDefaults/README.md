@@ -7,8 +7,8 @@
 ```ts
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
-  title: string,
-  list: List.Basic[],
+  title?: string,
+  list?: List.Basic[],
 }>(), {
   title: 'Hello withDefaults',
   list: () => [{ id: 3, content: '3', isDone: false }],
