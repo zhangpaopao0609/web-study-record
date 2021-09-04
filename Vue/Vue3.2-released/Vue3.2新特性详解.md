@@ -1,5 +1,5 @@
 [toc]
-# Vue3.2 新特性详解
+# Vue3.2 新特性详解——`<script setup>`和 `<style> v-bind`
 
 ## 1. 前言
 
@@ -22,7 +22,19 @@
 
 ## 2. `<script setup> `新特性
 
-`<script setup>` 是普通的 `<script>` 的语法糖，在运行前会经过一个编译的过程。
+`<script setup>` 是普通的 `<script>` 的语法糖，在运行前会经过一个编译的过程。例如以下这个简单的 SFC (Single File Components)。
+
+![WX20210904-102030@2x](./img/scripSetup.png)
+
+从编译的结果可以总结三点，也是 `<script setup>` 这个糖贯穿始终的三点：
+
+1. `<script setup>` 语法糖最终编译成了普通的 `<script>`
+2. `<script setup>` 的内容都编译成了组件 `setup()` 函数的内容
+3. 模板内容都编译成了 **VNode** 结构并在 `setup()` 函数中导出，并且对模板中的值进行了引用
+
+> 从这三点不知道你有没有猜到些什么？这个语法糖能带来写什么？可以先简单的思考一下
+
+那到底 `<script setup>` 这个语法糖到底为我们提供了哪些便捷呢？这个糖到底哪儿甜了？和普通的 `<script>` 相比又有哪些优势呢？下面就让我们一起来探究其中奥秘吧！
 
 ### 2.1 基本语法
 
@@ -63,7 +75,7 @@ const inputValue = ref('输入测试');
 
 以下为上述 SFC 编译后的 JS 代码。
 
-可以看到，<font color='red'>编译后 `<script setup>` 语法糖变成了 `<script>` 并导出了模板 VNode 结构的函数，并且将模板中用到的值进行了自动解包</font>。这就是为什么不再需要显示 `return` 的原因了。感兴趣的同学也可在 [`Vue SFC Playground`](https://sfc.vuejs.org/) 中测试。
+可以看到，<font color='red'>编译后 `<script setup>` 语法糖变成了 `<script>` 并导出了模板 VNode 结构的函数，并且将模板中用到的值进行了引用和自动解包</font>。这就是为什么不再需要显示 `return` 的原因了。感兴趣的同学也可在 [`Vue SFC Playground`](https://sfc.vuejs.org/) 中测试。
 
 ```js
 import { defineComponent as _defineComponent } from 'vue'
@@ -796,6 +808,8 @@ const __sfc__ = /*#__PURE__*/_defineComponent({
 以上部分内容来自 MDN，关于 `var` 的更多内容可[点击查看](https://developer.mozilla.org/zh-CN/docs/Web/CSS/var())。
 
 ## 4. 总结
+
+看完以上内容，相信 `<script setup>` 和 `<style> v-bind` 有让你觉得兴奋，它所带来的这新的特性，不仅可以完美的契合 TS 类型检查和推断，更是极大的提高了开发体验。当然不仅仅是表现层面的，还有 `<script setup>` 因其将模板编译到了 `setup()` 函数中所节省的变量引用二次开销，都让 Vue 更上了一个台阶，真的佩服尤大大呀！
 
 文中提到的所有代码均可在[仓库](https://github.com/Ardor-Zhang/web-study-record/tree/master/Vue/Vue3.2-released/vue3.2-Demo)中查看。
 
