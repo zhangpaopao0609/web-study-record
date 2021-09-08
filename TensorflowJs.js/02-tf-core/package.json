@@ -1,0 +1,21 @@
+{
+  "name": "npm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow/tfjs": "^3.9.0",
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.1"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^5.3.2"
+  }
+}
