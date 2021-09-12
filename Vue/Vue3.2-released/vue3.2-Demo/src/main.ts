@@ -17,8 +17,9 @@ import 'element-plus/dist/index.css';
 // import App from "./styleFeature/02-module-style/index.vue";
 // import App from "./styleFeature/03-state-driven-dynamic-css/index.vue";
 // import App from "./todoList/App.vue";
-import './webComponents/index';
-import App from "./webComponents/index.vue";
+// import './webComponents/index';
+// import App from "./webComponents/index.vue";
+import App from "./effectScopeAPI/index.vue";
 
 const app = createApp(App);
 app.use(ElementPlus);
