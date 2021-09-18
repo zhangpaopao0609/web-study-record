@@ -6,13 +6,13 @@
 
 在 2021.8.10 日，官方发布了 Vue3.2，尤大大称之为 "Quintessential Quintuplets"，直译过来是“经典的五胞胎”，但是通过 twitter 上 Vue.js 的推文和 [Vue3.2 Released](https://blog.vuejs.org/posts/vue-3.2.html) 这篇博客一看便知，是指 3.2 版本拥有 5 个具有重大意义的新特性和功能。
 
-<img src="./img/vue-qq.png" alt="image-20210829153532618" style="zoom:50%;" />
+<img src="./img/released/vue-qq.png" alt="image-20210829153532618" style="zoom:50%;" />
 
 <div align='center'>Vue.js 的推文</div>
 
 Vue.js 的推文就可以看出四大特性，不是五大吗？这里可以先剧透一下，是五大，只是最后一个特性是一个相对高阶的特性，并不是面向一般的开发者的，而是面向库的开发者，所以在这里推文中没有提到。
 
-<img src="./img/evanyou.png" alt="image-20210829153201302" style="zoom:50%;" />
+<img src="./img/released/evanyou.png" alt="image-20210829153201302" style="zoom:50%;" />
 
 <div align='center'>尤大大在微博的博文</div>
 
@@ -100,7 +100,7 @@ customElements.define('my-vue-element', MyVueElement)
 
 直接单行添加 `v-memo` 即可生效，这也使得 Vue 成为 [js-framework-benchmark](https://github.com/krausest/js-framework-benchmark) 中最快的主流框架：
 
-<img src="./img/js-bench.png" alt="benchmark" style="zoom:50%;" />
+<img src="./img/released/js-bench.png" alt="benchmark" style="zoom:50%;" />
 
 ### 2.4 服务端渲染
 
