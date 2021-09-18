@@ -1,11 +1,11 @@
 <script setup lang="ts">
 // 暂不支持引入，因为 setup 语法糖会将 List 编译成一个变量，因此只能在文件内写
-// import { List } from "./type";
-interface List {
-  id: number,
-  content: string,
-  isDone: boolean,
-};
+import { List } from "./type";
+// interface List {
+//   id: number,
+//   content: string,
+//   isDone: boolean,
+// };
 
 const props = defineProps<{
   title: string,

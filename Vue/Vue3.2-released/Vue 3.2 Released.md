@@ -104,7 +104,7 @@ customElements.define('my-vue-element', MyVueElement)
 
 ### 2.4 服务端渲染
 
-3.2 版本中的 `@vue/server-renderer` 提供了一个 ES 模块构建包，它与 Node.js 内置模块分离。 这使得在非 Node.js 运行时环境中构建和使用 `@vue/server-renderer` 称为可能，（例如在 [CloudFlare Workers](https://developers.cloudflare.com/workers/) 或 Service Workers）。
+3.2 版本中的 `@vue/server-renderer` 提供了一个 ES 模块构建包，它与 Node.js 内置模块分离。 这使得在非 Node.js 运行时环境中构建和使用 `@vue/server-renderer` 成为可能，（例如在 [CloudFlare Workers](https://developers.cloudflare.com/workers/) 或 Service Workers）。
 
 我们还改进了流式渲染 API (streaming render APIs)，提供了用于渲染到 [Web Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的新方法。 查看 [@vue/server-renderer](https://github.com/vuejs/vue-next/tree/master/packages/server-renderer#streaming-api) 的文档以获取更多详细信息。
 

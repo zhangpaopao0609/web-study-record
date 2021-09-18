@@ -41,13 +41,15 @@
 要使用这个语法，需要将 `setup` attribute 添加到 `<script>` 代码块上：
 
 ```vue
-<script setup>
+<script setup lang="ts">
+import { ref } from "vue";
+
 const a = ref(1);
 console.log('hello script setup')
 </script>
 ```
 
-里面的代码会被编译成组件 `setup()` 函数的内容。
+<font color='red'>里面的代码会被编译成组件 `setup()` 函数的内容</font>。
 
 这也就意味着与普通的 `<script>` 只在组件被首次引入的时候仅执行一次不同，`<script setup>` 中的代码会在<font color='red'>**每次组件实例被创建的时候执行**</font>。这一点非常的重要，也就是写在 `<script setup>` 中的代码，例如初始化的赋值等在组件每次实例创建时都重新执行一次。
 
@@ -123,7 +125,7 @@ export default __sfc__
 
 #### 2.3.1 自动的组件名推断
 
-在 vue2.x options API 和使用普通的 `<script>` 的情况下，都可以为组件进行命名，以便再以下三种情况对组件进行定位或使用：
+在 vue2.x options API 和使用普通的 `<script>` 的情况下，都可以为组件进行命名，以便在下面三种情况对组件进行定位或使用：
 
 - 开发环境警告格式化
 - DevTools 检查
@@ -269,9 +271,9 @@ import * as Form from "../Components";
 
 1. 运行时声明（runtime declaration）
 
-   顾名思义，运行时的声明，也就是需要在运行中才会生效的一种声明。
+   顾名思义，运行时的声明，也就是需要在运行中会生效的一种声明。
 
-   在这里，运行时声明指对于 `props` 的类型的声明，这种声明方式 IED 是无法检测和给出提示的，<font color='red'>只有在运行后才会给出提示</font>，例如： 这是 options API 的 `props` 写法，也就是运行时声明。
+   比如在这里，对于 `props` 的运行时声明，<font color='red'>会在运行后给出提示</font>，例如： 这是 options API 的 `props` 写法，也就是运行时声明。
 
    ```js
    props: {
@@ -280,11 +282,11 @@ import * as Form from "../Components";
    }
    ```
 
-   这样的写法 IDE 是无法检测到 props 是否按照类型进行传递，只能运行后才能检测到，因此这种叫运行时声明。
+   运行后会检查对应传递的 `props` 类型，因此这种叫运行时声明。
 
 2. 类型声明（type declaration）
 
-   在这里类型声明指基于 ts 的类型检查，对 `props` 进行类型的约束，因此，要使用类型声明，需要基于 ts，即 `<script setup lang="ts">`
+   在这里类型声明指基于 ts 的类型检查，ts 的类型检查仅限于编译时的类型检查，编译成 js 后，就不再受类型的约束了，要使用类型声明，需要基于 ts，即 `<script setup lang="ts">`
 
 #### 2.4.2 Compiler Macros (编译时宏命令)
 
@@ -302,7 +304,7 @@ vue 官网中提到了这样的一个概念 —— Compiler Macros（翻译过�
 
 1. 使用运行时声明（runtime declaration）
 
-   `defineProps` 运行时声明的基本用法如下，仅支持运行时的校验。
+   `defineProps` 运行时声明的基本用法如下，支持运行时的校验，当然，在 volar 插件下还是完美的的支持了 IDE 的校验和提示。
 
      ```ts
    <script setup lang='ts'>
@@ -333,7 +335,7 @@ vue 官网中提到了这样的一个概念 —— Compiler Macros（翻译过�
 
 2. 类型声明（type declaration）
 
-   `defineProps` 类型声明的基本用法如下，完美的支持 IDE 的类型推断和检查。
+   `defineProps` 类型声明的基本用法如下，在 volar 插件下还是完美的的支持了 IDE 的校验和提示。
    
    ```ts
    <script setup lang='ts'>
@@ -359,7 +361,7 @@ vue 官网中提到了这样的一个概念 —— Compiler Macros（翻译过�
    })
    ```
    
-   从编译后的结果可以看到，两种方式最终都编译成了普通的 `<script>` 下的 `props` 模式，并且结果几乎完全一致。不同的在于是否完美的支持 IDE 的类型推断和检查。
+   从编译后的结果可以看到，两种方式最终都编译成了普通的 `<script>` 下的 `props` 模式，都编译成了运行时声明，并且结果几乎完全一致。不同的在于运行时声明 props 是基于 vue 提供的类型检查，仅支持 `String, Number, Array, Object` ，而 类型声明是基于 ts 的，可以支持所有类型的类型申明 `string, number, interface`，在 props 这里，除了写法外，这就是它们两者最大的不同。
 
 #### 2.4.4 需要注意的点
 
@@ -373,13 +375,13 @@ vue 官网中提到了这样的一个概念 —— Compiler Macros（翻译过�
 
      - 类型字面量，如 `string, number, boolean` 等
    
-     - 在**同一文件**中的 `interface` 或类型字面量的引用
+     - 在**同一文件**中的 `interface` 或类型字面量的引用 <font color='red'> 已经可以了，太强了，2021年9月15</font>
    
        - 说得更通俗一些就是，`props` 的  `ts` 接口只能写在本文件中，如下所示
    
          ```ts
          <script setup lang="ts">
-         // 暂不支持引入，因为 setup 语法糖会将 List 编译成一个变量，因此只能在文件内写
+         // 暂不支持从外部导入 ts 类型，因为 setup 语法糖会将 List 编译成一个变量，因此只能在文件内写
          // import { List } from "./type";
          interface List {
            id: number,
@@ -429,14 +431,14 @@ vue 官网中提到了这样的一个概念 —— Compiler Macros（翻译过�
 
 #### 2.4.5 运行时声明和类型声明的比较
 
-| 类型       | 优势                                                         | 劣势                                                         |
-| ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 运行时声明 | 不使用 ts 的情况下能够对 props 进行一定的、运行时的类型校验  | 1. 运行时校验<br />2. 只能进行基本类型的校验<br />3. 编码时无任何提示 |
-| 类型声明   | 完美的支持类型的校验，包括props 的完美类型约束、父组件在传 props 时的提示以及子组件在使用 props 的提示 | 目前 ts 的接口暂时只支持写在文件内，未来应该会实现可从外部导入的，<font color='red'>但目前可通过ts自动扫描types来解决</font> |
+| 类型       | 优势                                                         | 劣势                                               |
+| ---------- | ------------------------------------------------------------ | -------------------------------------------------- |
+| 运行时声明 | 不使用 ts 的情况下能够对 props 进行一定的、运行时的类型校验  | 1. 运行时校验<br />2. 只能进行基本类型的校验<br /> |
+| 类型声明   | 完美的支持类型的校验，包括props 的完美类型约束、父组件在传 props 时的提示以及子组件在使用 props 的提示 | -                                                  |
 
 因此，<font color='red'>强烈推荐使用类型声明的 `defineProps`</font>。
 
-### 2.5 props 的默认值 —— widthDefaults
+### 2.5 props 的默认值 —— withDefaults
 
 `defineProps` 使用类型声明时的不足之处在于，它没有可以给 props 提供默认值的方式。为了解决这个问题，提供了 `withDefaults` 宏命令。
 
@@ -475,9 +477,9 @@ const __sfc__ = /*#__PURE__*/_defineComponent({
 
 ### 2.6 自定义事件 —— defineEmits
 
-在 `<script setup>` 中 声明 `emit` ，必须使用 `defineEmits` API，这也是一个宏命令。同样可采用运行时声明和类型声明式，在类型声明下 `emit` 将具备完美的类型推断。
+在 `<script setup>` 中 声明 `emit` ，必须使用 `defineEmits` API，这也是一个宏命令。同样可采用普通写法和类型声明式，在类型声明下 `emit` 将具备完美的类型推断。
 
-1. 运行时声明
+1. 普通写法
 
    ```js
    <script setup lang="ts">
@@ -513,7 +515,7 @@ const __sfc__ = /*#__PURE__*/_defineComponent({
    </script>
    ```
 
-跟 `defineProps` 一样，运行时声明和类型声明式同样不可同时使用，且类型声明只能用于在 ts 环境下。
+跟 `defineProps` 一样，普通写法和类型声明式同样不可同时使用，且类型声明只能用于在 ts 环境下。
 
 ### 2.7 显示的暴露 —— defineExpose
 
@@ -656,7 +658,7 @@ scoped 跟 vue2.x 的设计和使用完全是一样的，因此不再赘述。
 
 ### 3.1 style module
 
-设计和使用上跟 Vue2.x 是一致的，因此也不多赘述。
+设计和使用上跟 Vue2.x 是一致的，。
 唯一新的点是使用 `<script setup>` 时，可以使用 `useCssModule`  API 获取到 css module 对象。
 
 ```vue

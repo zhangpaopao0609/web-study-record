@@ -8,7 +8,7 @@ import 'element-plus/dist/index.css';
 // import App from "./scriptSetup/03-using-components/dynamic-components/index.vue";
 // import App from "./scriptSetup/03-automatic-name-inference/Foo.vue";
 // import App from "./scriptSetup/03-using-components/namespaced-components/index.vue";
-// import App from "./scriptSetup/04-defineProps/index.vue";
+import App from "./scriptSetup/04-defineProps/index.vue";
 // import App from "./scriptSetup/04-defineEmits/index.vue";
 // import App from "./scriptSetup/04-widthDefaults/index.vue";
 // import App from "./scriptSetup/05-defineExpose/index.vue";
@@ -19,7 +19,7 @@ import 'element-plus/dist/index.css';
 // import App from "./todoList/App.vue";
 // import './webComponents/index';
 // import App from "./webComponents/index.vue";
-import App from "./effectScopeAPI/index.vue";
+// import App from "./effectScopeAPI/index.vue";
 
 const app = createApp(App);
 app.use(ElementPlus);
