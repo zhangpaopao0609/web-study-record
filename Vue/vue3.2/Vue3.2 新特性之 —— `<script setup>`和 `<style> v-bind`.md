@@ -1,5 +1,5 @@
 [toc]
-# Vue3.2 新特性详解——`<script setup>`和 `<style> v-bind`
+# Vue3.2 新特性之 —— `<script setup>`和 `<style> v-bind`
 
 ## 1. 前言
 
@@ -24,7 +24,9 @@
 
 `<script setup>` 是普通的 `<script>` 的语法糖，在运行前会经过一个编译的过程。例如以下这个简单的 SFC (Single File Components)。
 
-![WX20210904-102030@2x](./img/scripSetup.png)
+<div align='center'>
+  <img src="./img/setup/scripSetup.png" alt="image-20210918093055222" style="zoom:60%;" width='60%'/>
+</div>  
 
 从编译的结果可以总结三点，也是 `<script setup>` 这个糖贯穿始终的三点：
 
@@ -135,7 +137,9 @@ export default __sfc__
 
 例如：名为 `Foo.vue` 的文件可以在模板中用 `<Foo/>` 引用它自己，在 devtools 中看到的组件名称也是 `Foo`。
 
-<img src="./vue3.2-Demo/src/scriptSetup/03-automatic-name-inference/img/Foo.vue.png" alt="image-20210903105628629" style="zoom:24%;" />
+<div align='center'>
+  <img src="./img/setup/Foo.vue.png" alt="image-20210918093055222" style="zoom:30%;" width='30%'/>
+</div>  
 
 **注意**，这种推断的方式比显示注册或 `import` 的组件的优先级要低，所以，当遇到注册或引入的组件和推断名称冲突你，可以对注册或引入的组件重命名以避免冲突。
 
@@ -805,7 +809,9 @@ const __sfc__ = /*#__PURE__*/_defineComponent({
 
    在 [caniuse](https://caniuse.com/?search=var) 上查看结果如下，整体来说兼容性还是不错的。虽然已经明确不再支持 IE，但相信我们的尤大大肯定还是有做兼容处理的，这里先留一个任务给自己，去源码中查看这一部分的兼容处理，然后再分享出来。
 
-<img src="./vue3.2-Demo/src/styleFeature/03-state-driven-dynamic-css/img/caniuse-var.png" alt="image-20210903165734483" style="zoom:30%;" />
+<div align='center'>
+  <img src="./img/setup/caniuse-var.png" alt="image-20210918093055222" style="zoom:80%;" width='80%'/>
+</div>  
 
 以上部分内容来自 MDN，关于 `var` 的更多内容可[点击查看](https://developer.mozilla.org/zh-CN/docs/Web/CSS/var())。
 
