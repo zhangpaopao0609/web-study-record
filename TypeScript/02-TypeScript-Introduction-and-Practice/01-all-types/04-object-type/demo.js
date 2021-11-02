@@ -9,5 +9,5 @@ const a = a_o;
 const a1 = {
     x: 1,
     y: 2,
-    z: 3,
+    // z: 3,
 };

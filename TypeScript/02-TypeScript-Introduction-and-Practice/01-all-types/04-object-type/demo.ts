@@ -11,5 +11,5 @@ const a : { x: number, y: number } = a_o;
 const a1 : { x: number, y: number } = {
   x: 1,
   y: 2,
-  z: 3,
+  // z: 3,
 };
