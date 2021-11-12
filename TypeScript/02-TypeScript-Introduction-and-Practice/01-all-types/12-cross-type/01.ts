@@ -14,5 +14,3 @@ type Shape4 = Circle & Rectangle
 declare const s1: Shape4;
 
 s1.color
-
-const bbj = 
