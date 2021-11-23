@@ -32,7 +32,7 @@ class BodyContent extends StatelessWidget {
           //   Radius.circular(150)
           // )
           borderRadius: BorderRadius.circular(150),
-          image:const DecorationImage(
+          image: const DecorationImage(
             image: NetworkImage(
               'https://avatars.githubusercontent.com/u/44194929?v=4'
             ),
