@@ -22,12 +22,20 @@ class BodyContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ClipOval(
+      child: Container(
         child: Image.network(
-          'https://avatars.githubusercontent.com/u/44194929?v=4',
-          height: 100,
-          width: 100,
-          fit: BoxFit.cover 
+          "https://avatars.githubusercontent.com/u/44194929?v=4",
+          alignment: Alignment.topLeft,
+          // color: Colors.yellow,
+          // colorBlendMode: BlendMode.luminosity,
+          // fit: BoxFit.fill,
+          // repeat: ImageRepeat.repeat,
+        ),
+        width: 300,
+        height: 300,
+        padding: const EdgeInsets.all(1),
+        decoration: const BoxDecoration(
+          color: Colors.yellow,
         ),
       ),
     );
