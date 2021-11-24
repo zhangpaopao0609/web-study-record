@@ -29,24 +29,24 @@ class LayoutDemo extends StatelessWidget {
         color: Colors.red,
         child: Stack(
           children: const [
-            Positioned(
-              top: 10,
+            Align(
+              alignment: Alignment.center,
               child: Icon(
                 Icons.home,
                 size: 40,
                 color: Colors.white
               ),
             ),
-            Positioned(
-              bottom: 100,
+            Align(
+              alignment: Alignment.topRight,
               child: Icon(
                 Icons.select_all,
                 size: 30,
                 color: Colors.orange
               ),
             ),
-            Positioned(
-              right: 10,
+            Align(
+              alignment: Alignment.topLeft,
               child: Icon(
                 Icons.search,
                 size: 60,
