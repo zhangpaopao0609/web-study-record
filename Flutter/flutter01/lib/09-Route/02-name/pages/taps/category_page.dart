@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../form.dart';
+
 class CategoryPage extends StatefulWidget {
   CategoryPage({Key? key}) : super(key: key);
 
@@ -16,9 +18,7 @@ class _CategoryPageState extends State<CategoryPage> {
         const Text("我是 CategoryPage 组件"),
         ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/form', arguments: {
-              "title": "路由传值"
-            });
+            Navigator.pushNamed(context, '/form');
           }, 
           child: const Text('跳转到表单页面并传值!!'),
         ),

@@ -22,12 +22,6 @@ class _HomePageState extends State<HomePage> {
             child: const Text('跳转到搜索页面!!'),
           ),
           const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/product');
-            }, 
-            child: const Text('跳转到商品页面!!'),
-          ),
         ],
       )
     );
