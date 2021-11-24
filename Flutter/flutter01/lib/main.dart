@@ -13,39 +13,51 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('flutter'),
         ),
-        body: BodyContent()
+        body: LayoutDemo()
       ),
     );
   }
 }
  
-class BodyContent extends StatelessWidget {
-  List<Widget> _getData() {
-    return listData.map((item) => 
-      SizedBox(
-        child: Column(
-          children: [
-            Image.network(
-              item["imageUrl"].toString(),
-            ),
-            Text(
-              item["title"].toString(),
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 50),
-            )
-          ],
-        ),
-      )
-    ).toList();
-  }
-
+class LayoutDemo extends StatelessWidget {
   @override   
   Widget build(BuildContext context) {
-    return  GridView.count(
-      crossAxisCount: 2,
-      crossAxisSpacing: 20,
-      mainAxisSpacing: 300,
-      children: _getData(),
+    return Container(
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        children: [   
+          Container(height: 200, color: Colors.black,),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child:  Container(
+                  height: 100,
+                  color: Colors.blue,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 45,
+                      color: Colors.yellow,
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      height: 45,
+                      color: Colors.pink,
+                    ),
+                  ],
+                )
+              )
+            ],
+          )         
+        ],
+      )
     );
   }
 }
