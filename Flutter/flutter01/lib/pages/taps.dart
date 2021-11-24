@@ -4,10 +4,11 @@ import 'taps/category_page.dart';
 import 'taps/setting_page.dart';
 
 class Tabs extends StatefulWidget {
-  Tabs({Key? key}) : super(key: key);
+  final int index;
+  const Tabs({Key? key, this.index = 0 }) : super(key: key);
 
   @override
-  _TabsState createState() => _TabsState();
+  _TabsState createState() => _TabsState(index);
 }
 
 class _TabsState extends State<Tabs> {
@@ -17,6 +18,10 @@ class _TabsState extends State<Tabs> {
     1: CategoryPage(),
     2: SettingPage(),
   };
+
+  _TabsState(index) {
+    _currentIndex = index;
+  }
 
   @override
   Widget build(BuildContext context) {
