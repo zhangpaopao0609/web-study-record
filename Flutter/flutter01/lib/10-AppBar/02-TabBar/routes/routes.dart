@@ -8,7 +8,6 @@ import '../pages/user/login.dart';
 import '../pages/user/register_first.dart';
 import '../pages/user/register_second.dart';
 import '../pages/app_bar_demo.dart';
-import '../pages/tab_bar_controller.dart';
 
 final Map<String, Function> routes = {
   '/': (context) => Tabs(),
@@ -19,7 +18,7 @@ final Map<String, Function> routes = {
   '/register_first': (context) => RegisterFirstPage(),
   '/register_second': (context) => RegisterSecondPage(),
   '/app_bar_demo': (context) => AppBarDemoPage(),
-  '/tab_bar_controller': (context) => TabBarControllerPage(),
+  // '/setting': (context) => SettingPage(),
 };
 
 Route onGenerateRoute(RouteSettings settings) {

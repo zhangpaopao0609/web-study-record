@@ -35,13 +35,6 @@ class _HomePageState extends State<HomePage> {
             }, 
             child: const Text('跳转到 APP_BAR_DEMO 页面!!'),
           ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/tab_bar_controller');
-            }, 
-            child: const Text('跳转到 tab_bar_controller 页面!!'),
-          ),
         ],
       )
     );
