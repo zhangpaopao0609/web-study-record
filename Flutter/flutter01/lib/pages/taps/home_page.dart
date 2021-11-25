@@ -49,6 +49,13 @@ class _HomePageState extends State<HomePage> {
             }, 
             child: const Text('跳转到 按钮演示 页面!!'),
           ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/form_demo');
+            }, 
+            child: const Text('跳转到 表单 页面!!'),
+          ),
         ],
       )
     );
