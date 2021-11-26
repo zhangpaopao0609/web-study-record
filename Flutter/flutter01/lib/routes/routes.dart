@@ -14,7 +14,7 @@ import '../pages/form_demo.dart';
 import '../pages/user_info_form.dart';
 import '../pages/date_demo.dart';
 import '../pages/date_time_picker.dart';
-// import '../pages/swiper_demo.dart';
+import '../pages/swiper_demo.dart';
 
 final Map<String, Function> routes = {
   '/': (context) => Tabs(),
@@ -32,7 +32,7 @@ final Map<String, Function> routes = {
   '/user_info_form': (context) => UserInfoFormPage(),
   '/date_demo': (context) => DateDemoPage(),
   '/date_time_picker': (context) => DateTimePickerPage(),
-  // '/swiper_demo': (context) => SwiperDemoPage(),
+  '/swiper_demo': (context) => SwiperDemoPage(),
 };
 
 Route? onGenerateRoute(RouteSettings settings) {
@@ -52,5 +52,4 @@ Route? onGenerateRoute(RouteSettings settings) {
       return route;
     }
   }
-
 }

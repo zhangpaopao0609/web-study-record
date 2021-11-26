@@ -20,9 +20,9 @@ class _CategoryPageState extends State<CategoryPage> {
                 child: TabBar(
                   isScrollable: true,
                   tabs: [
-                    Tab(text: '热销'),
-                    Tab(text: '推荐'),
-                    Tab(text: '推荐'),
+                    Tab(text: '日期'),
+                    Tab(text: '三方日期'),
+                    Tab(text: 'swiper'),
                     Tab(text: '推荐'),
                     Tab(text: '推荐'),
                     Tab(text: '推荐'),
@@ -54,7 +54,14 @@ class _CategoryPageState extends State<CategoryPage> {
                 )
               ],
             ),
-            Text('推荐'),
+            Column(
+              children: [
+                ElevatedButton(
+                  child: Text("点击跳转到Swiper页面"),
+                  onPressed: () => Navigator.of(context).pushNamed("/swiper_demo"),
+                )
+              ],
+            ),
             Text('推荐'),
             Text('推荐'),
             Text('推荐'),
