@@ -1,0 +1,114 @@
+{
+  "name": "tree-view",
+	"displayName": "tree-view",
+	"description": "tree-view",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.63.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onView:nodeDependencies"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "nodeDependencies.refreshEntry",
+					"title": "Refresh",
+					"icon": {
+							"light": "resources/light/refresh.svg",
+							"dark": "resources/dark/refresh.svg"
+					}
+			},
+			{
+				"command": "nodeDependencies.addEntry",
+				"title": "Add"
+			},
+			{
+				"command": "nodeDependencies.editEntry",
+				"title": "Edit",
+				"icon": {
+					"light": "resources/light/edit.svg",
+					"dark": "resources/dark/edit.svg"
+				}
+			},
+			{
+				"command": "nodeDependencies.deleteEntry",
+				"title": "Delete"
+			}
+		],
+		"views": {
+			"package-explorer": [
+				{
+					"id": "nodeDependencies",
+					"name": "Node Dependencies",
+					"icon": "media/dep.svg",
+					"contextualTitle": "Package Explorer"
+				}
+			]
+		},
+		"menus": {
+			"view/title": [
+				{
+					"command": "nodeDependencies.refreshEntry",
+					"when": "view == nodeDependencies",
+					"group": "navigation"
+				},
+				{
+					"command": "nodeDependencies.addEntry",
+					"when": "view == nodeDependencies"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "nodeDependencies.editEntry",
+					"when": "view == nodeDependencies && viewItem == dependency",
+					"group": "inline"
+				},
+				{
+					"command": "nodeDependencies.deleteEntry",
+					"when": "view == nodeDependencies && viewItem == dependency"
+				}
+			]
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "package-explorer",
+					"title": "Package Explorer",
+					"icon": "media/dep.svg"
+				}
+			]
+		},
+		"viewsWelcome": [
+			{
+				"view": "nodeDependencies",
+				"contents": "No node dependencies found，看看张跑跑"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.63.0",
+		"@types/glob": "^7.1.4",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"@typescript-eslint/eslint-plugin": "^5.1.0",
+		"@typescript-eslint/parser": "^5.1.0",
+		"eslint": "^8.1.0",
+		"glob": "^7.1.7",
+		"mocha": "^9.1.3",
+		"typescript": "^4.4.4",
+		"@vscode/test-electron": "^1.6.2"
+	}
+}
