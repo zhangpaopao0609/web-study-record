@@ -102,14 +102,20 @@ export function activate(context: vscode.ExtensionContext) {
 		// });
 
 				// vscode.languages.setTextDocumentLanguage(vscode.workspace.textDocuments[0], 'typescript');
-		vscode.window.onDidChangeActiveTextEditor((e) => {
-			const a = vscode.window.showInputBox()
-			a.then(res => {
-				console.log(res);
-			});
-		})
+		// vscode.window.onDidChangeActiveTextEditor((e) => {
+		// 	const a = vscode.window.showInputBox()
+		// 	a.then(res => {
+		// 		console.log(res);
+		// 	});
+		// })
 
-		const a = vscode.window.createInputBox()
+
+		// vscode.window.setStatusBarMessage('papap');
+		// vscode.window.showQuickPick(['1', '2'])
+
+		// vscode.window.showSaveDialog()
+
+		
 		
 }
 
