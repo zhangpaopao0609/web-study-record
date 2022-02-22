@@ -24,16 +24,34 @@ export function activate(context: vscode.ExtensionContext) {
 	// vscode.workspace.onDidCreateFiles((e) => {
 	// 	console.log(e);
 	// })
-	vscode.workspace.onDidSaveTextDocument((e) => {
-		console.log(e);
-	})
+	// vscode.workspace.onDidSaveTextDocument((e) => {
+	// 	console.log(e);
+	// })
 
-	vscode.workspace.findFiles('**/**/**.ts').then((res) => {
-		console.log(res);
-	})
+	// vscode.workspace.findFiles('**/**/**.ts').then((res) => {
+	// 	console.log(res);
+	// })
 
-	console.log(vscode.Uri.file('./package.json'));
-	
+	// console.log(vscode.Uri.file('./package.json'));
+
+	// const rootPath = vscode.workspace.rootPath;
+	// vscode.workspace.openTextDocument(vscode.Uri.file(`${rootPath}/package.json`)).then((res) => {
+	// 	console.log(res);
+	// });
+
+	// setTimeout(() => {
+	// 	vscode.workspace.saveAll()
+	// }, 2000);
+
+	// const a = new vscode.CodeAction('paopao');
+	const a = new vscode.Diagnostic(new vscode.Range(
+		new vscode.Position(1, 1),
+		new vscode.Position(3, 4),
+	), 'assad', 0)
+	console.log(a.code);
+		
+
+
 }
 
 export function deactivate() {}

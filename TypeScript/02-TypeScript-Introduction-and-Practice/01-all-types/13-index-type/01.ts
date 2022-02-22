@@ -11,3 +11,8 @@ interface Union {
 type T1 = keyof Point;
 
 type T2 = Point | Union;
+
+interface A1 {
+  x: number;
+  y: number;
+}
