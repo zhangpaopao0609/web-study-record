@@ -1,0 +1,5 @@
+{
+  "zenMode.silentNotifications": true,
+  "audioCues.onDebugBreak": "off",
+  "audioCues.volume": 0
+}
