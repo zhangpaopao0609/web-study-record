@@ -1,3 +1,5 @@
+[toc]
+
 # Monorepo
 
 > 译为单仓
@@ -131,9 +133,8 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
    <div align='center'>
    	<img src="./img/local-task-orchestration.svg" style="zoom:40%;"/>
    </div>
-
    
-
+   
 3. 分布式构建缓存
 
    支持共享缓存已构建或已测试过的文件，即：整个团队乃至代理团队都无需都同一个文件进行两次构建或测试
@@ -141,9 +142,8 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
    <div align='center'>
    	<img src="./img/distributed-computation-caching.svg" style="zoom:40%;"/>
    </div>
-
    
-
+   
 4. 分布式任务执行
 
    支持分布式的执行任务，将各个子任务分发到多台机器上执行。
@@ -164,8 +164,6 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
    	<img src="./img/dependency-graph.png" style="zoom:26%;"/>
    </div>
 
-#### 
-
 #### 3.1.2 结构清晰
 
 1. 工作空间分析
@@ -185,7 +183,7 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
    <div align='center'>
    	<img src="./img/dependency-graph-visualization.png" style="zoom:16%;"/>
    </div>
-
+   
    
 
 #### 3.1.3 易于管理
@@ -396,7 +394,53 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
 
 
 
-## 4. 资源
+## 4. 思考和总结
+
+### 4.1 如何选择
+
+其实无论是单仓还是多仓，其最终所期望的都是：
+
+- 简化项目管理
+
+- 提升开发效率
+
+- 稳定产品升级
+
+并不一定单仓就比多仓好，脱离实际情况来讨论过于理想化，记得当时团队有个讨论，选单仓还是多仓，其中有句话我记忆犹新：
+
+“如果没有良好的复用机制、完善的流程和规范和完备的单元测试，所谓的大仓，只能是一大堆垃圾山”。
+
+的确是的，在没有完备的基建条件下使用大仓，带来的一定是灾难。但，只要做到了这些，那么，起飞。
+
+因此，在我看来，团队在选择模式时，需依照情形而定，在有基础建设的条件下，选择单仓，反之，先使用多仓，而后再转为单仓也是一条可取之路。
+
+### 4.2 单仓带来的启发
+
+#### 4.2.1 构建缓存
+
+如今社区所流行的几大语言，几乎都是需要经过编译（构建）后才能运行，而编译最花费时间的不是业务代码，而是所依赖的三方库（代码）。Monorepo 三大特性中的开发敏捷所提到的构建缓存能够很大程度的解决这个问题，即便不采用 Monorepo 的模式，这也是一个可思考的点，如下是我个人的一些思考：
+
+1. 某个依赖的构建缓存
+
+   可实现同一个依赖无需二次构建（当然是需要版本控制）
+
+2. 某个项目所有依赖的构建缓存
+
+   可实现同一个项目所有依赖无需二次构建（依赖未发生改变的情形下）
+
+3. 本地和远程的缓存
+
+#### 4.2.2 远程开发
+
+远程开发能够很好的解决体积过大或者拥有大型二进制文件的项目，这并未 Monorepo 所独享，当前的 gitpod 就是一个很好的例子。
+
+同时在远程开发的支持下，也可以尝试实现多人同步开发，似乎也是一个可尝试的点。
+
+
+
+当然， Monorepo 带给我们的启发远不止这些，很多特性也并非 Monorepo 才能实现，这里抛砖引玉。
+
+## 5. 其它资源
 
 1. 视频
 
@@ -413,25 +457,50 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
    - [NxConf 2021 (Playlist)](https://www.youtube.com/watch?v=VKVTzVM0nVM&list=PLakNactNC1dG1CoyVWFppw3X8hnXRhFuy&utm_source=monorepo.tools)
 
 2. 文章
+
+   - [monorepo.tools](https://monorepo.tools/) 文中部分内容来源于此，对其做了总结和整理，感兴趣的同学可以直接看原文
+
    - [The One Version Rule – opensource.google](https://opensource.google/docs/thirdparty/oneversion?utm_source=monorepo.tools)
    - [Why TurboRepo Will Be The First Big Trend of 2022](https://dev.to/swyx/why-turborepo-will-be-the-first-big-trend-of-2022-4gfj?utm_source=monorepo.tools)
    - [Build Monorepos, not Monoliths](https://dev.to/agentender/build-monorepos-not-monoliths-4gbc?utm_source=monorepo.tools)
    - [Lerna/Yarn -> Nx: Faster Build Times + Better Dev Ergonomics](https://dev.to/nx/lerna-yarn-nx-faster-build-times-better-dev-ergonomics-32a6?utm_source=monorepo.tools)
    - [Nx monorepo documentation](https://nx.dev/guides/why-monorepos#monorepos?utm_source=monorepo.tools)
 
-## 5. 总结
-
-记得当时有个讨论，选大仓还是小仓，其中有句话我记忆犹新：
-
-“如果没有良好的复用机制、完善的流程和规范和完备的单元测试，所谓的大仓，只能是一大堆垃圾山”。
-
-的确是的，在没有完备的基建条件下使用大仓，带来的一定是灾难。但，只要做到了这些，那么，起飞。
 
 
 
-## 6. 文章说明
 
-本文大部分内容来源于 [monorepo.tools](https://monorepo.tools/)，只是对文章做了意译和整理，感兴趣的同学可以直接看原文。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
