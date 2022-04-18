@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>指北针</title>
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=.5,user-scalable=no"
+    />
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        background: #000;
+        color: #fff;
+        font-size: 32px;
+        background-color: black;
+        background-image: radial-gradient(
+            white,
+            rgba(255, 255, 255, 0.2) 2px,
+            transparent 40px
+          ),
+          radial-gradient(
+            white,
+            rgba(255, 255, 255, 0.15) 1px,
+            transparent 30px
+          ),
+          radial-gradient(white, rgba(255, 255, 255, 0.1) 2px, transparent 40px),
+          radial-gradient(
+            rgba(255, 255, 255, 0.4),
+            rgba(255, 255, 255, 0.1) 2px,
+            transparent 30px
+          );
+        background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+        background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+      }
+      #compass__box,
+      .compass__fixed {
+        width: 504px;
+        height: 504px;
+        border-radius: 50%;
+        position: absolute;
+        top: 160px;
+        left: 50%;
+        margin-left: -252px;
+      }
+      /*#compass__box{animation:animate 2s infinite;}*/
+      /*箭头*/
+      .arrow__box {
+        width: 36px;
+        height: 36px;
+        -webkit-transform: rotate(-118deg);
+        transform: rotate(-118deg);
+        position: absolute;
+        left: 50%;
+        top: -8px;
+        margin-left: -20px;
+      }
+      .arrow__box .arrow_1 {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(-37deg, red 24%, transparent 0);
+        border-radius: 6px;
+        -webkit-transform: rotate(3deg) skewX(40deg);
+        transform: rotate(3deg) skewX(40deg);
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .arrow__box .arrow_2 {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(48deg, red 20%, transparent 0);
+        border-radius: 6px;
+        -webkit-transform: rotate(-2deg) skewX(-34deg);
+        transform: rotate(-2deg) skewX(-34deg);
+        position: absolute;
+        top: 0;
+        left: 36px;
+      }
+      .arrow__box .arrow_3 {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(-52deg, transparent 80%, red 0);
+        border-radius: 6px;
+        -webkit-transform: rotate(28deg) skewY(27deg);
+        transform: rotate(28deg) skewY(27deg);
+        position: absolute;
+        top: 32px;
+        left: 20px;
+      }
+      /*次刻线*/
+      #reticle__second {
+        position: absolute;
+        top: 0;
+        left: 50%;
+      }
+      #reticle__second .item {
+        position: absolute;
+        width: 2px;
+        height: 504px;
+        background: linear-gradient(
+          to bottom,
+          #fff 36px,
+          transparent 0,
+          transparent 468px,
+          #fff 0
+        );
+        top: 0;
+        left: 50%;
+        margin-left: -1px;
+        border-radius: 2px;
+      }
+      #reticle__second .item::before {
+        content: "";
+        width: 2px;
+        height: 504px;
+        background: linear-gradient(
+          to bottom,
+          #fff 36px,
+          transparent 0,
+          transparent 468px,
+          #fff 0
+        );
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-transform: rotate(3deg);
+        transform: rotate(3deg);
+        border-radius: 2px;
+      }
+      #reticle__second .item::after {
+        content: "";
+        width: 2px;
+        height: 504px;
+        background: linear-gradient(
+          to bottom,
+          #fff 36px,
+          transparent 0,
+          transparent 468px,
+          #fff 0
+        );
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-transform: rotate(3deg);
+        transform: rotate(3deg);
+        border-radius: 2px;
+      }
+      /*主刻线*/
+      #reticle__main {
+        position: absolute;
+        top: 0;
+        left: 50%;
+      }
+      #reticle__main .item {
+        position: absolute;
+        width: 6px;
+        height: 504px;
+        background: linear-gradient(
+          to bottom,
+          #fff 36px,
+          transparent 0,
+          transparent 468px,
+          #fff 0
+        );
+        top: 0;
+        left: 50%;
+        margin-left: -3px;
+        border-radius: 6px;
+      }
+      #reticle__main .item::before {
+        content: "";
+        width: 6px;
+        height: 504px;
+        background: linear-gradient(
+          to bottom,
+          #fff 36px,
+          transparent 0,
+          transparent 468px,
+          #fff 0
+        );
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+        border-radius: 6px;
+      }
+      #reticle__main .item::after {
+        content: "";
+        width: 6px;
+        height: 504px;
+        background: linear-gradient(
+          to bottom,
+          #fff 36px,
+          transparent 0,
+          transparent 468px,
+          #fff 0
+        );
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-transform: rotate(60deg);
+        transform: rotate(60deg);
+        border-radius: 6px;
+      }
+      /*指北针文字*/
+      #scale__number {
+        width: 504px;
+        height: 504px;
+      }
+      #scale__number .item {
+        position: absolute;
+        width: 2px;
+        height: 504px;
+        top: 0;
+        left: 50%;
+        margin-left: -1px;
+        background: transparent;
+      }
+      #scale__number .text {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        top: -68px;
+        left: -30px;
+        text-align: center;
+        line-height: 60px;
+        color: #fff;
+        font-size: 28px;
+      }
+      /*方向文字*/
+      #scale__text {
+        width: 504px;
+        height: 504px;
+      }
+      #scale__text .item {
+        position: absolute;
+        width: 2px;
+        height: 504px;
+        top: 0;
+        left: 50%;
+        margin-left: -1px;
+        background: transparent;
+      }
+      #scale__text .text {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        top: 60px;
+        left: -30px;
+        text-align: center;
+        line-height: 60px;
+        color: #fff;
+        font-size: 48px;
+      }
+      /*固定不动*/
+      .compass__fixed {
+      }
+      .compass__fixed .point {
+        width: 8px;
+        height: 584px;
+        background: linear-gradient(to bottom, #fff 116px, transparent 0);
+        position: absolute;
+        top: -80px;
+        left: 50%;
+        margin-left: -4px;
+        border-radius: 8px;
+      }
+      .compass__fixed .point::before {
+        content: "";
+        width: 240px;
+        height: 2px;
+        background: #fff;
+        position: absolute;
+        left: -114px;
+        bottom: 251px;
+      }
+      .compass__fixed .point::after {
+        content: "";
+        width: 2px;
+        height: 240px;
+        background: #fff;
+        position: absolute;
+        left: 3px;
+        bottom: 130px;
+      }
+      .compass__fixed .level {
+        width: 164px;
+        height: 164px;
+        background: #1f1f1f;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -82px 0 0 -82px;
+        z-index: -1;
+      }
+      .compass__fixed .level::before {
+        content: "";
+        width: 40px;
+        height: 40px;
+        width: 2px;
+        height: 40px;
+        background: #fff;
+        position: absolute;
+        top: 62px;
+        left: 50%;
+        margin-left: -1px;
+      }
+      .compass__fixed .level::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        width: 40px;
+        height: 2px;
+        background: #fff;
+        position: absolute;
+        left: 62px;
+        top: 50%;
+        margin-top: -1px;
+      }
+      /*当前度数*/
+      #cur__degree {
+        color: #fff;
+        font-size: 180px;
+        font-weight: 200;
+        padding: 740px 40px 0;
+      }
+      @-webkit-keyframes animate {
+        form {
+          -webkit-transform: rotate(0);
+          transform: rotate(0);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes animate {
+        form {
+          -webkit-transform: rotate(0);
+          transform: rotate(0);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <!-- 刻度盘 -->
+    <div id="compass__box">
+      <div class="arrow__box">
+        <div class="arrow_1"></div>
+        <div class="arrow_2"></div>
+        <div class="arrow_3"></div>
+      </div>
+      <!-- 主刻线 -->
+      <div id="reticle__main"></div>
+      <!-- 次刻线 -->
+      <div id="reticle__second"></div>
+      <!-- 指北针文字 -->
+      <div id="scale__number"></div>
+      <!-- 方向文字 -->
+      <div id="scale__text"></div>
+    </div>
+    <!-- 固定不动 -->
+    <div class="compass__fixed">
+      <div class="point"></div>
+      <div class="level" id="fixed__disc"></div>
+    </div>
+    <!-- 当前度数 -->
+    <div id="cur__degree"></div>
+    <div id="box__text"></div>
+    <script>
+      // 通过陀螺仪检测手机当前静止参数
+      window.addEventListener(
+        "deviceorientation",
+        function (e) {
+          var a = e.alpha;
+          var b = e.beta;
+          var g = e.gamma;
+          var head = e.webkitCompassHeading;
+          head = head ? head : a; //兼容处理, ios系统的手机head角是正北角度; android不支持此属性,使用a角度合适，经过测试
+          // android指北针的表现令人发指，总让校准，恶心
+          $("compass__box").style.cssText =
+            "-webkit-transform:rotateZ(" +
+            -head +
+            "deg);transform:rotateZ(" +
+            -head +
+            "deg)";
+          $("cur__degree").innerHTML = Math.round(head) + "°";
+          // 获得指北针数字
+          wheelText({
+            head: head || a,
+            id: "scale__number",
+          });
+          // 指北针方向文字
+          wheelText({
+            head: head || a,
+            id: "scale__text",
+          });
+          // 水平圆盘
+          $("fixed__disc").style.cssText =
+            "-webkit-transform:translate(" +
+            -g +
+            "px," +
+            -b +
+            "px);transform:translate(" +
+            -g +
+            "px," +
+            -b +
+            "px)";
+          $("box__text").innerHTML = "<p>g：" + -g + "</p><p>b：" + -b + "</p>";
+        },
+        true
+      );
+      // 生成主刻线
+      createItem({
+        id: "reticle__main",
+        max: 2,
+      });
+      // 生成次刻线
+      createItem({
+        id: "reticle__second",
+        max: 30,
+      });
+      // 指北针文字
+      createItemText({
+        id: "scale__number",
+        max: 12,
+      });
+      // 方向文字
+      createItemText({
+        id: "scale__text",
+        max: 4,
+        textBoo: true,
+        textArr: ["北", "东", "南", "西"],
+      });
+      // 指北针数字文字跟随转动
+      function wheelText(data) {
+        var len = $(data.id).getElementsByTagName("div").length;
+        for (var i = 0; i < len; i++) {
+          var oSpan = $(data.id)
+            .getElementsByTagName("div")
+            [i].getElementsByTagName("span")[0];
+          oSpan.style.cssText =
+            "-webkit-transform:rotate(" +
+            (-i * (360 / len) + data.head) +
+            "deg);transform:rotate(" +
+            (-i * (360 / len) + data.head) +
+            "deg);";
+        }
+      }
+      /**
+       * [createItem description]
+       * @param  {[type]} data [id名字，max生成div数量]
+       * @return {[type]}      [description]
+       */
+      function createItemText(data) {
+        var rtn = "";
+        var inner = "";
+        for (var i = 0; i < data.max; i++) {
+          if (data.textBoo) {
+            inner =
+              '<span class="text" style="-webkit-transform:rotate(' +
+              -i * 90 +
+              "deg);transform:rotate(" +
+              -i * 90 +
+              'deg);">' +
+              data.textArr[i] +
+              "</span>";
+          } else {
+            inner =
+              '<span class="text" style="-webkit-transform:rotate(' +
+              -i * 30 +
+              "deg);transform:rotate(" +
+              -i * 30 +
+              'deg);">' +
+              i * 30 +
+              "</span>";
+          }
+          rtn +=
+            '<div class="item" style="-webkit-transform:rotateZ(' +
+            (360 / data.max) * i +
+            "deg);transform:rotateZ(" +
+            (360 / data.max) * i +
+            'deg);">' +
+            inner +
+            "</div>";
+        }
+        $(data.id).innerHTML = rtn;
+      }
+      /**
+       * [createItem description]
+       * @param  {[type]} data [id名字，max生成div数量]
+       * @return {[type]}      [description]
+       */
+      function createItem(data) {
+        var rtn = "";
+        for (var i = 0; i < data.max; i++) {
+          rtn +=
+            '<div class="item" style="-webkit-transform:rotateZ(' +
+            (180 / data.max) * i +
+            "deg);transform:rotateZ(" +
+            (180 / data.max) * i +
+            'deg);"></div>';
+        }
+        $(data.id).innerHTML = rtn;
+      }
+      function $(id) {
+        return document.getElementById(id);
+      }
+    </script>
+  </body>
+</html>
