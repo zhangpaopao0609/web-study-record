@@ -114,7 +114,7 @@ window.addEventListener(
 </div>
 
 
-核心代码如下，[点击可查看详细源码]()
+核心代码如下，[点击可查看详细源码](https://github.com/ardor-zhang/web-study-record/tree/master/%E9%9B%B6%E6%95%A3%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%89%8B%E6%9C%BA%E4%BC%A0%E6%84%9F%E5%99%A8/H5-gyroscope/02-deviceorientation-v-h)
 
 ```js
 function handleOrientation(event) {
@@ -164,7 +164,7 @@ window.addEventListener("devicemotion", (DevicemotionEvent) => {});
 
 ### 3.2 示例 —— 摇一摇
 
-核心代码如下，[点击可查看详细源码]()
+核心代码如下，[点击可查看详细源码](https://github.com/ardor-zhang/web-study-record/tree/master/%E9%9B%B6%E6%95%A3%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%89%8B%E6%9C%BA%E4%BC%A0%E6%84%9F%E5%99%A8/H5-gyroscope/04-devicemotion-shake)
 
 > ios 系统需要向用户申请权限，在源码中有展示
 
@@ -199,7 +199,7 @@ function gotoShake() {
 ## 4. 资源
 
 1. 本文示例源代码
-
+   - [H5-gyroscope](https://github.com/ardor-zhang/web-study-record/tree/master/%E9%9B%B6%E6%95%A3%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%89%8B%E6%9C%BA%E4%BC%A0%E6%84%9F%E5%99%A8/H5-gyroscope)
 2. 参考文献
 
    - [Detecting device orientation](https://developer.mozilla.org/en-US/docs/Web/Events/Detecting_device_orientation)
