@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>compass</title>
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=.5,user-scalable=no"
+    />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <!-- 刻度盘 -->
+    <div id="compass__box">
+      <div class="arrow__box">
+        <div class="arrow_1"></div>
+        <div class="arrow_2"></div>
+        <div class="arrow_3"></div>
+      </div>
+      <!-- 主刻线 -->
+      <div id="reticle__main"></div>
+      <!-- 次刻线 -->
+      <div id="reticle__second"></div>
+      <!-- 指北针文字 -->
+      <div id="scale__number"></div>
+      <!-- 方向文字 -->
+      <div id="scale__text"></div>
+    </div>
+    <!-- 固定不动 -->
+    <div class="compass__fixed">
+      <div class="point"></div>
+      <div class="level" id="fixed__disc"></div>
+    </div>
+    <!-- 当前度数 -->
+    <div id="cur__degree"></div>
+    <div id="box__text"></div>
+    <script src="./index.js"></script>
+    <script src="https://cdn.bootcss.com/vConsole/3.2.0/vconsole.min.js"></script>
+    <script>
+      //初始化一下就可以了，
+      let vConsole = new VConsole();
+    </script>
+  </body>
+</html>

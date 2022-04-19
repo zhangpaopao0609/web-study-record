@@ -1,0 +1,335 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #fff;
+  font-size: 32px;
+  background-color: #000;
+  background-image: radial-gradient(
+      #fff,
+      rgba(255, 255, 255, 0.2) 2px,
+      transparent 40px
+    ),
+    radial-gradient(#fff, rgba(255, 255, 255, 0.15) 1px, transparent 30px),
+    radial-gradient(#fff, rgba(255, 255, 255, 0.1) 2px, transparent 40px),
+    radial-gradient(#fff, rgba(255, 255, 255, 0.1) 2px, transparent 30px);
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+}
+
+#compass__box,
+.compass__fixed {
+  width: 504px;
+  height: 504px;
+  border-radius: 50%;
+  position: absolute;
+  top: 160px;
+  left: 50%;
+  margin-left: -252px;
+}
+/*#compass__box{animation:animate 2s infinite;}*/
+/*箭头*/
+.arrow__box {
+  width: 36px;
+  height: 36px;
+  -webkit-transform: rotate(-118deg);
+  transform: rotate(-118deg);
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  margin-left: -20px;
+}
+.arrow__box .arrow_1 {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(-37deg, red 24%, transparent 0);
+  border-radius: 6px;
+  -webkit-transform: rotate(3deg) skewX(40deg);
+  transform: rotate(3deg) skewX(40deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.arrow__box .arrow_2 {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(48deg, red 20%, transparent 0);
+  border-radius: 6px;
+  -webkit-transform: rotate(-2deg) skewX(-34deg);
+  transform: rotate(-2deg) skewX(-34deg);
+  position: absolute;
+  top: 0;
+  left: 36px;
+}
+.arrow__box .arrow_3 {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(-52deg, transparent 80%, red 0);
+  border-radius: 6px;
+  -webkit-transform: rotate(28deg) skewY(27deg);
+  transform: rotate(28deg) skewY(27deg);
+  position: absolute;
+  top: 32px;
+  left: 20px;
+}
+/*次刻线*/
+#reticle__second {
+  position: absolute;
+  top: 0;
+  left: 50%;
+}
+#reticle__second .item {
+  position: absolute;
+  width: 2px;
+  height: 504px;
+  background: linear-gradient(
+    to bottom,
+    #fff 36px,
+    transparent 0,
+    transparent 468px,
+    #fff 0
+  );
+  top: 0;
+  left: 50%;
+  margin-left: -1px;
+  border-radius: 2px;
+}
+#reticle__second .item::before {
+  content: "";
+  width: 2px;
+  height: 504px;
+  background: linear-gradient(
+    to bottom,
+    #fff 36px,
+    transparent 0,
+    transparent 468px,
+    #fff 0
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: rotate(3deg);
+  transform: rotate(3deg);
+  border-radius: 2px;
+}
+#reticle__second .item::after {
+  content: "";
+  width: 2px;
+  height: 504px;
+  background: linear-gradient(
+    to bottom,
+    #fff 36px,
+    transparent 0,
+    transparent 468px,
+    #fff 0
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: rotate(3deg);
+  transform: rotate(3deg);
+  border-radius: 2px;
+}
+/*主刻线*/
+#reticle__main {
+  position: absolute;
+  top: 0;
+  left: 50%;
+}
+#reticle__main .item {
+  position: absolute;
+  width: 6px;
+  height: 504px;
+  background: linear-gradient(
+    to bottom,
+    #fff 36px,
+    transparent 0,
+    transparent 468px,
+    #fff 0
+  );
+  top: 0;
+  left: 50%;
+  margin-left: -3px;
+  border-radius: 6px;
+}
+#reticle__main .item::before {
+  content: "";
+  width: 6px;
+  height: 504px;
+  background: linear-gradient(
+    to bottom,
+    #fff 36px,
+    transparent 0,
+    transparent 468px,
+    #fff 0
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
+  border-radius: 6px;
+}
+#reticle__main .item::after {
+  content: "";
+  width: 6px;
+  height: 504px;
+  background: linear-gradient(
+    to bottom,
+    #fff 36px,
+    transparent 0,
+    transparent 468px,
+    #fff 0
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: rotate(60deg);
+  transform: rotate(60deg);
+  border-radius: 6px;
+}
+/*指北针文字*/
+#scale__number {
+  width: 504px;
+  height: 504px;
+}
+#scale__number .item {
+  position: absolute;
+  width: 2px;
+  height: 504px;
+  top: 0;
+  left: 50%;
+  margin-left: -1px;
+  background: transparent;
+}
+#scale__number .text {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: -68px;
+  left: -30px;
+  text-align: center;
+  line-height: 60px;
+  color: #fff;
+  font-size: 28px;
+}
+/*方向文字*/
+#scale__text {
+  width: 504px;
+  height: 504px;
+}
+#scale__text .item {
+  position: absolute;
+  width: 2px;
+  height: 504px;
+  top: 0;
+  left: 50%;
+  margin-left: -1px;
+  background: transparent;
+}
+#scale__text .text {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 60px;
+  left: -30px;
+  text-align: center;
+  line-height: 60px;
+  color: #fff;
+  font-size: 48px;
+}
+/*固定不动*/
+.compass__fixed {
+}
+.compass__fixed .point {
+  width: 8px;
+  height: 584px;
+  background: linear-gradient(to bottom, #fff 116px, transparent 0);
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  margin-left: -4px;
+  border-radius: 8px;
+}
+.compass__fixed .point::before {
+  content: "";
+  width: 240px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  left: -114px;
+  bottom: 251px;
+}
+.compass__fixed .point::after {
+  content: "";
+  width: 2px;
+  height: 240px;
+  background: #fff;
+  position: absolute;
+  left: 3px;
+  bottom: 130px;
+}
+.compass__fixed .level {
+  width: 164px;
+  height: 164px;
+  background: #1f1f1f;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -82px 0 0 -82px;
+  z-index: -1;
+}
+.compass__fixed .level::before {
+  content: "";
+  width: 40px;
+  height: 40px;
+  width: 2px;
+  height: 40px;
+  background: #fff;
+  position: absolute;
+  top: 62px;
+  left: 50%;
+  margin-left: -1px;
+}
+.compass__fixed .level::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  width: 40px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  left: 62px;
+  top: 50%;
+  margin-top: -1px;
+}
+/*当前度数*/
+#cur__degree {
+  color: #fff;
+  font-size: 180px;
+  font-weight: 200;
+  padding: 740px 40px 0;
+}
+@-webkit-keyframes animate {
+  form {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate {
+  form {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
