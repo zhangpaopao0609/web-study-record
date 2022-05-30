@@ -8,7 +8,7 @@ import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { PrismaService } from 'src/modules/prisma/prisma.service';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
-import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
+import { PaginationQueryDto } from 'src/dto/pagination-query.dto';
 
 @Injectable()
 export class CoffeesService {
@@ -83,7 +83,7 @@ export class CoffeesService {
     });
   }
 
-  async remove(id: number) {
+  async remove(id: number): Promise<{ id: number }> {
     await this.findOne(id);
     return this.prisma.coffee.delete({
       where: { id },

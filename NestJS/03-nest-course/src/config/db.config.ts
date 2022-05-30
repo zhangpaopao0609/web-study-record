@@ -14,9 +14,9 @@ const isProd = process.env.NODE_ENV === 'production';
 export const dbConfig = {
   type: 'postgres' as any,
   host: 'localhost',
-  port: 5432,
+  port: 5434,
   username: 'postgres',
-  password: 'pass123',
+  password: '123',
   database: 'postgres',
   autoLoadEntities: true,
   synchronize: !isProd,
