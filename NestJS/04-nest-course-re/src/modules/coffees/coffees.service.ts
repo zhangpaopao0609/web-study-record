@@ -1,5 +1,6 @@
 import {
   ForbiddenException,
+  Inject,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -7,6 +8,7 @@ import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { PrismaService } from 'src/modules/prisma/prisma.service';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
+import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 
 @Injectable()
 export class CoffeesService {
@@ -18,14 +20,12 @@ export class CoffeesService {
           name: createCoffeeDto.name,
           brand: createCoffeeDto.brand,
           flavors: {
-            create: createCoffeeDto.flavors.map(
-              (flavor) => ({
-                assignedBy: 'paopao',
-                flavor: {
-                  connect: { name: flavor },
-                },
-              }),
-            ),
+            create: createCoffeeDto.flavors.map((flavor) => ({
+              assignedBy: 'paopao',
+              flavor: {
+                connect: { name: flavor },
+              },
+            })),
           },
         },
         select: {
@@ -34,9 +34,7 @@ export class CoffeesService {
       })
       .then((res) => res)
       .catch((error) => {
-        if (
-          error instanceof PrismaClientKnownRequestError
-        ) {
+        if (error instanceof PrismaClientKnownRequestError) {
           if (error.code === 'P2002') {
             throw new ForbiddenException(
               `${createCoffeeDto.name} should be unique`,
@@ -47,8 +45,19 @@ export class CoffeesService {
       });
   }
 
-  findAll() {
-    return this.prisma.coffee.findMany();
+  async findAll(paginationQuery: PaginationQueryDto) {
+    const { page, size } = paginationQuery;
+    return await this.prisma.coffee.findMany({
+      include: {
+        flavors: {
+          select: {
+            flavor: true,
+          },
+        },
+      },
+      skip: (page - 1) * size,
+      take: size,
+    });
   }
 
   async findOne(id: number) {
@@ -56,17 +65,12 @@ export class CoffeesService {
       where: { id },
     });
     if (!coffee) {
-      throw new NotFoundException(
-        `Coffee #${id} not found`,
-      );
+      throw new NotFoundException(`Coffee #${id} not found`);
     }
     return coffee;
   }
 
-  async update(
-    id: number,
-    updateCoffeeDto: UpdateCoffeeDto,
-  ) {
+  async update(id: number, updateCoffeeDto: UpdateCoffeeDto) {
     await this.findOne(id);
     return this.prisma.coffee.update({
       where: {
