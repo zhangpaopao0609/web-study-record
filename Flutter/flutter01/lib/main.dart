@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'routes/routes.dart';
+import 'pages/taps.dart';
+
 void main(List<String> args) {
   runApp(MyApp());
 }
