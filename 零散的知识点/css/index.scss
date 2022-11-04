@@ -1,0 +1,14 @@
+$ems: 0, 1, 2, 3, 4;
+$directions: "", "-bottom", "-top", "-left", "-right";
+
+@each $em in $ems{
+  @each $dir in $directions {
+    $dir-alias: str-slice($dir, 2, 2);
+      .m#{$dir-alias}-#{$em} {
+        margin#{$dir}: $em + em;
+      }
+      .p#{$dir-alias}-#{$em}{
+        padding#{$dir}: $em + em;
+      }
+  }
+}
