@@ -1,0 +1,30 @@
+{
+  "name": "web-study-record",
+  "version": "1.0.0",
+  "description": "[toc]",
+  "main": "TensorflowJs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangpaopao0609/web-study-record.git"
+  },
+  "keywords": [],
+  "author": "zhangpaopao0609",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangpaopao0609/web-study-record/issues"
+  },
+  "homepage": "https://github.com/zhangpaopao0609/web-study-record#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.1",
+    "prettier": "^2.8.8"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}
