@@ -1,0 +1,4463 @@
+<section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="
+    font-size: 16px;
+    color: black;
+    padding: 0 10px;
+    line-height: 1.6;
+    word-spacing: 0px;
+    letter-spacing: 0px;
+    word-break: break-word;
+    word-wrap: break-word;
+    text-align: left;
+    counter-reset: counterh1 counterh2 counterh3;
+    font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light,
+      'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  ">
+  <p data-tool="mdnice编辑器" style="
+      font-size: 16px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      margin: 0;
+      line-height: 26px;
+      color: black;
+    ">
+    <br />
+  </p>
+  <div class="table-of-contents" data-tool="mdnice编辑器">
+    <ul style="
+        margin-top: 8px;
+        margin-bottom: 8px;
+        padding-left: 25px;
+        color: black;
+        list-style-type: disc;
+      ">
+      <li>
+        <a style="
+            text-decoration: none;
+            word-wrap: break-word;
+            border-bottom: 1px solid #2584b5;
+            border: none;
+            color: black;
+            font-weight: normal;
+          ">0. 写在前面的</a>
+      </li>
+      <li>
+        <a style="
+            text-decoration: none;
+            word-wrap: break-word;
+            border-bottom: 1px solid #2584b5;
+            border: none;
+            color: black;
+            font-weight: normal;
+          ">1. Error cause(ES2022)</a>
+      </li>
+      <li>
+        <a style="
+            text-decoration: none;
+            word-wrap: break-word;
+            border-bottom: 1px solid #2584b5;
+            border: none;
+            color: black;
+            font-weight: normal;
+          ">2. findLast / findLastIndex (ES2023)</a>
+      </li>
+      <li>
+        <a style="
+            text-decoration: none;
+            word-wrap: break-word;
+            border-bottom: 1px solid #2584b5;
+            border: none;
+            color: black;
+            font-weight: normal;
+          ">3. RegExp Match Indices (ES2022)</a>
+      </li>
+      <li>
+        <a style="
+            text-decoration: none;
+            word-wrap: break-word;
+            border-bottom: 1px solid #2584b5;
+            border: none;
+            color: black;
+            font-weight: normal;
+          ">4. Object.hasOwn() (ES2022)</a>
+      </li>
+      <li>
+        <a style="
+            text-decoration: none;
+            word-wrap: break-word;
+            border-bottom: 1px solid #2584b5;
+            border: none;
+            color: black;
+            font-weight: normal;
+          ">5. Array.at() (ES2022)</a>
+      </li>
+      <li>
+        <a style="
+            text-decoration: none;
+            word-wrap: break-word;
+            border-bottom: 1px solid #2584b5;
+            border: none;
+            color: black;
+            font-weight: normal;
+          ">5. Hashbang #! (ES2023)</a>
+      </li>
+      <li>
+        <a style="
+            text-decoration: none;
+            word-wrap: break-word;
+            border-bottom: 1px solid #2584b5;
+            border: none;
+            color: black;
+            font-weight: normal;
+          ">6. Top-level Await (ES2022)</a>
+      </li>
+      <li>
+        <a style="
+            text-decoration: none;
+            word-wrap: break-word;
+            border-bottom: 1px solid #2584b5;
+            border: none;
+            color: black;
+            font-weight: normal;
+          ">7. Class fields (ES2022)</a>
+      </li>
+      <li>
+        <a style="
+            text-decoration: none;
+            word-wrap: break-word;
+            border-bottom: 1px solid #2584b5;
+            border: none;
+            color: black;
+            font-weight: normal;
+          ">8. 聊点其它的</a>
+      </li>
+    </ul>
+  </div>
+  <p data-tool="mdnice编辑器" style="
+      font-size: 16px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      margin: 0;
+      line-height: 26px;
+      color: black;
+    ">
+    <br />
+  </p>
+  <h1 data-tool="mdnice编辑器" style="
+      margin-top: 30px;
+      margin-bottom: 15px;
+      padding: 0px;
+      font-weight: bold;
+      color: black;
+      font-size: 24px;
+      line-height: 28px;
+      border-bottom: 1px solid #2584b5;
+    " class="toc-enable" id="f8a42a8c-d0e0-1431-5e52-295f3e132bcc">
+    <span style="
+        background: #2584b5;
+        color: white;
+        counter-increment: counterh1;
+        padding: 2px 8px;
+      ">
+      标题
+    </span>
+    <span class="prefix" style="display: none"></span><span class="content"
+      style="color: #2584b5; margin-left: 8px; font-size: 20px">2022 年 JavaScript 都有哪些更新?</span><span
+      class="suffix"></span>
+  </h1>
+  <p data-tool="mdnice编辑器" style="
+      font-size: 16px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      margin: 0;
+      line-height: 26px;
+      color: black;
+    ">
+    2023 已经快一半了，不知道对于 2022 年 JavaScript
+    的更新点大家是否都有所尝试或者已经在项目中使用起来了呢？
+  </p>
+  <p data-tool="mdnice编辑器" style="
+      font-size: 16px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      margin: 0;
+      line-height: 26px;
+      color: black;
+    ">
+    那本文来就和大家一起来回顾一下 2022 年 JavaScript
+    有哪些更新吧，看哪些点是能为我们开发带来便捷的、哪些点又是我们可以吐槽的。
+  </p>
+  <blockquote class="multiquote-1" data-tool="mdnice编辑器" style="
+      display: block;
+      font-size: 0.9em;
+      overflow: auto;
+      overflow-scrolling: touch;
+      border-left: 3px solid rgba(0, 0, 0, 0.4);
+      color: #6a737d;
+      margin-bottom: 20px;
+      margin-top: 20px;
+      border: 1px dashed #2584b5;
+      background: transparent;
+      padding: 10px 10px 10px 20px;
+    ">
+    <p style="
+        font-size: 16px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin: 0px;
+        color: black;
+        line-height: 26px;
+      ">
+      文章所聊的均已进入 Stage4 的提案，换句话说，这都已是或即将是 ES 的标准
+    </p>
+  </blockquote>
+  <img src="https://km.woa.com/asset/61c913599e5844e4a1b430d482dea899?height=1324&width=2556" alt="ES2022"
+    style="display: block; margin: 0 auto; max-width: 100%; zoom: 50%" data-tool="mdnice编辑器" />
+  <h2 data-tool="mdnice编辑器" style="
+      margin-top: 30px;
+      margin-bottom: 15px;
+      padding: 0px;
+      font-weight: bold;
+      color: black;
+      font-size: 22px;
+    " class="toc-enable" id="a0c05069-f1d0-721d-d3d6-0996aba4a396">
+    <span class="content" style="
+        font-size: 18px;
+        border-bottom: 4px solid #2584b5;
+        padding: 2px 4px;
+        color: #2584b5;
+      ">0. 写在前面的</span><span class="suffix"></span>
+  </h2>
+  <ol data-tool="mdnice编辑器" style="
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding-left: 25px;
+      color: black;
+      list-style-type: decimal;
+    ">
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          TC39：JS 语言标准委员会(更新和推动 JS 发展)
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          在 2015 年之前，整个 JS 的发展是这样的： ES3(1999) -&gt; ES5(2005)
+          -&gt; ES6（ES2015, 2015) ，彼时 JS 的发展相对缓慢。自 2015 年起，JS
+          发展迅猛，每年 6 月都会发布 ES20XX。
+        </p>
+        <blockquote class="multiquote-1" style="
+            display: block;
+            font-size: 0.9em;
+            overflow: auto;
+            overflow-scrolling: touch;
+            border-left: 3px solid rgba(0, 0, 0, 0.4);
+            color: #6a737d;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border: 1px dashed #2584b5;
+            background: transparent;
+            padding: 10px 10px 10px 20px;
+          ">
+          <p style="
+              font-size: 16px;
+              padding-top: 8px;
+              padding-bottom: 8px;
+              margin: 0px;
+              color: black;
+              line-height: 26px;
+            ">
+            ES 指 ECMAScript，ECMAScript 是标准语言， JavaScript 是 ECMAScript
+            的实现
+          </p>
+        </blockquote>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          提案
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          TC39 为了给不断发展
+          JavaScript，建立了提案的机制，协会成员或代表可提出新功能、新模块或新语法等的提案，经过层层投票（赞同进入或拒绝规范），最终成功进入
+          stage4 的将会作为 ECMAScript 规范
+        </p>
+        <blockquote class="multiquote-1" style="
+            display: block;
+            font-size: 0.9em;
+            overflow: auto;
+            overflow-scrolling: touch;
+            border-left: 3px solid rgba(0, 0, 0, 0.4);
+            color: #6a737d;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border: 1px dashed #2584b5;
+            background: transparent;
+            padding: 10px 10px 10px 20px;
+          ">
+          <ol style="
+              margin-top: 8px;
+              margin-bottom: 8px;
+              padding-left: 25px;
+              color: black;
+              list-style-type: decimal;
+            ">
+            <li>
+              <section style="
+                  margin-top: 5px;
+                  margin-bottom: 5px;
+                  line-height: 26px;
+                  text-align: left;
+                  color: #010101;
+                  font-weight: 500;
+                ">
+                <p style="
+                    font-size: 16px;
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                    margin: 0px;
+                    color: black;
+                    line-height: 26px;
+                  ">
+                  每一个提案都会从 stage1 开始，经过讨论投票然后进入下一个 stage
+                  或直接拒绝
+                </p>
+              </section>
+            </li>
+            <li>
+              <section style="
+                  margin-top: 5px;
+                  margin-bottom: 5px;
+                  line-height: 26px;
+                  text-align: left;
+                  color: #010101;
+                  font-weight: 500;
+                ">
+                <p style="
+                    font-size: 16px;
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                    margin: 0px;
+                    color: black;
+                    line-height: 26px;
+                  ">
+                  TC39 专门在 github 上建了
+                  <a href="https://github.com/tc39/proposals" style="
+                      text-decoration: none;
+                      word-wrap: break-word;
+                      font-weight: bold;
+                      color: #2584b5;
+                      border-bottom: 1px solid #2584b5;
+                    ">proposals</a>
+                  仓库，供提交提案及阅览
+                </p>
+              </section>
+            </li>
+          </ol>
+        </blockquote>
+      </section>
+    </li>
+  </ol>
+  <h2 data-tool="mdnice编辑器" style="
+      margin-top: 30px;
+      margin-bottom: 15px;
+      padding: 0px;
+      font-weight: bold;
+      color: black;
+      font-size: 22px;
+    " class="toc-enable" id="7b5755d0-b94e-0022-74a4-58c6d8eee508">
+    <span class="content" style="
+        font-size: 18px;
+        border-bottom: 4px solid #2584b5;
+        padding: 2px 4px;
+        color: #2584b5;
+      ">1. Error cause(ES2022)</span><span class="suffix"></span>
+  </h2>
+  <ol data-tool="mdnice编辑器" style="
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding-left: 25px;
+      color: black;
+      list-style-type: decimal;
+    ">
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          提案信息
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案作者：吴成忠（@legendecas），阿里巴巴
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案<a href="https://github.com/tc39/proposal-error-cause" style="
+                  text-decoration: none;
+                  word-wrap: break-word;
+                  font-weight: bold;
+                  color: #2584b5;
+                  border-bottom: 1px solid #2584b5;
+                ">详细内容传送门</a>
+            </section>
+          </li>
+        </ul>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          识别问题
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          当前的错误信息在对外暴露时未提供规范方式。如果开发者直接暴露 catch
+          到的 error 信息，会存在以下问题：
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              得到的是底层错误，自然错误无法直接表达业务意义
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              函数中有多个 catch 时，无法知道具体是哪一个 catch 到的错误
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              一般情况直接暴露底层操作的错误也不是很友好
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              没有适当的异常设计模式：比如链式错误模式
+            </section>
+          </li>
+        </ul>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          那么当前存在的这些问题开发者一般是怎么去解决的呢？如下代码所示：
+        </p>
+        <pre class="custom"
+          style="
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+          "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">async</span>&nbsp;<span class="hljs-function" style="line-height: 26px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">function</span>&nbsp;<span class="hljs-title" style="color: #61aeee; line-height: 26px;">doJob</span>(<span class="hljs-params" style="line-height: 26px;"></span>)&nbsp;</span>{<br />&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">await</span>&nbsp;fetch(<span class="hljs-string" style="color: #98c379; line-height: 26px;">'//domain/resource-a'</span>)<br />&nbsp;&nbsp;&nbsp;&nbsp;.catch(<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">err</span>&nbsp;=&gt;</span>&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;开发者一般会如何包装这个错误呢?</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;方式1.&nbsp;throw&nbsp;new&nbsp;Error('下载资源失败:&nbsp;'&nbsp;+&nbsp;err.message);</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;方式2.&nbsp;const&nbsp;wrapErr&nbsp;=&nbsp;new&nbsp;Error('下载资源失败');</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wrapErr.cause&nbsp;=&nbsp;err;</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;wrapErr;</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;方式3.&nbsp;class&nbsp;CustomError&nbsp;extends&nbsp;Error&nbsp;{</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;constructor(msg,&nbsp;cause)&nbsp;{</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(msg);</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.cause&nbsp;=&nbsp;cause;</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;CustomError('下载资源失败',&nbsp;err);</span><br />&nbsp;&nbsp;&nbsp;&nbsp;})<br />}<br /><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">await</span>&nbsp;doJob();&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;=&gt;&nbsp;TypeError:&nbsp;Failed&nbsp;to&nbsp;fetch</span><br /></code></pre>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          也就是说，上述所说的问题目前是可以由开发者自己去实现的，比如上面代码中的方式
+          1、2、3， 分别在抛出具体信息错误的同时携带了底层的 error 信息。
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          但是：
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              麻烦而且各有所不同
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              缺乏标准的做法，日志和调试工具也无法提供帮助
+            </section>
+          </li>
+        </ul>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          解决方案
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          为
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">Error</code>
+          增加一个参数，接收一个选项
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">{cause: xxx}</code>，这样当上层在捕获错误时，就可以直接通过错误信息的
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">cause</code>
+          属性获取传递的值。
+        </p>
+        <pre class="custom"
+          style="
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+          "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;">async&nbsp;<span class="hljs-function" style="line-height: 26px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">function</span>&nbsp;<span class="hljs-title" style="color: #61aeee; line-height: 26px;">doJob</span>(<span class="hljs-params" style="line-height: 26px;"></span>)&nbsp;</span>{<br />&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">await</span>&nbsp;fetch(<span class="hljs-string" style="color: #98c379; line-height: 26px;">'//domain/upload'</span>,&nbsp;{&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">method</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">'POST'</span>,&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">body</span>:&nbsp;jobResult&nbsp;})<br />&nbsp;&nbsp;&nbsp;&nbsp;.catch(<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">err</span>&nbsp;=&gt;</span>&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">throw</span>&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">new</span>&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">Error</span>(<span class="hljs-string" style="color: #98c379; line-height: 26px;">'上传资源失败'</span>,&nbsp;{&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">cause</span>:&nbsp;err&nbsp;});<br />&nbsp;&nbsp;&nbsp;&nbsp;});<br />}<br /><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">try</span>&nbsp;{<br />&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">await</span>&nbsp;doJob();<br />}&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">catch</span>&nbsp;(e)&nbsp;{<br />&nbsp;&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">console</span>.log(e);<br />&nbsp;&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">console</span>.log(<span class="hljs-string" style="color: #98c379; line-height: 26px;">'Caused&nbsp;by'</span>,&nbsp;e.cause);<br />}<br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;Error:&nbsp;上传资源失败</span><br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;Caused&nbsp;by&nbsp;TypeError:&nbsp;Failed&nbsp;to&nbsp;fetch</span><br /></code></pre>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          个人评价
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          <strong style="font-weight: bold; color: #2584b5">提案相对简单，但非常实用，工程实用价值很高</strong>。错误捕获能极大地提高程序的鲁棒性。
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          目前浏览器都已经支持了，在调试的时候就能看到对应的支持。
+        </p>
+      </section>
+    </li>
+  </ol>
+  <h2 data-tool="mdnice编辑器" style="
+      margin-top: 30px;
+      margin-bottom: 15px;
+      padding: 0px;
+      font-weight: bold;
+      color: black;
+      font-size: 22px;
+    " class="toc-enable" id="09bc01a6-2b41-0951-770e-3db9222497b3">
+    <span class="content" style="
+        font-size: 18px;
+        border-bottom: 4px solid #2584b5;
+        padding: 2px 4px;
+        color: #2584b5;
+      ">2. findLast<code>/</code>findLastIndex (ES2023)</span><span class="suffix"></span>
+  </h2>
+  <ol data-tool="mdnice编辑器" style="
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding-left: 25px;
+      color: black;
+      list-style-type: decimal;
+    ">
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          提案信息
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案作者：王文璐（@Kingwl），前微软中国
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案<a href="https://github.com/tc39/proposal-array-find-from-last" style="
+                  text-decoration: none;
+                  word-wrap: break-word;
+                  font-weight: bold;
+                  color: #2584b5;
+                  border-bottom: 1px solid #2584b5;
+                ">详细内容传送门</a>
+            </section>
+          </li>
+        </ul>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          识别问题
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          目前 ES 提供了<code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">find</code>
+          和
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">findIndex</code>
+          ，即在数组中从前往后找，找出第一个符合条件的成员/成员位置，但没有提供从后往前找的方法。
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          要实现从后往前找，也是有办法可以解决，比如将数组 reverse，再使用
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">find</code>
+          和
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">findIndex</code>，如下：。
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              如果是查找成员，reverse 后 find 没问题
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              如果是查找成员位置，就需要特别注意了：
+              <ul style="
+                  margin-top: 8px;
+                  margin-bottom: 8px;
+                  padding-left: 25px;
+                  color: black;
+                  list-style-type: square;
+                ">
+                <li>
+                  <section style="
+                      margin-top: 5px;
+                      margin-bottom: 5px;
+                      line-height: 26px;
+                      text-align: left;
+                      color: #010101;
+                      font-weight: 500;
+                    ">
+                    如果能查找到（即结果不是
+                    -1），那么需要用数组长度减去位置才能得到结果
+                  </section>
+                </li>
+                <li>
+                  <section style="
+                      margin-top: 5px;
+                      margin-bottom: 5px;
+                      line-height: 26px;
+                      text-align: left;
+                      color: #010101;
+                      font-weight: 500;
+                    ">
+                    如果未能查找到（即结果是 -1），那么返回 -1
+                  </section>
+                </li>
+              </ul>
+            </section>
+          </li>
+        </ul>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          所以，虽然开发者能自己去实现这个动作，但相对是比较复杂的。
+        </p>
+        <pre class="custom"
+          style="
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+          "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;array&nbsp;=&nbsp;[{&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">value</span>:&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>&nbsp;},&nbsp;{&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">value</span>:&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">2</span>&nbsp;},&nbsp;{&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">value</span>:&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">3</span>&nbsp;},&nbsp;{&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">value</span>:&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">4</span>&nbsp;}];<br />array.find(<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">n</span>&nbsp;=&gt;</span>&nbsp;n.value&nbsp;%&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">2</span>&nbsp;===&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>);&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;{&nbsp;value:&nbsp;1&nbsp;}</span><br />array.findIndex(<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">n</span>&nbsp;=&gt;</span>&nbsp;n.value&nbsp;%&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">2</span>&nbsp;===&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>);&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;0</span><br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;find</span><br />[...array].reverse().find(<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">n</span>&nbsp;=&gt;</span>&nbsp;n.value&nbsp;%&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">2</span>&nbsp;===&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>);&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;{&nbsp;value:&nbsp;3&nbsp;}</span><br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;findIndex</span><br />array.length&nbsp;-&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>&nbsp;-&nbsp;[...array].reverse().findIndex(<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">n</span>&nbsp;=&gt;</span>&nbsp;n.value&nbsp;%&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">2</span>&nbsp;===&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>);&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;2</span><br />array.length&nbsp;-&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>&nbsp;-&nbsp;[...array].reverse().findIndex(<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">n</span>&nbsp;=&gt;</span>&nbsp;n.value&nbsp;===&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">42</span>);&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;应该是&nbsp;-1,&nbsp;但得到了&nbsp;4，所以结果还需要判断</span><br /></code></pre>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          解决方案
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          既然开发者能实现，那么规范当然也是可以的，所以就是将这两个方法添加到规范中即可。
+        </p>
+        <pre class="custom"
+          style="
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+          "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;find</span><br />array.findLast(<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">n</span>&nbsp;=&gt;</span>&nbsp;n.value&nbsp;%&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">2</span>&nbsp;===&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>);&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;{&nbsp;value:&nbsp;3&nbsp;}</span><br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;findIndex</span><br />array.findLastIndex(<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">n</span>&nbsp;=&gt;</span>&nbsp;n.value&nbsp;%&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">2</span>&nbsp;===&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>);&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;2</span><br />array.findLastIndex(<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">n</span>&nbsp;=&gt;</span>&nbsp;n.value&nbsp;===&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">42</span>);&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;-1</span><br /></code></pre>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          个人评价
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          不论是从使用频率还是说从API
+          完整性和性能等方面考虑，这两个方法都是必要的。所以加上是一个理所应当的事情。
+        </p>
+      </section>
+    </li>
+  </ol>
+  <h2 data-tool="mdnice编辑器" style="
+      margin-top: 30px;
+      margin-bottom: 15px;
+      padding: 0px;
+      font-weight: bold;
+      color: black;
+      font-size: 22px;
+    " class="toc-enable" id="cd846b78-a5f1-074b-4125-5cf13859f576">
+    <span class="content" style="
+        font-size: 18px;
+        border-bottom: 4px solid #2584b5;
+        padding: 2px 4px;
+        color: #2584b5;
+      ">3. RegExp Match Indices (ES2022)</span><span class="suffix"></span>
+  </h2>
+  <ol data-tool="mdnice编辑器" style="
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding-left: 25px;
+      color: black;
+      list-style-type: decimal;
+    ">
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          提案信息
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案作者：Ron Buckton，微软
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案<a href="https://github.com/tc39/proposal-regexp-match-indices" style="
+                  text-decoration: none;
+                  word-wrap: break-word;
+                  font-weight: bold;
+                  color: #2584b5;
+                  border-bottom: 1px solid #2584b5;
+                ">详细内容传送门</a>
+            </section>
+          </li>
+        </ul>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          识别问题
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          当前的正则匹配无法获取到捕获组的索引位置，如下代码所示，正则能够获取到其匹配的起始位置信息，即返回的
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">index</code>，但捕获组位置信息没有。
+        </p>
+        <pre class="custom"
+          style="
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+          "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;arranges&nbsp;=&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">`arranges:<br />&nbsp;&nbsp;-&nbsp;成都<br />&nbsp;&nbsp;&nbsp;&nbsp;时间:&nbsp;2023.5.1<br />&nbsp;&nbsp;&nbsp;&nbsp;地点:&nbsp;春熙路<br />&nbsp;&nbsp;-&nbsp;重庆<br />&nbsp;&nbsp;&nbsp;&nbsp;时间:&nbsp;2023.5.3<br />&nbsp;&nbsp;&nbsp;&nbsp;地点:&nbsp;朝天门<br />`</span>;<br /><br /><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">for</span>&nbsp;(<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;item&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">of</span>&nbsp;arranges.matchAll(<span class="hljs-regexp" style="color: #98c379; line-height: 26px;">/时间:\s*(.+)/g</span>))&nbsp;{<br />&nbsp;&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">console</span>.log(item);<br />}<br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;[&nbsp;'时间:&nbsp;2023.5.1',&nbsp;'2023.5.1',&nbsp;index:&nbsp;21,&nbsp;...&nbsp;]</span><br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;[&nbsp;'时间:&nbsp;2023.5.3',&nbsp;'2023.5.3',&nbsp;index:&nbsp;57,&nbsp;...&nbsp;]</span><br /><br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;有什么问题呢？问题是没有捕获组的索引位置</span><br /></code></pre>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          有什么场景会用到捕获组索引位置呢？举个例子，在文档或者编辑器中，希望对某个内容进行高亮，那么当用正则的捕获组匹配到时，就需要使用捕获组的索引信息。
+        </p>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          解决方案
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          在 ES
+          中增加这个功能即可，本身能够捕获到，那么需要做的无非就是将位置信息返回。
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          要使用这个功能，只需要在正则表达式后面加上
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">d</code>
+          这个标识，用法跟其他的如
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">g</code>
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">i</code>
+          是一样的。
+        </p>
+        <pre class="custom"
+          style="
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+          "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">for</span>&nbsp;(<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;item&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">of</span>&nbsp;arranges.matchAll(<span class="hljs-regexp" style="color: #98c379; line-height: 26px;">/时间:\s*(.+)/</span>dg))&nbsp;{<br />&nbsp;&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">console</span>.log(item);<br />}<br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;[&nbsp;'时间:&nbsp;2023.5.1',&nbsp;'2023.5.1',&nbsp;index:&nbsp;21,&nbsp;indices:&nbsp;[&nbsp;[&nbsp;57,&nbsp;69&nbsp;],&nbsp;[&nbsp;61,&nbsp;69&nbsp;]&nbsp;],&nbsp;...&nbsp;]</span><br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;[&nbsp;'时间:&nbsp;2023.5.3',&nbsp;'2023.5.3',&nbsp;index:&nbsp;57,&nbsp;indices:&nbsp;[&nbsp;[&nbsp;57,&nbsp;69&nbsp;],&nbsp;[&nbsp;61,&nbsp;69&nbsp;]&nbsp;],&nbsp;...&nbsp;]</span><br /><br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;增加一个&nbsp;`indices:&nbsp;[&nbsp;[&nbsp;57,&nbsp;69&nbsp;],&nbsp;[&nbsp;61,&nbsp;69&nbsp;]&nbsp;]`</span><br /></code></pre>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          加上
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">d</code>
+          标识后，结果会增加一个
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">indices: [ [ 57, 69 ], [ 61, 69 ] ]</code>，数组的第一项是正则匹配到的内容的起始位置，第二项是捕获组的起始位置。
+        </p>
+        <blockquote class="multiquote-1" style="
+            display: block;
+            font-size: 0.9em;
+            overflow: auto;
+            overflow-scrolling: touch;
+            border-left: 3px solid rgba(0, 0, 0, 0.4);
+            color: #6a737d;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border: 1px dashed #2584b5;
+            background: transparent;
+            padding: 10px 10px 10px 20px;
+          ">
+          <p style="
+              font-size: 16px;
+              padding-top: 8px;
+              padding-bottom: 8px;
+              margin: 0px;
+              color: black;
+              line-height: 26px;
+            ">
+            为什么不是直接加到正则方法中而是要用一个标识来设置呢？
+          </p>
+          <p style="
+              font-size: 16px;
+              padding-top: 8px;
+              padding-bottom: 8px;
+              margin: 0px;
+              color: black;
+              line-height: 26px;
+            ">
+            原因很简单：性能。因为并不是所有时候都需要这个位置信息。
+          </p>
+        </blockquote>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          个人评价
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          有价值，但用得其实不多，本身场景就少。
+        </p>
+      </section>
+    </li>
+  </ol>
+  <h2 data-tool="mdnice编辑器" style="
+      margin-top: 30px;
+      margin-bottom: 15px;
+      padding: 0px;
+      font-weight: bold;
+      color: black;
+      font-size: 22px;
+    " class="toc-enable" id="1da8e74b-6187-f3cd-cf5e-a497ff0f8290">
+    <span class="content" style="
+        font-size: 18px;
+        border-bottom: 4px solid #2584b5;
+        padding: 2px 4px;
+        color: #2584b5;
+      ">4. Object.hasOwn() (ES2022)</span><span class="suffix"></span>
+  </h2>
+  <ol data-tool="mdnice编辑器" style="
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding-left: 25px;
+      color: black;
+      list-style-type: decimal;
+    ">
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          提案信息
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案作者：Jamie Kyle, Rome；Tierney Cyren, Microsoft
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案<a href="https://github.com/tc39/proposal-accessible-object-hasownproperty" style="
+                  text-decoration: none;
+                  word-wrap: break-word;
+                  font-weight: bold;
+                  color: #2584b5;
+                  border-bottom: 1px solid #2584b5;
+                ">详细内容传送门</a>
+            </section>
+          </li>
+        </ul>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          识别问题
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          JavaScript
+          对象的属性分成两种：自身的属性和继承的属性。现在对象实例有一个<code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">hasOwnProperty()</code>方法，可以判断某个属性是否为自身的属性，但这个方法不够健壮，因为
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">hasOwnProperty()</code>方法从原型上继承而来的，那么如果是以下这些情况，就会出现问题：
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                如果创建的对象上覆盖了这个方法，如
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">let o = { hasOwnProperty: "覆盖了原型上的方法" }</code>
+              </p>
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                如果创建的对象是没有原型的，如
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">Object.create(null)</code>
+              </p>
+            </section>
+          </li>
+        </ul>
+        <pre class="custom"
+          style="
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+          "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">let</span>&nbsp;o&nbsp;=&nbsp;{&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">hasOwnProperty</span>:&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"覆盖了原型上的方法"</span>&nbsp;}<br />o.hasOwnProperty(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"foo"</span>)<br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;TypeError:&nbsp;o.hasOwnProperty&nbsp;is&nbsp;not&nbsp;a&nbsp;function</span><br /><span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">Object</span>.create(<span class="hljs-literal" style="color: #56b6c2; line-height: 26px;">null</span>).hasOwnProperty(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"foo"</span>)<br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;Uncaught&nbsp;TypeError:&nbsp;hasOwnProperty&nbsp;is&nbsp;not&nbsp;a&nbsp;function</span><br /></code></pre>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          那么想要写得相对健壮一些，可以写成如下这般：
+        </p>
+        <pre class="custom"
+          style="
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+          "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;健壮但繁琐的写法</span><br /><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">let</span>&nbsp;hasOwnProperty&nbsp;=&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">Object</span>.prototype.hasOwnProperty<br /><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">if</span>&nbsp;(hasOwnProperty.call(o,&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"foo"</span>))&nbsp;{<br />&nbsp;&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">console</span>.log(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"foo&nbsp;是自身的属性"</span>)<br />}<br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;或者</span><br /><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">if</span>&nbsp;(<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">Object</span>.getOwnPropertyDescriptor(o,&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"foo"</span>))&nbsp;{<br />&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">console</span>.log(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"foo&nbsp;是自身的属性"</span>)<br />}<br /></code></pre>
+        <blockquote class="multiquote-1" style="
+            display: block;
+            font-size: 0.9em;
+            overflow: auto;
+            overflow-scrolling: touch;
+            border-left: 3px solid rgba(0, 0, 0, 0.4);
+            color: #6a737d;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border: 1px dashed #2584b5;
+            background: transparent;
+            padding: 10px 10px 10px 20px;
+          ">
+          <p style="
+              font-size: 16px;
+              padding-top: 8px;
+              padding-bottom: 8px;
+              margin: 0px;
+              color: black;
+              line-height: 26px;
+            ">
+            其实
+            <code style="
+                font-size: 14px;
+                word-wrap: break-word;
+                padding: 2px 4px;
+                border-radius: 4px;
+                margin: 0 2px;
+                color: #1e6bb8;
+                background-color: rgba(27, 31, 35, 0.05);
+                font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+                word-break: break-all;
+              ">hasOwnProperty.call</code>
+            依旧不够健壮，因为
+            <code style="
+                font-size: 14px;
+                word-wrap: break-word;
+                padding: 2px 4px;
+                border-radius: 4px;
+                margin: 0 2px;
+                color: #1e6bb8;
+                background-color: rgba(27, 31, 35, 0.05);
+                font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+                word-break: break-all;
+              ">call</code>
+            也是从原型来的
+          </p>
+        </blockquote>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          解决方案
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          增加
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">Object.hasOwn</code>
+          这个静态方法。
+        </p>
+        <pre class="custom"
+          style="
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+          "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">if</span>&nbsp;(<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">Object</span>.hasOwn(o,&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"foo"</span>))&nbsp;{<br />&nbsp;&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">console</span>.log(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"foo&nbsp;是自身的属性"</span>)<br />}<br /></code></pre>
+        <blockquote class="multiquote-1" style="
+            display: block;
+            font-size: 0.9em;
+            overflow: auto;
+            overflow-scrolling: touch;
+            border-left: 3px solid rgba(0, 0, 0, 0.4);
+            color: #6a737d;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border: 1px dashed #2584b5;
+            background: transparent;
+            padding: 10px 10px 10px 20px;
+          ">
+          <p style="
+              font-size: 16px;
+              padding-top: 8px;
+              padding-bottom: 8px;
+              margin: 0px;
+              color: black;
+              line-height: 26px;
+            ">
+            有两个点可以插播一下
+          </p>
+          <ol style="
+              margin-top: 8px;
+              margin-bottom: 8px;
+              padding-left: 25px;
+              color: black;
+              list-style-type: decimal;
+            ">
+            <li>
+              <section style="
+                  margin-top: 5px;
+                  margin-bottom: 5px;
+                  line-height: 26px;
+                  text-align: left;
+                  color: #010101;
+                  font-weight: 500;
+                ">
+                <p style="
+                    font-size: 16px;
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                    margin: 0px;
+                    color: black;
+                    line-height: 26px;
+                  ">
+                  为什么不直接用
+                  <code style="
+                      font-size: 14px;
+                      word-wrap: break-word;
+                      padding: 2px 4px;
+                      border-radius: 4px;
+                      margin: 0 2px;
+                      color: #1e6bb8;
+                      background-color: rgba(27, 31, 35, 0.05);
+                      font-family: Operator Mono, Consolas, Monaco, Menlo,
+                        monospace;
+                      word-break: break-all;
+                    ">Object.getOwnPropertyDescriptor</code>
+                  就好了
+                </p>
+                <p style="
+                    font-size: 16px;
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                    margin: 0px;
+                    color: black;
+                    line-height: 26px;
+                  ">
+                  目的不一样，<code style="
+                      font-size: 14px;
+                      word-wrap: break-word;
+                      padding: 2px 4px;
+                      border-radius: 4px;
+                      margin: 0 2px;
+                      color: #1e6bb8;
+                      background-color: rgba(27, 31, 35, 0.05);
+                      font-family: Operator Mono, Consolas, Monaco, Menlo,
+                        monospace;
+                      word-break: break-all;
+                    ">Object.getOwnPropertyDescriptor</code>
+                  是返回属性的描述对象，能够判断出是否为自有属性仅是开发者利用了它的机制。
+                </p>
+              </section>
+            </li>
+            <li>
+              <section style="
+                  margin-top: 5px;
+                  margin-bottom: 5px;
+                  line-height: 26px;
+                  text-align: left;
+                  color: #010101;
+                  font-weight: 500;
+                ">
+                <p style="
+                    font-size: 16px;
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                    margin: 0px;
+                    color: black;
+                    line-height: 26px;
+                  ">
+                  为什么不直接叫
+                  <code style="
+                      font-size: 14px;
+                      word-wrap: break-word;
+                      padding: 2px 4px;
+                      border-radius: 4px;
+                      margin: 0 2px;
+                      color: #1e6bb8;
+                      background-color: rgba(27, 31, 35, 0.05);
+                      font-family: Operator Mono, Consolas, Monaco, Menlo,
+                        monospace;
+                      word-break: break-all;
+                    ">Object.hasOwnProperty</code>
+                </p>
+                <p style="
+                    font-size: 16px;
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                    margin: 0px;
+                    color: black;
+                    line-height: 26px;
+                  ">
+                  因为
+                  <code style="
+                      font-size: 14px;
+                      word-wrap: break-word;
+                      padding: 2px 4px;
+                      border-radius: 4px;
+                      margin: 0 2px;
+                      color: #1e6bb8;
+                      background-color: rgba(27, 31, 35, 0.05);
+                      font-family: Operator Mono, Consolas, Monaco, Menlo,
+                        monospace;
+                      word-break: break-all;
+                    ">Object.hasOwnProperty</code>
+                  已经有了，<code style="
+                      font-size: 14px;
+                      word-wrap: break-word;
+                      padding: 2px 4px;
+                      border-radius: 4px;
+                      margin: 0 2px;
+                      color: #1e6bb8;
+                      background-color: rgba(27, 31, 35, 0.05);
+                      font-family: Operator Mono, Consolas, Monaco, Menlo,
+                        monospace;
+                      word-break: break-all;
+                    ">Object</code>
+                  也会指向
+                  <code style="
+                      font-size: 14px;
+                      word-wrap: break-word;
+                      padding: 2px 4px;
+                      border-radius: 4px;
+                      margin: 0 2px;
+                      color: #1e6bb8;
+                      background-color: rgba(27, 31, 35, 0.05);
+                      font-family: Operator Mono, Consolas, Monaco, Menlo,
+                        monospace;
+                      word-break: break-all;
+                    ">Object.prototype</code>
+                  的。
+                </p>
+              </section>
+            </li>
+          </ol>
+        </blockquote>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          个人评价
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          在某些场景下是有使用价值的，但相对来说场景不多。而且现有的方法基本能够满足了，当然新的方法肯定更加健壮。
+        </p>
+      </section>
+    </li>
+  </ol>
+  <h2 data-tool="mdnice编辑器" style="
+      margin-top: 30px;
+      margin-bottom: 15px;
+      padding: 0px;
+      font-weight: bold;
+      color: black;
+      font-size: 22px;
+    " class="toc-enable" id="7b41155a-caf0-d5a1-89c3-fa2b2fe965cd">
+    <span class="content" style="
+        font-size: 18px;
+        border-bottom: 4px solid #2584b5;
+        padding: 2px 4px;
+        color: #2584b5;
+      ">5. Array.at() (ES2022)</span><span class="suffix"></span>
+  </h2>
+  <ol data-tool="mdnice编辑器" style="
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding-left: 25px;
+      color: black;
+      list-style-type: decimal;
+    ">
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          提案信息
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案作者：Tab Atkins, Shu-yu Guo, Google
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案<a href="https://github.com/tc39/proposal-relative-indexing-method" style="
+                  text-decoration: none;
+                  word-wrap: break-word;
+                  font-weight: bold;
+                  color: #2584b5;
+                  border-bottom: 1px solid #2584b5;
+                ">详细内容传送门</a>
+            </section>
+          </li>
+        </ul>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          识别问题
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          JavaScript 不支持数组的负索引，如果要引用数组的最后一个成员，不能写成
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">arr[-1]</code>，只能使用
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">arr[arr.length - 1]</code>。
+        </p>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          解决方案
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          增加
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">at</code>
+          方法，接受一个整数作为参数，返回对应位置的成员，支持负索引。
+        </p>
+        <pre class="custom"
+          style="
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+          "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">let</span>&nbsp;last&nbsp;=&nbsp;array.at(<span class="hljs-number" style="color: #d19a66; line-height: 26px;">-1</span>)<br /></code></pre>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          个人评价
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          总结：实用价值较小，最好不要使用，有坑。
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          原因：
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">at</code>
+                方法只能获取，不能设置。
+              </p>
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                假如要对数组的最后一项做一个累加。
+              </p>
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                一般常用的写法如下，取出来然后设置
+              </p>
+              <pre class="custom"
+                style="
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                  border-radius: 5px;
+                  box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+                "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;">++array[array.length&nbsp;-&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>]<br /></code></pre>
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                如果使用 at，这就非常奇怪了，比之前还要麻烦。
+              </p>
+              <pre class="custom"
+                style="
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                  border-radius: 5px;
+                  box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+                "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;">array[array.length&nbsp;-&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>]&nbsp;=&nbsp;array.at(<span class="hljs-number" style="color: #d19a66; line-height: 26px;">-1</span>)&nbsp;+&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span><br /></code></pre>
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">arr.at(i)</code>
+                和
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">arr[i]</code>
+                在处理非索引时语义不同
+              </p>
+            </section>
+          </li>
+        </ul>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">at</code>
+          是位置，<code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">[i]</code>
+          是属性，所以当参数是非索引时，<code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">at</code>
+          会将其转为 number，不能转的认为是 0，<code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">[i]</code>
+          就是属性的机制了
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                当
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">arr.at(-idx)</code>
+                中的
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">idx</code>
+                是计算值时会有问题
+              </p>
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">arr.at(arr.length - 0)</code>
+                所要表达的意图是边界，可如果当
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">arr.length</code>
+                恰好为 0 时，<code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">arr.at(0 - 0)</code>
+                这时候程序的意图是数组的第一个了，意图上有所不同了。
+              </p>
+            </section>
+          </li>
+        </ul>
+      </section>
+    </li>
+  </ol>
+  <h2 data-tool="mdnice编辑器" style="
+      margin-top: 30px;
+      margin-bottom: 15px;
+      padding: 0px;
+      font-weight: bold;
+      color: black;
+      font-size: 22px;
+    " class="toc-enable" id="854d5459-cb48-b3bb-8836-b58bea5c13e6">
+    <span class="content" style="
+        font-size: 18px;
+        border-bottom: 4px solid #2584b5;
+        padding: 2px 4px;
+        color: #2584b5;
+      ">5. Hashbang <code>#!</code> (ES2023)</span><span class="suffix"></span>
+  </h2>
+  <ol data-tool="mdnice编辑器" style="
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding-left: 25px;
+      color: black;
+      list-style-type: decimal;
+    ">
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          提案信息
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案作者：Bradley Farias, Node.js
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案<a href="https://github.com/tc39/proposal-hashbang" style="
+                  text-decoration: none;
+                  word-wrap: break-word;
+                  font-weight: bold;
+                  color: #2584b5;
+                  border-bottom: 1px solid #2584b5;
+                ">详细内容传送门</a>
+            </section>
+          </li>
+        </ul>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          识别问题
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          为了能在 linux 环境下直接执行 js 脚本，而不需要使用
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">node xxxx.js</code>
+          这样的方式来执行脚本，node 提供了
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">Hashbang</code>，即在文件开头加上
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">#!/usr/bin/env node</code>。
+        </p>
+        <pre class="custom"
+          style="
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+          "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-meta" style="color: #61aeee; line-height: 26px;">#!/usr/bin/env&nbsp;node</span><br /><span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">console</span>.log(<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>);<br /></code></pre>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          虽然
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">Hashbang</code>
+          现在是可以运行也可以使用的，但这却并不是 ES 的标准，而是 Node
+          做的特殊处理。
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          既然是 Node 做的特殊处理，所以，<code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">#!/usr/bin/env node</code>
+          在浏览器里是会报错的，当然一般情况我们并不会这样使用。
+        </p>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          解决方案
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          所以解决方案就是将其纳入 ES 标准。这样浏览器、CLI
+          都可以认识，只是说对于浏览器来说没啥意义。
+        </p>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          个人评价
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          <strong style="font-weight: bold; color: #2584b5">存在潜在风险。</strong>
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          在<code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">hashbang</code>
+          进入标准之前，它只用于 Node
+          脚本，而当进入标准之后，很可能被滥用于同构脚本，从而导致一些无法预料的问题。原因如下：**<code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">hashbang</code>
+          即<code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">#!/usr/bin/env node</code>
+          只能放在脚本的开头，否者就会报错（即便
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">hashbang</code>
+          前是空格也会报错）**。
+        </p>
+        <blockquote class="multiquote-1" style="
+            display: block;
+            font-size: 0.9em;
+            overflow: auto;
+            overflow-scrolling: touch;
+            border-left: 3px solid rgba(0, 0, 0, 0.4);
+            color: #6a737d;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border: 1px dashed #2584b5;
+            background: transparent;
+            padding: 10px 10px 10px 20px;
+          ">
+          <p style="
+              font-size: 16px;
+              padding-top: 8px;
+              padding-bottom: 8px;
+              margin: 0px;
+              color: black;
+              line-height: 26px;
+            ">
+            为什么只能放在脚本开头：因为提案作者认为
+            <code style="
+                font-size: 14px;
+                word-wrap: break-word;
+                padding: 2px 4px;
+                border-radius: 4px;
+                margin: 0 2px;
+                color: #1e6bb8;
+                background-color: rgba(27, 31, 35, 0.05);
+                font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+                word-break: break-all;
+              ">hashbang</code>
+            仅在脚本开头才有意义，否者就是没有意义的，那么没有意义的事情就应该提前报错，详细可看<a href="https://github.com/tc39/proposal-hashbang" style="
+                text-decoration: none;
+                word-wrap: break-word;
+                font-weight: bold;
+                color: #2584b5;
+                border-bottom: 1px solid #2584b5;
+              ">这里</a>
+          </p>
+        </blockquote>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          可在绝大部分 JS 同学看来，在 JS
+          脚本前后加空格或者注释是不会影响脚本行为的，这其实是一个共识，应该是从
+          JS
+          诞生到到这个这个提案出现之前，这就是一个共识，可是，这个提案算是彻底地打破了这个共识了。
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          在 JS 脚本前或后加入注释的场景其实非常多，比如：
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              批量在脚本前加入版权和许可证信息
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              在脚本前加入调试信息
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              脚本与脚本简单组合
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              脚本格式的转换，如
+              <code style="
+                  font-size: 14px;
+                  word-wrap: break-word;
+                  padding: 2px 4px;
+                  border-radius: 4px;
+                  margin: 0 2px;
+                  color: #1e6bb8;
+                  background-color: rgba(27, 31, 35, 0.05);
+                  font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+                  word-break: break-all;
+                ">commjs</code>
+              转化为
+              <code style="
+                  font-size: 14px;
+                  word-wrap: break-word;
+                  padding: 2px 4px;
+                  border-radius: 4px;
+                  margin: 0 2px;
+                  color: #1e6bb8;
+                  background-color: rgba(27, 31, 35, 0.05);
+                  font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+                  word-break: break-all;
+                ">amd/umd</code>
+            </section>
+          </li>
+        </ul>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          在这些场景下，如果开发者无意或者第三方库添加了
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">hashbang</code>，那么就会直接报错。所以
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">hashbang</code>
+          进入标准是存在潜在风险的。
+        </p>
+        <blockquote class="multiquote-1" style="
+            display: block;
+            font-size: 0.9em;
+            overflow: auto;
+            overflow-scrolling: touch;
+            border-left: 3px solid rgba(0, 0, 0, 0.4);
+            color: #6a737d;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border: 1px dashed #2584b5;
+            background: transparent;
+            padding: 10px 10px 10px 20px;
+          ">
+          <p style="
+              font-size: 16px;
+              padding-top: 8px;
+              padding-bottom: 8px;
+              margin: 0px;
+              color: black;
+              line-height: 26px;
+            ">
+            其实要解决这个潜在风险还是很简单的，如果 ES 并不强制报错，即当
+            <code style="
+                font-size: 14px;
+                word-wrap: break-word;
+                padding: 2px 4px;
+                border-radius: 4px;
+                margin: 0 2px;
+                color: #1e6bb8;
+                background-color: rgba(27, 31, 35, 0.05);
+                font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+                word-break: break-all;
+              ">hashbang</code>
+            不在开头时不强制报错，直接将其认为是一个注释，那么就没啥了
+          </p>
+        </blockquote>
+      </section>
+    </li>
+  </ol>
+  <h2 data-tool="mdnice编辑器" style="
+      margin-top: 30px;
+      margin-bottom: 15px;
+      padding: 0px;
+      font-weight: bold;
+      color: black;
+      font-size: 22px;
+    " class="toc-enable" id="4a09b86c-e8b1-8d77-e9e7-f96019375ad9">
+    <span class="content" style="
+        font-size: 18px;
+        border-bottom: 4px solid #2584b5;
+        padding: 2px 4px;
+        color: #2584b5;
+      ">6. Top-level Await (ES2022)</span><span class="suffix"></span>
+  </h2>
+  <ol data-tool="mdnice编辑器" style="
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding-left: 25px;
+      color: black;
+      list-style-type: decimal;
+    ">
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          提案信息
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案作者：Myles Borins, Google; Yulia Startsev, Mozilla
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案<a href="https://github.com/tc39/proposal-top-level-await" style="
+                  text-decoration: none;
+                  word-wrap: break-word;
+                  font-weight: bold;
+                  color: #2584b5;
+                  border-bottom: 1px solid #2584b5;
+                ">详细内容传送门</a>
+            </section>
+          </li>
+        </ul>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          识别问题
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          某些场景下需要使用顶层的
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">await</code>，如下示例：
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">awaiting.mjs</code>
+                对外暴露了一个需要异步获取的值。因为是异步，所以写了一个 IIFE
+                来实现
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">async await</code>
+              </p>
+              <pre class="custom"
+                style="
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                  border-radius: 5px;
+                  box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+                "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">let</span>&nbsp;output;<br /><span class="hljs-function" style="line-height: 26px;">(<span class="hljs-params" style="line-height: 26px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">async</span>&nbsp;(</span>)&nbsp;=&gt;</span>&nbsp;{<br />&nbsp;&nbsp;output&nbsp;=&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">await</span>&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">new</span>&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">Promise</span>(<span class="hljs-function" style="line-height: 26px;">(<span class="hljs-params" style="line-height: 26px;">resolve</span>)&nbsp;=&gt;</span><br />&nbsp;&nbsp;&nbsp;&nbsp;setTimeout(<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">()</span>&nbsp;=&gt;</span>&nbsp;resolve(<span class="hljs-number" style="color: #d19a66; line-height: 26px;">6</span>),&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">500</span>)<br />&nbsp;&nbsp;);<br />})();<br /><br /><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">export</span>&nbsp;{&nbsp;output&nbsp;};<br /></code></pre>
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">test.mjs</code>
+                引用
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">awaiting.mjs</code>
+                暴露的值
+              </p>
+              <pre class="custom"
+                style="
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                  border-radius: 5px;
+                  box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+                "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;test.mjs</span><br /><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">import</span>&nbsp;{&nbsp;output&nbsp;}&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">from</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"./awaiting.mjs"</span>;<br /><br /><span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">console</span>.log(output);&nbsp;&nbsp;<br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;输出：undefined</span><br /><br />setTimeout(<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">()</span>&nbsp;=&gt;</span>&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">console</span>.log(output),&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1000</span>);&nbsp;<br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;1&nbsp;秒钟后，输出&nbsp;6&nbsp;</span><br /></code></pre>
+            </section>
+          </li>
+        </ul>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          此时，就会出现问题，因为
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">awaiting.mjs</code>
+          暴露的是一个异步值，所以直接输出时是没有值的
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">undefined</code>，需要等待异步结束才会有值。这就是问题所在了，因为通常情况下，我们是希望暴露的就是异步后的值了。
+        </p>
+        <blockquote class="multiquote-1" style="
+            display: block;
+            font-size: 0.9em;
+            overflow: auto;
+            overflow-scrolling: touch;
+            border-left: 3px solid rgba(0, 0, 0, 0.4);
+            color: #6a737d;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border: 1px dashed #2584b5;
+            background: transparent;
+            padding: 10px 10px 10px 20px;
+          ">
+          <p style="
+              font-size: 16px;
+              padding-top: 8px;
+              padding-bottom: 8px;
+              margin: 0px;
+              color: black;
+              line-height: 26px;
+            ">
+            这里都只是模拟异步哈
+          </p>
+        </blockquote>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          解决方案
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          顶层
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">await</code>。即直接可以在脚本中写顶层的
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">await</code>
+          而不需要像
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">awaiting.mjs</code>
+          那样麻烦，同时所有
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">import</code>
+          了的模块，<strong style="font-weight: bold; color: #2584b5">都需要等到被引用文件的
+            <code style="
+                font-size: 14px;
+                word-wrap: break-word;
+                padding: 2px 4px;
+                border-radius: 4px;
+                margin: 0 2px;
+                color: #1e6bb8;
+                background-color: rgba(27, 31, 35, 0.05);
+                font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+                word-break: break-all;
+              ">await</code>
+            执行完成才能执行</strong>。
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          如此不仅使得顶层使用
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">await</code>
+          更方便了，同时还解决了引用的是异步值但立即执行时拿不到的情况。
+        </p>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          个人评价
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          <strong style="font-weight: bold; color: #2584b5">对于 Node 项目还行，对于 Web 项目有大坑</strong>。来看两个例子：
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                示例 1
+              </p>
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                有一个 Top-level Await 的模块（简称 TLA）
+              </p>
+              <pre class="custom"
+                style="
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                  border-radius: 5px;
+                  box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+                "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;awaiting.js</span><br /><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">let</span>&nbsp;output&nbsp;=&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">await</span>&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">new</span>&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">Promise</span>(<span class="hljs-function" style="line-height: 26px;">(<span class="hljs-params" style="line-height: 26px;">resolve</span>)&nbsp;=&gt;</span><br />&nbsp;&nbsp;setTimeout(<span class="hljs-function" style="line-height: 26px;"><span class="hljs-params" style="line-height: 26px;">()</span>&nbsp;=&gt;</span>&nbsp;resolve(<span class="hljs-number" style="color: #d19a66; line-height: 26px;">6</span>),&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">500</span>)<br />);<br /><br /><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">export</span>&nbsp;{&nbsp;output&nbsp;};<br /></code></pre>
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                HTML 入口使用
+              </p>
+              <pre class="custom"
+                style="
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                  border-radius: 5px;
+                  box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+                "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">script</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">type</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">"module"</span>&gt;</span><span class="javascript" style="line-height: 26px;"><br />&nbsp;&nbsp;localStorage.setItem(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"name"</span>,&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"zhangpaopao"</span>);<br />&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">import</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"./awaiting.js"</span>;<br /></span><span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">script</span>&gt;</span><br /><br /><span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">script</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">type</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">"module"</span>&gt;</span><span class="javascript" style="line-height: 26px;"><br />&nbsp;&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">console</span>.log(localStorage.getItem(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"name"</span>));<br />&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;首次，打印的结果&nbsp;null；刷新后打印的结果为&nbsp;'zhangpaopao'</span><br /></span><span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">script</span>&gt;</span><br /></code></pre>
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                此时会发生一个什么情况呢？就是首次会打印
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">null</code>， 刷新后打印的结果为
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">zhangpaopao</code>，这是为什么呢？因为首次运行时，<code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">"./awaiting.js"</code>
+                是一个 TLA，<code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">localStorage.setItem("name", "zhangpaopao")</code>
+                会等到 TLA 中的
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">await</code>
+                执行完成后才能执行，所以
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">localStorage.getItem("name")</code>
+                为
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">null</code>，刷新后有是因为已经存下来了。
+              </p>
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                示例 2
+              </p>
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                同样有一个 TLA 的模块，同示例 1 一致。
+              </p>
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                然后，HTML 入口使用：
+              </p>
+              <pre class="custom"
+                style="
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                  border-radius: 5px;
+                  box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+                "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-tag" style="line-height: 26px;">&lt;<span class="hljs-name" style="color: #e06c75; line-height: 26px;">script</span>&nbsp;<span class="hljs-attr" style="color: #d19a66; line-height: 26px;">type</span>=<span class="hljs-string" style="color: #98c379; line-height: 26px;">"module"</span>&gt;</span><span class="javascript" style="line-height: 26px;"><br />&nbsp;&nbsp;addEventListener(<span class="hljs-string" style="color: #98c379; line-height: 26px;">'load'</span>,&nbsp;()&nbsp;=&gt;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;doSomething()&nbsp;执行操作</span><br />&nbsp;&nbsp;})<br />&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">import</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"./awaiting.js"</span>;<br /></span><span class="hljs-tag" style="line-height: 26px;">&lt;/<span class="hljs-name" style="color: #e06c75; line-height: 26px;">script</span>&gt;</span><br /></code></pre>
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                这里监听了
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">load</code>
+                事件，因为页面加载所耗时间并不一致，受网络环境、页面资源等因素的影响，有可能很快就会触发
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">load</code>
+                事件，也有可能很慢才能触发，而因引入了 TLA 的缘故，
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">addEventListener</code>
+                需要等到 TLA 中的
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">await</code>
+                执行完成后才能执行，所以是否能够监听到
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">load</code>
+                并不受控制，这坑可就太大了。
+              </p>
+            </section>
+          </li>
+        </ul>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          从以上两个示例相信能够看出 TLA
+          存在很大的问题了，不仅如此，它还有如下的这些问题：
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              TLA 隐式传递，所有依赖 TLA 的模块都变成异步模块
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              TLA 可见性很差，以至于很容易无意间引入 TLA
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              任何深层依赖的 TLA 都可以阻塞整个应用（异步）
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              无意间引入的 TLA 可以改变代码的执行序（异步）
+            </section>
+          </li>
+        </ul>
+      </section>
+    </li>
+  </ol>
+  <h2 data-tool="mdnice编辑器" style="
+      margin-top: 30px;
+      margin-bottom: 15px;
+      padding: 0px;
+      font-weight: bold;
+      color: black;
+      font-size: 22px;
+    " class="toc-enable" id="7c70b433-ebfc-36b8-9e18-65be186781a8">
+    <span class="content" style="
+        font-size: 18px;
+        border-bottom: 4px solid #2584b5;
+        padding: 2px 4px;
+        color: #2584b5;
+      ">7. Class fields (ES2022)</span><span class="suffix"></span>
+  </h2>
+  <ol data-tool="mdnice编辑器" style="
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding-left: 25px;
+      color: black;
+      list-style-type: decimal;
+    ">
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          提案信息
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案作者：Daniel Ehrenberg, Jeff Morrison
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              提案<a href="https://github.com/tc39/proposal-class-fields" style="
+                  text-decoration: none;
+                  word-wrap: break-word;
+                  font-weight: bold;
+                  color: #2584b5;
+                  border-bottom: 1px solid #2584b5;
+                ">详细内容传送门</a>
+            </section>
+          </li>
+        </ul>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          识别问题
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          主要是对
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">class</code>
+          的一些优化和补充。
+        </p>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          解决方案
+        </p>
+        <ul style="
+            margin-top: 8px;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            color: black;
+            list-style-type: disc;
+          ">
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                属性声明优化
+              </p>
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                之前实例属性只能定义在
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">constructor()</code>
+                方法里的
+                <code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">this</code>
+                上。新增的写法是可以直接定义在类内部的最顶层，这种新写法的好处是：
+              </p>
+              <ul style="
+                  margin-top: 8px;
+                  margin-bottom: 8px;
+                  padding-left: 25px;
+                  color: black;
+                  list-style-type: square;
+                ">
+                <li>
+                  <section style="
+                      margin-top: 5px;
+                      margin-bottom: 5px;
+                      line-height: 26px;
+                      text-align: left;
+                      color: #010101;
+                      font-weight: 500;
+                    ">
+                    所有实例对象自身的属性都定义在类的最外层，看上去比较整齐，一眼就能看出这个类有哪些实例属性。
+                  </section>
+                </li>
+                <li>
+                  <section style="
+                      margin-top: 5px;
+                      margin-bottom: 5px;
+                      line-height: 26px;
+                      text-align: left;
+                      color: #010101;
+                      font-weight: 500;
+                    ">
+                    写起来也相较简化一些
+                  </section>
+                </li>
+              </ul>
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                私有属性：
+              </p>
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                添加了私有属性，方法是在属性名之前使用<code style="
+                    font-size: 14px;
+                    word-wrap: break-word;
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    margin: 0 2px;
+                    color: #1e6bb8;
+                    background-color: rgba(27, 31, 35, 0.05);
+                    font-family: Operator Mono, Consolas, Monaco, Menlo,
+                      monospace;
+                    word-break: break-all;
+                  ">#</code>表示。私有属性，只能在类的内部使用。如果在类的外部使用，就会报错。
+              </p>
+            </section>
+          </li>
+          <li>
+            <section style="
+                margin-top: 5px;
+                margin-bottom: 5px;
+                line-height: 26px;
+                text-align: left;
+                color: #010101;
+                font-weight: 500;
+              ">
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                静态块
+              </p>
+              <p style="
+                  font-size: 16px;
+                  padding-top: 8px;
+                  padding-bottom: 8px;
+                  margin: 0;
+                  line-height: 26px;
+                  color: black;
+                ">
+                <a href="https://github.com/tc39/proposal-class-static-block" style="
+                    text-decoration: none;
+                    word-wrap: break-word;
+                    font-weight: bold;
+                    color: #2584b5;
+                    border-bottom: 1px solid #2584b5;
+                  ">静态块</a>（static
+                block），允许在类的内部设置一个代码块，在类生成时运行且只运行一次，主要作用是对静态属性进行初始化。
+              </p>
+            </section>
+          </li>
+        </ul>
+        <pre class="custom"
+          style="
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+          "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-class" style="line-height: 26px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">class</span>&nbsp;<span class="hljs-title" style="color: #e6c07b; line-height: 26px;">Test</span>&nbsp;</span>{<br />&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;属性新写法</span><br />&nbsp;&nbsp;foo&nbsp;=&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">1</span>;<br />&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;私有属性</span><br />&nbsp;&nbsp;#bar&nbsp;=&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">2</span>;<br />&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;私有方法</span><br />&nbsp;&nbsp;#handle()&nbsp;{}<br />&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;静态属性</span><br />&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">static</span>&nbsp;x&nbsp;=&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">3</span>;<br />&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">static</span>&nbsp;y;<br />&nbsp;&nbsp;<span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;静态块，仅会在类生成时运行一次</span><br />&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">static</span>&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">this</span>.y&nbsp;=&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">this</span>.x&nbsp;/&nbsp;<span class="hljs-number" style="color: #d19a66; line-height: 26px;">2</span>;<br />&nbsp;&nbsp;}<br />}<br /></code></pre>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          ES2022 对于
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">class</code>
+          所作的主要是这三点，当然还有一些，如公共属性、静态属性静态方法等。详细可点击<a href="https://github.com/tc39/proposal-class-fields" style="
+              text-decoration: none;
+              word-wrap: break-word;
+              font-weight: bold;
+              color: #2584b5;
+              border-bottom: 1px solid #2584b5;
+            ">查看</a>，这里就不赘述了。
+        </p>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          个人评价
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">class</code>
+          在 ES 中的发展一直相对缓慢，主要原因是 ES 的继承是用原型链来实现的，在
+          ES6 之前，要想生成实例对象的传统方法是构造函数。
+        </p>
+        <pre class="custom"
+          style="
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+          "><span style="display: block; background: url('https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg'); height: 12px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; display: -webkit-box; -webkit-overflow-scrolling: touch; font-size: 14px; word-wrap: break-word; padding: 2px 4px; margin: 0 2px; color: #1e6bb8; background-color: rgba(27,31,35,.05); font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; word-break: break-all; padding-top: 8px; padding-bottom:8px; background: #282c34; border-radius: 5px;"><span class="hljs-function" style="line-height: 26px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">function</span>&nbsp;<span class="hljs-title" style="color: #61aeee; line-height: 26px;">Animal</span>(<span class="hljs-params" style="line-height: 26px;">name</span>)&nbsp;</span>{<br />&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">this</span>.name&nbsp;=&nbsp;name;<br />}<br /><br />Animal.prototype.isWhat&nbsp;=&nbsp;<span class="hljs-function" style="line-height: 26px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">function</span>&nbsp;(<span class="hljs-params" style="line-height: 26px;"></span>)&nbsp;</span>{<br />&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">return</span>&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">`This&nbsp;is&nbsp;a&nbsp;<span class="hljs-subst" style="color: #e06c75; line-height: 26px;">${<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">this</span>.name}</span>`</span>;<br />};<br /><br /><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">const</span>&nbsp;dog&nbsp;=&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">new</span>&nbsp;Animal(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"dog"</span>);<br /><span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">console</span>.log(dog.isWhat());<br /><span class="hljs-comment" style="color: #5e7196; font-style: italic; line-height: 26px;">//&nbsp;This&nbsp;is&nbsp;a&nbsp;dog</span><br /></code></pre>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          这种写法本身就与传统的面向对象语言有很大差异。
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          直到 ES6 才有了与传统语言写法想进的
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">class</code>，但它的底层实际上还是原型链，它只是一个糖罢了。所以原型链有的缺陷它都有，而且，新的这些特性还存在一些使用上的坑，TS
+          能做一些检查，但并不能保证完全避免，
+          至于这些坑，这里就不一一说明了，我会另起一篇文章来聊聊
+          <code style="
+              font-size: 14px;
+              word-wrap: break-word;
+              padding: 2px 4px;
+              border-radius: 4px;
+              margin: 0 2px;
+              color: #1e6bb8;
+              background-color: rgba(27, 31, 35, 0.05);
+              font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+              word-break: break-all;
+            ">class</code>
+          使用上的坑点，一来因为多二来也是需要细细地讲才能清楚。
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          所以，个人对此的评价是，正常地使用不会有太大的问题，如果能使用 TS
+          最好使用，确实 TS 能规避异步。
+        </p>
+      </section>
+    </li>
+  </ol>
+  <h2 data-tool="mdnice编辑器" style="
+      margin-top: 30px;
+      margin-bottom: 15px;
+      padding: 0px;
+      font-weight: bold;
+      color: black;
+      font-size: 22px;
+    " class="toc-enable" id="0e0d9e02-e19d-80ba-3297-93c4eb03ce55">
+    <span class="content" style="
+        font-size: 18px;
+        border-bottom: 4px solid #2584b5;
+        padding: 2px 4px;
+        color: #2584b5;
+      ">8. 聊点其它的</span><span class="suffix"></span>
+  </h2>
+  <ol data-tool="mdnice编辑器" style="
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding-left: 25px;
+      color: black;
+      list-style-type: decimal;
+    ">
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          ES 的发展为什么感觉越来越慢了
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          ECMAScript 发展至今已经二十多年了（1997
+          年首版），很多语言特性都已经被提案所覆盖，特别是
+          ES5、ES6，这两个版本所提内容不仅多而且都非常优质。
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          那么为什么感觉发现到现在越来越少了呢？其实很简单，一些利好的、简单的已经被大家所提了，所以慢慢地就到了一个瓶颈期了。与此同时，历史的包袱和所需要考虑的点也就越来越多了，所以进度上慢下来了也是正常的发展。
+        </p>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          似乎 ES2022 新增的点都有很多的坑点，为什么最终还是进入了标准
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          这个怎么说呢？很多时候一个提案是否能够最终进入
+          Stage4，并不是那么简单的，一般都是多方考虑和妥协的结果，比如有时候开发商（浏览器开发商）可能觉得这个特性很适合，那么他们可能拥有更大的话语权。
+        </p>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          开发者是否有机会提案
+        </p>
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          能够参与 TC39 会议的代表，需要所在企业成为 TC39
+          的会员（当然也就是说要交钱了），然后才能有机会去参与。具体的会费和权益<a href="https://www.ecma-international.org/about-ecma/join-ecma/" style="
+              text-decoration: none;
+              word-wrap: break-word;
+              font-weight: bold;
+              color: #2584b5;
+              border-bottom: 1px solid #2584b5;
+            ">点击查看</a>。
+        </p>
+      </section>
+    </li>
+  </ol>
+  <p data-tool="mdnice编辑器" style="
+      font-size: 16px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      margin: 0;
+      line-height: 26px;
+      color: black;
+    ">
+    <strong style="font-weight: bold; color: #2584b5">参考</strong>
+  </p>
+  <ul data-tool="mdnice编辑器" style="
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding-left: 25px;
+      color: black;
+      list-style-type: disc;
+    ">
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          https://github.com/tc39/proposals/blob/main/finished-proposals.md
+        </p>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          https://johnhax.net/2022/JS-is-dead/slide#125
+        </p>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          https://alexewerlof.medium.com/node-shebang-e1d4b02f731d
+        </p>
+      </section>
+    </li>
+    <li>
+      <section style="
+          margin-top: 5px;
+          margin-bottom: 5px;
+          line-height: 26px;
+          text-align: left;
+          color: #010101;
+          font-weight: 500;
+        ">
+        <p style="
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin: 0;
+            line-height: 26px;
+            color: black;
+          ">
+          https://www.ecma-international.org/about-ecma/join-ecma/
+        </p>
+      </section>
+    </li>
+  </ul>
+</section>
