@@ -21,11 +21,11 @@ hero:
       link: https://github.com/zhangpaopao0609/web-study-record
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 前端
+    details: 整理了学习前端的整个过程，真正的从 0 到 1
+  - title: 全栈
+    details: 前后端、CI/CD、部署
+  - title: 计算机
+    details: Linux、算法
 ---
 

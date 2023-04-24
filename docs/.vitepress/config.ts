@@ -18,11 +18,14 @@ export default defineConfig({
     // 头部导航栏
     nav: [
       { text: '起源', link: '/fate/' },
-      { text: 'Lint', link: '/lint/' },
       {
         text: '搭建项目',
-        link: '/project-config/',
+        items: [
+          { text: 'Git', link: '/project/git/' },
+          { text: 'npm/yarn/pnpm', link: '/project/package-manager/' },
+        ],
       },
+      { text: 'Lint', link: '/lint/' },
     ],
 
     sidebar: {
