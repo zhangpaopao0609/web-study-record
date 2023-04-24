@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress';
 
-const logoPath = '/images/logo.png';
+const logoPath = '/images/logo.svg';
 
 /**
  * @doc https://vitepress.dev/reference/site-config

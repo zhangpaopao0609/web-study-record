@@ -6,13 +6,19 @@ hero:
   name: "Web Study Record"
   text: "用于我前端学习的记录, 记录的同时也做一个分享."
   tagline: My great project tagline
+  image:
+    src: /images/logo-without-background.svg
+    alt: Vite
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: 缘起
+      link: /fate
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 查看目录
+      link: /fate/catalog
+    - theme: alt
+      text: github
+      link: https://github.com/zhangpaopao0609/web-study-record
 
 features:
   - title: Feature A
