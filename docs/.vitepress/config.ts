@@ -17,7 +17,7 @@ export default defineConfig({
     logo: logoPath,
     // 头部导航栏
     nav: [
-      { text: '起源', link: '/' },
+      { text: '起源', link: '/fate/' },
       { text: 'Lint', link: '/lint/' },
       {
         text: '搭建项目',
@@ -26,6 +26,21 @@ export default defineConfig({
     ],
 
     sidebar: {
+      '/fate/': [
+        {
+          text: '缘起',
+          items: [
+            {
+              text: '一切的起点',
+              link: '/fate/',
+            },
+            {
+              text: '查看目录',
+              link: '/fate/catalog',
+            },
+          ],
+        },
+      ],
       '/guide/': [
         {
           text: 'Guide',

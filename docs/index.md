@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 缘起
-      link: /fate
+      link: /fate/
     - theme: alt
       text: 查看目录
       link: /fate/catalog
