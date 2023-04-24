@@ -7,7 +7,7 @@ hero:
   text: "用于我前端学习的记录, 记录的同时也做一个分享."
   tagline: My great project tagline
   image:
-    src: /images/logo-without-background.svg
+    src: /images/logo-image.png
     alt: Vite
   actions:
     - theme: brand
