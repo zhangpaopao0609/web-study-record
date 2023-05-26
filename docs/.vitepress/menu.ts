@@ -28,13 +28,31 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       ],
     },
   ],
-  '/guide/': [
+  '/project/': [
     {
-      text: 'Guide',
+      text: 'git',
+      collapsed: true,
+      link: '/project/git/',
       items: [
         {
-          text: 'Why Vite',
-          link: '/guide/why',
+          text: 'git 基础',
+          collapsed: true,
+          items: [
+            {
+              text: '1-起步',
+              link: '/project/git/pro-git/1-起步.md',
+            },
+          ],
+        },
+        {
+          text: 'git 其它',
+          collapsed: true,
+          items: [
+            {
+              text: 'git 基础',
+              link: '/project/git/other/index.md',
+            },
+          ],
         },
       ],
     },
