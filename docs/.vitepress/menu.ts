@@ -68,7 +68,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
   ],
   '/linter/': [
     {
-      text: '为什么需要 Lint ？',
+      text: 'Linter',
       link: '/linter/',
     },
     {
