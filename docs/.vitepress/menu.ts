@@ -9,7 +9,7 @@ export const nav: DefaultTheme.Config['nav'] = [
       { text: 'npm/yarn/pnpm', link: '/project/package-manager/' },
     ],
   },
-  { text: 'Lint', link: '/lint/' },
+  { text: 'Linter', link: '/linter/' },
 ];
 
 export const sidebar: DefaultTheme.Config['sidebar'] = {
@@ -66,17 +66,17 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       ],
     },
   ],
-  '/lint/': [
+  '/linter/': [
     {
       text: '为什么需要 Lint ？',
-      link: '/lint/',
+      link: '/linter/',
     },
     {
       text: 'ESLint',
       items: [
         {
           text: 'ESLint 简述',
-          link: '/lint/eslint/',
+          link: '/linter/eslint/',
         },
       ],
       collapsed: true,
@@ -86,7 +86,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       items: [
         {
           text: 'StyleLint 简述',
-          link: '/lint/stylelint/',
+          link: '/linter/stylelint/',
         },
       ],
       collapsed: true,
