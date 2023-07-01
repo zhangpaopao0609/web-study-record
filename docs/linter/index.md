@@ -29,3 +29,41 @@ Lint 是一种静态代码分析工具，用于检查代码中的潜在问题和
 及时发现和修复问题，减少代码的维护成本，提高系统的稳定性和可靠性。
 
 ## 前端 Lint 工具有哪些
+
+前端开发中常用的 Lint 工具有以下几种：
+
+**1. ESLint**
+
+ESLint 是目前最流行的 JavaScript 代码检查工具之一。通过配置文件来定义代码风格规范，并且提供了丰富的插件和规则，可以检查代码中的潜在问题，如语法错误、变量未使用等。
+
+**2. Stylelint**
+
+Stylelint 是用于检查 CSS 代码风格的工具。同样通过配置文件来定义代码风格规范，并且提供了许多规则和插件，可以检查 CSS 中的错误、未使用的选择器、不合理的样式等。
+
+**3. Prettier**
+:::tip
+Prettier 是一种代码格式化工具，而不是严格意义上的 Lint 工具。
+:::
+Prettier 是一个代码格式化工具，它可以自动将代码按照统一的规范进行格式化，包括缩进、换行、引号等。Prettier支持多种编程语言，包括JavaScript、CSS、HTML等。
+
+Prettier 可以帮助我们统一代码的格式，但它并不会检查代码中的潜在问题或错误。Prettier 的主要目标是通过自动格式化代码，使代码具有一致的风格，减少团队成员之间的代码风格差异，提高代码的可读性。
+
+:::info
+我个人不是非常建议使用 Prettier，因为它采用了一套固定的格式化规则。这意味着无论你是否同意某些格式化规则，Prettier 都会强制执行它们。[点击可查看详细细节]()
+:::
+
+
+
+**4. TSLint**
+:::warning
+自2019年起，TSLint 已弃用。有关更多详细信息，可查看 [发展：TSLint -> ESLint](https://github.com/palantir/tslint/issues/4534)。[typescript-eslint](https://typescript-eslint.io/) 是目前 typescript 代码检查的首选。
+:::
+
+TSLint 是用于检查 TypeScript 代码的工具。通过配置文件来定义代码风格规范，并且提供了许多规则和插件，可以检查 TypeScript 中的错误、不规范的代码等。
+
+**5. JSLint、JSHint、JSCS**
+:::info
+这都是非常早起的 Lint 工具了，现在基本都已经弃用了。
+:::
+
+JSLint、JSHint和JSCS是早期较为流行的JavaScript代码检查工具，它们可以检查代码中的语法错误、潜在问题等。不过，相较于ESLint，它们的功能和插件支持较为有限。
