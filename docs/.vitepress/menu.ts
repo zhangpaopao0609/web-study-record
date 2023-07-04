@@ -76,7 +76,11 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       items: [
         {
           text: 'ESLint 简述',
-          link: '/linter/eslint/',
+          link: '/linter/eslint/index.md',
+        },
+        {
+          text: 'ESLint 使用',
+          link: '/linter/eslint/use-eslint.md',
         },
       ],
       collapsed: true,

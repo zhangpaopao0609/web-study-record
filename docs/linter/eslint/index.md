@@ -58,14 +58,10 @@ ESLint 解析器将代码转换为 ESLint 可以识别的抽象语法树。默�
 自定义解析器允许 ESLint 解析非标准的 JavaScript 语法。通常情况，可共享配置或插件中会配置自定义解析器，一般不会单独使用它们。
 
 例如，[@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser) 就是 [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint) 项目中的自定义解析器，它允许 ESLint 可以解析和识别 TypeScript 代码。
-### 6. 处理器
+### 5. 自定义处理器
 
-### 7. 输出格式
+ESLint 处理器可以从其他类型的文件中提取 JavaScript 代码，然后让 ESLint 进行检查。或者还可以使用处理器 ESLint 检查之前对 JavaScript 代码进行操作。
 
-### 8. CLI
-## 使用 ESLint
+例如，[eslint-plugin-markdown](https://github.com/eslint/eslint-plugin-markdown) 中就包含一个自定义处理器，使得 ESLint 可以在 Markdown 代码块中查找 JavaScript 代码
 
-ESLint 官网给出了非常项目的配置和
-### 1. 普通 JS 项目
-> 没有框架，没有 TS
 
