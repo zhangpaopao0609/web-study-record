@@ -56,6 +56,7 @@ pnpm add -D @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint ty
 - _eslintrc.js_
 
 ```js
+// eslintrc.js
 module.exports = {
   env: {
     node: true,
@@ -65,5 +66,69 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
   root: true,
+};
+```
+
+## 3. Vue 项目
+
+1. vue-js 项目
+
+- 安装
+```bash
+pnpm add -D eslint eslint-plugin-vue
+```
+- _eslintrc.js_
+
+```js
+// eslintrc.js
+module.exports = {
+  extends: [
+    // add more generic rulesets here, such as:
+    // 'eslint:recommended',
+    'plugin:vue/vue3-recommended',
+    // 'plugin:vue/recommended' // Use this if you are using Vue.js 2.x.
+  ],
+  rules: {
+    // override/add rules settings here, such as:
+    // 'vue/no-unused-vars': 'error'
+  }
+};
+```
+
+点击可查看 [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) 的详细内容。
+
+2. vue-ts 项目
+
+- 安装
+```bash
+pnpm add -D eslint eslint-plugin-vue @typescript-eslint/parser @typescript-eslint/eslint-plugin typescript
+```
+- _eslintrc.js_
+
+```js
+module.exports = {
+  root: true,
+  env: {
+    node: true,
+    browser: true,
+  },
+  extends: [
+    // add more generic rulesets here, such as:
+    // 'eslint:recommended',
+    'plugin:vue/vue3-recommended',
+    // 'plugin:vue/recommended' // Use this if you are using Vue.js 2.x.
+    'plugin:@typescript-eslint/recommended'
+  ],
+  parser: "vue-eslint-parser",
+  parserOptions: {
+    parser: "@typescript-eslint/parser",
+    sourceType: "module"
+  },
+  plugins: ['@typescript-eslint'],
+  rules: {
+    // override/add rules settings here, such as:
+    // 'vue/no-unused-vars': 'error'
+    "semi": ["error", "always"], // 强制使用分号结尾
+  }
 };
 ```
