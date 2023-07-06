@@ -90,7 +90,11 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       items: [
         {
           text: 'StyleLint 简述',
-          link: '/linter/stylelint/',
+          link: '/linter/stylelint/index.md',
+        },
+        {
+          text: 'StyleLint 使用',
+          link: '/linter/stylelint/use-stylelint.md',
         },
       ],
       collapsed: true,

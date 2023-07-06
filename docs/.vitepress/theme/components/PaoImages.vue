@@ -37,6 +37,7 @@ const props = withDefaults(defineProps<{
 .title {
   font-weight: bold;
   font-size: 14px;
+  margin-top: 10px;
 }
 
 .reference {
