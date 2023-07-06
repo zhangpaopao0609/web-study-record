@@ -148,4 +148,105 @@ module.exports = {
 ```
 ### 2.3 HTML 中的 CSS
 
-### 2.4 HTML 中的 CSS
+[`postcss-html`](https://www.npmjs.com/package/postcss-less) 用于 HTML 中的 css。
+
+#### 2.3.1 纯 HTML
+
+1. 安装依赖
+```bash
+pnpm add -D stylelint postcss-html
+```
+
+2. 配置文件 _.stylelintrc.js_
+
+```js
+// .stylelintrc.js
+module.exports = {
+  // html 解析器
+  customSyntax: "postcss-html",
+  rules: {
+    // stylelint 内置规则
+    "unit-allowed-list": ["em"],
+  }
+}
+```
+:::tip
+[stylelint-config-html](https://github.com/ota-meshi/stylelint-config-html) 是社区推荐的一个 HMTL（类HTML）Stylelint 的配置，其中包含了 html, php, svelte, vue 以及 xml 的配置。Vue 官方[推荐的 Stylelint 配置](https://github.com/ota-meshi/stylelint-config-recommended-vue)就使用了这一配置。
+
+stylelint-config-html 所用的解析器就是 `postcss-html`。
+:::
+
+#### 2.3.2 HTML + CSS 文件
+
+1. 安装依赖
+```bash
+pnpm add -D stylelint postcss-html
+```
+
+2. 配置文件 _.stylelintrc.js_
+
+```js
+// .stylelintrc.js
+module.exports = {
+  overrides: [
+    {
+      files: ["*.html"],
+      // html 解析器
+      customSyntax: "postcss-html",
+    }
+  ],
+  rules: {
+    // stylelint 内置规则
+    "unit-allowed-list": ["em"],
+  }
+}
+```
+
+> 为什么要这样写才能同时检测 html 文件和 css 文件呢？
+
+#### 2.3.3 HTML + SCSS
+1. 安装依赖
+```bash
+pnpm add -D stylelint postcss-html postcss-sass
+```
+
+2. 配置文件 _.stylelintrc.js_
+
+```js
+// .stylelintrc.js
+module.exports = {
+  overrides: [
+    {
+      files: ["*.html"],
+      // html 解析器
+      customSyntax: "postcss-html",
+    },
+    {
+      files: ["*.scss"],
+      // scss 解析器
+      customSyntax: "postcss-scss",
+    }
+  ],
+  rules: {
+    // stylelint 内置规则
+    "unit-allowed-list": ["em"],
+  }
+}
+```
+
+### 2.4 Vue
+
+好吧，Vue 没啥可说的，直接用官方推荐的就可以的：[stylelint-config-recommended-vue](https://github.com/ota-meshi/stylelint-config-recommended-vue)。
+
+stylelint-config-recommended-vue 就是：[stylelint-config-recommended](https://github.com/stylelint/stylelint-config-recommended) + [stylelint-config-html]() + 一点点 vue 特定配置，如下图所示：
+
+<PaoImages
+  src="/images/linter-stylelint/stylelint-config-recommended-vue-01.png" 
+  width="80%"
+/>
+<PaoImages
+  src="/images/linter-stylelint/stylelint-config-recommended-vue-02.png" 
+  width="80%"
+  title="stylelint-config-recommended-vue" 
+  reference="图片来至：[stylelint-config-recommended-vue](https://github.com/ota-meshi/stylelint-config-recommended-vue/blob/main/lib/index.js)" 
+/>
