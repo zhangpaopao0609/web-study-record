@@ -94,7 +94,7 @@ module.exports = {
 社区还提供了 `stylelint-config-recommended-scss` 作为 SCSS 的推荐配置。`stylelint-config-recommended-scss` 其实就是一套 Stylelint 配置，如下图所示：
 
 <PaoImages
-  src="./images/stylelint-config-recommended-scss.png" 
+  src="/images/linter-stylelint/stylelint-config-recommended-scss.png" 
   width="80%"
   title="stylelint-config-recommended-scss" 
   reference="图片来至：[stylelint-config-recommended-scss](https://github.com/stylelint-scss/stylelint-config-recommended-scss/blob/master/index.js)" 
