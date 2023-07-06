@@ -35,9 +35,9 @@ npx stylelint "**/*.css"
 - 类 CSS 语言：SCSS，Sass 和 Less 等
 - “容器” 中的 CSS：在 HTML 中（行内和内联），CSS-in-JS 和 Vue 单文件等
 
-对这些 CSS 检查需要 “语法器”（将其转为标准 css 或从 “容器” 中提取 css）来实现。
+对于这些，Stylelint 本身是无法解析和识别的，所以对这类 CSS 检查，需要特定的 “解析器” 来实现（将其转为标准 css 或从 “容器” 中提取 css）。
 
-例如 SCSS，社区提供了 `postcss-scss` 这一自定义语法器来解析 SCSS，这样 Stylelint 就能认识 SCSS 并对其进行检查了；同时，社区还提供了一个配套的针对 SCSS 的自定义规则集 [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)，用于扩展 Stylelint 的能力。
+例如 SCSS，社区提供了 `postcss-scss` 这一自定义 “解析器” 来解析 SCSS，这样 Stylelint 就能认识 SCSS 并对其进行检查了；同时，社区还提供了一个配套的针对 SCSS 的自定义规则集 [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)，用于扩展 Stylelint 的能力。
 
 ### 2.1 SCSS
 
@@ -124,7 +124,28 @@ module.exports = {
 :::
 
 ### 2.2 LESS
+跟 SCSS 一样，社区提供了 [`postcss-less`](https://www.npmjs.com/package/postcss-less) 这一 “解析器” 来解析 LESS。
 
+> 但目前暂未发现 LESS 提供类似 `stylelint-scss` 这样的 LESS 自定义规则，也不知道是为啥没有，是不需要吗？比如说 `mixin` 呀、变量呀这些个的写法，不需要校验吗？不懂不懂
+
+1. 安装依赖
+```bash
+pnpm add -D stylelint postcss-less
+```
+
+2. 配置文件 _.stylelintrc.js_
+
+```js
+// .stylelintrc.js
+module.exports = {
+  // less 解析器
+  customSyntax: "postcss-less",
+  rules: {
+    // stylelint 内置规则
+    "unit-allowed-list": ["em"],
+  }
+}
+```
 ### 2.3 HTML 中的 CSS
 
 ### 2.4 HTML 中的 CSS
