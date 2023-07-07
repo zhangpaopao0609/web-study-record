@@ -83,7 +83,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
           link: '/linter/eslint/use-eslint.md',
         },
       ],
-      collapsed: true,
+      // collapsed: true,
     },
     {
       text: 'StyleLint',
@@ -97,7 +97,21 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
           link: '/linter/stylelint/use-stylelint.md',
         },
       ],
-      collapsed: true,
+      // collapsed: true,
+    },
+    {
+      text: 'Prettier',
+      items: [
+        {
+          text: 'Prettier 简述',
+          link: '/linter/prettier/index.md',
+        },
+        {
+          text: 'Prettier 使用',
+          link: '/linter/prettier/use-prettier.md',
+        },
+      ],
+      // collapsed: true,
     },
   ],
   '/project-config/': [
