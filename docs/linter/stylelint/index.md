@@ -1,5 +1,7 @@
 # stylelint
 
+[Prettier 官网](https://stylelint.io/)
+
 stylelint是一个用于检查 CSS 代码规范的工具。帮助开发者在编写 CSS 代码时遵循一致的风格和最佳实践。
 
 stylelint具有以下特点：
