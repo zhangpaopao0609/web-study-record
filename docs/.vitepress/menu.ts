@@ -2,13 +2,8 @@ import type { DefaultTheme } from 'vitepress';
 
 export const nav: DefaultTheme.Config['nav'] = [
   { text: '起源', link: '/fate/' },
-  {
-    text: '搭建项目',
-    items: [
-      { text: 'Git', link: '/project/git/' },
-      { text: 'npm/yarn/pnpm', link: '/project/package-manager/' },
-    ],
-  },
+  { text: 'Git', link: '/git/' },
+  { text: '包管理器', link: '/package-manager/' },
   { text: 'Linter', link: '/linter/' },
 ];
 
@@ -28,40 +23,33 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       ],
     },
   ],
-  '/project/': [
+  '/git/': [
     {
-      text: 'git',
+      text: 'Git',
       collapsed: true,
-      link: '/project/git/',
+      link: '/git/',
       items: [
         {
           text: 'git 基础',
-          collapsed: true,
           items: [
             {
               text: '1-起步',
-              link: '/project/git/pro-git/1-起步.md',
+              link: '/git/pro-git/01-起步.md',
+            },
+            {
+              text: '2-Git基础',
+              link: '/git/pro-git/02-Git基础.md',
             },
           ],
         },
         {
           text: 'git 其它',
-          collapsed: true,
           items: [
             {
               text: 'git 基础',
               link: '/project/git/other/index.md',
             },
           ],
-        },
-      ],
-    },
-    {
-      text: 'APIs',
-      items: [
-        {
-          text: 'Plugin API',
-          link: '/guide/api-plugin',
         },
       ],
     },

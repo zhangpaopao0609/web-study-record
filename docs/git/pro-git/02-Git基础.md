@@ -1,6 +1,4 @@
-[toc]
-
-# 第 2 章. Git 基础
+# 2. Git 基础
 
 ## 2.1 获取 Git 仓库
 
@@ -9,24 +7,27 @@ git init
 ```
 
 ```bash
-git clone
+git clone https://github.com/zhangpaopao0609/web-study-record
 ```
 
 ## 2.2 记录每次更新到仓库 
-
+查看当前操作状态
 ```bash
 git status
 
+# 简化
 git status -s
 ```
+
+将工作区文件添加到暂存区
 
 ```bash
 git add 
 ```
 
-### 1. 忽略文件
+1. **忽略文件**
 
-.gitignore 
+*.gitignore*  文件
 
 无需纳入 Git 的管理，也不希望他们总出现未跟踪文件列表
 
@@ -34,7 +35,7 @@ git add
 cat .gitignore
 ```
 
-### 2. 查看已暂存和未暂存的修改
+2. **查看已暂存和未暂存的修改**
 
 ```bash
 git diff 
@@ -46,7 +47,7 @@ git diff --staged
 # 查看已暂存的将要添加到下次提交里的内容
 ```
 
-### 3. 提交更新
+3. **提交更新**
 
 ```bash
 git commit
@@ -61,16 +62,16 @@ git commit -m "message"
 # -m 的意思是将提交信息与命令放在同一行
 ```
 
-### 4. 跳过使用暂存区域
+4. **跳过使用暂存区域**
 
-尽管是一个暂存区域的方式可以精心准备要提交的细节，但有时候这么做略显繁琐。Git 提供了一个跳过使用暂存区域的方式，只要在提交的时候，给 git commit 加上 -a 的选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从未跳过git add 步骤
+尽管放入暂存区域的方式可以精心准备要提交的细节，但有时候这么做略显繁琐。Git 提供了一个跳过使用暂存区域的方式，只要在提交的时候，给 `git commit` 加上 -a 的选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 `git add` 步骤
 
 ```bash
 git commit -a -m "message"
 # git commit -am "message"
 ```
 
-### 5. 移除文件
+5. **移除文件**
 
 ```bash
 git rm
@@ -82,7 +83,7 @@ git rm --cached
 # 只把文件从Git仓库中删除（亦即从暂存区域移除），但仍然希望保留咋当前工作目录中
 ```
 
-### 6. 重命名文件
+6. **重命名文件**
 
 ```bash
 git mv filename newname
@@ -90,7 +91,7 @@ git mv filename newname
 
 ## 2.3 查看提交历史
 
-### 1. 查看提交历史
+1. **查看提交历史**
 
 ```bash
 git log
@@ -125,7 +126,7 @@ git log --graph
 # 使用一些 ASCII 字符串来形象地展示你的分支、合并历史
 ```
 
-### 2. 限制输出长度
+2. **限制输出长度**
 
 ```bash
 git log -<n> 
@@ -153,7 +154,7 @@ git log -- path
 
 ## 2.4 撤销操作
 
-### 1. 撤销操作
+1. **撤销操作**
 
 ```bash
 # 有时候我们提交完了才发现漏掉了几个文件没有提交，或者提交信息写错了。此时，可以运行带有 --amend 选项的提交命令尝试重新提交
@@ -166,7 +167,7 @@ git commit --amend
 # 最终你只会有一个提交，第二次提交将代替第一次提交的结果
 ```
 
-### 2. 取消暂存的文件
+2. **取消暂存的文件**
 
 ```bash
 # git status 已经给出了提示
@@ -175,7 +176,7 @@ git commit --amend
 git restore --staged <file>
 ```
 
-### 3. 撤销对文件的修改
+3. **撤销对文件的修改**
 
 ```bash
 # 不希望保留当前工作目录对某个文件的修改，还原为上一次提交的样子
@@ -188,7 +189,7 @@ git restore <file>
 
 ## 2.5 远程仓库的使用
 
-### 1. 查看远程仓库
+1. **查看远程仓库**
 
 ```bash
 git remote
@@ -200,7 +201,7 @@ git remote -v
 # origin	git@github.com:Arrow-zb/web-study-record.git (push)
 ```
 
-### 2. 添加远程仓库
+2. **添加远程仓库**
 
 ```bash
 git remote add <shortname> <url>
@@ -220,7 +221,7 @@ git fetch test
 git checkout test/master
 ```
 
-### 3. 从远程仓库中抓取与拉取
+3. **从远程仓库中抓取与拉取**
 
 ```bash
 git fetch [remote-name]
@@ -232,13 +233,13 @@ git fetch [remote-name]
 # 默认情况下，git clone 命令会自动设置本地 master 分支跟踪克隆的远程仓库的 master 分支（或不管是什么名字的默认分支）
 ```
 
-### 4. 推送到远程仓库
+4. **推送到远程仓库**
 
 ```bash
 git push [remote-name] [branch-name]
 ```
 
-### 5. 查看远程仓库
+5. **查看远程仓库**
 
 ```bash
 # 简单查看信息
@@ -247,7 +248,7 @@ git remote -v
 git remote show [remote-name]
 ```
 
-### 6. 远程仓库的移除与重命名
+6. **远程仓库的移除与重命名**
 
 ```bash
 # 重命名引用的名字
@@ -262,9 +263,9 @@ git remote rm [remote-name]
 
 ## 2.6 打标签
 
-### 1. 打标签
+1. **打标签**
 
-### 2. 列出标签
+2. **列出标签**
 
 ```bash
 git tag
@@ -272,58 +273,59 @@ git tag
 git tag -l 'v1.8.5'
 ```
 
-### 3. 创建标签
+3. **创建标签**
 
 轻量标签 (lightweight) 和附注标签 (annotated)
 
 轻量标签很像一个不会改变的分支-它只是一个特定提交的引用
 
-#### 3.1 附注标签
+- 附注标签
 
-```bash
-# 附注标签
-git tag -a v1.4 -m "my version 1.4"
-# 查看
-git show v1.4
-```
+  ```bash
+  # 附注标签
+  git tag -a v1.4 -m "my version 1.4"
+  # 查看
+  git show v1.4
+  ```
 
-#### 3.2 轻量标签
+- 轻量标签
 
-```bash
-git tag v1.4-lw
-```
+  ```bash
+  git tag v1.4-lw
+  ```
 
-#### 3.3 后期打标签
+- 后期打标签
 
-假设忘记了给项目打标签，可以在之后不上标签。要在哪个提交上打标签，只需要在命令的末尾指定提交的校验和（commit hash）
+  假设忘记了给项目打标签，可以在之后不上标签。要在哪个提交上打标签，只需要在命令的末尾指定提交的校验和（commit hash）
 
-```bash
-git tag -a v1.2 92fc02
-```
+  ```bash
+  git tag -a v1.2 92fc02
+  ```
 
-#### 3.4 共享标签
+- 共享标签
 
-默认情况下 git push 不会推送标签到远程仓库服务器中。创建完标签后必须显示地推送标签到共享服务器上。就类似于推送共享远程分支一样
+  默认情况下 git push 不会推送标签到远程仓库服务器中。创建完标签后必须显示地推送标签到共享服务器上。就类似于推送共享远程分支一样
 
-```bash
-git push origin [tagname]
-```
+  ```bash
+  git push origin [tagname]
+  ```
 
-也可以一次性推送很多标签，使用 --tags 的 git push 实现
+  也可以一次性推送很多标签，使用 --tags 的 git push 实现
 
-```bash
-git push origin --tags
-```
+  ```bash
+  git push origin --tags
+  ```
 
-#### 3.5 检出标签
 
-在 Git 中并不能真的检出一个标签，因为他们并不能像分支一样来回移动，如果你想要工作目录与仓库中特定的标签版本完全一样，可以使用 
+- 检出标签
 
-```bash 
-git checkout -b [branchname] [tagname]
-```
+  在 Git 中并不能真的检出一个标签，因为他们并不能像分支一样来回移动，如果你想要工作目录与仓库中特定的标签版本完全一样，可以使用 
 
-在特定分支上创建一个新分支
+  ```bash 
+  git checkout -b [branchname] [tagname]
+  ```
+
+  在特定分支上创建一个新分支
 
 ## 2.7 Git 别名
 
