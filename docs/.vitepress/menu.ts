@@ -12,14 +12,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
     {
       text: '缘起',
       items: [
-        {
-          text: '一切的起点',
-          link: '/fate/',
-        },
-        {
-          text: '查看目录',
-          link: '/fate/catalog',
-        },
+        { text: '一切的起点', link: '/fate/' },
+        { text: '查看目录', link: '/fate/catalog' },
       ],
     },
   ],
@@ -32,23 +26,15 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         {
           text: 'git 基础',
           items: [
-            {
-              text: '1-起步',
-              link: '/git/pro-git/01-起步.md',
-            },
-            {
-              text: '2-Git基础',
-              link: '/git/pro-git/02-Git基础.md',
-            },
+            { text: '01-起步', link: '/git/pro-git/01-起步.md' },
+            { text: '02-git基础', link: '/git/pro-git/02-git基础.md' },
+            { text: '03-git分支', link: '/git/pro-git/03-git分支.md' },
           ],
         },
         {
           text: 'git 其它',
           items: [
-            {
-              text: 'git 基础',
-              link: '/project/git/other/index.md',
-            },
+            { text: 'git 基础', link: '/project/git/other/index.md' },
           ],
         },
       ],
