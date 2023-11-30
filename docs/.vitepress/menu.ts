@@ -29,6 +29,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             { text: '01-起步', link: '/git/pro-git/01-起步.md' },
             { text: '02-git基础', link: '/git/pro-git/02-git基础.md' },
             { text: '03-git分支', link: '/git/pro-git/03-git分支.md' },
+            { text: '04-git配置', link: '/git/pro-git/04-git配置.md' },
           ],
         },
         {
