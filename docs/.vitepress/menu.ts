@@ -34,9 +34,11 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
           ],
         },
         {
-          text: 'git 其它',
+          text: '常见问题',
           items: [
-            { text: 'git 基础', link: '/project/git/other/index.md' },
+            { text: 'git fetch 和 git pull 的区别', link: '/git/faq/fetch-pull-diff.md' },
+            { text: 'git reset 和 git revert 的区别', link: '/git/faq/reset-revert-diff.md' },
+            { text: 'git submodule', link: '/git/faq/git-submodule.md' },
           ],
         },
       ],

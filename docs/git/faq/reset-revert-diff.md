@@ -1,5 +1,3 @@
-[toc]
-
 # git reset 和 revert 的区别
 
 ## 1. 前言
@@ -11,7 +9,7 @@
 语法
 
 ```bash
-git reset \--soft | --mixed | --hard
+git reset --soft | --mixed | --hard
 ```
 
 - `--soft` 回退时保留源码，仅仅回退 commit，修改的文件仍然保存在暂存区,再次提交时只需要 git commit 
@@ -37,4 +35,5 @@ git revert 和 reset 最本质的区别为两点：
 1. revert 使用一个新的commit 来回滚你希望回滚的commit， reset 是直接HEAD 指向回退的commit
 2. revert 只会回滚你希望回滚的哪一个commit的操作，不会影响其他的，reset 由于指针回退了，因此这个commit 之后的commit都会消失。
 
-当然，我们一般的使用时，如果已经push了，使用revert，如果没有，就是用reset
+
+**当然，我们一般的使用时，如果已经push了，使用revert，如果没有，就是用reset**
