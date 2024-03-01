@@ -29,7 +29,7 @@
     "lint-staged": "^13.2.1",
     "markdown-it": "^13.0.1",
     "prettier": "^2.8.8",
-    "vitepress": "1.0.0-alpha.73",
+    "vitepress": "1.0.0-rc.44",
     "vue": "^3.3.4"
   },
   "lint-staged": {
