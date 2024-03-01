@@ -91,6 +91,15 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       ],
       // collapsed: true,
     },
+    {
+      text: 'TSLint',
+      items: [
+        {
+          text: 'TSLint 简述',
+          link: '/linter/tslint/index.md',
+        },
+      ],
+    },
   ],
   '/project-config/': [
     {
