@@ -58,7 +58,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         },
         {
           text: 'ESLint 使用',
-          link: '/linter/eslint/use-eslint.md',
+          link: '/linter/eslint/use.md',
         },
       ],
       // collapsed: true,
@@ -72,7 +72,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         },
         {
           text: 'StyleLint 使用',
-          link: '/linter/stylelint/use-stylelint.md',
+          link: '/linter/stylelint/use.md',
         },
       ],
       // collapsed: true,
@@ -86,7 +86,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         },
         {
           text: 'Prettier 使用',
-          link: '/linter/prettier/use-prettier.md',
+          link: '/linter/prettier/use.md',
         },
       ],
       // collapsed: true,
