@@ -100,6 +100,24 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         },
       ],
     },
+    {
+      text: 'Commitlint',
+      items: [
+        {
+          text: 'Commitlint 简述',
+          link: '/linter/commitlint/index.md',
+        },
+      ],
+    },
+    {
+      text: 'husky',
+      items: [
+        {
+          text: 'husky 简述',
+          link: '/linter/husky/index.md',
+        },
+      ],
+    },
   ],
   '/project-config/': [
     {
