@@ -41,3 +41,69 @@ echo "npx --no -- commitlint --edit \$1" > .husky/commit-msg
 ### 3. Eslint
 
 规范 JS Vue React 的等代码书写：[Eslint](https://eslint.org/)
+
+```bash
+# 初始化，根据配置选择即可
+npm init @eslint/config
+```
+
+_package.json_ 设置 `script`
+
+```json
+{
+    "scripts": {
+      "eslint": "eslint .", // 可按照自己的需要来进行配置
+      "eslint:fix": "eslint --fix .",
+    },
+}
+```
+[点击可查看](https://eslint.org/docs/latest/use/command-line-interface)关于如何设置命令行命令的详细。
+
+这里简单介绍几个常用的：
+- --ext：指定要 lint 的文件的文件后缀名
+  ```bash
+    # Use only .ts extension
+    npx eslint . --ext .ts
+
+    # Use both .js and .ts
+    npx eslint . --ext .js --ext .ts
+
+    # Also use both .js and .ts
+    npx eslint . --ext .js,.ts
+  ```
+- --fix：修复一些可自动修复的问题
+  ```bash
+    npx eslint --fix file.js
+  ```
+- --quiet：打印时仅仅打印 error 的
+  ```bash
+    npx eslint --quiet file.js
+  ```
+
+### 4. Stylelint
+
+规范 Style 的写法：[Stylelint](https://stylelint.io/user-guide/get-started)
+
+这里以 scss 作为示例哈：
+
+```bash
+pnpm add --save-dev stylelint stylelint-config-standard-scss
+```
+
+_stylelint.config.js_
+
+```js
+module.exports = {
+  "extends": ["stylelint-config-standard-scss"]
+};
+```
+
+_package.json_ 设置 `script`
+
+```json
+{
+    "scripts": {
+      "stylelint": "stylelint '**/*.{css,scss}'", // 可按照自己的需要来进行配置
+    },
+}
+```
