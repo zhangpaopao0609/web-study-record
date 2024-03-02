@@ -7,6 +7,7 @@
     "eslint": "eslint",
     "eslint:fix": "eslint --fix",
     "stylelint": "stylelint \"**/*.{css,scss}\"",
+    "stylelint:fix": "stylelint --fix \"**/*.{css,scss}\"",
     "prepare": "husky"
   },
   "repository": {
@@ -38,5 +39,9 @@
         "@algolia/client-search"
       ]
     }
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": ["eslint --fix"],
+    "*.{css, scss, vue, tsx}": ["stylelint --fix"]
   }
 }

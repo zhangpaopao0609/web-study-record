@@ -57,6 +57,7 @@ const longestPalindrome_1 = str => {
 				dp[i][j] = true;
 			}else if(l === 1) {
 				dp[i][j] = str[i] === str[j];
+				
 			}else {
 				dp[i][j] = ((str[i] === str[j]) && dp[i+1][j-1]);
 			}

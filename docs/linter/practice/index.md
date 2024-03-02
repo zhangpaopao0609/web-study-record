@@ -2,9 +2,10 @@
 
 ## 实战走起
 
-husky + commitlint + eslint + stylelint + prettier + lint-staged
+husky + commitlint + eslint + stylelint + prettier + lint-staged + vscode 
 
 > 先介绍一下 [lint-staged](https://github.com/lint-staged/lint-staged)
+> 
 > 一句话：使得 linter 仅仅校验在 git staged 中的文件。说得更通俗点就是，使得 linter 校验时仅仅校验git 要提交的那些文件，那些不提交的，就不去做校验（这也是我们想要的效果嘛）。
 > 1. 安装：`pnpm add -D lint-staged`
 > 2. 在 `pre-commit` git 钩子中运行 `lint-staged`，可以用之前提到的 husky，当然也可以自己去写哈
@@ -114,4 +115,22 @@ _package.json_ 设置 `script`
 
 - --fix 自动修复可以修复的问题
 - --quiet, -q 仅报告 error
+
+### 5. Prettier
+
+如 [Prettier](/linter/prettier/) 所述，因为自己不爱用哈，所以这里就不多赘述了。
+
+### 6. Lint-Staged
+
+仅 lint git staged 中的文件。
+> 这样不仅可以减少 lint 的等待时间，还可以尽量避免修改到旧代码
+
+```bash
+# 安装
+pnpm add -D lint-staged
+# 利用 husky 在 git pre-commit 钩子触发 lint-staged
+echo "npx lint-staged" > .husky/pre-commit
+```
+
+
 
