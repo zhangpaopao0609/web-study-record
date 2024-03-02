@@ -10,8 +10,8 @@
  * Initialize your data structure here.
  */
 var MyQueue = function() {
-  this.q = [];
-  return null;
+	this.q = [];
+	return null;
 };
 
 /**
@@ -20,8 +20,8 @@ var MyQueue = function() {
  * @return {void}
  */
 MyQueue.prototype.push = function(x) {
-  this.q.push(x);
-  return null;
+	this.q.push(x);
+	return null;
 };
 
 /**
@@ -29,7 +29,7 @@ MyQueue.prototype.push = function(x) {
  * @return {number}
  */
 MyQueue.prototype.pop = function() {
-  return this.q.shift();
+	return this.q.shift();
 };
 
 /**
@@ -37,7 +37,7 @@ MyQueue.prototype.pop = function() {
  * @return {number}
  */
 MyQueue.prototype.peek = function() {
-  return this.q[0];
+	return this.q[0];
 };
 
 /**
@@ -45,7 +45,7 @@ MyQueue.prototype.peek = function() {
  * @return {boolean}
  */
 MyQueue.prototype.empty = function() {
-  return this.q.length === 0;
+	return this.q.length === 0;
 };
 
 /**

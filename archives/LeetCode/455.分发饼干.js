@@ -13,16 +13,16 @@
  */
 // 先排序，再依次比较即可
 const findContentChildren = (g, s) => {
-  g = g.sort((a,b) => a - b);
-  s = s.sort((a,b) => a - b);
-  let i=j=0;
-  while(i < g.length && j < s.length) {
-    if(g[i] <= s[j]) {
-      i++;
-    }
-    j++;
-  };
-  return i;
+	g = g.sort((a,b) => a - b);
+	s = s.sort((a,b) => a - b);
+	let i=j=0;
+	while(i < g.length && j < s.length) {
+		if(g[i] <= s[j]) {
+			i++;
+		}
+		j++;
+	}
+	return i;
 };
 // Accepted
 // 21/21 cases passed (108 ms)

@@ -15,11 +15,11 @@
 // 如果a !== b 但length同，返回length即可
 // 如果a !== b 返回length长的一个
 const findLUSlength = (a, b) => {
-  if(a === b) {
-    return -1;
-  }else{
-    return Math.max(a.length, b.length)
-  }
+	if(a === b) {
+		return -1;
+	}else{
+		return Math.max(a.length, b.length);
+	}
 };
 // @lc code=end
 

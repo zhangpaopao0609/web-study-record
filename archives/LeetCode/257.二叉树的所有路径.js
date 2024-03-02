@@ -18,7 +18,7 @@
  * @return {string[]}
  */
 const binaryTreePaths = root => {
-  if(!root) return "";
+	if(!root) return "";
     
 };
 // @lc code=end

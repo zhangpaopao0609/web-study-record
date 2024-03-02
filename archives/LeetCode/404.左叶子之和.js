@@ -19,40 +19,40 @@
  */
 // 迭代 BFS
 const sumOfLeftLeaves = root => {
-  if(!root) return 0;
-  const q = [];
-  let sum = 0;
-  q.push(root);
+	if(!root) return 0;
+	const q = [];
+	let sum = 0;
+	q.push(root);
 
-  while(q.length) {
-    let size= q.length;
+	while(q.length) {
+		let size= q.length;
 
-    while(size) {
-      const next = q.shift();
+		while(size) {
+			const next = q.shift();
       
-      next.left && q.push(next.left);
-      next.right && q.push(next.right);
+			next.left && q.push(next.left);
+			next.right && q.push(next.right);
 
-      if(next.left && !next.left.left && !next.left.right) sum+= next.left.val;
-      size--;
-    }
-  };
-  return sum;
+			if(next.left && !next.left.left && !next.left.right) sum+= next.left.val;
+			size--;
+		}
+	}
+	return sum;
 };
 // @lc code=end
 
 // 递归
 const sumOfLeftLeaves = root => {
-  if(!root) return 0;
-  if(root.left) {
-    if(!root.left.left && !root.left.right) {
-      return root.left.val + sumOfLeftLeaves(root.right);
-    }else{
-      return sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right)
-    }
-  }else {
-    return sumOfLeftLeaves(root.right)
-  }
+	if(!root) return 0;
+	if(root.left) {
+		if(!root.left.left && !root.left.right) {
+			return root.left.val + sumOfLeftLeaves(root.right);
+		}else{
+			return sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right);
+		}
+	}else {
+		return sumOfLeftLeaves(root.right);
+	}
 };
 // Accepted
 // 102/102 cases passed (76 ms)
@@ -61,24 +61,24 @@ const sumOfLeftLeaves = root => {
 
 // 迭代 BFS
 const sumOfLeftLeaves = root => {
-  if(!root) return 0;
-  const q = [];
-  let sum = 0;
-  q.push(root);
+	if(!root) return 0;
+	const q = [];
+	let sum = 0;
+	q.push(root);
 
-  while(q.length) {
-    let size= q.length;
+	while(q.length) {
+		let size= q.length;
 
-    while(size) {
-      const next = q.shift();
+		while(size) {
+			const next = q.shift();
       
-      next.left && q.push(next.left);
-      next.right && q.push(next.right);
+			next.left && q.push(next.left);
+			next.right && q.push(next.right);
 
-      if(next.left && !next.left.left && !next.left.right) sum+= next.left.val;
-      size--;
-    }
-  };
-  return sum;
+			if(next.left && !next.left.left && !next.left.right) sum+= next.left.val;
+			size--;
+		}
+	}
+	return sum;
 };
 

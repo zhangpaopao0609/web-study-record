@@ -13,18 +13,18 @@
  */
 // 又来 hash
 const containsNearbyDuplicate = (nums, k) => {
-  const len = nums.length;
-  if(!len) return false;
-  const hashMap = new Map();
-  for (let i = 0; i < len; i++) {
-    const now = nums[i];
-    if(hashMap.has(now) && (i - hashMap.get(now) <= k)) {
-      return true;
-    }else {
-      hashMap.set(now, i);
-    }
-  };
-  return false;
+	const len = nums.length;
+	if(!len) return false;
+	const hashMap = new Map();
+	for (let i = 0; i < len; i++) {
+		const now = nums[i];
+		if(hashMap.has(now) && (i - hashMap.get(now) <= k)) {
+			return true;
+		}else {
+			hashMap.set(now, i);
+		}
+	}
+	return false;
 };
 // Accepted
 // 23/23 cases passed (72 ms)

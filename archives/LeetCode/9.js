@@ -23,40 +23,40 @@
  * @return {boolean}
  */
 const solution1 = function(x) {
-  if(x < 0) return false
-  if(x === Number(x.toString().split('').reverse().join(''))) {
-    return true;
-  };
-  return false;
-}
+	if(x < 0) return false;
+	if(x === Number(x.toString().split("").reverse().join(""))) {
+		return true;
+	}
+	return false;
+};
 
 const solution2 = function(x) {
-  if(x < 0) return false
-  let result = 0;
-  let y = x;
-  while(y) {            
-    num =  y % 10;      
-    result = result * 10 + num;
-    y = (y-num) / 10  
-  }
-  return result === x 
-}
+	if(x < 0) return false;
+	let result = 0;
+	let y = x;
+	while(y) {            
+		num =  y % 10;      
+		result = result * 10 + num;
+		y = (y-num) / 10;  
+	}
+	return result === x; 
+};
 
 const solution3 = function(x) {  //  思想很好，结果一般
-  if (x < 0) return false;
-  if (x < 10) return true;      //  这里很好
-  let n = 10 ** Math.floor(Math.log10(x));    // 计算数字长度
-  while (n > 1 && x > 0) {
-      if (Math.floor(x / n) !== x % 10) return false;  // 首尾不同
-      x = Math.floor((x % n) / 10);  // 相同则去掉首尾
-      n /= 100;
-  }
-  return true;
-}
+	if (x < 0) return false;
+	if (x < 10) return true;      //  这里很好
+	let n = 10 ** Math.floor(Math.log10(x));    // 计算数字长度
+	while (n > 1 && x > 0) {
+		if (Math.floor(x / n) !== x % 10) return false;  // 首尾不同
+		x = Math.floor((x % n) / 10);  // 相同则去掉首尾
+		n /= 100;
+	}
+	return true;
+};
 
-console.log(solution2(-121))
+console.log(solution2(-121));
 
 var isPalindrome = function(x) {
-  solution1(x)
+	solution1(x);
 };
 

@@ -82,17 +82,17 @@
 
 // !! 双指针版本二
 var removeDuplicates = function(nums) {
-    if (nums.length < 2) return nums;
-    // 指针1 慢指针
-    let slowIndex = 0;
-    // 指针2 快指针
-    for (let fastIndex = 1; fastIndex < nums.length; fastIndex++) {
-        if(nums[fastIndex] != nums[slowIndex]){
-            slowIndex++;  // 指针1移动一位
-            nums[slowIndex] = nums[fastIndex];  // 指针1对应的位置等于后面的
-        }    
-    }
-    return slowIndex+1;
+	if (nums.length < 2) return nums;
+	// 指针1 慢指针
+	let slowIndex = 0;
+	// 指针2 快指针
+	for (let fastIndex = 1; fastIndex < nums.length; fastIndex++) {
+		if(nums[fastIndex] != nums[slowIndex]){
+			slowIndex++;  // 指针1移动一位
+			nums[slowIndex] = nums[fastIndex];  // 指针1对应的位置等于后面的
+		}    
+	}
+	return slowIndex+1;
 };
 
 console.log(removeDuplicates([1,1, 2, 2,2,3,3,3,3]));

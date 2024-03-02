@@ -6,17 +6,17 @@ class Graph {
 	}
 }
 
-const fs = require('fs');
-const readline = require('readline');
+const fs = require("fs");
+const readline = require("readline");
 
 const r1 = readline.createInterface({
-  input: fs.createReadStream("./tinyG.txt")
+	input: fs.createReadStream("./tinyG.txt")
 });
 let i = 0; //txt中的行数
 let V = 0;
 let E = 0;
-const res = []
-r1.on('line', function(line){ //事件监听
+const res = [];
+r1.on("line", function(line){ //事件监听
 	i++;
 	if(i === 1) {
 		V = line;
@@ -24,12 +24,12 @@ r1.on('line', function(line){ //事件监听
 		E = line;
 	}else {
 		res.push({
-			v: line.split(' ')[0],
-			w: line.split(' ')[1]
-		})
+			v: line.split(" ")[0],
+			w: line.split(" ")[1]
+		});
 	}
 });
 
-r1.on('close', () => {
+r1.on("close", () => {
 	console.log(V, E, res);
-})
+});

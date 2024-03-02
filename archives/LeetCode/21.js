@@ -20,22 +20,22 @@
  * @return {ListNode}
  */
 var mergeTwoLists = function(l1, l2) {
-    const L1 = l1.split('->');
-    const L2 = l2.split('->');
-    let res = [];
-    while (L1.length && L2.length) {
-      if(Number(L1[0]) < Number(L2[0])) {
-        res.push(L1[0]);
-        L1.shift();
-      } else {
-        res.push(L2[0]);
-        L2.shift();
-      }
-    }
-    return res.concat(L1).concat(L2).join('->');
+	const L1 = l1.split("->");
+	const L2 = l2.split("->");
+	let res = [];
+	while (L1.length && L2.length) {
+		if(Number(L1[0]) < Number(L2[0])) {
+			res.push(L1[0]);
+			L1.shift();
+		} else {
+			res.push(L2[0]);
+			L2.shift();
+		}
+	}
+	return res.concat(L1).concat(L2).join("->");
 };
 
-console.log(mergeTwoLists('1->2->4', '1->3->4'));
+console.log(mergeTwoLists("1->2->4", "1->3->4"));
 
 
 

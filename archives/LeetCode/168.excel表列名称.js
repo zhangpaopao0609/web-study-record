@@ -13,13 +13,13 @@
 // 不过要注意，一般进制是指这样 a0*26^0 + a1*26^1 + ... + an*26^n
 // 但是这里没有零这一位 
 const convertToTitle = n => {
-  let res = "";
-  while(n) {
-    const mod = n % 26 ? n % 26 : 26;
-    res = String.fromCharCode(mod + 64) + res;
-    n = (n-mod) / 26;
-  };
-  return res;
+	let res = "";
+	while(n) {
+		const mod = n % 26 ? n % 26 : 26;
+		res = String.fromCharCode(mod + 64) + res;
+		n = (n-mod) / 26;
+	}
+	return res;
 };
 // Accepted
 // 18/18 cases passed (68 ms)

@@ -12,15 +12,15 @@
  * @return {number}
  */
 const removeElement = function(nums, val) {
-  const len = nums.length;
-  if(!len) return 0;
-  let slow = 0;
-  for (let i = 0; i < len; i++) {
-    if(nums[i] !== val) {
-      nums[slow++]=nums[i]
-    }
-  }
-  return slow;
+	const len = nums.length;
+	if(!len) return 0;
+	let slow = 0;
+	for (let i = 0; i < len; i++) {
+		if(nums[i] !== val) {
+			nums[slow++]=nums[i];
+		}
+	}
+	return slow;
 };
 // @lc code=end
 
@@ -31,17 +31,17 @@ const removeElement = function(nums, val) {
 // 因此，可以做简单的优化
 // 当遇到num[i] === val 时，可以让当前元素等于最后一个元素，并释放最后一个元素，这实际上使得数组的大小减少了1
 const removeElement_1 = function(nums, val) {
-  let len = nums.length;
-  if(!len) return 0;
-  let slow = 0;
-  while(slow < len) {
-    if(nums[slow] === val) {
-      nums[slow] = nums[len-1];
-      len--;
-    }else {
-      slow++;
-    }
-  }
-  return slow;
+	let len = nums.length;
+	if(!len) return 0;
+	let slow = 0;
+	while(slow < len) {
+		if(nums[slow] === val) {
+			nums[slow] = nums[len-1];
+			len--;
+		}else {
+			slow++;
+		}
+	}
+	return slow;
 };
 

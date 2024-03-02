@@ -11,13 +11,13 @@
  * @return {number}
  */
 const findComplement = num => {
-  let maxBitNum = 0;
-  let temp = num;
-  while(temp !== 0) {
-    maxBitNum += 1;
-    temp >>= 1;
-  };
-  return num ^ ((1 << maxBitNum) - 1);
+	let maxBitNum = 0;
+	let temp = num;
+	while(temp !== 0) {
+		maxBitNum += 1;
+		temp >>= 1;
+	}
+	return num ^ ((1 << maxBitNum) - 1);
 };
 // @lc code=end
 

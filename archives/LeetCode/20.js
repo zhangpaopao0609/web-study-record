@@ -66,19 +66,19 @@
  * @return {boolean}
  */
 var isValid = function(s) {
-  if(s == '' && s.length%2 != 0) return true;
-  const dic = {'}': '{',  ']': '[', ')': '(', '?': '?'};
+	if(s == "" && s.length%2 != 0) return true;
+	const dic = {"}": "{",  "]": "[", ")": "(", "?": "?"};
   
-  let arr = [];
-  for (let i = 0; i < s.length; i++) {
+	let arr = [];
+	for (let i = 0; i < s.length; i++) {
     
-    if(arr.length > 0 && dic[s.charAt(i)] == arr[arr.length-1] ) {
-      arr.pop();
-    }else{
-      arr.push(s.charAt(i));    
-    }
-  }
-  return arr.length == 0;
+		if(arr.length > 0 && dic[s.charAt(i)] == arr[arr.length-1] ) {
+			arr.pop();
+		}else{
+			arr.push(s.charAt(i));    
+		}
+	}
+	return arr.length == 0;
 };
 
 console.log(isValid("(())"));

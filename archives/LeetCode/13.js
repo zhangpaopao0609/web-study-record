@@ -41,43 +41,43 @@
 // 解释: M = 1000, CM = 900, XC = 90, IV = 4.
 
 const roma = {
-  'I': 1, 
-  'V': 5,
-  'X': 10,
-  'L': 50,
-  'C': 100,
-  'D': 500,
-  'M': 1000
-}
+	I: 1, 
+	V: 5,
+	X: 10,
+	L: 50,
+	C: 100,
+	D: 500,
+	M: 1000
+};
 
 /**
  * @param {string} s
  * @return {number}
  */
 var romanToInt = function(s) {
-  const roma = {
-    'I': 1, 
-    'V': 5,
-    'X': 10,
-    'L': 50,
-    'C': 100,
-    'D': 500,
-    'M': 1000
-  };
-  let sArr = s.split('');
-  let res = 0;
-  for(let i=0; i<sArr.length; i++) {
-    if( roma[sArr[i]] <  roma[sArr[i+1]]) {
-      res += roma[sArr[i+1]] - roma[sArr[i]];
-      i++;
-    } else {
-      res += roma[sArr[i]]
-    }
-  }
-  return res;
+	const roma = {
+		I: 1, 
+		V: 5,
+		X: 10,
+		L: 50,
+		C: 100,
+		D: 500,
+		M: 1000
+	};
+	let sArr = s.split("");
+	let res = 0;
+	for(let i=0; i<sArr.length; i++) {
+		if( roma[sArr[i]] <  roma[sArr[i+1]]) {
+			res += roma[sArr[i+1]] - roma[sArr[i]];
+			i++;
+		} else {
+			res += roma[sArr[i]];
+		}
+	}
+	return res;
 };
 
-console.log(romanToInt('IX'))
+console.log(romanToInt("IX"));
 
 
 // 和我的做法基本一致，但是没想到一个hashMap换成switch可以快这么多 = =
@@ -88,32 +88,32 @@ console.log(romanToInt('IX'))
  * @return {number}
  */
 var romanToInt = function(s) {
-  let res = 0;
-  let preNum = getValue(s.charAt(0)); 
-  for(let i=1; i<s.length; i++) {
-    let num = getValue(s.charAt(i));
-    if( preNum < num ) {
-      res -= preNum;
-    } else {
-      res += preNum;
-    }
-    preNum = num;
-  }
-  res += preNum;
-  return res;
+	let res = 0;
+	let preNum = getValue(s.charAt(0)); 
+	for(let i=1; i<s.length; i++) {
+		let num = getValue(s.charAt(i));
+		if( preNum < num ) {
+			res -= preNum;
+		} else {
+			res += preNum;
+		}
+		preNum = num;
+	}
+	res += preNum;
+	return res;
 };
 
 function getValue(str) {
-  switch(str) {
-      case 'I': return 1;
-      case 'V': return 5;
-      case 'X': return 10;
-      case 'L': return 50;
-      case 'C': return 100;
-      case 'D': return 500;
-      case 'M': return 1000;
-      default: return 0;
-  }
+	switch(str) {
+	case "I": return 1;
+	case "V": return 5;
+	case "X": return 10;
+	case "L": return 50;
+	case "C": return 100;
+	case "D": return 500;
+	case "M": return 1000;
+	default: return 0;
+	}
 }
 
 

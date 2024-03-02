@@ -11,18 +11,18 @@
  * @return {number}
  */
 const findMaxConsecutiveOnes = nums => {
-  let max = 0;
-  let now = 0;
-  for (let i = 0; i < nums.length; i++) {
-    if(nums[i] === 1) {
-      now += 1;
-    }else {
-      max = now > max ? now : max;
-      now = 0;
-    };
-  };
+	let max = 0;
+	let now = 0;
+	for (let i = 0; i < nums.length; i++) {
+		if(nums[i] === 1) {
+			now += 1;
+		}else {
+			max = now > max ? now : max;
+			now = 0;
+		}
+	}
 
-  return now > max ? now : max;
+	return now > max ? now : max;
 };
 // Accepted
 // 41/41 cases passed (80 ms)

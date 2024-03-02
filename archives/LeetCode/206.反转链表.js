@@ -17,28 +17,28 @@
  * @return {ListNode}
  */
 const reverseList = head => {
-  let curr = null;
-  let prev = head;
-  while(prev) {
-    const next = prev.next;
-    prev.next = curr;
-    curr = prev;
-    prev = next;
-  };
-  return curr;
+	let curr = null;
+	let prev = head;
+	while(prev) {
+		const next = prev.next;
+		prev.next = curr;
+		curr = prev;
+		prev = next;
+	}
+	return curr;
 };
 // @lc code=end
 
 // 迭代
 const reverseList_1 = head => {
-  let reverse = null;
-  while(head) {
-    const temp = new ListNode(head.val);
-    temp.next = reverse;
-    reverse = temp;
-    head = head.next;
-  }
-  return reverse;
+	let reverse = null;
+	while(head) {
+		const temp = new ListNode(head.val);
+		temp.next = reverse;
+		reverse = temp;
+		head = head.next;
+	}
+	return reverse;
 };
 // Accepted
 // 27/27 cases passed (76 ms)
@@ -47,22 +47,22 @@ const reverseList_1 = head => {
 
 // 迭代二
 const reverseList_2 = head => {
-  let rev = null;
-  let curr = head;
-  while(curr) {
-    const temp = curr.next;
-    curr.next = rev;
-    rev = curr;
-    curr = temp;
-  }
-  return rev;
+	let rev = null;
+	let curr = head;
+	while(curr) {
+		const temp = curr.next;
+		curr.next = rev;
+		rev = curr;
+		curr = temp;
+	}
+	return rev;
 };
 
 // 递归
 const reverseList_3 = head => {
-  if(!head || !head.next) return head;
-  const p = reverseList(head.next);
-  head.next.next = head;
-  head.next =null;
-  return p;
+	if(!head || !head.next) return head;
+	const p = reverseList(head.next);
+	head.next.next = head;
+	head.next =null;
+	return p;
 };

@@ -19,37 +19,37 @@
  */
 // 迭代
 const invertTree = root => {
-  if(!root) return null;
-  const q = [];
-  q.push(root);
+	if(!root) return null;
+	const q = [];
+	q.push(root);
 
-  while(q.length) {
-    let size = q.length;
-    while(size) {
-      const next = q.shift();
-      const left = next.left;
-      const right = next.right;
+	while(q.length) {
+		let size = q.length;
+		while(size) {
+			const next = q.shift();
+			const left = next.left;
+			const right = next.right;
 
-      next.left = right;
-      next.right = left;
+			next.left = right;
+			next.right = left;
 
-      next.left && q.push(next.left);
-      next.right && q.push(next.right);
-      size--;
-    }
-  }
-  return root;
+			next.left && q.push(next.left);
+			next.right && q.push(next.right);
+			size--;
+		}
+	}
+	return root;
 };
 
 // @lc code=end
 
 // 递归
 const invertTree_1 = root => {
-  if(!root) return null;
-  const tree = new TreeNode(root.val);
-  tree.left = invertTree_1(root.right);
-  tree.right = invertTree_1(root.left);
-  return tree;
+	if(!root) return null;
+	const tree = new TreeNode(root.val);
+	tree.left = invertTree_1(root.right);
+	tree.right = invertTree_1(root.left);
+	return tree;
 };
 
 // Accepted

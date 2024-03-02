@@ -19,25 +19,25 @@
  * @return {number[][]}
  */
 const levelOrderBottom = root => {
-  if(!root) return [];
-  const ans = [];
-  const q = [];
+	if(!root) return [];
+	const ans = [];
+	const q = [];
 
-  q.push(root);
+	q.push(root);
 
-  while(q.length) {
-    const temp = [];
-    let size = q.length;
-    while(size > 0) {
-      const next = q.shift();
-      temp.push(next.val);
-      next.left && q.push(next.left);
-      next.right && q.push(next.right);
-      size--;
-    }
-    ans.unshift(temp);
-  }
-  return ans;
+	while(q.length) {
+		const temp = [];
+		let size = q.length;
+		while(size > 0) {
+			const next = q.shift();
+			temp.push(next.val);
+			next.left && q.push(next.left);
+			next.right && q.push(next.right);
+			size--;
+		}
+		ans.unshift(temp);
+	}
+	return ans;
 };
 // @lc code=end
 

@@ -25,17 +25,17 @@
 // 左 < 中 < 右  
 // 优化一下  不需要递归呀
 const lowestCommonAncestor = (root, p, q) => {
-  let ancestor = root;
-  while(true) {
-    const val = ancestor.val;
-    if(p.val < val && q.val < val) {
-      ancestor = ancestor.left;
-    }else if(p.val > val && q.val > val) {
-      ancestor = ancestor.right;
-    }else {
-      return ancestor;
-    }
-  }
+	let ancestor = root;
+	while(true) {
+		const val = ancestor.val;
+		if(p.val < val && q.val < val) {
+			ancestor = ancestor.left;
+		}else if(p.val > val && q.val > val) {
+			ancestor = ancestor.right;
+		}else {
+			return ancestor;
+		}
+	}
 };
 // @lc code=end
 
@@ -44,19 +44,19 @@ const lowestCommonAncestor = (root, p, q) => {
 // 最基本的性质我都不知道了吗？
 // 左 < 中 < 右
 const lowestCommonAncestor_1 = (root, p, q) => {
-  const val = root.val;
-  const max = Math.max(p.val, q.val);
-  const min = Math.min(p.val, q.val);
-  // 其中一个为父节点
-  if(max === val || min === val) return root;
-  // 在root两边
-  if(max > val && min < val) return root;
-  // 都在左边
-  if(max < val) {
-    return lowestCommonAncestor(root.left, p, q);
-  }else {
-    return lowestCommonAncestor(root.right, p, q);
-  }
+	const val = root.val;
+	const max = Math.max(p.val, q.val);
+	const min = Math.min(p.val, q.val);
+	// 其中一个为父节点
+	if(max === val || min === val) return root;
+	// 在root两边
+	if(max > val && min < val) return root;
+	// 都在左边
+	if(max < val) {
+		return lowestCommonAncestor(root.left, p, q);
+	}else {
+		return lowestCommonAncestor(root.right, p, q);
+	}
 };
 
 
@@ -65,11 +65,11 @@ const lowestCommonAncestor_1 = (root, p, q) => {
 // 左 < 中 < 右  
 // 优化一下
 const lowestCommonAncestor_2 = (root, p, q) => {
-  if(p.val < root.val && q.val < root.val) {
-    return lowestCommonAncestor(root.left, p, q);
-  }else if(p.val > root.val && q.val > root.val) {
-    return lowestCommonAncestor(root.right, p, q);
-  }else {
-    return root;
-  }
+	if(p.val < root.val && q.val < root.val) {
+		return lowestCommonAncestor(root.left, p, q);
+	}else if(p.val > root.val && q.val > root.val) {
+		return lowestCommonAncestor(root.right, p, q);
+	}else {
+		return root;
+	}
 };

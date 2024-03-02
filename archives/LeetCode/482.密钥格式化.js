@@ -12,27 +12,27 @@
  * @return {string}
  */
 const licenseKeyFormatting = (S, K) => {
-  S = S.toUpperCase();
-  let res = "";
-  let num = 0;
-  for (let i = S.length-1; i >= 0; ) {
-    if(num !== K && S.charAt(i) === '-') {
-      i--;
-      continue;
-    }
-    if(num === K) {
-      res = '-' + res;
-      num = 0;
-    }else {
-      res = S.charAt(i) + res;
-      num++;
-      i--;
-    }
-  };
-  while(res.charAt(0) === '-') {
-    res = res.substr(1);
-  }
-  return res;
+	S = S.toUpperCase();
+	let res = "";
+	let num = 0;
+	for (let i = S.length-1; i >= 0; ) {
+		if(num !== K && S.charAt(i) === "-") {
+			i--;
+			continue;
+		}
+		if(num === K) {
+			res = "-" + res;
+			num = 0;
+		}else {
+			res = S.charAt(i) + res;
+			num++;
+			i--;
+		}
+	}
+	while(res.charAt(0) === "-") {
+		res = res.substr(1);
+	}
+	return res;
 };
 // Accepted
 // 38/38 cases passed (72 ms)

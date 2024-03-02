@@ -31,35 +31,35 @@
 // 16进制
 // 这个思路是真的清晰，明天早上我要来写题解
 const toHex = num => {
-  if(!num) return '0';
-  let calc = 0xf;
-  let res = '';
+	if(!num) return "0";
+	let calc = 0xf;
+	let res = "";
 
-  while(num) {
-    const now = (num & calc);
-    res = (now > 9 ? String.fromCharCode(now + 87) : now) +res;
-    num >>>= 4;
-  }
+	while(num) {
+		const now = (num & calc);
+		res = (now > 9 ? String.fromCharCode(now + 87) : now) +res;
+		num >>>= 4;
+	}
   
-  // while(res.charAt(0) === '0') {
-  //   res = res.substr(1)
-  // }
+	// while(res.charAt(0) === '0') {
+	//   res = res.substr(1)
+	// }
 
-  return res;
+	return res;
 };
 
 // @lc code=end
 
 const toHex = num => {
-  if(!num) return '0';
-  if(num < 0) num = Math.pow(2, 32) + num;
-  let res = '';
-  while(num) {
-    const mod = num % 16;
-    res = (mod > 9 ? String.fromCharCode(mod + 87) : mod) + res ;
-    num = (num - mod) / 16;
-  };
-  return res;
+	if(!num) return "0";
+	if(num < 0) num = Math.pow(2, 32) + num;
+	let res = "";
+	while(num) {
+		const mod = num % 16;
+		res = (mod > 9 ? String.fromCharCode(mod + 87) : mod) + res ;
+		num = (num - mod) / 16;
+	}
+	return res;
 };
 // Accepted
 // 100/100 cases passed (60 ms)
@@ -72,22 +72,22 @@ const toHex = num => {
 // 这个思路是真的清晰，明天早上我要来写题解
 // https://leetcode-cn.com/problems/convert-a-number-to-hexadecimal/solution/zen-yao-zhuan-hua-16jin-zhi-by-vailing/
 const toHex = num => {
-  if(!num) return '0';
-  let calc = 0xf;
-  let trans = 0;
-  let res = '';
+	if(!num) return "0";
+	let calc = 0xf;
+	let trans = 0;
+	let res = "";
 
-  while(trans <= 28) {
-    const now = (num & calc) >>> trans;
-    res = (now > 9 ? String.fromCharCode(now + 87) : now) +res;
-    calc <<= 4;
-    trans += 4;
-  }
+	while(trans <= 28) {
+		const now = (num & calc) >>> trans;
+		res = (now > 9 ? String.fromCharCode(now + 87) : now) +res;
+		calc <<= 4;
+		trans += 4;
+	}
   
-  while(res.charAt(0) === '0') {
-    res = res.substr(1)
-  }
+	while(res.charAt(0) === "0") {
+		res = res.substr(1);
+	}
 
-  return res;
+	return res;
 };
 

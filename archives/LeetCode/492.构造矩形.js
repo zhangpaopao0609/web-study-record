@@ -12,12 +12,12 @@
  */
 // 二分
 const constructRectangle = area => {
-  let s = Math.sqrt(area);
-  let w = Math.floor(s);
-  while(area % w) {
-    w -= 1;
-  };
-  return [area / w, w];
+	let s = Math.sqrt(area);
+	let w = Math.floor(s);
+	while(area % w) {
+		w -= 1;
+	}
+	return [area / w, w];
 };
 // @lc code=end
 

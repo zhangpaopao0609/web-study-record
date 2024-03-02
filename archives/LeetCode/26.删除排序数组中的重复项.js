@@ -11,14 +11,14 @@
  * @return {number}
  */
 const removeDuplicates = function(nums) {
-  if(!nums.length) return 0;
-  let slow = 0;
-  for (let i = 0; i < nums.length; i++) {
-    if(nums[slow] !== nums[i]) {
-      nums[++slow] = nums[i]
-    };
-  }
-  return slow+1;
+	if(!nums.length) return 0;
+	let slow = 0;
+	for (let i = 0; i < nums.length; i++) {
+		if(nums[slow] !== nums[i]) {
+			nums[++slow] = nums[i];
+		}
+	}
+	return slow+1;
 };
 // @lc code=end
 

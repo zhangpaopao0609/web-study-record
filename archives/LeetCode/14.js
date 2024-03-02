@@ -21,21 +21,21 @@
  * @return {string}
  */
 var longestCommonPrefix = function(strs) {
-  let res = '';
-  let flag = true;
-  if (strs == null || strs.length == 0) {
-    return "";
-  }
+	let res = "";
+	let flag = true;
+	if (strs == null || strs.length == 0) {
+		return "";
+	}
   
-  for (let i = 0; i < strs[0].length; i++) {
-    const s = strs[0].charAt(i);
-    strs.forEach(item => {
-      item.charAt(i) !== s && (flag = false)
-    })
-    if(!flag) break
-    res += s;
-  }
-  return res;
+	for (let i = 0; i < strs[0].length; i++) {
+		const s = strs[0].charAt(i);
+		strs.forEach(item => {
+			item.charAt(i) !== s && (flag = false);
+		});
+		if(!flag) break;
+		res += s;
+	}
+	return res;
 };
 
 console.log(longestCommonPrefix(["rrrrdo","rrrrrracecar","rrrrcar"]));

@@ -12,26 +12,26 @@
  */
 // 惊艳一波
 const repeatedSubstringPattern = s => {
-  return (s+s).indexOf(s, 1) !== s.length;
+	return (s+s).indexOf(s, 1) !== s.length;
 };
 // @lc code=end
 
 
 // 我想，我这个是暴力法吧
 const isSub = (sub, s) => {
-  const l = sub.length;
-  for (let i = 0; i < s.length; ) {
-    if(s.substr(i, l) !== sub) return false;
-    i += l;
-  };
-  return true;
-}
+	const l = sub.length;
+	for (let i = 0; i < s.length; ) {
+		if(s.substr(i, l) !== sub) return false;
+		i += l;
+	}
+	return true;
+};
 
 const repeatedSubstringPattern = s => {
-  for (let i = 1; i < s.length; i++) {
-    if(isSub(s.substr(0, i), s)) return true;
-  };
-  return false;
+	for (let i = 1; i < s.length; i++) {
+		if(isSub(s.substr(0, i), s)) return true;
+	}
+	return false;
 };
 
 // Accepted
@@ -47,21 +47,21 @@ const repeatedSubstringPattern = s => {
 
 // 哇塞，优化后的暴力法简直了
 const isSub = (sub, s) => {
-  const l = sub.length;
-  for (let i = 0; i < s.length; ) {
-    if(s.substr(i, l) !== sub) return false;
-    i += l;
-  };
-  return true;
-}
+	const l = sub.length;
+	for (let i = 0; i < s.length; ) {
+		if(s.substr(i, l) !== sub) return false;
+		i += l;
+	}
+	return true;
+};
 
 const repeatedSubstringPattern = s => {
-  const len = s.length;
-  for (let i = 1; i * 2 <= len; i++) {
-    if(len % i) continue;
-    if(isSub(s.substr(0, i), s)) return true;
-  };
-  return false;
+	const len = s.length;
+	for (let i = 1; i * 2 <= len; i++) {
+		if(len % i) continue;
+		if(isSub(s.substr(0, i), s)) return true;
+	}
+	return false;
 };
 // Accepted
 // 120/120 cases passed (76 ms)
@@ -74,20 +74,20 @@ const repeatedSubstringPattern = s => {
 // 2. 因为子串肯定是字符串长度的整数倍
 // 再优化一波暴力法
 const repeatedSubstringPattern = s => {
-  const len = s.length;
-  for (let i = 1; i * 2 <= len; i++) {
-    if(len % i === 0) {
-      let mark = true;
-      for (let j = i; j < len; j++) {
-        if(s.charAt(j) !== s.charAt(j-i)) {
-          mark = false;
-          break;
-        }
-      };
-      if(mark) return true;
-    }
-  };
-  return false;
+	const len = s.length;
+	for (let i = 1; i * 2 <= len; i++) {
+		if(len % i === 0) {
+			let mark = true;
+			for (let j = i; j < len; j++) {
+				if(s.charAt(j) !== s.charAt(j-i)) {
+					mark = false;
+					break;
+				}
+			}
+			if(mark) return true;
+		}
+	}
+	return false;
 };
 // Accepted
 // 120/120 cases passed (104 ms)

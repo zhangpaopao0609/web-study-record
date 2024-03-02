@@ -118,6 +118,15 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         },
       ],
     },
+    {
+      text: 'practice',
+      items: [
+        {
+          text: 'Lint 实战',
+          link: '/linter/practice/index.md',
+        },
+      ],
+    },
   ],
   '/project-config/': [
     {

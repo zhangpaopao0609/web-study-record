@@ -10,8 +10,8 @@
  * Initialize your data structure here.
  */
 var MyStack = function() {
-  this.s = [];
-  return null;
+	this.s = [];
+	return null;
 };
 
 /**
@@ -20,8 +20,8 @@ var MyStack = function() {
  * @return {void}
  */
 MyStack.prototype.push = function(x) {
-  this.s.unshift(x); 
-  return null;
+	this.s.unshift(x); 
+	return null;
 };
 
 /**
@@ -29,7 +29,7 @@ MyStack.prototype.push = function(x) {
  * @return {number}
  */
 MyStack.prototype.pop = function() {
-  return this.s.shift();
+	return this.s.shift();
 };
 
 /**
@@ -37,7 +37,7 @@ MyStack.prototype.pop = function() {
  * @return {number}
  */
 MyStack.prototype.top = function() {
-  return this.s[0];
+	return this.s[0];
 };
 
 /**
@@ -45,7 +45,7 @@ MyStack.prototype.top = function() {
  * @return {boolean}
  */
 MyStack.prototype.empty = function() {
-  return !this.s.length
+	return !this.s.length;
 };
 
 /**
