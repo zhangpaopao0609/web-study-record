@@ -18,8 +18,8 @@ module.exports = {
 		"@typescript-eslint",
 		"vue"
 	],
-  ignores: ["package.json"],
-	"rules": {
+	ignorePatterns: ["package.json"],
+	rules: {
 		// https://eslint.org/docs/latest/rules
 		"linebreak-style": ["error", "unix"],
 		quotes: ["error", "double"],

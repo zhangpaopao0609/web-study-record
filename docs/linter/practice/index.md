@@ -104,6 +104,14 @@ _package.json_ 设置 `script`
 {
     "scripts": {
       "stylelint": "stylelint '**/*.{css,scss}'", // 可按照自己的需要来进行配置
+      "stylelint:fix": "stylelint --fix '**/*.{css,scss}'"
     },
 }
 ```
+
+同样 stylelint cli 也有对应的配置，[点击可查看详情](https://stylelint.io/user-guide/cli).
+这里简述几个常用的：
+
+- --fix 自动修复可以修复的问题
+- --quiet, -q 仅报告 error
+
