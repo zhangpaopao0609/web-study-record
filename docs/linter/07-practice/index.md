@@ -132,5 +132,26 @@ pnpm add -D lint-staged
 echo "npx lint-staged" > .husky/pre-commit
 ```
 
+在 _package.json_ 设置 `lint-staged`
 
+```json
+{
+  "lint-staged": {
+    "*.{js,ts,vue}": ["eslint --fix"],
+    "*.{css, scss, vue, tsx}": ["stylelint --fix"]
+  }
+}
+```
+### 7. VSCode 配置
+
+VSCode 配置啥？配置自动修复，文件保存时自动修复错误。
+
+_vscode -> setting -> setting.json_
+```json
+  "editor.codeActionsOnSave": {
+      "source.fixAll": "never",
+      "source.fixAll.eslint": "explicit",
+      "source.fixAll.stylelint": "explicit"
+  },
+```
 

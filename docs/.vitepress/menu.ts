@@ -50,80 +50,80 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       link: '/linter/',
     },
     {
-      text: 'ESLint',
+      text: '1. ESLint',
       items: [
         {
           text: 'ESLint 简述',
-          link: '/linter/eslint/index.md',
+          link: '/linter/01-eslint/index.md',
         },
         {
           text: 'ESLint 使用',
-          link: '/linter/eslint/use.md',
+          link: '/linter/01-eslint/use.md',
         },
       ],
       // collapsed: true,
     },
     {
-      text: 'StyleLint',
+      text: '2. StyleLint',
       items: [
         {
           text: 'StyleLint 简述',
-          link: '/linter/stylelint/index.md',
+          link: '/linter/02-stylelint/index.md',
         },
         {
           text: 'StyleLint 使用',
-          link: '/linter/stylelint/use.md',
+          link: '/linter/02-stylelint/use.md',
         },
       ],
       // collapsed: true,
     },
     {
-      text: 'Prettier',
+      text: '3. Prettier',
       items: [
         {
           text: 'Prettier 简述',
-          link: '/linter/prettier/index.md',
+          link: '/linter/03-prettier/index.md',
         },
         {
           text: 'Prettier 使用',
-          link: '/linter/prettier/use.md',
+          link: '/linter/03-prettier/use.md',
         },
       ],
       // collapsed: true,
     },
     {
-      text: 'TSLint',
+      text: '4. TSLint',
       items: [
         {
           text: 'TSLint 简述',
-          link: '/linter/tslint/index.md',
+          link: '/linter/04-tslint/index.md',
         },
       ],
     },
     {
-      text: 'Commitlint',
+      text: '5. Commitlint',
       items: [
         {
           text: 'Commitlint 简述',
-          link: '/linter/commitlint/index.md',
+          link: '/linter/05-commitlint/index.md',
         },
       ],
     },
     {
-      text: 'husky',
+      text: '6. Husky',
       items: [
         {
           text: 'husky 简述',
-          link: '/linter/husky/index.md',
+          link: '/linter/06-husky/index.md',
         },
       ],
     },
     {
-      text: 'practice',
+      text: '7. 实战',
       items: [
         {
           text: 'Lint 实战',
-          link: '/linter/practice/index.md',
+          link: '/linter/07-practice/index.md',
         },
       ],
     },
