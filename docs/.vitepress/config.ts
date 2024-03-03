@@ -28,4 +28,7 @@ export default defineConfig({
     outline: 'deep'
   },
   lastUpdated: true,
+  ignoreDeadLinks: [
+    /^\/linter\//
+  ]
 });
