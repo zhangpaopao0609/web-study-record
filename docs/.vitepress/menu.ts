@@ -20,7 +20,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
   '/git/': [
     {
       text: 'Git',
-      collapsed: true,
+      // collapsed: true,
       link: '/git/',
       items: [
         {
@@ -41,6 +41,17 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             { text: 'git submodule', link: '/git/faq/git-submodule.md' },
           ],
         },
+      ],
+    },
+  ],
+  '/package-manager/': [
+    {
+      text: '包管理器',
+      link: '/package-manager/',
+      items: [
+        { text: '介绍', link: '/package-manager/index.md' },
+        { text: 'workspace', link: '/package-manager/workspace.md' },
+        { text: 'monorepo', link: '/package-manager/monorepo.md' },
       ],
     },
   ],
