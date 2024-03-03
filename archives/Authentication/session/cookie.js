@@ -1,11 +1,11 @@
 // 基于原生的 http 实现一个 cookie - session 
-const http = require('http');
+const http = require("http");
 const session = {};
-const sessionKey = 'arrow'
+const sessionKey = "arrow";
 
 const app = http.createServer((req, res) => {
-  if(req.url === '/favicon.ico') {
-    res.end()
+  if(req.url === "/favicon.ico") {
+    res.end();
   }else {
     console.log(session);
 
@@ -14,24 +14,24 @@ const app = http.createServer((req, res) => {
       const re = new RegExp(`${sessionKey}=([^;]*)`);
       const sessionValue = re.exec(cookie)[1];
       if(session[sessionValue]) {
-        res.end(JSON.stringify(session[sessionValue]))
+        res.end(JSON.stringify(session[sessionValue]));
       }else {
         const nowKey = Date.now();
         res.setHeader("Set-Cookie", `${sessionKey}=${nowKey}`);
         session[nowKey] = {
-          'name' : 'aa',
-          'age' : 12
-        }
-        res.end("hah")
+          name : "aa",
+          age : 12
+        };
+        res.end("hah");
       }
     }else {
       const nowKey = Date.now();
       res.setHeader("Set-Cookie", `${sessionKey}=${nowKey}`);
       session[nowKey] = {
-        'name' : 'aa',
-        'age' : 12
-      }
-      res.end("hah")
+        name : "aa",
+        age : 12
+      };
+      res.end("hah");
     }
   }
 });
