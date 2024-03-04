@@ -172,10 +172,20 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
           ] 
         },
         { text: '设计模式', 
-          items: [
-            { text: '适配器模式', items: [ { text: '统一接口', link: '/articles/design-patterns/adapter/uniform-interface/README.md' } ] },
-          ] 
-        },
+        items: [
+          { text: '适配器模式', items: [ { text: '统一接口', link: '/articles/design-patterns/adapter/uniform-interface/README.md' } ] },
+        ] 
+      },
+      { text: '前端', 
+        items: [
+          { text: '微前端的暗位面', link: '/articles/front-end/the-dark-side-of-the-micro-front-end/README.md' },
+        ] 
+      },
+      { text: '网络', 
+        items: [
+          { text: '服务端推送全貌', link: '/articles/network/how-to-receive-server-side-push/README.md' },
+        ] 
+      },
         { text: 'workspace', link: '/package-manager/workspace.md' },
         { text: 'monorepo', link: '/package-manager/monorepo.md' },
       ],
