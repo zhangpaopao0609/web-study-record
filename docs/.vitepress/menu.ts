@@ -5,6 +5,7 @@ export const nav: DefaultTheme.Config['nav'] = [
   { text: 'Git', link: '/git/' },
   { text: '包管理器', link: '/package-manager/' },
   { text: 'Linter', link: '/linter/' },
+  { text: '文章', link: '/articles/' },
 ];
 
 export const sidebar: DefaultTheme.Config['sidebar'] = {
@@ -147,6 +148,30 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
           text: 'Configuring Vite',
           link: '/project-config/',
         },
+      ],
+    },
+  ],
+  '/articles/': [
+    {
+      text: '文章',
+      link: '/articles/',
+      items: [
+        { text: 'JavaScript', items: [{ text: '聊2022年 JS 都有哪些更新', link: '/articles/javascript/2022-js-update/README.md' }] },
+        { text: 'Mobile', items: [{ text: 'H5 陀螺仪', link: '/articles/mobile/H5-gyroscope/README.md' }] },
+        { text: 'Repository', 
+          items: [
+            { text: '守护世界守护你', link: '/articles/repository/guarding-the-world-guarding-you/README.md' },
+            { text: '四不像项目要如何进化', link: '/articles/repository/how-to-evolve-four-dissimilar-projects/README.md' },
+          ] 
+        },
+        { text: 'Vue', 
+          items: [
+            { text: '谈谈如何”正确“的使用 Vuex', link: '/articles/vue/how-to-use-vuex-correctly/README.md' },
+            { text: '四不像项目要如何进化', link: '/articles/repository/how-to-evolve-four-dissimilar-projects/README.md' },
+          ] 
+        },
+        { text: 'workspace', link: '/package-manager/workspace.md' },
+        { text: 'monorepo', link: '/package-manager/monorepo.md' },
       ],
     },
   ],
