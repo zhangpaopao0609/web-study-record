@@ -162,6 +162,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
           items: [
             { text: '守护世界守护你', link: '/articles/repository/guarding-the-world-guarding-you/README.md' },
             { text: '四不像项目要如何进化', link: '/articles/repository/how-to-evolve-four-dissimilar-projects/README.md' },
+            { text: '简单介绍一下项目仓库模式', link: '/articles/repository/intro-different-repository/README.md' },
           ] 
         },
         { text: 'Vue', 
