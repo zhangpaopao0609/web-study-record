@@ -171,6 +171,11 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             { text: '四不像项目要如何进化', link: '/articles/repository/how-to-evolve-four-dissimilar-projects/README.md' },
           ] 
         },
+        { text: '设计模式', 
+          items: [
+            { text: '适配器模式', items: [ { text: '统一接口', link: '/articles/design-patterns/adapter/uniform-interface/README.md' } ] },
+          ] 
+        },
         { text: 'workspace', link: '/package-manager/workspace.md' },
         { text: 'monorepo', link: '/package-manager/monorepo.md' },
       ],
