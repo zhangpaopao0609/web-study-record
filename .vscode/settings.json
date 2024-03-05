@@ -1,11 +1,11 @@
 {
-  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.enabled": false,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "vue3.ts": "vue*.ts",
-    "package.json": ".npmrc, pnpm-lock.yaml,  pnpm-workspace.yaml",
-    ".gitignore": ".gitmodules",
-    ".eslintrc.js": "commitlint.config.js, stylelint.config.js",
+    // "vue3.ts": "vue*.ts",
+    // "package.json": ".npmrc, pnpm-lock.yaml,  pnpm-workspace.yaml",
+    // ".gitignore": ".gitmodules",
+    // ".eslintrc.js": "commitlint.config.js, stylelint.config.js",
   },
   "eslint.workingDirectories": [
     {
