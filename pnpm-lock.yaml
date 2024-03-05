@@ -57,13 +57,13 @@ importers:
         specifier: ^3.4.21
         version: 3.4.21(typescript@5.0.4)
 
-  experiments/ESlint:
+  examples/ESlint:
     dependencies:
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
 
-  experiments/ServerSentEvents:
+  examples/ServerSentEvents:
     dependencies:
       cors:
         specifier: ^2.8.5
@@ -79,7 +79,7 @@ importers:
         specifier: ^14.1.1
         version: 14.1.1
 
-  experiments/vuex-demo:
+  examples/vuex-demo:
     dependencies:
       core-js:
         specifier: ^3.6.5
@@ -4004,7 +4004,7 @@ packages:
     peerDependencies:
       eslint: '>= 4.12.1'
     dependencies:
-      '@babel/code-frame': 7.21.4
+      '@babel/code-frame': 7.23.5
       '@babel/parser': 7.24.0
       '@babel/traverse': 7.24.0
       '@babel/types': 7.24.0
@@ -6207,7 +6207,7 @@ packages:
     engines: {node: ^8.10.0 || ^10.13.0 || >=11.10.1}
     hasBin: true
     dependencies:
-      '@babel/code-frame': 7.21.4
+      '@babel/code-frame': 7.23.5
       ajv: 6.12.6
       chalk: 2.4.2
       cross-spawn: 6.0.5

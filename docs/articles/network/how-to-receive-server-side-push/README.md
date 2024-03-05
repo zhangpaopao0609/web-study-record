@@ -114,4 +114,4 @@ app.listen(8000, () => {
 
 更多详细内容请查看 [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)
 
-示例代码可见：
+[示例代码可见](https://github.com/zhangpaopao0609/web-study-record/tree/master/examples/ServerSentEvents)
