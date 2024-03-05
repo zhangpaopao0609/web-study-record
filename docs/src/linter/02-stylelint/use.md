@@ -94,7 +94,7 @@ module.exports = {
 社区还提供了 `stylelint-config-recommended-scss` 作为 SCSS 的推荐配置。`stylelint-config-recommended-scss` 其实就是一套 Stylelint 配置，如下图所示：
 
 <PaoImages
-  src="/images/linter-stylelint/stylelint-config-recommended-scss.png" 
+  src="./images/stylelint-config-recommended-scss.png" 
   width="80%"
   title="stylelint-config-recommended-scss" 
   reference="图片来至：[stylelint-config-recommended-scss](https://github.com/stylelint-scss/stylelint-config-recommended-scss/blob/master/index.js)" 
@@ -241,11 +241,11 @@ module.exports = {
 stylelint-config-recommended-vue 就是：[stylelint-config-recommended](https://github.com/stylelint/stylelint-config-recommended) + [stylelint-config-html]() + 一点点 vue 特定配置，如下图所示：
 
 <PaoImages
-  src="/images/linter-stylelint/stylelint-config-recommended-vue-01.png" 
+  src="./imgs/stylelint-config-recommended-vue-01.png" 
   width="80%"
 />
 <PaoImages
-  src="/images/linter-stylelint/stylelint-config-recommended-vue-02.png" 
+  src="./imgs/stylelint-config-recommended-vue-02.png" 
   width="80%"
   title="stylelint-config-recommended-vue" 
   reference="图片来至：[stylelint-config-recommended-vue](https://github.com/ota-meshi/stylelint-config-recommended-vue/blob/main/lib/index.js)" 

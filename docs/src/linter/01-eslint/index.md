@@ -31,7 +31,7 @@ ESLint 包含数百个可以使用的内置规则。这些规则可以在配置�
 一般情况下，共享的配置指一组预定义的 ESLint 内置规则集合。例如，[eslint-config-Airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base)，它其实就是包含了一堆 ESLint 内置规则集合，这些规则是按照 Airbnb 风格来配置的，如下截图所示：
 
 <PaoImages
-  src="/images/linter-eslint/eslint-config-airbnb-base.png" 
+  src="./images/eslint-config-airbnb-base.png" 
   width="80%"
   title="Airbab" 
   reference="[eslint-config-Airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base)" 

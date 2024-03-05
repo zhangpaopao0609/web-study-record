@@ -1,8 +1,8 @@
 [toc]
 
-# Monorepo
+# 你所需要了解的关于 Monorepo 的一切
 
-> 译为单仓
+> 为便于撰写和阅读，本文将 Monorepo 译为单仓
 
 本文将介绍你所需要了解的关于 Monorepo 的一切，以及业界构建 Monorepo 的工具。
 
@@ -465,52 +465,3 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
    - [Build Monorepos, not Monoliths](https://dev.to/agentender/build-monorepos-not-monoliths-4gbc?utm_source=monorepo.tools)
    - [Lerna/Yarn -> Nx: Faster Build Times + Better Dev Ergonomics](https://dev.to/nx/lerna-yarn-nx-faster-build-times-better-dev-ergonomics-32a6?utm_source=monorepo.tools)
    - [Nx monorepo documentation](https://nx.dev/guides/why-monorepos#monorepos?utm_source=monorepo.tools)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

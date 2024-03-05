@@ -30,23 +30,19 @@ img {
   animation-duration: var(--animate-duration);
   animation-duration: var(--animate-duration);
   animation-fill-mode: both;
-  animation-fill-mode: both;
 }
 
 .animate__tada {
   animation-name: tada;
-  animation-name: tada;
 }
 
 @keyframes tada {
   0% {
     transform: scaleX(1);
-    transform: scaleX(1);
   }
 
   10%,
   20% {
-    transform: scale3d(0.8, 0.8, 0.8) rotate(-5deg);
     transform: scale3d(0.8, 0.8, 0.8) rotate(-5deg);
   }
 
@@ -55,18 +51,15 @@ img {
   70%,
   90% {
     transform: scale3d(1.2, 1.2, 1.2) rotate(5deg);
-    transform: scale3d(1.2, 1.2, 1.2) rotate(5deg);
   }
 
   40%,
   60%,
   80% {
     transform: scale3d(1.2, 1.2, 1.2) rotate(-5deg);
-    transform: scale3d(1.2, 1.2, 1.2) rotate(-5deg);
   }
 
   100% {
-    transform: scaleX(1);
     transform: scaleX(1);
   }
 }
@@ -74,12 +67,10 @@ img {
 @keyframes tada {
   0% {
     transform: scaleX(1);
-    transform: scaleX(1);
   }
 
   10%,
   20% {
-    transform: scale3d(0.8, 0.8, 0.8) rotate(-5deg);
     transform: scale3d(0.8, 0.8, 0.8) rotate(-5deg);
   }
 
@@ -88,18 +79,15 @@ img {
   70%,
   90% {
     transform: scale3d(1.2, 1.2, 1.2) rotate(5deg);
-    transform: scale3d(1.2, 1.2, 1.2) rotate(5deg);
   }
 
   40%,
   60%,
   80% {
     transform: scale3d(1.2, 1.2, 1.2) rotate(-5deg);
-    transform: scale3d(1.2, 1.2, 1.2) rotate(-5deg);
   }
 
   100% {
-    transform: scaleX(1);
     transform: scaleX(1);
   }
 }

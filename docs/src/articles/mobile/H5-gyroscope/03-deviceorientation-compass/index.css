@@ -37,7 +37,6 @@ body {
   width: 36px;
   height: 36px;
   transform: rotate(-118deg);
-  transform: rotate(-118deg);
   position: absolute;
   left: 50%;
   top: -8px;
@@ -50,7 +49,6 @@ body {
   background: linear-gradient(-37deg, red 24%, transparent 0);
   border-radius: 6px;
   transform: rotate(3deg) skewX(40deg);
-  transform: rotate(3deg) skewX(40deg);
   position: absolute;
   top: 0;
   left: 0;
@@ -62,7 +60,6 @@ body {
   background: linear-gradient(48deg, red 20%, transparent 0);
   border-radius: 6px;
   transform: rotate(-2deg) skewX(-34deg);
-  transform: rotate(-2deg) skewX(-34deg);
   position: absolute;
   top: 0;
   left: 36px;
@@ -73,7 +70,6 @@ body {
   height: 36px;
   background: linear-gradient(-52deg, transparent 80%, red 0);
   border-radius: 6px;
-  transform: rotate(28deg) skewY(27deg);
   transform: rotate(28deg) skewY(27deg);
   position: absolute;
   top: 32px;
@@ -119,7 +115,6 @@ body {
   top: 0;
   left: 0;
   transform: rotate(3deg);
-  transform: rotate(3deg);
   border-radius: 2px;
 }
 
@@ -137,7 +132,6 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  transform: rotate(3deg);
   transform: rotate(3deg);
   border-radius: 2px;
 }
@@ -181,7 +175,6 @@ body {
   top: 0;
   left: 0;
   transform: rotate(30deg);
-  transform: rotate(30deg);
   border-radius: 6px;
 }
 
@@ -199,7 +192,6 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  transform: rotate(60deg);
   transform: rotate(60deg);
   border-radius: 6px;
 }
@@ -337,11 +329,9 @@ body {
 @keyframes animate {
   form {
     transform: rotate(0);
-    transform: rotate(0);
   }
 
   100% {
-    transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
@@ -349,11 +339,9 @@ body {
 @keyframes animate {
   form {
     transform: rotate(0);
-    transform: rotate(0);
   }
 
   100% {
-    transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }

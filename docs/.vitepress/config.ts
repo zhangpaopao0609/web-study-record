@@ -9,6 +9,7 @@ const logoPath = '/images/logo.png';
 export default defineConfig({
   title: 'Web Study Record',
   description: '用于我前端学习的记录, 记录的同时也做一个分享.',
+  srcDir: 'src',
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/images/logo.ico' }],
   ],

@@ -154,51 +154,77 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
   '/articles/': [
     {
       text: '文章',
-      link: '/articles/',
       items: [
-        { text: 'JavaScript', items: 
-          [
-            { text: '聊2022年 JS 都有哪些更新', link: '/articles/javascript/2022-js-update/README.md' },
-            { text: '数组 fill 方法有坑呐', link: '/articles/javascript/silly-bug-in-array-fill-method-in-es6/README.md' },
+        {
+          text: 'JavaScript',
+          collapsed: true,
+          base: "articles/javascript",
+          items: [
+            { text: '聊2022年 JS 都有哪些更新', link: '/2022-js-update/README.md' },
+            { text: '数组 fill 方法有坑呐', link: '/silly-bug-in-array-fill-method-in-es6/README.md' },
           ]
         },
-        { text: 'Mobile', items: [{ text: 'H5 陀螺仪', link: '/articles/mobile/H5-gyroscope/README.md' }] },
-        { text: 'Repository', 
-          items: [
-            { text: '守护世界守护你', link: '/articles/repository/guarding-the-world-guarding-you/README.md' },
-            { text: '四不像项目要如何进化', link: '/articles/repository/how-to-evolve-four-dissimilar-projects/README.md' },
-            { text: '简单介绍一下项目仓库模式', link: '/articles/repository/intro-different-repository/README.md' },
-          ] 
+        {
+          text: 'Mobile',
+          base: "articles/mobile",
+          items: [{ text: 'H5 陀螺仪', link: '/H5-gyroscope/README.md' }]
         },
-        { text: 'Vue', 
+        {
+          text: 'Repository',
+          collapsed: true,
+          base: "articles/repository",
           items: [
-            { text: '谈谈如何”正确“的使用 Vuex', link: '/articles/vue/how-to-use-vuex-correctly/README.md' },
-            { text: '四不像项目要如何进化', link: '/articles/repository/how-to-evolve-four-dissimilar-projects/README.md' },
-          ] 
+            { text: '守护世界守护你', link: '/guarding-the-world-guarding-you/README.md' },
+            { text: '四不像项目要如何进化', link: '/how-to-evolve-four-dissimilar-projects/README.md' },
+            { text: '简单介绍一下项目仓库模式', link: '/intro-different-repository/README.md' },
+            { text: '你所需要了解的关于 Monorepo 的一切', link: '/monorepo/README.md' },
+          ]
         },
-        { text: '设计模式', 
-        items: [
-          { text: '适配器模式', items: [ { text: '统一接口', link: '/articles/design-patterns/adapter/uniform-interface/README.md' } ] },
-        ] 
-      },
-      { text: '前端', 
-        items: [
-          { text: '微前端的暗位面', link: '/articles/front-end/the-dark-side-of-the-micro-front-end/README.md' },
-          { text: '项目依赖的版本范围控制浅谈', link: '/articles/front-end/study-semantic/README.md' },
-        ] 
-      },
-      { text: '网络', 
-        items: [
-          { text: '服务端推送全貌', link: '/articles/network/how-to-receive-server-side-push/README.md' },
-        ] 
-      },
-      { text: 'CSS', 
-        items: [
-          { text: 'Sass 还可以这么玩 —— Sass 批量生成 `padding` 和 `margin`', link: '/articles/css/padding-margin-classed-with-sass/README.md' },
-        ] 
-      },
-        { text: 'workspace', link: '/package-manager/workspace.md' },
-        { text: 'monorepo', link: '/package-manager/monorepo.md' },
+        {
+          text: 'Vue',
+          base: "articles/vue",
+          items: [
+            { text: '谈谈如何”正确“的使用 Vuex', link: '/how-to-use-vuex-correctly/README.md' },
+          ]
+        },
+        {
+          text: '设计模式',
+          base: "articles/design-patterns",
+          items: [
+            { text: '适配器模式', items: [{ text: '统一接口', link: '/adapter/uniform-interface/README.md' }] },
+          ]
+        },
+        {
+          text: '前端',
+          collapsed: true,
+          base: "articles/front-end",
+          items: [
+            { text: '微前端的暗位面', link: '/the-dark-side-of-the-micro-front-end/README.md' },
+            { text: '项目依赖的版本范围控制浅谈', link: '/study-semantic/README.md' },
+            { text: '原来 peerDependencies 是这么个东东', link: '/peer-dependencies/README.md' },
+          ]
+        },
+        {
+          text: '网络',
+          base: "articles/network",
+          items: [
+            { text: '服务端推送全貌', link: '/how-to-receive-server-side-push/README.md' },
+          ]
+        },
+        {
+          text: 'CSS',
+          base: "articles/css",
+          items: [
+            { text: 'Sass 还可以这么玩 —— Sass 批量生成 `padding` 和 `margin`', link: '/padding-margin-classed-with-sass/README.md' },
+          ]
+        },
+        {
+          text: 'CSS',
+          base: "articles/programming",
+          items: [
+            { text: '静态类型 vs 动态类型 和 弱类型 vs 强类型', link: '/static-vs-dynamic-and-weak-vs-strong/README.md' },
+          ]
+        },
       ],
     },
   ],

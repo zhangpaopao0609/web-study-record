@@ -1,7 +1,9 @@
 [toc]
 
 # 静态类型 vs 动态类型 和 弱类型 vs 强类型
-
+   <div align="center">
+     <img src="./images/s-d-s-w-type.png" width="80%"/>
+   </div>
 在描述一个程序语言时，一般会使用这两组术语：
 
 1. 静态类型和动态类型
@@ -19,13 +21,13 @@
 1. 静态类型语言中，变量在声明时需要先声明其类型，也就是在变量创建的时候变量的类型就已经确定了，确定后不可更改，在使用过程中，仅能为其赋指定类型的值，若为其赋其它类型的值，会直接出错。
 
    <div align="center">
-     <img src="./img/java-int.png" style="zoom: 50%" width="50%"/>
+     <img src="./images/java-int.png" style="zoom: 50%" width="50%"/>
    </div>
 
 2. 动态类型语言中，变量在声明时不需要声明其类型，类型根据所赋的值决定，即为变量赋何种类型的变量，变量就是对应的类型。
 
    <div align="center">
-     <img src="./img/javascript-number-str-obj.png" style="zoom: 50%" width="50%"/>
+     <img src="./images/javascript-number-str-obj.png" style="zoom: 50%" width="50%"/>
    </div>
 
 常见的静态类型语言有：Java, C, C#, C++
@@ -46,12 +48,12 @@
 弱类型语言对于变量类型的检查比较宽松，容忍隐式类型转换的发生。隐式类型转换，也称为*强制*转换，是[编译器](https://en.wikipedia.org/wiki/Compiler)自动进行的类型转换，例如：在 JavaScript 中， Number 类型的数据和 String 类型的数据相加后的结果为 String 类型，在这个过程中， Number 类型的数据被隐式的转换成了String 类型；而在 Python 中，让一个  Number 类型的数据和 String 类型的数据相加便会报错。
 
 <div align="center">
-  <img src="./img/js-weak.png" style="zoom: 80%" width="80%"/>
+  <img src="./images/js-weak.png" style="zoom: 80%" width="80%"/>
   <p>JavaScript 中支持隐式转换</p>
 </div>
 
 <div align="center">
-  <img src="./img/python-strongly.png" style="zoom: 100%" width="100%"/>
+  <img src="./images/python-strongly.png" style="zoom: 100%" width="100%"/>
   <p>Python 中不支持隐式转换</p>
 </div>
 
@@ -73,7 +75,7 @@
 下图是一张常见的分类图，**但是在强和弱类型含义未统一的前提下，这并没有太强的说服力**，当然，静态和动态类型的分类是具有说服力的。
 
 <div align="center">
-  <img src="./img/type-type.png" style="zoom: 30%" width="30%"/>
+  <img src="./images/type-type.png" style="zoom: 30%" width="30%"/>
   <p>常见的分类（但并不完全正确）</p>
 </div>
 
