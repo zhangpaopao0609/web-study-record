@@ -1,17 +1,12 @@
 {
   "name": "@zhangpaopao/docs",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/markdown-it": "^13.0.7",
     "less": "^4.1.3",
