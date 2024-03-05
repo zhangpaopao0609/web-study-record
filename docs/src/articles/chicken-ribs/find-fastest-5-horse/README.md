@@ -16,7 +16,7 @@
 
 首先，如下所示把马分成 5 组。
 
-![image-20210322162936850](/Users/aispeech/Desktop/MyGitHub/web-study-record/零散的知识点/img/horse-1.png)
+![image-20210322162936850](./images/horse-1.png)
 
 1. 每组分别跑一轮（总共5轮）
 
@@ -28,15 +28,15 @@
 
    由于我们只取前三名，因此，D，E组直接可以淘汰了；
 
-   ![image-20210322163541187](/Users/aispeech/Desktop/MyGitHub/web-study-record/零散的知识点/img/horse-2.png)
+   ![image-20210322163541187](./images/horse-2.png)
 
    除了 D、E两组淘汰了之外，C 组除 C1 之外的也可以直接淘汰了，因为C1前面至少存在 A1, B1比它快；同理B组的3，4，5也可以直接淘汰了，B2没有淘汰是因为 B2有可能大于 C1成为第三名的；同理A组的4，5也可以直接淘汰了，A3没有淘汰是因为 A3有可能大于 B1成为第三名的。
 
-   ![image-20210322163803228](/Users/aispeech/Desktop/MyGitHub/web-study-record/零散的知识点/img/horse-3.png)
+   ![image-20210322163803228](./images/horse-3.png)
 
    同时，我们这里还可以选出一个，那就是第一名A1，所以最后还剩下 A2,A3,B1,B2,C1无匹马；
 
-   ![image-20210322164145435](/Users/aispeech/Desktop/MyGitHub/web-study-record/零散的知识点/img/horse-4.png)
+   ![image-20210322164145435](./images/horse-4.png)
 
 3. 最后剩下的五匹马再跑一轮得出结果（加1）
 

@@ -1,5 +1,7 @@
 # git 配置不同的 user 和 name
 
+> 不同的文件下配置不同的 git config
+
 有时候我们需要在一台电脑上开发不同源的代码，一般需要使用不同的的 name 和 email。
 
 > 比如公司的（假设 gitlab）和自己的（github）

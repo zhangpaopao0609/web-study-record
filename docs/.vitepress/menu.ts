@@ -21,25 +21,27 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
   '/git/': [
     {
       text: 'Git',
-      // collapsed: true,
-      link: '/git/',
+      link: "/git/",
       items: [
         {
           text: 'git 基础',
+          base: "/git/pro-git",
           items: [
-            { text: '01-起步', link: '/git/pro-git/01-起步.md' },
-            { text: '02-git基础', link: '/git/pro-git/02-git基础.md' },
-            { text: '03-git分支', link: '/git/pro-git/03-git分支.md' },
-            { text: '04-git配置', link: '/git/pro-git/04-git配置.md' },
-            { text: '05-git常用命令汇总', link: '/git/pro-git/05-git常用命令汇总.md' },
+            { text: '01-起步', link: '/01-起步.md' },
+            { text: '02-git基础', link: '/02-git基础.md' },
+            { text: '03-git分支', link: '/03-git分支.md' },
+            { text: '04-git配置', link: '/04-git配置.md' },
+            { text: '05-git常用命令汇总', link: '/05-git常用命令汇总.md' },
           ],
         },
         {
           text: '常见问题',
+          base: "/git/faq",
           items: [
-            { text: 'git fetch 和 git pull 的区别', link: '/git/faq/fetch-pull-diff.md' },
-            { text: 'git reset 和 git revert 的区别', link: '/git/faq/reset-revert-diff.md' },
-            { text: 'git submodule', link: '/git/faq/git-submodule.md' },
+            { text: 'git fetch 和 git pull 的区别', link: '/fetch-pull-diff.md' },
+            { text: 'git reset 和 git revert 的区别', link: '/reset-revert-diff.md' },
+            { text: 'git submodule', link: '/git-submodule.md' },
+            { text: 'git 配置不同的 user 和 name', link: '/configure-diff-git-configs-under-different-files.md' },
           ],
         },
       ],
@@ -219,10 +221,17 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
           ]
         },
         {
-          text: 'CSS',
+          text: '程序',
           base: "articles/programming",
           items: [
             { text: '静态类型 vs 动态类型 和 弱类型 vs 强类型', link: '/static-vs-dynamic-and-weak-vs-strong/README.md' },
+          ]
+        },
+        {
+          text: '算法',
+          base: "articles/alg",
+          items: [
+            { text: '大数之和', link: '/big-sum/README.md' },
           ]
         },
       ],
