@@ -18,7 +18,7 @@ module.exports = {
 		"@typescript-eslint",
 		"vue"
 	],
-	ignorePatterns: ["package.json", "**/**.md"],
+	ignorePatterns: ["package.json", "**/**.md", "archives/**"],
 	rules: {
 		// https://eslint.org/docs/latest/rules
 		"linebreak-style": ["error", "unix"],
