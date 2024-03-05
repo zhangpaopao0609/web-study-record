@@ -179,11 +179,17 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       { text: '前端', 
         items: [
           { text: '微前端的暗位面', link: '/articles/front-end/the-dark-side-of-the-micro-front-end/README.md' },
+          { text: '项目依赖的版本范围控制浅谈', link: '/articles/front-end/study-semantic/README.md' },
         ] 
       },
       { text: '网络', 
         items: [
           { text: '服务端推送全貌', link: '/articles/network/how-to-receive-server-side-push/README.md' },
+        ] 
+      },
+      { text: 'CSS', 
+        items: [
+          { text: 'Sass 还可以这么玩 —— Sass 批量生成 `padding` 和 `margin`', link: '/articles/css/padding-margin-classed-with-sass/README.md' },
         ] 
       },
         { text: 'workspace', link: '/package-manager/workspace.md' },
