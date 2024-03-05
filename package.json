@@ -1,8 +1,7 @@
 {
   "name": "web-study-record",
   "version": "1.0.0",
-  "description": "[toc]",
-  "main": "TensorflowJs.js",
+  "description": "zhangpaopao web study record",
   "scripts": {
     "eslint": "eslint",
     "eslint:fix": "eslint --fix",
