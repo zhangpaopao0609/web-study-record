@@ -7,7 +7,9 @@
     "eslint:fix": "eslint --fix",
     "stylelint": "stylelint \"**/*.{css,scss}\"",
     "stylelint:fix": "stylelint --fix \"**/*.{css,scss}\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "docs:dev": "cd docs && pnpm run docs:dev",
+    "docs:build": "cd docs && pnpm run docs:build"
   },
   "repository": {
     "type": "git",
