@@ -156,7 +156,12 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
       text: '文章',
       link: '/articles/',
       items: [
-        { text: 'JavaScript', items: [{ text: '聊2022年 JS 都有哪些更新', link: '/articles/javascript/2022-js-update/README.md' }] },
+        { text: 'JavaScript', items: 
+          [
+            { text: '聊2022年 JS 都有哪些更新', link: '/articles/javascript/2022-js-update/README.md' },
+            { text: '数组 fill 方法有坑呐', link: '/articles/javascript/silly-bug-in-array-fill-method-in-es6/README.md' },
+          ]
+        },
         { text: 'Mobile', items: [{ text: 'H5 陀螺仪', link: '/articles/mobile/H5-gyroscope/README.md' }] },
         { text: 'Repository', 
           items: [
