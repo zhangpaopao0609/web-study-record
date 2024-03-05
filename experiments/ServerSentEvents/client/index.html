@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div id="events"></div>
+  <button id="btn">点击关闭</button>
+  <script>
+    const eventSource = new EventSource('http://localhost:8000/events');
+    eventSource.onmessage = (event) => {
+      const newElement = document.createElement("p");
+      const eventList = document.getElementById('events');
+
+      newElement.innerHTML = "Received timestamp: " + event.data;
+      eventList.appendChild(newElement);
+    }
+
+    const btn = document.getElementById('btn');
+    btn.onclick = () => {
+      eventSource.close();
+    }
+  </script>
+</body>
+
+</html>

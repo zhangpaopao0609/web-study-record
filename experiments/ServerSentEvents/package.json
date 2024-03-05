@@ -1,0 +1,22 @@
+{
+  "name": "ServerSentEvents",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "http-server ./client -p 8080 -o",
+    "server": "node ./server/index.js",
+    "dev": "concurrently 'pnpm run client' 'pnpm run server'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "http-server": "^14.1.1"
+  }
+}

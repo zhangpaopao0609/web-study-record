@@ -43,103 +43,75 @@
 
   一个[`DOMString`](https://developer.mozilla.org/zh-CN/docs/Web/API/DOMString)，代表事件源的 URL。
 
-### [事件接收器](https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource#事件接收器)
+## 示例
 
-- [`EventSource.onerror`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource/error_event)
+服务端推送示例
 
-  Is an `event handler` called when an error occurs and the [`error`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource/error_event) event is dispatched on an `EventSource` object.
+服务端代码
 
-- [`EventSource.onmessage` (en-US)](https://developer.mozilla.org/en-US/docs/Web/API/EventSource/message_event)
+```js
+const express = require("express");
+const cors = require("cors");
 
-  Is an `event handler` called when a [`message` (en-US)](https://developer.mozilla.org/en-US/docs/Web/API/EventSource/message_event) event is received, that is when a message is coming from the source.
+const app = express();
+app.use(cors());
 
-- [`EventSource.onopen`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource/open_event)
+app.get("/events", (req, res) => {
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+    res.flushHeaders();
 
-  Is an `event handler` called when an [`open`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource/open_event) event is received, that is when the connection was just opened.
+    // 每隔一秒发送一个时间戳
+    setInterval(() => {
+        res.write(`data: ${new Date().toISOString()}`);
+    }, 1000);
 
-## [方法](https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource#方法)
+    // 当客户端关闭连接时，停止发送事件
+    req.on("close", () => {
+        clearInterval();
+        res.end();
+    });
+});
 
-*此接口从其父接口 [`EventTarget`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget) 继承方法。*
-
-- [`EventSource.close()`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource/close)
-
-  如果存在，则关闭连接，并且设置 `readyState` 属性为 `CLOSED`。如果连接已经被关闭，此方法不会再进行任何操作。
-
-## [事件](https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource#事件)
-
-- [`error`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource/error_event)
-
-  Fired when a connection to an event source failed to open.
-
-- [`message` (en-US)](https://developer.mozilla.org/en-US/docs/Web/API/EventSource/message_event)
-
-  Fired when data is received from an event source.
-
-- [`open`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource/open_event)
-
-  Fired when a connection to an event source has opened.
-
-Additionally, the event source itself may send messages with an event field, which will create ad-hoc events keyed to that value.
-
-## [示例](https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource#示例)
-
-In this basic example, an `EventSource` is created to receive unnamed events from the server; a page with the name `sse.php` is responsible for generating the events.
-
-```
-var evtSource = new EventSource('sse.php');
-var eventList = document.querySelector('ul');
-
-evtSource.onmessage = function(e) {
-  var newElement = document.createElement("li");
-
-  newElement.textContent = "message: " + e.data;
-  eventList.appendChild(newElement);
-}
+app.listen(8000, () => {
+    console.log("Server started on port 8000");
+});
 ```
 
-Copy to Clipboard
+其中最为关键的是 `res.setHeader("Content-Type", "text/event-stream")` 即服务端代码发送 events 是需要将 MIME 设置为 `text/event-stream`。
 
-Each received event causes our `EventSource` object's `onmessage` event handler to be run. It, in turn, creates a new [``](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/li) element and writes the message's data into it, then appends the new element to the list element already in the document.
+客户端代码
 
-**Note**: You can find a full example on GitHub — see [Simple SSE demo using PHP.](https://github.com/mdn/dom-examples/tree/master/server-sent-events)
+```html
+<!DOCTYPE html>
+<html>
 
-To listen to named events, you'll require a listener for each type of event sent.
+<body>
+  <div id="events"></div>
+  <button id="btn">点击关闭</button>
+  <script>
+    const eventSource = new EventSource('http://localhost:8000/events');
+    eventSource.onmessage = (event) => {
+      const newElement = document.createElement("p");
+      const eventList = document.getElementById('events');
 
-```
-  const sse = new EventSource('/api/v1/sse');
+      newElement.innerHTML = "Received timestamp: " + event.data;
+      eventList.appendChild(newElement);
+    }
 
-  /* This will listen only for events
-   * similar to the following:
-   *
-   * event: notice
-   * data: useful data
-   * id: someid
-   *
-   */
-  sse.addEventListener("notice", function(e) {
-    console.log(e.data)
-  })
+    const btn = document.getElementById('btn');
+    btn.onclick = () => {
+      eventSource.close();
+    }
+  </script>
+</body>
 
-  /* Similarly, this will listen for events
-   * with the field `event: update`
-   */
-  sse.addEventListener("update", function(e) {
-    console.log(e.data)
-  })
-
-  /* The event "message" is a special case, as it
-   * will capture events without an event field
-   * as well as events that have the specific type
-   * `event: message` It will not trigger on any
-   * other event type.
-   */
-  sse.addEventListener("message", function(e) {
-    console.log(e.data)
-  })
+</html>
 ```
 
+创建一个 `EventSource`，然后通过 `onmessage` 去接收，也可以调用 `close` 去关闭。
 
+更多详细内容请查看 [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)
 
-
-
-https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
+示例代码可见：
