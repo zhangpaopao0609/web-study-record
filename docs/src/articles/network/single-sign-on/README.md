@@ -34,7 +34,7 @@
 
 ### 3.2 利用 CAS 实现单点登录
 
-![CAS (3)](/Users/aispeech/Desktop/MyGitHub/web-study-record/零散的知识点/img/CAS-SSO.jpg)
+![CAS (3)](./images/CAS-SSO.jpg)
 
 https://my.oschina.net/woniuyi/blog/4449262
 

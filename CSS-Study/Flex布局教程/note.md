@@ -40,7 +40,7 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 
 项目默认沿主轴排列。单个项目占据的主轴空间叫做main size， 占据交叉轴空间胶州 cross size。
 
-![image-20210125154514031](/Users/aispeech/Desktop/MyGitHub/web-study-record/CSS-Study/Flex布局教程/img/image-20210125154514031.png)
+![image-20210125154514031](./img/image-20210125154514031.png)
 
 ## 3. 容器的属性
 
@@ -71,7 +71,7 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 
 - column-reverse： 主轴为垂直方向，起点在下沿。
 
-  ![image-20210125155339734](/Users/aispeech/Desktop/MyGitHub/web-study-record/CSS-Study/Flex布局教程/img/image-20210125155339734.png)
+  ![image-20210125155339734](./img/image-20210125155339734.png)
 
 ### 3.2 flex-wrap
 
@@ -85,15 +85,15 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 
 - nowrap （默认）： 不换行
 
-![image-20210125160041622](/Users/aispeech/Desktop/MyGitHub/web-study-record/CSS-Study/Flex布局教程/img/image-20210125160041622.png)
+![image-20210125160041622](./img/image-20210125160041622.png)
 
 - wrap ： (换行) 第一行在上方。
 
-  ![image-20210125160136517](/Users/aispeech/Desktop/MyGitHub/web-study-record/CSS-Study/Flex布局教程/img/image-20210125160136517.png) 
+  ![image-20210125160136517](./img/image-20210125160136517.png) 
 
 - wrap-reverse: 换行，第一行在下方
 
-![image-20210125160252277](/Users/aispeech/Desktop/MyGitHub/web-study-record/CSS-Study/Flex布局教程/img/image-20210125160252277.png)
+![image-20210125160252277](./img/image-20210125160252277.png)
 
 ### 3.3 flex-flow
 
@@ -123,7 +123,7 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 
 
 
-![image-20210125173435312](/Users/aispeech/Desktop/MyGitHub/web-study-record/CSS-Study/Flex布局教程/img/image-20210125173435312.png)
+![image-20210125173435312](./img/image-20210125173435312.png)
 
 ### 3.5 align-items 
 
@@ -141,7 +141,7 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 - baseline：项目的第一行文字的基线对齐
 - stretch(默认值)：如果项目未设置高度或设为auto，将占满整个容器的高度
 
-![image-20210125174313002](/Users/aispeech/Desktop/MyGitHub/web-study-record/CSS-Study/Flex布局教程/img/image-20210125174313002.png)
+![image-20210125174313002](./img/image-20210125174313002.png)
 
 ### 3.6 align-content 
 
@@ -160,7 +160,7 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 - space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
 - stretch（默认值）：轴线占满整个交叉轴。
 
-![image-20210125181101528](/Users/aispeech/Desktop/MyGitHub/web-study-record/CSS-Study/Flex布局教程/img/image-20210125181101528.png)
+![image-20210125181101528](./img/image-20210125181101528.png)
 
 ## 4. 项目的属性
 
@@ -183,7 +183,7 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 }
 ```
 
-![image-20210125181410967](/Users/aispeech/Desktop/MyGitHub/web-study-record/CSS-Study/Flex布局教程/img/image-20210125181410967.png)
+![image-20210125181410967](./img/image-20210125181410967.png)
 
 ### 4.2 flex-grow 
 
@@ -195,7 +195,7 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 }
 ```
 
-![image-20210125181547167](/Users/aispeech/Desktop/MyGitHub/web-study-record/CSS-Study/Flex布局教程/img/image-20210125181547167.png)
+![image-20210125181547167](./img/image-20210125181547167.png)
 
 如果所有项目的 flex-grow 属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的 flex-grow 属性为2， 其他为1，则前者占据剩余的空间将比其他项多一倍。
 
@@ -209,7 +209,7 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 }
 ```
 
-![image-20210125182106192](/Users/aispeech/Desktop/MyGitHub/web-study-record/CSS-Study/Flex布局教程/img/image-20210125182106192.png)
+![image-20210125182106192](./img/image-20210125182106192.png)
 
 如果所有项目的 flex-shrink 属性都为1，当空间不足时，都将等比例缩小。如果一个项目的 flex-shrink 属性为 0，其它项目都为 1，则空间不足时，前者不缩小。
 
@@ -249,4 +249,4 @@ flex 属性是 flex-grow, flex-shrink 和 flex-basis 的简写，默认值为 0 
 }
 ```
 
-![image-20210125183600590](/Users/aispeech/Desktop/MyGitHub/web-study-record/CSS-Study/Flex布局教程/img/image-20210125183600590.png)
+![image-20210125183600590](./img/image-20210125183600590.png)

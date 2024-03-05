@@ -6,7 +6,7 @@
 
 物理层 -> 数据链路层（mac） -> 网络层(IP) -> 传输层（TCP/UDP）-> 应用层（HTTP、SMTP、FTP）
 
-![image-20210302090438305](/Users/aispeech/Desktop/MyGitHub/web-study-record/Basic-of-Computer/img/五层协议.png)
+![image-20210302090438305](./images/five-layer-protocol.png)
 
 ## 2. 数据链路层（MAC）
 

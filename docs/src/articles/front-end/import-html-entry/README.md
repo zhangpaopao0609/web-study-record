@@ -5,7 +5,7 @@
 #  揭开 import-html-entry 面纱
 
 <div align='center'>
-	<img src='./img/import-html-entry.png' />
+	<img src='./images/import-html-entry.png' />
 </div>
 
 摘要：import-html-entry 是 qiankun 中一个举足轻重的依赖，用于获取子应用的 HTML 和 JS，同时对 HTML 和 JS 进行了各自的处理，以便于子应用在父应用中加载，那它究竟做了些什么呢？下面就让我们一起来揭开它神秘的面纱吧！！

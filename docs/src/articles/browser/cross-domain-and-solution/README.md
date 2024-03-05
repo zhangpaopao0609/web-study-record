@@ -8,7 +8,7 @@
 
 回顾一下 URI 的组成：
 
-![image-20210302204318717](/Users/aispeech/Desktop/MyGitHub/web-study-record/Browser/img/URI.png)
+![image-20210302204318717](./images/uri.png)
 
 浏览器遵循同源策略（scheme(协议)、host(主机)和port(端口)都相同则为同源）。非同源站点有这样一些限制：
 
@@ -151,9 +151,9 @@ const app = http.createServer((req, res) => {
 });
 ```
 
-![image-20210308094006419](/Users/aispeech/Desktop/MyGitHub/web-study-record/Browser/img/optinons.png)
+![image-20210308094006419](./images/optinons.png)
 
-![image-20210308094043707](/Users/aispeech/Desktop/MyGitHub/web-study-record/Browser/img/put.png)
+![image-20210308094043707](./images/put.png)
 
 ### 4. nginx 
 

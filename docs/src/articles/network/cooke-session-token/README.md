@@ -57,7 +57,7 @@ Web 服务器无需被动地根据用户的 IP 地址来猜测他的身份，它
 
 其实这种方式跟之后出现的 cookie 在机制上十分类似，都是将用户名和密码添加在请求首部中，然后在每次请求中都向服务器发送Authorization首部作为一种身份的标识，也可以说是 cookie 的前身，但是这种方式存在很大的不足。
 
-![image-20201220195459719](/Users/aispeech/Library/Application Support/typora-user-images/image-20201220195459719.png)
+![image-20201220195459719](/image-20201220195459719.png)
 
 - 无法存储起来
 - 十分容易破解

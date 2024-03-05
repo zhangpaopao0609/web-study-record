@@ -17,7 +17,7 @@ HTTP Cache 使我们开发中接触最多的缓存，一般把它分为强缓存
 
 Pragma > Cache-Control > Expires > Etag > Last-Modified
 
-![image-20210302114913250](/Users/aispeech/Desktop/MyGitHub/web-study-record/Basic-of-Computer/img/缓存流程图.png)
+![image-20210302114913250](./images/caching-flowchart.png)
 
 
 
@@ -57,7 +57,7 @@ app.listen(port, err => {
 });
 ```
 
-![image-20210302124328413](/Users/aispeech/Desktop/MyGitHub/web-study-record/Basic-of-Computer/img/Expires.png)
+![image-20210302124328413](./images/expires.png)
 
 但是，Expires 采用的是绝对过期时间，使用 Expires 时需要服务器和客户端完全保持一致，才能保证缓存起到正确的作用，显然这是很难的。因此，HTTP 1.1 新增了 `Cache-Control`字段来解决这个问题。
 
@@ -91,7 +91,7 @@ else if (url === '/script.js') {
 }
 ```
 
-![image-20210302130910761](/Users/aispeech/Desktop/MyGitHub/web-study-record/Basic-of-Computer/img/max-age.png)
+![image-20210302130910761](./images/max-age.png)
 
 ## 3. 协商缓存
 
@@ -142,7 +142,7 @@ const app = http.createServer((req, res) => {
 });
 ```
 
-![image-20210302141021354](/Users/aispeech/Desktop/MyGitHub/web-study-record/Basic-of-Computer/img/modified-since.png)
+![image-20210302141021354](./images/modified-since.png)
 
 ### 3.2 Etag / If-None-Match
 
