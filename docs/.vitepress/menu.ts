@@ -5,6 +5,7 @@ export const nav: DefaultTheme.Config['nav'] = [
   { text: 'Git', link: '/git/' },
   { text: '包管理器', link: '/package-manager/' },
   { text: 'Linter', link: '/linter/' },
+  { text: '语言', link: '/languages/' },
   { text: '文章', link: '/articles/' },
 ];
 
@@ -149,6 +150,17 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         {
           text: 'Configuring Vite',
           link: '/project-config/',
+        },
+      ],
+    },
+  ],
+  '/languages/': [
+    {
+      text: 'JS',
+      items: [
+        {
+          text: 'JS 基础',
+          link: '/languages/js-basic/index.md',
         },
       ],
     },
