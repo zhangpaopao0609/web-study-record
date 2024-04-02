@@ -340,5 +340,5 @@ if(用户选择的服务 == Firebase) {
 
    
 
-   <div align='center'>  <img src="./img/select-provider.png" /></div>
+   <div> <img src="./img/select-provider.png" /></div>
 
