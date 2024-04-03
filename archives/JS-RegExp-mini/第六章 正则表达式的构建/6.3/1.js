@@ -24,5 +24,3 @@ console.log(all.test(str_three));
 
 const str_four = '(0551-88888888';
 console.log(all.test(str_four));
-
-

@@ -10,7 +10,7 @@ git init
 git clone https://github.com/zhangpaopao0609/web-study-record
 ```
 
-## 2.2 记录每次更新到仓库 
+## 2.2 记录每次更新到仓库
 查看当前操作状态
 ```bash
 git status
@@ -22,7 +22,7 @@ git status -s
 将工作区文件添加到暂存区
 
 ```bash
-git add 
+git add
 ```
 
 1. **忽略文件**
@@ -38,7 +38,7 @@ cat .gitignore
 2. **查看已暂存和未暂存的修改**
 
 ```bash
-git diff 
+git diff
 # 不添加参数比较的是工作目录中当前文件和暂存区域快照之间的差异
 ```
 
@@ -79,7 +79,7 @@ git rm
 ```
 
 ```bash
-git rm --cached 
+git rm --cached
 # 只把文件从Git仓库中删除（亦即从暂存区域移除），但仍然希望保留咋当前工作目录中
 ```
 
@@ -129,7 +129,7 @@ git log --graph
 2. **限制输出长度**
 
 ```bash
-git log -<n> 
+git log -<n>
 # 但不推荐使用，Git 在输出所有提交时会自动调用分页程序，所以一次只会看到一页的内容
 ```
 
@@ -252,7 +252,7 @@ git remote show [remote-name]
 
 ```bash
 # 重命名引用的名字
-git remote rename 
+git remote rename
 # git remote rename origin test
 ```
 
@@ -316,12 +316,11 @@ git tag -l 'v1.8.5'
   git push origin --tags
   ```
 
-
 - 检出标签
 
-  在 Git 中并不能真的检出一个标签，因为他们并不能像分支一样来回移动，如果你想要工作目录与仓库中特定的标签版本完全一样，可以使用 
+  在 Git 中并不能真的检出一个标签，因为他们并不能像分支一样来回移动，如果你想要工作目录与仓库中特定的标签版本完全一样，可以使用
 
-  ```bash 
+  ```bash
   git checkout -b [branchname] [tagname]
   ```
 
@@ -344,26 +343,3 @@ git config --global ailas.unstage 'reset HEAD --'
 git unstage fileA
 git reset HEAD --fileA
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

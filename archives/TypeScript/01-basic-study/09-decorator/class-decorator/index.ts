@@ -4,10 +4,10 @@
  */
 // 1. 普通装饰器（无法传参）
 function logClass_1(target: any) {
-  console.log(target);      // target 就是当前类
+  console.log(target); // target 就是当前类
 
   target.prototype.apiUrl = '动态扩展的属性';
-  target.prototype.run = function() {
+  target.prototype.run = function () {
     console.log(this.name);
   };
 }
@@ -20,7 +20,7 @@ class HttpClient_1 {
   };
 
   getData() {
-    
+
   }
 };
 
@@ -31,11 +31,11 @@ h_1.run();
 // 2. 装饰器工厂（可传参）
 function logClass_2(params: string) {
   return function (target: any) {
-    target.prototype.apiUrl = '动态扩展的属性' + params;
-    target.prototype.run = function() {
+    target.prototype.apiUrl = `动态扩展的属性${params}`;
+    target.prototype.run = function () {
       console.log(this.name + params);
     };
-  }
+  };
 }
 
 @logClass_2('hello')
@@ -46,7 +46,7 @@ class HttpClient_2 {
   };
 
   getData() {
-    
+
   }
 };
 
@@ -57,12 +57,12 @@ h_2.run();
 // 类的重载
 function logClass_3(target: any) {
   return class extends target {
-    name: string = '修改后！'
+    name: string = '修改后！';
     more: number = 11111;
     getData() {
       console.log(this.name + this.more);
     }
-  }
+  };
 }
 
 @logClass_3
@@ -78,6 +78,6 @@ class HttpClient_3 {
 };
 
 const h_3 = new HttpClient_3('arrow-3');
-h_3.getData()
+h_3.getData();
 
-export {}
+export {};

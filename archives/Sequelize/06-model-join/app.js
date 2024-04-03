@@ -1,16 +1,18 @@
 const { Sequelize, DataTypes, Op, Model } = require('sequelize');
 
 const db = require('./config');
+
 const sequelize = new Sequelize(db.database, db.username, db.password, db.options);
 
 const User = require('./models/user')(sequelize, DataTypes, Model);
 const DirvingLicense = require('./models/dirving_license')(sequelize, DataTypes, Model);
+
 User.hasOne(DirvingLicense);
 DirvingLicense.belongsTo(User, {
   foreignKey: {
     name: 'userId',
-    allowNull: false
-  }
+    allowNull: false,
+  },
 });
 
 (async () => {

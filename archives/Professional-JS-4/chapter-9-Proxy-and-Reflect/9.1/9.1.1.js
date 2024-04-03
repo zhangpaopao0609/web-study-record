@@ -1,5 +1,5 @@
 const target = {
-    id: 'arrow'
+  id: 'arrow',
 };
 
 const handler = {};

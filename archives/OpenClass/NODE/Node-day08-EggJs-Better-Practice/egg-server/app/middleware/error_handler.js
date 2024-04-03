@@ -1,5 +1,5 @@
 module.exports = (option, app) => {
-  return async function (ctx, next)  {
+  return async function (ctx, next) {
     try {
       await next();
     } catch (err) {
@@ -8,14 +8,14 @@ module.exports = (option, app) => {
 
       const status = err || 500;
       // 500
-      const error = 
-        status === 500 && app.config.env === 'prod' ? 
-        'Internal Server Error' : 
-        err.message;
+      const error
+        = status === 500 && app.config.env === 'prod'
+          ? 'Internal Server Error'
+          : err.message;
 
       ctx.body = {
         code: status,
-        error
+        error,
       };
 
       if (status === 422) {
@@ -23,5 +23,5 @@ module.exports = (option, app) => {
       };
       ctx.status = 200;
     }
-  }
-}
+  };
+};

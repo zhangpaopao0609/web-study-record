@@ -2,7 +2,7 @@
 import { h } from 'vue';
 import Theme from 'vitepress/theme';
 import './style.css';
-import PaoImages from "./components/PaoImages.vue";
+import PaoImages from './components/PaoImages.vue';
 
 export default {
   ...Theme,
@@ -13,6 +13,6 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     // ...
-    app.component('PaoImages', PaoImages)
+    app.component('PaoImages', PaoImages);
   },
 };

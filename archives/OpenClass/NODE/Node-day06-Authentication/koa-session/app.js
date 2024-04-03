@@ -1,4 +1,5 @@
 const Koa = require('koa');
+
 const app = new Koa();
 const session = require('koa-session');
 
@@ -8,17 +9,19 @@ app.keys = ['some secret'];
 const SESSION_CONFIG = {
   key: 'arrow',
   maxAge: 86400000,
-  httpOnly: true,   // 仅能服务器端修改，JS无法读取
-  // signed: false     // 防止session被篡改 
-  signed: true     // 防止session被篡改， 签名 cookie
+  httpOnly: true, // 仅能服务器端修改，JS无法读取
+  // signed: false     // 防止session被篡改
+  signed: true, // 防止session被篡改， 签名 cookie
 };
 
 // 注册
 app.use(session(SESSION_CONFIG, app));
 
 // 测试
-app.use(ctx => {
-  if(ctx.path === '/favicon.ico') return;
+app.use((ctx) => {
+  if (ctx.path === '/favicon.ico') {
+    return;
+  }
   // 获取
   let count = ctx.session.count || 0;
   let num = ctx.session.num || 0;
@@ -30,7 +33,9 @@ app.use(ctx => {
 });
 
 const port = 6090;
-app.listen(port, err => {
-  if(err) throw err;
+app.listen(port, (err) => {
+  if (err) {
+    throw err;
+  }
   console.log(`app start at ${port}`);
 });

@@ -7,16 +7,16 @@ const views = require('koa-views');
 const app = new Koa();
 const router = new Router();
 
-app.use(views(__dirname+'/views', { extension: 'ejs' }));
+app.use(views(`${__dirname}/views`, { extension: 'ejs' }));
 
 // 配置公共信息
 app.use(async (ctx, next) => {
-  ctx.state.name = "arrow";
+  ctx.state.name = 'arrow';
   await next();
-})
+});
 
-router.get("/", async ctx => {
-  await ctx.render('index', { msg: "hello" });
+router.get('/', async (ctx) => {
+  await ctx.render('index', { msg: 'hello' });
 });
 
 app
@@ -24,7 +24,9 @@ app
   .use(router.allowedMethods());
 
 const port = 6090;
-app.listen(port, err => {
-  if(err) throw err;
+app.listen(port, (err) => {
+  if (err) {
+    throw err;
+  }
   console.log(`app start at ${port}`);
 });

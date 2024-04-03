@@ -34,7 +34,7 @@
  */
 // var isValid = function(s) {
 //   if(s == '' && s.length%2 != 0) return true;
-  
+
 //   const obj = {
 //     '{': 1,
 //     '}': -1,
@@ -50,7 +50,7 @@
 //   console.log(hash)
 //   for (const key in hash) {
 //     if(key>0 && hash[-parseInt(key)] && (hash[-parseInt(key)]-hash[key])%2 != 0) {
-      
+
 //     }else{
 //       return false;
 //     }
@@ -60,25 +60,25 @@
 
 // console.log(isValid("({{{{}}}))"));
 
-
 /**
  * @param {string} s
  * @return {boolean}
  */
-var isValid = function(s) {
-	if(s == "" && s.length%2 != 0) return true;
-	const dic = {"}": "{",  "]": "[", ")": "(", "?": "?"};
-  
-	let arr = [];
-	for (let i = 0; i < s.length; i++) {
-    
-		if(arr.length > 0 && dic[s.charAt(i)] == arr[arr.length-1] ) {
-			arr.pop();
-		}else{
-			arr.push(s.charAt(i));    
-		}
-	}
-	return arr.length == 0;
+const isValid = function (s) {
+  if (s == '' && s.length % 2 != 0) {
+    return true;
+  }
+  const dic = { '}': '{', ']': '[', ')': '(', '?': '?' };
+
+  const arr = [];
+  for (let i = 0; i < s.length; i++) {
+    if (arr.length > 0 && dic[s.charAt(i)] == arr[arr.length - 1]) {
+      arr.pop();
+    } else {
+      arr.push(s.charAt(i));
+    }
+  }
+  return arr.length == 0;
 };
 
-console.log(isValid("(())"));
+console.log(isValid('(())'));

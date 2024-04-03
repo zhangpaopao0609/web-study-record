@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import C from "./C";
+import React, { Component } from 'react';
+import C from './C';
 
 export default class B extends Component {
   render() {
@@ -8,6 +8,6 @@ export default class B extends Component {
         <h3>父亲辈</h3>
         <C />
       </div>
-    )
+    );
   }
 }

@@ -1,36 +1,38 @@
-<template>
-  <div class="hello" @click="$parent.$emit('mua')">
-    <h1 @click="$emit('foo', 'bar')">{{ msg }}</h1>
-    {{foo}} - {{dong.bla}}
-
-    <!-- 匿名插槽 -->
-    <slot></slot>
-    <!-- 具名插槽 -->
-    <div>
-      <slot name="content" bla="bla~~~~" bar="bar~~~"></slot>
-    </div>
-  </div>
-</template>
-
 <script>
 export default {
-  name: "HelloWorld",
+  name: 'HelloWorld',
   inject: ['dong'],
   props: {
-    msg: String
+    msg: String,
   },
   data() {
     return {
-      foo: "foo"
+      foo: 'foo',
     };
   },
   created() {
-    this.$parent.$on("mua", () => {
-      console.log("mua");
+    this.$parent.$on('mua', () => {
+      console.log('mua');
     });
-  }
+  },
 };
 </script>
+
+<template>
+  <div class="hello" @click="$parent.$emit('mua')">
+    <h1 @click="$emit('foo', 'bar')">
+      {{ msg }}
+    </h1>
+    {{ foo }} - {{ dong.bla }}
+
+    <!-- 匿名插槽 -->
+    <slot />
+    <!-- 具名插槽 -->
+    <div>
+      <slot name="content" bla="bla~~~~" bar="bar~~~" />
+    </div>
+  </div>
+</template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

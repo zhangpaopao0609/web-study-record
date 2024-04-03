@@ -62,7 +62,7 @@ Vue 响应式的原理： defineProperty
   </div>
   <script>
     let obj = {};
-    
+
     // 数据拦截
     Object.defineProperty(obj, 'name', {
       get: () => {
@@ -74,13 +74,13 @@ Vue 响应式的原理： defineProperty
         document.getElementById('name').innerHTML = nick;
       }
     })
-    
+
     obj.name = 'arrow';
     const change = () => {
       obj.name = obj.name + '2';
       console.log(obj.name);
     }
-     
+
   </script>
 </body>
 ```
@@ -91,7 +91,4 @@ Vue 响应式的原理： defineProperty
 核心任务
 1. 获取并遍历DOM树
 2. 文本节点：获取 {{  }} 格式的内容并解析
-3. 元素节点：访问节点特性，截获 a- 和 @ 开头内容并解析 
-
-
-
+3. 元素节点：访问节点特性，截获 a- 和 @ 开头内容并解析

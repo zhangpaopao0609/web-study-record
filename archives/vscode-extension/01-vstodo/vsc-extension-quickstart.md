@@ -13,7 +13,6 @@
 
 * install the recommended extensions (amodio.tsl-problem-matcher and dbaeumer.vscode-eslint)
 
-
 ## Get up and running straight away
 
 * Press `F5` to open a new window with your extension loaded.
@@ -25,7 +24,6 @@
 
 * You can relaunch the extension from the debug toolbar after changing code in `src/extension.ts`.
 * You can also reload (`Ctrl+R` or `Cmd+R` on Mac) the VS Code window with your extension to load your changes.
-
 
 ## Explore the API
 

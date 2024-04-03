@@ -8,10 +8,10 @@
  */
 
 interface DBI<T> {
-  add(info: T): boolean;
-  update(info: T, id: number): boolean;
-  delete(id: number): boolean;
-  get(id: number): any[];
+  add: (info: T) => boolean;
+  update: (info: T, id: number) => boolean;
+  delete: (id: number) => boolean;
+  get: (id: number) => any[];
 };
 
 // 定义一个操作 mysql 数据库的类
@@ -21,14 +21,17 @@ class MysqlDB<T> implements DBI<T> {
     console.log(info);
     return true;
   };
+
   update(info: T, id: number): boolean {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   };
+
   delete(id: number): boolean {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   };
+
   get(id: number): any[] {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   };
 };
 
@@ -38,14 +41,17 @@ class MsSql<T> implements DBI<T> {
     console.log(info);
     return true;
   };
+
   update(info: T, id: number): boolean {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   };
+
   delete(id: number): boolean {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   };
+
   get(id: number): any[] {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   };
 };
 
@@ -61,8 +67,8 @@ class User {
 
 const u = new User('arrow', '123');
 
-const demoMysql = new MysqlDB<User>();  // 类作为参数来约束数据传入的类型
+const demoMysql = new MysqlDB<User>(); // 类作为参数来约束数据传入的类型
 demoMysql.add(u);
 
-const demoMssql = new MsSql<User>(); 
+const demoMssql = new MsSql<User>();
 demoMssql.add(u);

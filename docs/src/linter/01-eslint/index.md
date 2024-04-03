@@ -31,10 +31,10 @@ ESLint 包含数百个可以使用的内置规则。这些规则可以在配置�
 一般情况下，共享的配置指一组预定义的 ESLint 内置规则集合。例如，[eslint-config-Airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base)，它其实就是包含了一堆 ESLint 内置规则集合，这些规则是按照 Airbnb 风格来配置的，如下截图所示：
 
 <PaoImages
-  src="./images/eslint-config-airbnb-base.png" 
+  src="./images/eslint-config-airbnb-base.png"
   width="80%"
-  title="Airbab" 
-  reference="[eslint-config-Airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base)" 
+  title="Airbab"
+  reference="[eslint-config-Airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base)"
 />
 
 点击可查看详细信息，[使用共享配置](https://eslint.org/docs/latest/use/configure/configuration-files#using-a-shareable-configuration-package)
@@ -65,5 +65,3 @@ ESLint 解析器将代码转换为 ESLint 可以识别的抽象语法树。默�
 ESLint 处理器可以从其他类型的文件中提取 JavaScript 代码，然后让 ESLint 进行检查。或者还可以使用处理器 ESLint 检查之前对 JavaScript 代码进行操作。
 
 例如，[eslint-plugin-markdown](https://github.com/eslint/eslint-plugin-markdown) 中就包含一个自定义处理器，使得 ESLint 可以在 Markdown 代码块中查找 JavaScript 代码
-
-

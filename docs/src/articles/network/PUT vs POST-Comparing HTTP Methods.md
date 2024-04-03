@@ -2,8 +2,6 @@
 
 # PUT vs POST - Comparing HTTP Methods
 
-
-
 原文链接： https://www.keycdn.com/support/put-vs-post
 
 ## PUT vs POST
@@ -60,44 +58,11 @@ HTTP/2.0 201 Created
 Location: /forums/<new_thread>
 ```
 
-总之，POST方法应该用于创建一个下级（或者说孩子）资源的标识，通过请求URI。在上面的例子中，根据源定义，请求URI 是`/forums`以及下级或孩子应该是 `<new_thread>` 
+总之，POST方法应该用于创建一个下级（或者说孩子）资源的标识，通过请求URI。在上面的例子中，根据源定义，请求URI 是`/forums`以及下级或孩子应该是 `<new_thread>`
 
 ## 4. 何时使用？
 
 1. 当您知道要创建或覆盖的内容的URL时，应该使用PUT方法。
 2. 当您只知道要创建内容的对象的类别或子部分的URL，请使用POST方法。
 
-
-
-## 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+##

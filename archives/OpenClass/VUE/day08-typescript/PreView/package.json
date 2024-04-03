@@ -2,12 +2,12 @@
   "name": "preview",
   "version": "1.0.0",
   "description": "ts-preview",
+  "author": "paopao-arrow",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config ./build/webpack.config.js"
   },
-  "author": "paopao-arrow",
-  "license": "MIT",
   "devDependencies": {
     "html-webpack-plugin": "^4.5.0",
     "ts-loader": "^8.0.4",

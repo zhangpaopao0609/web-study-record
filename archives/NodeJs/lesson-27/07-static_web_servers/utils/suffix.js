@@ -1,9 +1,9 @@
-const fs = require('fs');
-const path = require('path');
-const { resolve } = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
+const { resolve } = require('node:path');
 
-exports.suffix = extname => {
-  switch(extname) {
+exports.suffix = (extname) => {
+  switch (extname) {
     case '.html':
       return 'text/html';
     case '.css':
@@ -15,20 +15,20 @@ exports.suffix = extname => {
   }
 };
 
-exports.getMimePromise = extname => {
+exports.getMimePromise = (extname) => {
   return new Promise((resolve, reject) => {
     fs.readFile(path.join(__dirname, '../data/mime.json'), (err, data) => {
-      if(err) {
+      if (err) {
         console.log(err);
         reject(err);
         return;
       }
       resolve(JSON.parse(data.toString())[extname]);
     });
-  })
+  });
 };
 
-exports.getMimeSync = extname => {
-  const data =  fs.readFileSync(path.join(__dirname, '../data/mime.json'));
+exports.getMimeSync = (extname) => {
+  const data = fs.readFileSync(path.join(__dirname, '../data/mime.json'));
   return JSON.parse(data.toString())[extname];
 };

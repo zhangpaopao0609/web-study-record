@@ -1,9 +1,10 @@
-const http = require('http');
-const { Session } = require('inspector');
+const http = require('node:http');
+const { Session } = require('node:inspector');
+
 const session = {};
 
 const app = http.createServer((req, res) => {
-  if(req.url === '/favicon.ico') {
+  if (req.url === '/favicon.ico') {
     res.end('');
     return;
   };
@@ -13,13 +14,12 @@ const app = http.createServer((req, res) => {
   // 设置 cookie
   const sessionKey = 'arrow';
   const cookie = req.headers.cookie;
-  if(cookie && cookie.indexOf(sessionKey) > -1) {
+  if (cookie && cookie.includes(sessionKey)) {
     res.end('come back');
     const pattern = new RegExp(`${sessionKey}=([^;]+);?\s*`);
     const sid = pattern.exec(cookie)[1];
     console.log('session', sid, session, session[sid]);
-
-  }else {
+  } else {
     const sid = (Math.random() * 99999).toFixed();
     // 设置cookie
     res.setHeader('Set-Cookie', `${sessionKey}=${sid}`);
@@ -29,7 +29,9 @@ const app = http.createServer((req, res) => {
 });
 
 const port = 6090;
-app.listen(port, err => {
-  if(err) throw err;
+app.listen(port, (err) => {
+  if (err) {
+    throw err;
+  }
   console.log(`app start at ${port}`);
 });

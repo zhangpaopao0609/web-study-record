@@ -1,6 +1,6 @@
 const regex = /(?:ab)+/g;
 
-const string = "ababa abbb ababab";
+const string = 'ababa abbb ababab';
 
 console.log(string.match(regex));
 console.log(regex.test(string));

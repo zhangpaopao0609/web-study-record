@@ -18,30 +18,38 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
-const high = tree => {
-	if(!tree) return 0;
-	const l = high(tree.left);
-	const r = high(tree.right);
-	if(l === -1 || r === -1 || Math.abs(l - r) > 1) {
-		return -1;
-	}else {
-		return Math.max(l, r) + 1;
-	}
-};
+function high(tree) {
+  if (!tree) {
+    return 0;
+  }
+  const l = high(tree.left);
+  const r = high(tree.right);
+  if (l === -1 || r === -1 || Math.abs(l - r) > 1) {
+    return -1;
+  } else {
+    return Math.max(l, r) + 1;
+  }
+}
 
-const isBalanced = root => {
-	if(!root) return true;
-	return high(root) >= 0;
-};
+function isBalanced(root) {
+  if (!root) {
+    return true;
+  }
+  return high(root) >= 0;
+}
 // @lc code=end
 
 // 自顶向下的递归
-const high = tree => {
-	if(!tree) return 0;
-	return Math.max(high(tree.left), high(tree.right)) + 1;
-};
+function high(tree) {
+  if (!tree) {
+    return 0;
+  }
+  return Math.max(high(tree.left), high(tree.right)) + 1;
+}
 
-const isBalanced = root => {
-	if(!root) return true;
-	return Math.abs(high(root.left) - high(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right);
-};
+function isBalanced(root) {
+  if (!root) {
+    return true;
+  }
+  return Math.abs(high(root.left) - high(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right);
+}

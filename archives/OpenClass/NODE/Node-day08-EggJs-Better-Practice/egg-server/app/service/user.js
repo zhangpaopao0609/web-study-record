@@ -3,7 +3,7 @@ const { Service } = require('egg');
 class UserService extends Service {
   /**
    * 创建用户
-   * @param {*} payload 
+   * @param {*} payload
    */
   async create(payload) {
     const { ctx } = this;
@@ -12,4 +12,4 @@ class UserService extends Service {
   }
 };
 
-module.exports = UserService
+module.exports = UserService;

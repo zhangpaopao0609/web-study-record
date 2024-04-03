@@ -30,8 +30,6 @@
 
 ### 3.1 利用 JSONP 实现单点登录
 
-
-
 ### 3.2 利用 CAS 实现单点登录
 
 ![CAS (3)](./images/CAS-SSO.jpg)

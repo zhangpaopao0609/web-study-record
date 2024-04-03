@@ -8,8 +8,8 @@ commander.version(require('../package.json').version);
 commander
   .command('init <name>')
   .description('init project')
-  .action(name => {
-    init(name)
+  .action((name) => {
+    init(name);
   });
 
 commander.parse(process.argv);

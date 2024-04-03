@@ -9,12 +9,12 @@ Proxy 用于修改某些操作的默认行为，等同于在语言层面做出�
 Proxy 可以理解成，在目标对象之前架设一层"拦截"，外接对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。Proxy这个词的愿意是代理，用在这里表示由它来代理某些操作，可以译为代理器。
 
 ```js
-var obj = new Proxy({}, {
-  get: function (target, propKey, receiver) {
+const obj = new Proxy({}, {
+  get(target, propKey, receiver) {
     console.log(`getting ${propKey}!`);
     return Reflect.get(target, propKey, receiver);
   },
-  set: function (target, propKey, value, receiver) {
+  set(target, propKey, value, receiver) {
     console.log(`setting ${propKey}!`);
     return Reflect.set(target, propKey, value, receiver);
   }
@@ -24,9 +24,9 @@ var obj = new Proxy({}, {
 上面的代码对一个空对象假设了一层拦截，重定义了属性的读取和设置行为。
 
 ```js
-obj.count = 1
+obj.count = 1;
 //  setting count!
-++obj.count
+++obj.count;
 //  getting count!
 //  setting count!
 //  2
@@ -37,7 +37,7 @@ obj.count = 1
 ES6 原生提供了Proxy构造函数，用来生成Proxy实例
 
 ```js
-let proxy = new Proxy(target, handler)
+const proxy = new Proxy(target, handler);
 ```
 
 Target 参数表示所要拦截的目标对象，handler参数也是一个对象，用来定制拦截行为。
@@ -59,50 +59,50 @@ proxy.title // 35
 一个技巧是将 Proxy 对象，设置到 object.proxy 属性，从而可以在 object 对象上调用
 
 ```js
-let object = { proxy: new Proxy(target, handler)}
+const object = { proxy: new Proxy(target, handler) };
 ```
 
 Proxy实例也可以作为其他对象的原型对象
 
 ```js
-var proxy = new Proxy({}, {
-  get: function(target, propKey) {
+const proxy = new Proxy({}, {
+  get(target, propKey) {
     return 35;
   }
 });
 
-let obj = Object.create(proxy);
-obj.time // 35
+const obj = Object.create(proxy);
+obj.time; // 35
 ```
 
 同一个拦截器函数，可以设置拦截多个操作
 
 ```js
-var handler = {
-  get: function(target, name) {
+const handler = {
+  get(target, name) {
     if (name === 'prototype') {
       return Object.prototype;
     }
-    return 'Hello, ' + name;
+    return `Hello, ${name}`;
   },
 
-  apply: function(target, thisBinding, args) {
+  apply(target, thisBinding, args) {
     return args[0];
   },
 
-  construct: function(target, args) {
-    return {value: args[1]};
+  construct(target, args) {
+    return { value: args[1] };
   }
 };
 
-var fproxy = new Proxy(function(x, y) {
+const fproxy = new Proxy((x, y) => {
   return x + y;
 }, handler);
 
-fproxy(1, 2) // 1
-new fproxy(1, 2) // {value: 2}
-fproxy.prototype === Object.prototype // true
-fproxy.foo === "Hello, foo" // true
+fproxy(1, 2); // 1
+new fproxy(1, 2); // {value: 2}
+fproxy.prototype === Object.prototype; // true
+fproxy.foo === 'Hello, foo'; // true
 ```
 
 下面是 Proxy 支持的拦截操作一览，一共 13 种。
@@ -250,44 +250,3 @@ Proxy代理的钩子函数中的`this`指向的是Proxy代理实例（construct 
 ## 5. 实例： Web 服务的客户端
 
 Proxy对象可以拦截目标对象的任意属性，这使得它很合适用来写Web服务的客户端
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

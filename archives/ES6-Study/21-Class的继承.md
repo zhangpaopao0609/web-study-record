@@ -22,9 +22,9 @@ class  ColorPoint extend Point {
     super(x, y);  // 调用父类的constructor(x, y)
     this.color = color;
   }
-  
+
   toString() {
-    return this.color + ' ' + super.toString();  // 调用父类的toString() 
+    return this.color + ' ' + super.toString();  // 调用父类的toString()
   }
 }
 ```
@@ -52,12 +52,12 @@ ES5的继承，实质是先创造子类的实例对象this，然后再将父类�
 
 ```js
 class ColorPoint extends Point {
-  
+
 }
 // 等同于
 class ColorPoint extends Point {
   constructor(...args) {
-    super(...args)
+    super(...args);
   }
 }
 ```
@@ -128,37 +128,37 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
 
    ```javascript
    class A {}
-   
+
    class B extends A {
      constructor() {
        super();
      }
    }
    ```
-   
+
    上面代码中，子类`B`的构造函数之中的`super()`，代表调用父类的构造函数。这是必须的，否则当创建实例时， JavaScript 引擎会报错。
-   
-   注意，super虽然代表了父类A的构造函数，但是返回的是子类B的实例，即super内部的this指向的是B的实例，这是调用super是将父类的方法和属性绑定到B的this上，因此，super在这里相当于A.prototype.constructor.call(this).	
-   
+
+   注意，super虽然代表了父类A的构造函数，但是返回的是子类B的实例，即super内部的this指向的是B的实例，这是调用super是将父类的方法和属性绑定到B的this上，因此，super在这里相当于A.prototype.constructor.call(this).
+
    ```js
    class A {
      constructor() {
-       console.log(new.target.name)
+       console.log(new.target.name);
      }
    }
-   
+
    class B extends A {
      constructor() {
-       super()
+       super();
      }
    }
-   
-   new A()  	// A
-   new B()		// B
+
+   new A(); // A
+   new B(); // B
    ```
-   
+
    作为函数时，super() 只能用在子类的构造函数中，其他地方报错
-   
+
 2. super作为对象，**在普通方法中，指向父类的原型对象**；在静态方法中，指向父类
 
    ```js
@@ -167,15 +167,15 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
        return 2;
      }
    }
-   
+
    class B extends A {
      constructor() {
        super();
-       console.log(super.p());  // 2
+       console.log(super.p()); // 2
      }
    }
-   
-   let b = new B();
+
+   const b = new B();
    ```
 
    这里需要注意：由于super指向父类的原型对象，所以定义在父类实例上的方法或属性，是无法通过super调用的
@@ -186,13 +186,13 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
        this.p = 2;
      }
    }
-   
+
    class B extends A {
      get m() {
        return super.p;
      }
    }
-   
+
    let b = new B();
    b.m // undefined
    ```
@@ -204,15 +204,15 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
    ```js
    class A {}
    A.prototype.x = 2;
-   
+
    class B extends A {
      constructor() {
        super();
-       console.log(super.x)		
+       console.log(super.x);
      }
    }
-   
-   let b = new B()		// 2
+
+   const b = new B(); // 2
    ```
 
    上面的代码中，属性x是定义在A.prototype.type上面的，所以super.x可以取到它的值
@@ -228,7 +228,7 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
        console.log(this.x);
      }
    }
-   
+
    class B extends A {
      constructor() {
        super();
@@ -238,7 +238,7 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
        super.print();
      }
    }
-   
+
    let b = new B();
    b.m() // 2
    ```
@@ -253,18 +253,18 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
        this.x = 1;
      }
    }
-   
+
    class B extends a {
      constructor() {
        super();
        this.x = 2;
        super.x = 3;
-       console.log(super.x); 	// undefined 这时的super是指向父类的原型的
-       console.log(this.x);		// 3
+       console.log(super.x); // undefined 这时的super是指向父类的原型的
+       console.log(this.x); // 3
      }
    }
-   
-   let b = new B();
+
+   const b = new B();
    ```
 
    上面代码中，`super.x`赋值为`3`，这时等同于对`this.x`赋值为`3`。而当读取`super.x`的时候，读的是`A.prototype.x`，所以返回`undefined`。
@@ -276,24 +276,24 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
      static myMethod(msg) {
        console.log('static', msg);
      }
-   
+
      myMethod(msg) {
        console.log('instance', msg);
      }
    }
-   
+
    class Child extends Parent {
      static myMethod(msg) {
        super.myMethod(msg);
      }
-   
+
      myMethod(msg) {
        super.myMethod(msg);
      }
    }
-   
+
    Child.myMethod(1); // static 1		子类直接的调用 此时是静态方法 super是指向父类
-   
+
    var child = new Child();
    child.myMethod(2); // instance 2	子类的实例的调用，此时是普通方法，super是指向父类的原型
    ```
@@ -311,7 +311,7 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
        console.log(this.x);
      }
    }
-   
+
    class B extends A {
      constructor() {
        super();
@@ -321,7 +321,7 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
        super.print();
      }
    }
-   
+
    B.x = 3;
    B.m() // 3
    ```
@@ -332,7 +332,7 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
 
    ```javascript
    class A {}
-   
+
    class B extends A {
      constructor() {
        super();
@@ -343,14 +343,14 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
 
    ```javascript
    class A {}
-   
+
    class B extends A {
      constructor() {
        super();
        console.log(super.valueOf() instanceof B); // true
      }
    }
-   
+
    let b = new B();
    ```
 
@@ -364,7 +364,7 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
        return "MyObject: " + super.toString();
      }
    };
-   
+
    obj.toString(); // MyObject: [object Object]
    ```
 
@@ -379,10 +379,10 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
    ```javascript
    class A {
    }
-   
+
    class B extends A {
    }
-   
+
    B.__proto__ === A // true
    B.prototype.__proto__ === A.prototype // true
    ```
@@ -393,20 +393,20 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
 
    ```js
    class A {
-     
+
    }
-   
+
    class B {
-     
+
    }
-   
+
    // B的实例继承A的实例
-   Object.setPrototypeOf(B.prototype, A.prototype)
-   
+   Object.setPrototypeOf(B.prototype, A.prototype);
+
    // B继承A的静态属性
-   Object.setPrototypeOf(B,A)
-   
-   const b = new B()
+   Object.setPrototypeOf(B, A);
+
+   const b = new B();
    ```
 
    对象的扩展一章给出过Object.setPrototypeOf方法的实现
@@ -415,7 +415,7 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
    Object.setPrototypeOf = function (obj, proto) {
      obj.__proto__ = proto;
      return obj;
-   }
+   };
    ```
 
    因此，就得到了上面的结果
@@ -424,7 +424,7 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
    Object.setPrototypeOf(B.prototype, A.prototype);
    // 等同于
    B.prototype.__proto__ = A.prototype;
-   
+
    Object.setPrototypeOf(B, A);
    // 等同于
    B.__proto__ = A;
@@ -434,7 +434,7 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
 
    ```js
    class B extends A {
-     
+
    }
    ```
 
@@ -445,7 +445,7 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
       ```javascript
       class A extends Object {
       }
-      
+
       A.__proto__ === Object // true
       A.prototype.__proto__ === Object.prototype // true
       ```
@@ -455,7 +455,7 @@ super这个关键字， 既可以当做函数使用，又可以当做对象使�
       ```javascript
       class A {
       }
-      
+
       A.__proto__ === Function.prototype // true
       A.prototype.__proto__ === Object.prototype // true
       ```
@@ -600,12 +600,12 @@ x // [1, 2]
 ```js
 class NewObj extends Object {
   constructor() {
-    super(...arguments)
+    super(...arguments);
   }
 }
 
-var o = new NewObj({ attr: true })
-o.attr === true  // false
+const o = new NewObj({ attr: true });
+o.attr === true; // false
 ```
 
 上面代码中，`NewObj`继承了`Object`，但是无法通过`super`方法向父类`Object`传参。这是因为 ES6 改变了`Object`构造函数的行为，一旦发现`Object`方法不是通过`new Object()`这种形式调用，ES6 规定`Object`构造函数会忽略参数。
@@ -613,42 +613,3 @@ o.attr === true  // false
 ## 6. Mixin 模式的实现
 
 Mixin指的是多个对象合成一个新的对象，新对象具有各个组成成员的接口
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

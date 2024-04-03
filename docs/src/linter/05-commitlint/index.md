@@ -9,7 +9,7 @@
 
 husky 使得在触发 git 钩子时更容易地进行一些处理。
 > 什么意思呢？我们想要对 commit 的信息进行规范，也就是想要对 commit 信息进行校验，那怎么知道现在是在 git commit 了呢？很简单，git 在执行 commit 命令时会触发一个钩子函数，那就是 commit-msg，在没有 husky 之前，我们可以通过这个钩子函数来进行校验，在 `.git/hooks/commit-msg` 中处理即可。
-> 
+>
 > 简单来说就是 git 在执行 commit 命令时会触发 `.git/hooks/commit-msg` 这里面的代码，那就可以校验了对吧。但这样很麻烦，究极麻烦。**所以出现了 husky，它使得我们能更加方便地处理这些事情**。
 
 1. 安装 commitlint

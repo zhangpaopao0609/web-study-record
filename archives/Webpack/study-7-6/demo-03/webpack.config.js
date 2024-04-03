@@ -1,18 +1,18 @@
-const path = require('path');
+const path = require('node:path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
 
   externalsType: 'script',
   externals: {
     lodash: ['https://cdn.jsdelivr.net/npm/lodash@4.17.19/lodash.min.js'],
   },
-  plugins: [ new HtmlWebpackPlugin() ],
+  plugins: [new HtmlWebpackPlugin()],
 
   devServer: {
     port: 6090,

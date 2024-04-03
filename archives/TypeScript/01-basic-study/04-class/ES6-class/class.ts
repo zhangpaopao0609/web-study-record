@@ -1,7 +1,7 @@
 class Person {
   name: string; // 前面省略了 public 关键词
 
-  constructor(name: string) {   // 构造函数，实例化类的时候触发的方法
+  constructor(name: string) { // 构造函数，实例化类的时候触发的方法
     this.name = name;
   }
 
@@ -21,7 +21,7 @@ p.setName('bullet');
 p.getName();
 
 class Man extends Person {
-  
+
 };
 
 // 默认情况下两者等同
@@ -44,5 +44,4 @@ class Man extends Person {
  * 属性如果不加修饰符，默认是 public
  */
 
- export {}
- 
+export {};

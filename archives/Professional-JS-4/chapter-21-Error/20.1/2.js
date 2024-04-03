@@ -6,4 +6,4 @@ class CustomErrot extends Error {
   }
 };
 
-throw new CustomErrot('arrow', 'great121212')
+throw new CustomErrot('arrow', 'great121212');

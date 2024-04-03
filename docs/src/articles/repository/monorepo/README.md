@@ -14,8 +14,6 @@ Monorepo 现在可谓是相当的热门，尤其是在 Web 开发者中。
 
 业界已经有许多优秀的 Monorepo 工具，这些工具分别由不同的团队打造，具有不同的理念。本文将尽最大努力来客观地阐述每种工具，如果有任何的错误，欢迎指出！
 
-
-
 ## 2. Monorepo
 
 ### 2.1 它是什么？
@@ -59,8 +57,6 @@ Polyrepo 是当前开发应用的常用模式：每个团队、每个应用或�
 
    每个项目组或者团队都会偏向于使用自己的一组命令来运行测试、构建、本地开发、语法检查以及部署等等。这些的不一致性将会增加开发者在多项目之间切换时使用的心智负担。
 
-   
-
 <div align='center'>
 	<img src="./img/monorepo-polyrepo.svg" style="zoom:36%;"/>
 </div>
@@ -99,8 +95,6 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
 
 的确，当所有项目都集中到一个仓库时，会得到非常多的收益，**但更大的问题是，要如何才能搭建一个 <font color=red>开发敏捷、结构清晰并且易于管理的</font> Monorepo 呢？**这个吧，简单，要知道，社区里的那些大佬程序猿可不是吃干饭的，他们早早的就做了研究，实现了对应工具，比如 Lerna 、Bazel，下面我们就来看看这些工具吧。
 
-
-
 ## 3. 搭建 Monorepo 的工具
 
 本文关注的 Monorepo 工具有：Bazel（Google 出品）、Gradle Build Tool（Gradle 出品）、Lage（Microsoft 出品）、Lerna、Nx（Nrwl 出品）、Rush（Microsoft 出品）和 Turborepo（Vercel 出品）。
@@ -133,8 +127,7 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
    <div align='center'>
    	<img src="./img/local-task-orchestration.svg" style="zoom:40%;"/>
    </div>
-   
-   
+
 3. 分布式构建缓存
 
    支持共享缓存已构建或已测试过的文件，即：整个团队乃至代理团队都无需都同一个文件进行两次构建或测试
@@ -142,8 +135,7 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
    <div align='center'>
    	<img src="./img/distributed-computation-caching.svg" style="zoom:40%;"/>
    </div>
-   
-   
+
 4. 分布式任务执行
 
    支持分布式的执行任务，将各个子任务分发到多台机器上执行。
@@ -178,13 +170,9 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
 
    支持项目之间或任务之间依赖关系的可视化，并且支持可交互，意味着可以搜索、过滤、隐藏、聚焦图形中的节点。
 
-   
-
    <div align='center'>
    	<img src="./img/dependency-graph-visualization.png" style="zoom:16%;"/>
    </div>
-   
-   
 
 #### 3.1.3 易于管理
 
@@ -198,7 +186,7 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
 
 2. 一致的工具
 
-   不论使用什么来开发项目：不同的 js 框架、Go、Rust、Java等等。工具均提供一致的体验。    
+   不论使用什么来开发项目：不同的 js 框架、Go、Rust、Java等等。工具均提供一致的体验。
    例如：工具可以分析 package.json 和 js/ts 文件来分析项目的依赖以及构建和测试项目；可以分析 toml 文件对 Rust 项目执行相同的操作；同样支持分析 Gradle 文件对 Java 执行相同的操作。
 
    <div align='center'>
@@ -208,8 +196,6 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
 3. 代码生成
 
    支持代码的快速生成，如项目结构和基础配置的自动生成。
-
-   
 
    <div align='center'>
    	<img src="./img/code-generation.png" style="zoom:30%;"/>
@@ -222,8 +208,6 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
    <div align='center'>
    	<img src="./img/project-constrains-and-visibility.png" style="zoom:26%;"/>
    </div>
-
-
 
 以上的所有功能都非常的重要，比如，对分布式任务执行的支持，这可能将改变整个开发生态，尤其是在超大型的 Monorepo 中。但除了以上的功能外，还有更多的更主观的，比如良好开发体验、快速的编写文档等等。在这里就不做过多的讨论了。
 
@@ -250,7 +234,7 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
 	<tr>
 	    <th>特性</th>
     	<th>特性</th>
-	    <th colspan="7" style="text-align: center">工具</th>  
+	    <th colspan="7" style="text-align: center">工具</th>
 	</tr >
   <tr>
 	    <td>-</td>
@@ -392,8 +376,6 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
 - ✴️：工具原生不支持，但支持自己实现
 - ⛔：完全不支持
 
-
-
 ## 4. 思考和总结
 
 ### 4.1 如何选择
@@ -435,8 +417,6 @@ Monorepo 将所有项目都集中到了一个仓库中，的确，如果没有�
 远程开发能够很好的解决体积过大或者拥有大型二进制文件的项目，这并未 Monorepo 所独享，当前的 gitpod 就是一个很好的例子。
 
 同时在远程开发的支持下，也可以尝试实现多人同步开发，似乎也是一个可尝试的点。
-
-
 
 当然， Monorepo 带给我们的启发远不止这些，很多特性也并非 Monorepo 才能实现，这里抛砖引玉。
 

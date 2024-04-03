@@ -2,14 +2,14 @@ const book = {
   title: 'ARROW',
   authors: [
     'bullet',
-    'zhang'
+    'zhang',
   ],
   edition: 4,
-  year: 2017
-}
+  year: 2017,
+};
 
 const jsonText = JSON.stringify(book, (key, value) => {
-  switch(key) {
+  switch (key) {
     case 'authors':
       return value.join(',');
     case 'year':
@@ -22,4 +22,3 @@ const jsonText = JSON.stringify(book, (key, value) => {
 });
 
 console.log(jsonText);
-

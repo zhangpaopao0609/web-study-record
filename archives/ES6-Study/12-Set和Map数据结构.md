@@ -12,7 +12,7 @@ Set 本身是一个构造函数，用来生成 Set 数据结构
 const s = new Set();
 [2, 3, 5, 4, 5, 2, 2].forEach(x => s.add(x));
 
-for (let i of s) {
+for (const i of s) {
   console.log(i);
 }
 // 2 3 5 4
@@ -134,44 +134,3 @@ items.forEach(
   ([key, value]) => map.set(key, value)
 );
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

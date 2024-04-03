@@ -1,8 +1,8 @@
 // We've set up this sample using CSS modules, which lets you import class
 // names into JavaScript: https://github.com/css-modules/css-modules
 // You can configure or change this in the webpack.config.js file.
-import * as style from './style.css';
 import type { RendererContext } from 'vscode-notebook-renderer';
+import * as style from './style.css';
 
 interface IRenderInfo {
   container: HTMLElement;

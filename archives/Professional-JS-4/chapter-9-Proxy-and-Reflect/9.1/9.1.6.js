@@ -1,17 +1,19 @@
 const o = {};
 
 Object.defineProperty(o, 'name', {
-    get() { return 'arrow' }
+  get() {
+    return 'arrow';
+  },
 });
 
 const o2 = {};
 
 Object.defineProperty(o2, 'name', {
-    value: 'arrow'
+  value: 'arrow',
 });
 
-if(Reflect.defineProperty(o2, 'name', {
-    value: 'arrow'
+if (Reflect.defineProperty(o2, 'name', {
+  value: 'arrow',
 })) {
-    console.log('success');
+  console.log('success');
 }

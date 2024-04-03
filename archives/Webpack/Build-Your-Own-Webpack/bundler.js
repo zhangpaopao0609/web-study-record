@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const babylon = require('babylon');   // parse js code to ast
+const fs = require('node:fs');
+const path = require('node:path');
+const babylon = require('babylon'); // parse js code to ast
 const babelTraverse = require('babel-traverse').default;
 const babelCore = require('babel-core');
 
@@ -34,18 +34,18 @@ function createAsset(filename) {
 
 function createGraph(entry) {
   const mainAsset = createAsset(entry);
-  const queue = [ mainAsset ];
+  const queue = [mainAsset];
 
   for (const asset of queue) {
     asset.mapping = {};
     const dirname = path.dirname(asset.filename);
 
-    asset.dependencies.forEach(relativePath => {
-      const absolutePath = path.join(dirname,relativePath);
+    asset.dependencies.forEach((relativePath) => {
+      const absolutePath = path.join(dirname, relativePath);
       const child = createAsset(absolutePath);
       asset.mapping[relativePath] = child.id;
       queue.push(child);
-    })
+    });
   };
 
   return queue;
@@ -54,13 +54,13 @@ function createGraph(entry) {
 function bundle(graph) {
   let modules = '';
 
-  graph.forEach(mod => {
+  graph.forEach((mod) => {
     modules += `
       ${mod.id}: [
         function(require, module, exports) { ${mod.code} },
         ${JSON.stringify(mod.mapping)},
       ], 
-    `
+    `;
   });
 
   const result = `
@@ -76,7 +76,7 @@ function bundle(graph) {
         return module.exports;
       };
       require(0);
-    })({${ modules }});
+    })({${modules}});
   `;
   return result;
 };
@@ -96,11 +96,7 @@ generateResultFile('./index.js', result);
 // console.log(graph);
 console.log(result);
 
- 
-
-
 // we need know which model thi module depends on
 // we can do string analyze
 // javascript bunlder servicer   AST parse
 // AST
-

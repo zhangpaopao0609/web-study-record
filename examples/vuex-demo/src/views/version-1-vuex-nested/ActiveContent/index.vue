@@ -1,58 +1,28 @@
-<template>
-  <div class="active-content">
-    <h3>活动具体内容</h3>
-    <div class="item">
-      <p class="title">活动宣传页地址: </p>
-      <el-input
-        v-model="activeAddress"
-        placeholder="请输入宣传页地址"
-      ></el-input>
-    </div>
-
-    <div class="item">
-      <p class="title">活动主要产品: </p>
-        <el-select
-          v-model="activeProduct"
-          placeholder="请选择"
-        >
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
-    </div>
-
-  </div>
-</template>
-
 <script>
-
 export default {
   name: 'ActiveContent',
   data() {
     return {
       options: [{
-          value: '001',
-          label: '黄金糕'
-        }, {
-          value: '002',
-          label: '双皮奶'
-        }, {
-          value: '003',
-          label: '麻辣火锅'
-        }, {
-          value: '004',
-          label: '龙须面'
-        }, {
-          value: '005',
-          label: '北京烤鸭'
-        }],
+        value: '001',
+        label: '黄金糕',
+      }, {
+        value: '002',
+        label: '双皮奶',
+      }, {
+        value: '003',
+        label: '麻辣火锅',
+      }, {
+        value: '004',
+        label: '龙须面',
+      }, {
+        value: '005',
+        label: '北京烤鸭',
+      }],
     };
   },
   computed: {
-    activeAddress:  {
+    activeAddress: {
       get() {
         return this.$store.state.active.activeInfo.activeAddress;
       },
@@ -60,9 +30,9 @@ export default {
         this.$store.commit('active/UPDATE_ACTIVE', {
           activeAddress: val,
         });
-      }
+      },
     },
-    activeProduct:  {
+    activeProduct: {
       get() {
         return this.$store.state.active.activeInfo.activeProduct;
       },
@@ -70,11 +40,43 @@ export default {
         this.$store.commit('active/UPDATE_ACTIVE', {
           activeProduct: val,
         });
-      }
+      },
     },
   },
 };
 </script>
+
+<template>
+  <div class="active-content">
+    <h3>活动具体内容</h3>
+    <div class="item">
+      <p class="title">
+        活动宣传页地址:
+      </p>
+      <el-input
+        v-model="activeAddress"
+        placeholder="请输入宣传页地址"
+      />
+    </div>
+
+    <div class="item">
+      <p class="title">
+        活动主要产品:
+      </p>
+      <el-select
+        v-model="activeProduct"
+        placeholder="请选择"
+      >
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-select>
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .active-content {

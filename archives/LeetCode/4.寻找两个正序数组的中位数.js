@@ -10,8 +10,7 @@
  * @param {number[]} nums2
  * @return {number}
  */
-var findMedianSortedArrays = function(nums1, nums2) {
+const findMedianSortedArrays = function (nums1, nums2) {
 
 };
 // @lc code=end
-

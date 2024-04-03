@@ -2,11 +2,11 @@
   "name": "03-fs",
   "version": "1.0.0",
   "description": "",
+  "author": "paopao-arrow",
+  "license": "MIT",
+  "keywords": [],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "paopao-arrow",
-  "license": "MIT"
+  }
 }

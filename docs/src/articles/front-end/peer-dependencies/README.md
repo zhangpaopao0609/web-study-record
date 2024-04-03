@@ -40,7 +40,7 @@
 
    意思是：`antd` 不能独立的运行，需要使用它的项目中安装了 `react` 和 `react-dom` 才可以运行。
 
-   所以，要想在你的项目中使用 `antd`，就必须得安装  `react` 和 `react-dom` 
+   所以，要想在你的项目中使用 `antd`，就必须得安装  `react` 和 `react-dom`
 
 2. `webpack-dev-server`
 
@@ -52,9 +52,7 @@
    },
    ```
 
-   意思是：`webpack-dev-server` 不能独立的运行，需要使用它的项目中安装了 `webpack` 
-
-
+   意思是：`webpack-dev-server` 不能独立的运行，需要使用它的项目中安装了 `webpack`
 
 总结：peer 这个词翻译过来就是"同龄， 同辈" 的意思，非常符合这里的用法。
 

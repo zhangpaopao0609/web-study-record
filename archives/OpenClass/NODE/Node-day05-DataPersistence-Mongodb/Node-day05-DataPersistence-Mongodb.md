@@ -37,28 +37,28 @@ mongodb.once('connect', async () => {
   // 首先删除已存在的数据
   await collection.deleteMany();
   // 生成100条数据
-  const data = new Array(100).fill().map((item, index) => {
+  const data = Array.from({ length: 100 }).fill().map((item, index) => {
     return {
       name: `梨子${index}`,
       price: index,
       category: Math.random() > 0.5 ? 'vegetable' : 'fruit'
-    }
+    };
   });
   // 插入数据
   await collection.insertMany(data);
   console.log('插入成功！');
-})
+});
 ```
 
 当数据库连接完成后发布一个事件， 发布其实就是触发一个事件
 ```js
 // 数据库连接与与业务解耦
-// 订阅  
-const conf = require('./config.js');
-const { EventEmitter } = require('events');
+// 订阅
+const { EventEmitter } = require('node:events');
 
 // 客户端
 const { MongoClient } = require('mongodb');
+const conf = require('./config.js');
 
 class Mongodb {
   constructor(conf) {
@@ -67,23 +67,27 @@ class Mongodb {
     this.emitter = new EventEmitter();
     // 连接
     this.client = new MongoClient(conf.url, { useNewUrlParser: true });
-    this.client.connect(err => {
-      if (err) throw err;
+    this.client.connect((err) => {
+      if (err) {
+        throw err;
+      }
       console.log('连接成功！');
       // 事件发布
       this.emitter.emit('connect');
     });
   }
+
   /**
    * 返回集合
    */
   collection(collectionName, dbName = this.conf.dbName) {
     return this.client.db(dbName).collection(collectionName);
   }
+
   /**
    * 用于订阅连接事件
-   * @param {*} event 
-   * @param {*} db 
+   * @param {*} event
+   * @param {*} db
    */
   // 事件订阅
   once(event, cb) {
@@ -96,10 +100,7 @@ module.exports = new Mongodb(conf);
 
 # Mongoose
 1. 提供模型， 需要明确的定义模型
-2. 
-
-
+2.
 
 关系型数据库
 DB  -》 E-R  -》 实体参照模型  -》 后端  -》 前端
-

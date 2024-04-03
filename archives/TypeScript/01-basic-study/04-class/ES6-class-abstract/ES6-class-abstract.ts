@@ -16,7 +16,7 @@ abstract class Animal {
   abstract eat(): any;
 }
 
-class  Dog extends Animal {
+class Dog extends Animal {
   eat() {
     console.log(`${this.name} eat meat`);
   }

@@ -1,33 +1,33 @@
 {
   "name": "notebook",
   "displayName": "notebook",
-  "description": "notebook",
   "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.63.0"
-  },
+  "description": "notebook",
   "keywords": [
     "notebookRenderer"
   ],
   "categories": [
     "Other"
   ],
+  "main": "./out/extension/extension.js",
+  "engines": {
+    "vscode": "^1.63.0"
+  },
   "activationEvents": [
     "onNotebook:my-notebook"
   ],
-  "main": "./out/extension/extension.js",
   "browser": "./out/extension/extension.web.js",
   "contributes": {
     "notebooks": [
       {
         "id": "my-notebook",
         "type": "my-notebook",
-          "displayName": "My Notebook",
-          "selector": [
-              {
-                  "filenamePattern": "*.notebook"
-              }
-          ]
+        "displayName": "My Notebook",
+        "selector": [
+          {
+            "filenamePattern": "*.notebook"
+          }
+        ]
       }
     ],
     "notebookRenderer": [
@@ -51,11 +51,12 @@
     "@types/glob": "^7.1.4",
     "@types/mocha": "^9.0.0",
     "@types/node": "14.x",
+    "@types/vscode": "^1.63.0",
+    "@types/vscode-notebook-renderer": "^1.57.8",
     "@types/webpack-env": "^1.16.2",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
-    "@types/vscode-notebook-renderer": "^1.57.8",
-    "@types/vscode": "^1.63.0",
+    "@vscode/test-electron": "^1.6.2",
     "css-loader": "^4.2.0",
     "eslint": "^8.1.0",
     "fork-ts-checker-webpack-plugin": "^5.0.14",
@@ -64,9 +65,8 @@
     "style-loader": "^1.2.1",
     "ts-loader": "^9.2.5",
     "typescript": "^4.4.4",
-    "vscode-notebook-error-overlay": "^1.0.1",
-    "@vscode/test-electron": "^1.6.2",
     "util": "^0.12.4",
+    "vscode-notebook-error-overlay": "^1.0.1",
     "webpack": "^5.52.1",
     "webpack-cli": "^4.8.0"
   }

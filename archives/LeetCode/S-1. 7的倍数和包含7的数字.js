@@ -3,7 +3,7 @@
 // #### code
 // 思路其实非常的简单， 首先倍数取余即可得到，包含 7 的通过判断每一位中是否包含 7 即可。
 
-""`js
+''`js
 function seven(n) {
   const res = [];
   for (let i = 7; i <= n; i++) {

@@ -1,4 +1,4 @@
-const { Controller} = require('egg');
+const { Controller } = require('egg');
 
 class UserController extends Controller {
   async index() {

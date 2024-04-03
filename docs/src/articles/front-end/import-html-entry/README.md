@@ -1,5 +1,3 @@
-
-
 [toc]
 
 #  揭开 import-html-entry 面纱
@@ -26,7 +24,7 @@
 
 <body>
   <h1>Zhang Pao Pao</h1>
-  
+
   <script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/js/brands.js"></script>
   <script>console.log('this is script in-line');</script>
 </body>
@@ -55,7 +53,7 @@
         <!--  link https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/brands.css replaced by import-html-entry -->
         <style> h1 { font-size: 40px; } </style>
       </head>
-      
+
       <body>
         <h1>Zhang Pao Pao</h1>
         <!--  script https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/js/brands.js replaced by import-html-entry -->
@@ -71,9 +69,9 @@
 
       ```js
       [
-        'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/js/brands.js', 
-        "<\script>console.log('this is script in-line');<\/script>",
-      ]
+        'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/js/brands.js',
+        '<\script>console.log(\'this is script in-line\');<\/script>',
+      ];
       ```
 
    3. 由所有 "style" 组成的数组
@@ -81,7 +79,7 @@
       由所有的外联 style， 也就是 link 对应的 src 作为数组的元素（同样以用于后续 fetch 获得对应的 css 内容）
 
       ```js
-      ['https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/brands.css'] 
+      ['https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/brands.css'];
       ```
 
 3. 将所有的 css 嵌入到上述经过初步处理后的 html 中
@@ -90,7 +88,7 @@
 
    2. 将拉取到的每一个 href 对应的 css 通过 `<style> </style>` 包裹起来且嵌入到 html 中
 
-      > 准确来说不是嵌入到 html 中。整个流程是这样：首先当解析 html 中的 stylesheet link  标签时，就会将这个标签注释起来 ，然后再通过 fetch 将此 href 对应的 css 获取到，然后再使用正则将这个被注释的标签替换成由 style 包裹 css 而成的标签，如此，所有的 css 全部都嵌入到了 html 中，并且由 style 包裹，因此全部生效。 
+      > 准确来说不是嵌入到 html 中。整个流程是这样：首先当解析 html 中的 stylesheet link  标签时，就会将这个标签注释起来 ，然后再通过 fetch 将此 href 对应的 css 获取到，然后再使用正则将这个被注释的标签替换成由 style 包裹 css 而成的标签，如此，所有的 css 全部都嵌入到了 html 中，并且由 style 包裹，因此全部生效。
 
       如下的代码就是将所有的 stylesheet  href 对应的 css 嵌入到 html 后的结果，同样本身是字符串，在这里为了清晰做了格式化。
 
@@ -102,7 +100,7 @@
             font-family: 'Font Awesome 5 Brands';
            	...
           }
-      
+
           .fab {
             font-family: 'Font Awesome 5 Brands';
             font-weight: 400;
@@ -112,7 +110,7 @@
           h1 { font-size: 40px; }
         </style>
       </head>
-      
+
       <body>
         <h1>Zhang Pao Pao</h1>
         <!--  script https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/js/brands.js replaced by import-html-entry -->
@@ -139,14 +137,14 @@
    ```js
    function getEmbedHTML(template, styles, opts = {}) {
      // 1. fetch "style" 数组里面对应的 css
-   	return getExternalStyleSheets(styles, fetch)
-   		.then(styleSheets => {
-   			embedHTML = styles.reduce((html, styleSrc, i) => {
-     // 2.  将拉取到的每一个 href 对应的 css 通过 `<style> </style>` 包裹起来且嵌入到 html 中
-   				html = html.replace(genLinkReplaceSymbol(styleSrc), `<style>/* ${styleSrc} */${styleSheets[i]}</style>`);
-   				return html;
-   			}, embedHTML);
-   		});
+     return getExternalStyleSheets(styles, fetch)
+       .then((styleSheets) => {
+         embedHTML = styles.reduce((html, styleSrc, i) => {
+           // 2.  将拉取到的每一个 href 对应的 css 通过 `<style> </style>` 包裹起来且嵌入到 html 中
+           html = html.replace(genLinkReplaceSymbol(styleSrc), `<style>/* ${styleSrc} */${styleSheets[i]}</style>`);
+           return html;
+         }, embedHTML);
+       });
    }
    ```
 
@@ -154,8 +152,8 @@
 
 通过 1.2.b 可以获取到 url 文件下对应的由所有 "script" 组成的数组 ，其中包含两部分内容：
 
-- 页级的 script 
-- 外联的 script 对应的 src 
+- 页级的 script
+- 外联的 script 对应的 src
 
 1. 获取到所有的 script code
 
@@ -165,7 +163,7 @@
 
       ```js
       export function getExternalScripts(scripts, fetch) {
-        // 根据 script src 的 url fetch js 
+        // 根据 script src 的 url fetch js
       	const fetchScript = scriptUrl => fetch(scriptUrl).then(response => (...)));
       		return Promise.all(scripts.map(script => {
             // 如果是页级 script ，直接返回
@@ -186,29 +184,29 @@
 
    ```js
    function getExecutableScript(scriptSrc, scriptText, proxy, strictGlobal) {
-   	const sourceUrl = isInlineCode(scriptSrc) ? '' : `//# sourceURL=${scriptSrc}\n`;
-   	// 通过这种方式获取全局 window，具体原因可参考源码在这里的注释
-   	const globalWindow = (0, eval)('window');
+     const sourceUrl = isInlineCode(scriptSrc) ? '' : `//# sourceURL=${scriptSrc}\n`;
+     // 通过这种方式获取全局 window，具体原因可参考源码在这里的注释
+     const globalWindow = (0, eval)('window');
      // 如果这里的 proxy 为 window 沙箱，那么就可以实现应用隔离
-   	globalWindow.proxy = proxy;
+     globalWindow.proxy = proxy;
      // 利用 IIFE 将 code 里会使用到的 window, self, globalThis 传递进去，为后续的应用与应用之间隔离做处理
-   	return strictGlobal
-   		? `;(function(window, self, globalThis){with(window){;${scriptText}\n${sourceUrl}}}).bind(window.proxy)(window.proxy, window.proxy, window.proxy);`
-   		: `;(function(window, self, globalThis){;${scriptText}\n${sourceUrl}}).bind(window.proxy)(window.proxy, window.proxy, window.proxy);`;
+     return strictGlobal
+       ? `;(function(window, self, globalThis){with(window){;${scriptText}\n${sourceUrl}}}).bind(window.proxy)(window.proxy, window.proxy, window.proxy);`
+       : `;(function(window, self, globalThis){;${scriptText}\n${sourceUrl}}).bind(window.proxy)(window.proxy, window.proxy, window.proxy);`;
    }
    ```
 
    > 这里的代码非常的有意思（但实际开发千万不要用，感觉用了要挨锤）
    >
    > 1. `(0, eval)('window')` 获取全局 window
-   > 2. `(function(window, self, globalThis){...}.bind(window.proxy))(window.proxy,window.proxy,window.proxy,)`， 这里首先实现了 `window, self, globalThis ` 的传递，同时还 `bind` 的 code 的 `this` 
+   > 2. `(function(window, self, globalThis){...}.bind(window.proxy))(window.proxy,window.proxy,window.proxy,)`， 这里首先实现了 `window, self, globalThis ` 的传递，同时还 `bind` 的 code 的 `this`
    > 3. `strictGlobal` 为真时的 `with` 语法，可实现拦截作用域
 
-   示例中页级 script 得到的 IIFE 字符串（同样本身是字符串，在这里为了清晰做了格式化） 
+   示例中页级 script 得到的 IIFE 字符串（同样本身是字符串，在这里为了清晰做了格式化）
 
    ```js
    ;(
-     function(window, self, globalThis){
+     function (window, self, globalThis) {
        ;console.log('this is script in-line');
      }
    ).bind(window.proxy)
@@ -221,23 +219,21 @@
 
    ```js
    export function evalCode(scriptSrc, code) {
-   	const key = scriptSrc;
-   	if (!evalCache[key]) {
+     const key = scriptSrc;
+     if (!evalCache[key]) {
        // 将 IIFE 字符串包裹在 function 中
-   		const functionWrappedCode = `window.__TEMP_EVAL_FUNC__ = function(){${code}}`;
-   		// window.__TEMP_EVAL_FUNC__ = function(){...} eval 将上面的字符串转换成代码
+       const functionWrappedCode = `window.__TEMP_EVAL_FUNC__ = function(){${code}}`;
+       // window.__TEMP_EVAL_FUNC__ = function(){...} eval 将上面的字符串转换成代码
        (0, eval)(functionWrappedCode);
-   		evalCache[key] = window.__TEMP_EVAL_FUNC__;
-   		delete window.__TEMP_EVAL_FUNC__;
-   	}
-   	const evalFunc = evalCache[key];
+       evalCache[key] = window.__TEMP_EVAL_FUNC__;
+       delete window.__TEMP_EVAL_FUNC__;
+     }
+     const evalFunc = evalCache[key];
      // 执行上面得到的匿名函数，其中内容为第二点的 IIFE ，因此也就是执行了 js code
      // 这里是真正的执行
-   	evalFunc.call(window);
+     evalFunc.call(window);
    }
    ```
-
-   
 
 ## 3. 总结
 
@@ -254,80 +250,3 @@
 对了，点击可查看 [import-html-entry](https://github.com/kuitos/import-html-entry)  的 github 仓库，感兴趣的都可以去看看。
 
 仔细读完这个依赖的源码才知道，其实 qiankun 的实现原理并不是那么深奥的，继续探究，希望有一天自己也能够像这些大神们一样开源出自己的框架。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

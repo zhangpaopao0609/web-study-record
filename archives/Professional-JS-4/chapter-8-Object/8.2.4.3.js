@@ -4,7 +4,7 @@ Person.prototype.name = 'arrow';
 const person = new Person();
 
 for (const key in person) {
-    console.log(key);
+  console.log(key);
 }
 
 const keys = Object.keys(person);

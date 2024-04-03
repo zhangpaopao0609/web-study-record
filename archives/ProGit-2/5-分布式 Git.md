@@ -42,4 +42,3 @@ git cherry-pick [commitID]
 ```
 
 这样会拉取和 [commitID] 相同的更改，但是因为应用的日期不同，会得到一个新的提交 SHA-1值。
-

@@ -10,7 +10,7 @@ background: linear-gradient(方向，开始颜色，结束颜色)
 background: radial-gradient(position, shape size, start-color, stop-color);
 ```
 1. 圆心位置 position
-- top center left right 
+- top center left right
 - 长度值
 
 2. shape size

@@ -1,8 +1,9 @@
-const http = require('http');
+const http = require('node:http');
+
 const session = {};
 
 const app = http.createServer((req, res) => {
-  if(req.url === '/favicon.ico') {
+  if (req.url === '/favicon.ico') {
     res.end('');
     return;
   };
@@ -15,7 +16,9 @@ const app = http.createServer((req, res) => {
 });
 
 const port = 6090;
-app.listen(port, err => {
-  if(err) throw err;
+app.listen(port, (err) => {
+  if (err) {
+    throw err;
+  }
   console.log(`app start at ${port}`);
 });

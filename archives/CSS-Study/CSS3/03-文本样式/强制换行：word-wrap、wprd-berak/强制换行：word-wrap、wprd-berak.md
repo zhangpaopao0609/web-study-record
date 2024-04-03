@@ -19,5 +19,3 @@ word-berak
 normal | 自动换行(默认值)
 break-all | 允许在单词内换行
 keep-all | 只能在半角空格或连字符处换行
-
-

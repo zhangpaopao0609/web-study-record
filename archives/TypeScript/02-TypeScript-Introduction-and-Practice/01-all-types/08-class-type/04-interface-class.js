@@ -1,12 +1,13 @@
-"use strict";
+'use strict';
 class A {
-    constructor() {
-        this.x = '';
-    }
-    y() {
-        return true;
-    }
-    ;
+  constructor() {
+    this.x = '';
+  }
+
+  y() {
+    return true;
+  }
+  ;
 }
 ;
 ;

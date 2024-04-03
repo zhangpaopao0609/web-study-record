@@ -1,17 +1,17 @@
-const setAsync = () => {
+function setAsync() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log(2);
       resolve(4);
     }, 0);
-  })
-};
+  });
+}
 
-const test = async () => {
+async function test() {
   console.log(1);
   const four = await setAsync();
   console.log(four);
   console.log(3);
-};
+}
 
 test();

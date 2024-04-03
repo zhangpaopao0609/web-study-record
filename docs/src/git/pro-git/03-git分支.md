@@ -70,7 +70,7 @@ git merge
 
 ```bash
 # 存在分支 A
-# 切出分支 B 、 C 和 D 
+# 切出分支 B 、 C 和 D
 # 分支 B C D分别作了更改和提交
 # C 和 D 还修改了同一个文件的同一处(index.html)
 ```
@@ -93,7 +93,7 @@ git merge
    # Merge made by the 'recursive' strategy
    ```
 
-   在这种情况下，开发历史从一个更早的地方开发分叉（diverged）开来 。因为，A 分支所在的提交并不是 C 分支提交的直接祖先， Git 不得不做一些额外的工作。出现这种情况，Git 会使用两个分支的末端所指的快照以及两个分支的工作祖先，做一个简单的三方合并。 
+   在这种情况下，开发历史从一个更早的地方开发分叉（diverged）开来 。因为，A 分支所在的提交并不是 C 分支提交的直接祖先， Git 不得不做一些额外的工作。出现这种情况，Git 会使用两个分支的末端所指的快照以及两个分支的工作祖先，做一个简单的三方合并。
 
    和直接将分支指针向前推进所不同的是， Git 将此三方合并的结果做了一个新的快照并且自动创建一个新的提交指向它。**这个被称作一次合并提交，特别之处就在于它有不止一个父提交**
 
@@ -112,17 +112,17 @@ git merge
    # CONFLICT (content) : Merge conflict in index.html
    # Automatic merge failed; fix conflicts and then commit the result
    ```
-   
+
    此时，就需要先解决冲突，然后再执行
    ```bash
    git add .
    git merge --continue
    ```
-   
+
    如果没有了冲突，那么会创建一个合并提交。
-   
+
    如果发现冲突，然后希望终止 merge 操作，可以执行:
-   
+
    ```bash
    git merge --abort
    ```
@@ -171,7 +171,7 @@ git branch --no-merged
 
 ```bash
 git ls-remote (remote)
-git remote show (remote) 
+git remote show (remote)
 ```
 
 ### 3.6.1 利用远程跟踪分支
@@ -228,7 +228,7 @@ git push origin --delete [branch-name]
 
 ## 3.7 变基
 
-在 Git 中整合来自不同分支的修改主要有两种方法： merge 以及 rebase。 
+在 Git 中整合来自不同分支的修改主要有两种方法： merge 以及 rebase。
 
 ### 3.7.1 变基的基本操作
 

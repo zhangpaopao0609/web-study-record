@@ -1,10 +1,10 @@
-const { STRING } = require("sequelize");
+const { STRING } = require('sequelize');
 
 module.exports = {
   schema: {
-    name: STRING(30)
+    name: STRING(30),
   },
   options: {
-    timestamps: false
-  }
+    timestamps: false,
+  },
 };

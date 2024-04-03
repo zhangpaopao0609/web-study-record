@@ -11,7 +11,7 @@ namespace A {
   }
 }
 
-const d = new A.Animal("dog");
+const d = new A.Animal('dog');
 d.getName();
 
 namespace B {
@@ -27,5 +27,5 @@ namespace B {
   }
 }
 
-const ld = new B.Animal("l dog");
+const ld = new B.Animal('l dog');
 ld.getName();

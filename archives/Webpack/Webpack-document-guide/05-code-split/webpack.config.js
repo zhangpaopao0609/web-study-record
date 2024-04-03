@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('node:path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -24,5 +24,5 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
-  
+
 };

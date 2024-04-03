@@ -1,6 +1,6 @@
 [toc]
 
-# 详解 script 标签中 defer 和 async 
+# 详解 script 标签中 defer 和 async
 
 ### 1. defer 和 async
 
@@ -35,8 +35,6 @@ HTML 网页中，浏览器通过`<script>` 标签加载 JS  脚本。
 一句话，`defer`是渲染完再执行，`async`是下载完就执行。
 
 另外，如果有多个defer脚本，会按照它们在页面出现的顺序加载，而多个 `async`脚本是不能保证加载顺序的。
-
-
 
 ### 2. script 中 type=module
 

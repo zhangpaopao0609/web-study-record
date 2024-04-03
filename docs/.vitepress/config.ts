@@ -27,10 +27,10 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/zhangpaopao0609' },
     ],
-    outline: 'deep'
+    outline: 'deep',
   },
   lastUpdated: true,
   ignoreDeadLinks: [
-    /^\/linter\//
-  ]
+    /^\/linter\//,
+  ],
 });

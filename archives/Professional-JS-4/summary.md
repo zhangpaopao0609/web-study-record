@@ -48,7 +48,7 @@
    <html>
      <head>
      </head>
-   
+
      <body>
        <script>
          // 清空主体
@@ -56,9 +56,9 @@
          let observer = new MutationObserver(
            (mutationRecords) => console.log(mutationRecords)
          );
-   
+
          observer.observe(document.body, { childList: true });
-   
+
          document.body.appendChild(document.createElement('div'));
        </script>
      </body>
@@ -66,7 +66,7 @@
    ```
 
    ```js
-   //[
+   // [
    //   {
    //     addedNodes: NodeList [div],
    //     attributeName: null,
@@ -81,13 +81,11 @@
    // ]
    ```
 
-   
-
    ```html
    <html>
      <head>
      </head>
-   
+
      <body>
        <div></div>
        <script>
@@ -97,9 +95,9 @@
          let observer = new MutationObserver(
            (mutationRecords) => console.log(mutationRecords)
          );
-   
+
          observer.observe(document.body, { childList: true });
-   
+
          // document.body.appendChild(document.createElement('div'));
          document.body.removeChild(d)
        </script>
@@ -139,8 +137,8 @@
 
    ```js
    player.addEventListen('loadedmetadata', () => {
-     duiration.innerHTML = player.duration
-   })
+     duiration.innerHTML = player.duration;
+   });
    ```
 
 10. 720页："如果没有这个头部，或者有但源不匹配，则表明不会响应浏览器请求"， 这里的"有但源"是指？
@@ -155,15 +153,15 @@
     require('./moduleD');
     require('./moduleB');
     console.log('moduleA');
-    
+
     require('./moduleA');
     require('./moduleC');
     console.log('moduleB');
-    
+
     require('./moduleB');
     require('./moduleD');
     console.log('moduleC');
-    
+
     require('./moduleA');
     require('./moduleC');
     console.log('moduleD');

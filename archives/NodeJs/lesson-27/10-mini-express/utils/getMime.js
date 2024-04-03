@@ -7,15 +7,15 @@ const data = {
   css: 'text/css',
   js: 'text/javascript',
   jpeg: 'image/jpg',
-  jpeg: 'image/jpeg'
-}
+  jpeg: 'image/jpeg',
+};
 
-const getMime = extname => {
-  if(data[extname]) {
+function getMime(extname) {
+  if (data[extname]) {
     return data[extname];
-  }else {
+  } else {
     return 'text/plain';
   }
-};
+}
 
 module.exports = getMime;

@@ -9,15 +9,14 @@ connection.on('error', () => console.error('连接失败'));
 connection.once('open', async () => {
   const Schema = mongoose.Schema({
     name: String,
-    category: String
+    category: String,
   });
 
   const Model = mongoose.model('fruits', Schema);
 
-  let create = await Model.create({
+  const create = await Model.create({
     category: '温带水果',
-    name: '苹果'
+    name: '苹果',
   });
   console.log(create);
 });
-

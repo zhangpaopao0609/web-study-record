@@ -1,10 +1,10 @@
 const G = {};
 
-let app = (path) => {
-  if(G[path]) {
+function app(path) {
+  if (G[path]) {
     G[path]();
   }
-};
+}
 
 app.get = (path, cb) => {
   G[path] = cb;
@@ -18,4 +18,4 @@ app.get('/aa', () => {
   console.log('aa');
 });
 
-app('/aa')
+app('/aa');

@@ -18,7 +18,7 @@ Git 使用一系列配置文件来保存你自定义的行为。
 - 首先 查找 `/etc/gitconfig` 文件，该文件含有系统里每位用户及他们所用用的仓库的配置项。
 
   ```bash
-  git  config --system -l 
+  git  config --system -l
   # 这就会读写该文件
   ```
 
@@ -37,7 +37,7 @@ main git-config
 # 得到当前版本的 Git 支持的选项列表
 ```
 
-还可以配置 
+还可以配置
 
 - commit.template
 
@@ -69,7 +69,7 @@ main git-config
   ```bash
   aispeechdeMacBook-Air:Node-day08-EggJs-Better-Practice aispeech$ git checkcout master
   git: 'checkcout' is not a git command. See 'git --help'.
-  
+
   The most similar command is
           checkout
   ```
@@ -97,22 +97,3 @@ Git 中的着色
 ### 2. 服务端钩子
 
 ## 8.4 使用强制策略的一个例子
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

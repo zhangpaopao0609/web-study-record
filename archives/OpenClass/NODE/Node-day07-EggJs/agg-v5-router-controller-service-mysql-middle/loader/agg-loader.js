@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const Router = require('koa-router');
 
 // 读取指定文件
@@ -11,12 +11,12 @@ function load(dir, cb) {
   const files = fs.readdirSync(url);
 
   // 遍历文件夹
-  files.forEach(filename => {
+  files.forEach((filename) => {
     filename = filename.replace('.js', '');
     const file = require(`${url}/${filename}`);
     // 处理逻辑
     cb(filename, file);
-  })
+  });
 };
 
 function initRouter(app) {
@@ -24,18 +24,18 @@ function initRouter(app) {
   load('../routes', (filename, routes) => {
     // 路由的前缀
     const prefix = filename === 'index' ? '' : `/${filename}`;
-    routes = routes instanceof Function ? routes(app) : routes; 
+    routes = routes instanceof Function ? routes(app) : routes;
     // 遍历对象
-    Object.keys(routes).forEach(key => {
+    Object.keys(routes).forEach((key) => {
       let [method, path] = key.split(' ');
       path = path === '/' ? '' : path;
       console.log(`正在映射地址： ${method.toLocaleUpperCase()} ${prefix}${path}`);
-      router[method](prefix + path, async ctx => {
+      router[method](prefix + path, async (ctx) => {
         // 挂载上下文到 app
-        app.ctx = ctx; 
+        app.ctx = ctx;
         // 路由处理接收 app
         await routes[key](app);
-      })
+      });
     });
   });
   return router;
@@ -62,7 +62,7 @@ function initService() {
 function loadConfig(app) {
   const Sequelize = require('sequelize');
   load('../config', (filename, conf) => {
-    if(conf.db) {
+    if (conf.db) {
       app.$db = new Sequelize(conf.db);
       // 加载模型
       app.$model = {};
@@ -71,19 +71,19 @@ function loadConfig(app) {
       });
       app.$db.sync();
     };
-    if(conf.middleware) {
-      conf.middleware.forEach(mid => {
-        const midPath = path.resolve(`${__dirname}`,'../middleware', mid);
+    if (conf.middleware) {
+      conf.middleware.forEach((mid) => {
+        const midPath = path.resolve(`${__dirname}`, '../middleware', mid);
         console.log(midPath);
         app.$app.use(require(midPath));
-      })
+      });
     }
-  })
+  });
 }
 
 module.exports = {
   initRouter,
   initController,
   initService,
-  loadConfig
+  loadConfig,
 };

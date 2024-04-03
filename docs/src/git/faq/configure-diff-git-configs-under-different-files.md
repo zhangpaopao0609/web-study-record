@@ -27,7 +27,7 @@
      vim .gitconfig
      ```
 
-   - 配置  `.gitconfig` 
+   - 配置  `.gitconfig`
 
      ```bash
      [includeIf "gitdir:/Users/zhangpaopao/Desktop/gitlab"]
@@ -60,7 +60,4 @@
 
      这样配置以后，只要是在  `/Users/zhangpaopao/Desktop/gitlab` 的项目，git 的配置就会是 gitlab，反义亦然。
 
-     
-
      有关于 "Conditional Includes" 的更多介绍，请查阅官方文档：https://git-scm.com/docs/git-config#_conditional_includes
-

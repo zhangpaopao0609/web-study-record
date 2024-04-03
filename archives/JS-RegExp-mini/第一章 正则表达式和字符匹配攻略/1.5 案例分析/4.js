@@ -5,6 +5,6 @@
 // F:\
 
 const regex = /^[a-zA-Z]:\\([^\\:*<>|"?'\r\n/]+\\)*([^\\:*<>|"?'\r\n/]+)?$/;
-const string = "F:\\study\\javascript\\regex\\regular expression.pdf"
+const string = 'F:\\study\\javascript\\regex\\regular expression.pdf';
 
 console.log(regex.test(string));

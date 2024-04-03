@@ -18,7 +18,7 @@ class Man {
 };
 
 const m: any = new Man();
-m.getData('a', 'b')
+m.getData('a', 'b');
 console.log(m.gender);
 
-export {}
+export {};

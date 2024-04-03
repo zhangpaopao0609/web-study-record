@@ -2,27 +2,27 @@
 
 // 递归
 function BST_recrsion(tree, key) {
-	if(!tree) return;
-	if(tree.key > key) {
-		return BST_recrsion(tree.left, key);
-	}else if(tree.key < key) {
-		return BST_recrsion(tree.right, key);
-	}else{
-		return tree.val;
-	} 
+  if (!tree) {
+    return;
+  }
+  if (tree.key > key) {
+    return BST_recrsion(tree.left, key);
+  } else if (tree.key < key) {
+    return BST_recrsion(tree.right, key);
+  } else {
+    return tree.val;
+  }
 }
 
 // 迭代
 function BST_iteration(tree, key) {
-	while(tree) {
-		if(tree.key > key) {
-			tree = tree.left;
-		}else if(tree.key < key) {
-			tree = tree.right;
-		}else {
-			return tree.val;
-		}
-	}
-	return;
+  while (tree) {
+    if (tree.key > key) {
+      tree = tree.left;
+    } else if (tree.key < key) {
+      tree = tree.right;
+    } else {
+      return tree.val;
+    }
+  }
 }
-

@@ -1,9 +1,9 @@
-window.onclick = function() {
+window.onclick = function () {
   alert(1);
-}
+};
 
 setTimeout(() => {
-  confirm('hihihi!')
+  confirm('hihihi!');
 }, 1000);
 
 setTimeout(() => {

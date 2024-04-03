@@ -1,10 +1,10 @@
 const Koa = require('koa');
-const { 
-  initRouter, 
-  initController, 
+const {
+  initRouter,
+  initController,
   initService,
   loadConfig,
-  initSchedule
+  initSchedule,
 } = require('./loader/agg-loader');
 
 class agg {
@@ -21,8 +21,10 @@ class agg {
 
   start() {
     const port = 6090;
-    this.$app.listen(port, err => {
-      if(err) throw err;
+    this.$app.listen(port, (err) => {
+      if (err) {
+        throw err;
+      }
       console.log(`app start at ${port}`);
     });
   }

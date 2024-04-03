@@ -17,7 +17,7 @@ vite 开发环境基于浏览器支持 dynamic import，使得启动速度快得
 因为每一个 import 都会发起网络，如存在以下代码：
 
 ```js
-import relative from "./relative.js";
+import relative from './relative.js';
 ```
 
 那么浏览器就会发起一个请求，如下
@@ -83,12 +83,12 @@ import { createApp } from 'vue';
 module.exports = function rewriteImport(content) {
   // 目的是改造 .js 文件内容， 不是 "/", "./", or "../" 开头的 import，替换成 /@modules/ 开头
   return content.replace(/\s+from\s+['|"]([^'"]+)['|"]/g, ($0, $1) => {
-    if($1[0] !== '.' && $1[0] !== '/') {
-      return ` from "/@modules/${$1}"`
-    }else {
-      return $0
+    if ($1[0] !== '.' && $1[0] !== '/') {
+      return ` from "/@modules/${$1}"`;
+    } else {
+      return $0;
     }
-  })
+  });
 };
 ```
 
@@ -118,7 +118,6 @@ else if(url.startsWith('/@modules/')) {
 ```js
 const compilerSfc = require('@vue/compiler-sfc');
 const compilerDom = require('@vue/compiler-dom');
-
 
 else if(url.indexOf(".vue") !== -1) {
     // import xx from 'xx.vue';
@@ -174,5 +173,3 @@ vite 的基本原理：开发环境利用浏览器支持 dynamic import 的特�
 
 既然vite是通过拦截解析文件，那么任何文件都可以使用了，只要有对应的loader即可，比如 `scss`文件，只需要将 scss转成js然后返回即可。开发者也可以自己定义任意文件，同时提供loader解析即可。
 [点击可查看本文对应的源码，也是博主自己实现的一个 mini-vite](https://github.com/Arrow-zb/mini-vite)
-
-

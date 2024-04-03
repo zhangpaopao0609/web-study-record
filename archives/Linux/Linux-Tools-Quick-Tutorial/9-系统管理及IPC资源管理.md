@@ -135,6 +135,3 @@ ulimit -a
 ```bash
 ulimit -c unlimited
 ```
-
-
-

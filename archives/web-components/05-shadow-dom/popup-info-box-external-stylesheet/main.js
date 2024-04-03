@@ -5,7 +5,7 @@ class PopUpInfo extends HTMLElement {
     super();
 
     // Create a shadow root
-    const shadow = this.attachShadow({mode: 'open'});
+    const shadow = this.attachShadow({ mode: 'open' });
 
     // Create spans
     const wrapper = document.createElement('span');
@@ -24,7 +24,7 @@ class PopUpInfo extends HTMLElement {
 
     // Insert icon
     let imgUrl;
-    if(this.hasAttribute('img')) {
+    if (this.hasAttribute('img')) {
       imgUrl = this.getAttribute('img');
     } else {
       imgUrl = 'img/default.png';

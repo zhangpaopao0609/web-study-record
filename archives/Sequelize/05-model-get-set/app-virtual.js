@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes, Op } = require('sequelize');
 
 const db = require('./config');
+
 const sequelize = new Sequelize(db.database, db.username, db.password, db.options);
 
 const User = sequelize.define('Users', {
@@ -9,16 +10,16 @@ const User = sequelize.define('Users', {
   fullName: {
     type: DataTypes.VIRTUAL,
     get() {
-      return this.firstName + '@' + this.lastName;
+      return `${this.firstName}@${this.lastName}`;
     },
     set(val) {
-      throw new Error("Do not set fullname never!");
-    }
-  }
+      throw new Error('Do not set fullname never!');
+    },
+  },
 });
 
-(async function() {
+(async function () {
   await sequelize.sync({ force: true });
-  const user = await User.create({firstName: 'arrow', lastName: 'bo'});
+  const user = await User.create({ firstName: 'arrow', lastName: 'bo' });
   console.log(user.fullName);
 })();

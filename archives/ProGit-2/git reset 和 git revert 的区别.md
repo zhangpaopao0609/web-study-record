@@ -14,14 +14,14 @@
 git reset \--soft | --mixed | --hard
 ```
 
-- `--soft` 回退时保留源码，仅仅回退 commit，修改的文件仍然保存在暂存区,再次提交时只需要 git commit 
+- `--soft` 回退时保留源码，仅仅回退 commit，修改的文件仍然保存在暂存区,再次提交时只需要 git commit
 - `--mixed`（默认）回退时保留源码，回退 commit 同时修改的文件会置于 工作区，再次提交时需要 git add
 - `--hard` 回退时清除提交的源码（危险操作），源码和commit 都会回滚到某个版本
 
 git reset 实际执行的是 HEAD的指向的回退，指定回到某个commit，那么HEAD指针就会回退到对应的 commit。这些操作都是本地执行的，如果想要推送到远程仓库（这是危险操作，因为会修改提交历史），那么需要在push的时候加上强制。
 
 ```bash
-git push --force 
+git push --force
 ```
 
 ## 3. Revert

@@ -1,9 +1,10 @@
 const Koa = require('koa');
+
 const app = new Koa();
 // const bodyparser = require('koa-bodyparser');
 const router = require('koa-router')();
 
-app.use(require('koa-static')(__dirname + '/'));
+app.use(require('koa-static')(`${__dirname}/`));
 
 app.use(async (ctx, next) => {
   console.log('body-parser......');
@@ -11,7 +12,7 @@ app.use(async (ctx, next) => {
   const reqData = [];
   let size = 0;
   await new Promise((resolve, reject) => {
-    req.on('data', data => {
+    req.on('data', (data) => {
       console.log(`>>>>req ${data}`);
       reqData.push(data);
       size += data.length;
@@ -23,8 +24,8 @@ app.use(async (ctx, next) => {
       console.log(`data: ${size} ${data.toString()}`);
       ctx.request.body = data.toString();
       resolve();
-    })
-  })
+    });
+  });
   await next();
 });
 

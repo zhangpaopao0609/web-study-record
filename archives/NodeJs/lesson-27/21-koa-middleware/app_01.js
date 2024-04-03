@@ -10,16 +10,18 @@ app.use((ctx, next) => {
   next();
 });
 
-router.get("/", ctx => {
-  ctx.body = "get/"
-})
+router.get('/', (ctx) => {
+  ctx.body = 'get/';
+});
 
 app
   .use(router.routes())
   .use(router.allowedMethods());
 
 const port = 6090;
-app.listen(port, err => {
-  if(err) throw err;
+app.listen(port, (err) => {
+  if (err) {
+    throw err;
+  }
   console.log(`app start at ${port}`);
 });

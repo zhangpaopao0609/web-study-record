@@ -36,7 +36,7 @@ Prettier 官网给出了非常详细的[配置说明](https://prettier.io/docs/e
   ```
 16. Insert Pragma：是否插入标注，默认 false
 17. Prose Wrap：默认情况下，Prettier不会更改文本中的换行，因为有些服务对换行敏感。
-  - "always"：严格按照 Print Width 
+  - "always"：严格按照 Print Width
   - "never"
   - "preserve"
 18. HTML Whitespace Sensitivity

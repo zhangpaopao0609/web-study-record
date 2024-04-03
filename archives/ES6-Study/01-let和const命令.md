@@ -10,7 +10,7 @@
 
 ```js
 for (let i = 0; i < 3; i++) {
-  let i = 'abc';
+  const i = 'abc';
   console.log(i);
 }
 // abc
@@ -25,7 +25,7 @@ for (let i = 0; i < 3; i++) {
 只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受到外部的影响
 
 ```js
-var tmp = 123;
+const tmp = 123;
 
 if (true) {
   tmp = 'abc'; // ReferenceError
@@ -59,7 +59,7 @@ ES5 只用全局作用域和函数作用域
 
 ### 2.2 ES6 的块级作用域
 
-let 
+let
 
 ## 3 const 命令
 
@@ -90,8 +90,3 @@ web woker 和 浏览器     self
 node  global
 
 ES 2020 增加 globalThis 全环境可用
-
-
-
-
-

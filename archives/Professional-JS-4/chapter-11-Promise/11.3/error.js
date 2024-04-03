@@ -1,4 +1,4 @@
-function fooPromiseExecutor(resolve,reject) {
+function fooPromiseExecutor(resolve, reject) {
   setTimeout(reject, 1000, 'bar');
 };
 

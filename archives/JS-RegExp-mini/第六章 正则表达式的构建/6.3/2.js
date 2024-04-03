@@ -9,7 +9,7 @@ const str_two = -10;
 
 console.log(regex.test(str_two));
 
-const str_three = -.2;
+const str_three = -0.2;
 
 console.log(regex.test(str_three));
 

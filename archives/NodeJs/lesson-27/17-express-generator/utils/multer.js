@@ -1,5 +1,5 @@
-const path = require('path');
-const multer  = require('multer');
+const path = require('node:path');
+const multer = require('multer');
 
 const generateDir = require('./generateDir');
 
@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
   filename: (req, file, cb) => {
     const extname = path.extname(file.originalname);
     cb(null, `${file.fieldname}-${Date.now()}${extname}`);
-  }
+  },
 });
 
 const upload = multer({ storage });

@@ -14,4 +14,4 @@ const c: Circle = {
   name: '1',
   color: '',
   radius: 1,
-}
+};

@@ -7,7 +7,7 @@ function titleize(str) {
   console.log(regex.test(str));
   console.log(RegExp.$2);
 
-  return str.toLowerCase().replace(/(?:^|\s)\w/g, c => c.toUpperCase())
+  return str.toLowerCase().replace(/(?:^|\s)\w/g, c => c.toUpperCase());
 }
 
 console.log(titleize('my name is arrow'));

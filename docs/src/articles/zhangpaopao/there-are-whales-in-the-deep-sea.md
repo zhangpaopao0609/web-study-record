@@ -30,9 +30,6 @@
 
 最后，愿所有的 IT 从业者都能关心好自己的身体和心理！！
 
-
-
 <div align='center'>
 	<img src='./images/jump.png' style='width: 50%' />
 </div>
-

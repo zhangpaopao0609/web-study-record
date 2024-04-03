@@ -6,9 +6,9 @@ function getData<T>(value: T): T {
   return value;
 };
 
-console.log(getData<number>(1)); 
+console.log(getData<number>(1));
 
-console.log(getData<string>('arrow')); 
+console.log(getData<string>('arrow'));
 
 /**
  * 泛型类
@@ -19,7 +19,7 @@ class MinData<T> {
   public minData: T | undefined;
 
   add(data: T): void {
-    if(!this.minData || this.minData > data) {
+    if (!this.minData || this.minData > data) {
       this.minData = data;
     };
     this.queue.push(data);

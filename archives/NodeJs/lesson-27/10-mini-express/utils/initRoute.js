@@ -1,16 +1,16 @@
-const url = require('url');
+const url = require('node:url');
 
 const initRoute = {
-  G : {
+  G: {
     _get: {},
-    _post: {}
+    _post: {},
   },
 
-  get(path, cb)  {
+  get(path, cb) {
     this.G._get[path] = cb;
   },
 
-  post(path, cb){
+  post(path, cb) {
     this.G._post[path] = cb;
   },
 
@@ -19,24 +19,24 @@ const initRoute = {
     let { pathname } = url.parse(req.url);
     pathname = pathname === '/' ? '/index.html' : pathname;
 
-    if(this.G['_'+method][pathname]) {
-      if(method === 'post') {
-        let _res = "";
-        req.on('data', chunk => {
+    if (this.G[`_${method}`][pathname]) {
+      if (method === 'post') {
+        let _res = '';
+        req.on('data', (chunk) => {
           _res += chunk;
         });
         req.on('end', () => {
           req.body = _res;
-          this.G['_'+method][pathname](req, res);
+          this.G[`_${method}`][pathname](req, res);
         });
-      }else {
-        this.G['_'+method][pathname](req, res);
+      } else {
+        this.G[`_${method}`][pathname](req, res);
       }
-    }else {
-      res.writeHead(404, {"Content-Type": "text/html; charset=UTF-8"});
-      res.end("页面不存在！");
+    } else {
+      res.writeHead(404, { 'Content-Type': 'text/html; charset=UTF-8' });
+      res.end('页面不存在！');
     };
-  }
+  },
 };
 
 module.exports = initRoute;

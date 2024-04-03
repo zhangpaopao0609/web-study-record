@@ -7,7 +7,7 @@
 在描述一个程序语言时，一般会使用这两组术语：
 
 1. 静态类型和动态类型
-2. 弱类型和强类型 
+2. 弱类型和强类型
 
 那这两组术语具体的含义是什么呢？下面就来详细的聊一聊，以免在使用的时候混淆。
 
@@ -34,7 +34,7 @@
 
 常见的动态类型语言有：Python, Ruby, JavaScript, PHP
 
-## 2. 弱类型和强类型 
+## 2. 弱类型和强类型
 
 强类型和弱类型是一个<font color='red'>**在含义上并没有得到广泛统一的术语**</font>，因此，讨论它并没有实际的意义，[维基百科](https://en.wikipedia.org/wiki/Strong_and_weak_typing#Static_type-checking)指出：由于术语并未得到统一的原因，希望明确地撰写有关类型系统的作者避开这组术语。
 
@@ -57,10 +57,9 @@
   <p>Python 中不支持隐式转换</p>
 </div>
 
-
 根据这一概念定义来分类：
 
-常见的强类型语言有：Python, Ruby, 
+常见的强类型语言有：Python, Ruby,
 
 常见的弱类型语言有：JavaScript, PHP, C, C++
 
@@ -78,7 +77,6 @@
   <img src="./images/type-type.png" style="zoom: 30%" width="30%"/>
   <p>常见的分类（但并不完全正确）</p>
 </div>
-
 
 ## 4. 参考
 

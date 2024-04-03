@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './index.scss';
 
-import Item from "../Item/index";
+import Item from '../Item/index';
 
 export default class List extends Component {
   firstTimeRender = () => {
@@ -15,16 +15,16 @@ export default class List extends Component {
   userListRender = () => {
     const { userList } = this.props;
     return userList.length > 0
-      ? userList.map(item => <Item key={ item.id } info={ item }/>)
-      : <p>There is no Data!!</p>
+      ? userList.map(item => <Item key={item.id} info={item} />)
+      : <p>There is no Data!!</p>;
   };
 
   errorRender = () => {
     return <p>Error!!</p>;
   };
 
-  statusResponseRender = status => {
-    const statusMap =  {
+  statusResponseRender = (status) => {
+    const statusMap = {
       0: this.firstTimeRender(),
       1: this.loadingRender(),
       2: this.userListRender(),
@@ -35,6 +35,6 @@ export default class List extends Component {
 
   render() {
     const { userRequestStatus } = this.props;
-    return this.statusResponseRender(userRequestStatus)
+    return this.statusResponseRender(userRequestStatus);
   };
 };

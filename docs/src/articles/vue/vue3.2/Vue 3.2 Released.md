@@ -31,9 +31,9 @@ Vue.js 的推文就可以看出四大特性，不是五大吗？这里可以先�
 
 ```vue
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const color = ref('red')
+const color = ref('red');
 </script>
 
 <template>
@@ -66,15 +66,15 @@ button {
 Vue 3.2 引入了一个新的 `defineCustomElement` 方法，可以使用 Vue 组件 API 轻松创建原生自定义元素：
 
 ```js
-import { defineCustomElement } from 'vue'
+import { defineCustomElement } from 'vue';
 
 const MyVueElement = defineCustomElement({
   // 正常的 vue 组件写法
-})
+});
 
 // 注册自定义元素.
 // 注册后，页面上所有的 `<my-vue-element>` 标签都会更新
-customElements.define('my-vue-element', MyVueElement)
+customElements.define('my-vue-element', MyVueElement);
 ```
 
 这个 API 允许开发者创建由 Vue 驱动的 UI 组件库，这个 UI 库可以与任何框架一起使用，或者根本没有框架，因为最终会编译成原生的 Web Components。 [点击查看详细内容](https://v3.vuejs.org/guide/web-components.html)。
@@ -116,8 +116,6 @@ Effect 作用域是一个高阶的 API，主要服务于库作者，因此建议
 
 有关 3.2 中所有更改的详细列表，请参阅[完整的更改日志](https://github.com/vuejs/vue-next/blob/master/CHANGELOG.md)。
 
-
-
 ## 3. 总结
 
 不知道从何时开始就喜欢 Vue 了，从 React 转到 Vue 虽然是工作的被迫，但 Vue 框架的理念我却是很喜欢的， 3.2 更是提出了大量的新特性，真心实意的在为我们开发者创造一个简单实用快捷的框架，真的很是感谢尤大大，持续关注，持续学习。
@@ -125,52 +123,3 @@ Effect 作用域是一个高阶的 API，主要服务于库作者，因此建议
 接下来我将好好总结 `<script setup>` 的新特性用法以及实践它们然后输出博文，等着吧！！
 
 文章大部分内容来自于尤大大的博文，尤大大强呀！！[可点击查看](https://blog.vuejs.org/posts/vue-3.2.html)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

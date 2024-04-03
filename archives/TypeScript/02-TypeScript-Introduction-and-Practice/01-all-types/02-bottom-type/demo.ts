@@ -13,4 +13,4 @@ function infiniteLoop(): never {
   }
 }
 
-type T = Exclude<boolean | number |string, number | string>;
+type T = Exclude<boolean | number | string, number | string>;

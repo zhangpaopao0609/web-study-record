@@ -89,7 +89,7 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 
 - wrap ： (换行) 第一行在上方。
 
-  ![image-20210125160136517](./img/image-20210125160136517.png) 
+  ![image-20210125160136517](./img/image-20210125160136517.png)
 
 - wrap-reverse: 换行，第一行在下方
 
@@ -121,11 +121,9 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 - space-between：两端对齐，项目之前的间隔都相等
 - space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框之间的间隔大一倍。
 
-
-
 ![image-20210125173435312](./img/image-20210125173435312.png)
 
-### 3.5 align-items 
+### 3.5 align-items
 
 定义项目在交叉轴上如何对齐
 
@@ -143,14 +141,14 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 
 ![image-20210125174313002](./img/image-20210125174313002.png)
 
-### 3.6 align-content 
+### 3.6 align-content
 
 定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
 
 ```css
 .box {
-	align-content: flext-start | flex-end |center | space-between | space-around | stretch 
-} 
+	align-content: flext-start | flex-end |center | space-between | space-around | stretch
+}
 ```
 
 - flex-start：与交叉轴的起点对齐。
@@ -185,7 +183,7 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 
 ![image-20210125181410967](./img/image-20210125181410967.png)
 
-### 4.2 flex-grow 
+### 4.2 flex-grow
 
 定义项目的放大比例，默认为 0，即如果存在剩余空间，也不放大。
 
@@ -215,7 +213,7 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 
 负值无效
 
-### 4.4 flex-basis 
+### 4.4 flex-basis
 
 定义在分配多余空间之前，项目占据的主轴空间（main size）， 浏览器根据这个属性，计算主轴是否有多余的空间。它的默认值是 auto， 即项目的本来大小。
 
@@ -227,7 +225,7 @@ Flex 是 Flexible  Box 的缩写，意为“弹性布局”，用来为盒状模
 
 它可以设为跟 width 和 height 属性一样的值（比如350px），则项目将占据固定空间。
 
-### 4.5 flex 
+### 4.5 flex
 
 flex 属性是 flex-grow, flex-shrink 和 flex-basis 的简写，默认值为 0 1 auto。后面两个属性可选。
 
@@ -239,7 +237,7 @@ flex 属性是 flex-grow, flex-shrink 和 flex-basis 的简写，默认值为 0 
 
 该属性有两个快捷值：auto(1 1 auto) 和 none (0 0 auto)
 
-### 4.6 align-self 
+### 4.6 align-self
 
 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖 align-items 属性。默认值为 auto，表示继承父元素的 align-items 属性。如果没有父元素，则等同于 stretch。
 

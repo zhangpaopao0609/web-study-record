@@ -5,22 +5,22 @@ const OrdersSchema = new Mongoose.Schema({
     type: String,
     require: true,
     unique: true,
-    validate: v => {
+    validate: (v) => {
       return v.length === 3;
-    }
+    },
   },
   user: {
     type: String,
-    require: true
+    require: true,
   },
   age: {
     type: Number,
     require: true,
     max: 150,
-    min: 12
-  }
+    min: 12,
+  },
 });
 
-const OrdersModel = Mongoose.model("Orders", OrdersSchema);
+const OrdersModel = Mongoose.model('Orders', OrdersSchema);
 
 module.exports = OrdersModel;

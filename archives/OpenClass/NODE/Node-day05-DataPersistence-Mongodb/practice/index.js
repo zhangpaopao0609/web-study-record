@@ -1,6 +1,7 @@
 const express = require('express');
+
 const app = express();
-const path = require('path');
+const path = require('node:path');
 
 const mongo = require('./models/db.js');
 
@@ -14,11 +15,11 @@ app.get('/api/list', async (req, res) => {
 
   // 构造查询条件
   const condition = {};
-  if(category) {
+  if (category) {
     condition.category = category;
   }
-  if(keyword) {
-    condition.name = {$regex: new RegExp(keyword)}
+  if (keyword) {
+    condition.name = { $regex: new RegExp(keyword) };
   }
   const collection = mongo.collection('fruits');
   const total = await collection.find(condition).count();
@@ -28,17 +29,19 @@ app.get('/api/list', async (req, res) => {
     .toArray();
   res.json({ ok: 1, data: {
     fruits,
-    pagination: { total, page }
-  } })
+    pagination: { total, page },
+  } });
 });
 
 app.get('/api/category', async (req, res) => {
   const collection = mongo.collection('fruits');
   const category = await collection.distinct('category');
   res.json({ ok: 1, data: category });
-})
+});
 
-app.listen(6090, err => {
-  if(err) throw err;
+app.listen(6090, (err) => {
+  if (err) {
+    throw err;
+  }
   console.log('---服务启动成功---6090---');
-})
+});

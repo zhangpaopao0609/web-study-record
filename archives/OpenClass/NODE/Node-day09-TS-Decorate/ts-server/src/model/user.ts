@@ -1,4 +1,4 @@
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
 @Table({ modelName: 'users' })
 export default class User extends Model<User> {
@@ -7,8 +7,8 @@ export default class User extends Model<User> {
     autoIncrement: true,
     type: DataType.INTEGER,
   })
-  public id: number; 
-  
+  public id: number;
+
   @Column(DataType.CHAR)
   public name: string;
 }

@@ -13,4 +13,4 @@ async function aa() {
   }
 }
 
-aa()
+aa();

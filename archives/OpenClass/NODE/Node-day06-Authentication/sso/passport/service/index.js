@@ -2,8 +2,8 @@
 
 /**
  *
- * @param {String} token
- * @return {Boolean}
+ * @param {string} token
+ * @return {boolean}
  */
 function isTokenValid(token) {
   // TODO 从存储系统中查找相应 token 信息，判断 token 的合法性
@@ -14,5 +14,5 @@ function isTokenValid(token) {
 }
 
 module.exports = {
-  isTokenValid
+  isTokenValid,
 };

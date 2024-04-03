@@ -1,15 +1,16 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
 exports.deactivate = exports.activate = void 0;
-const vscode = require("vscode");
-const path = require("path");
+const path = require('node:path');
+const vscode = require('vscode');
+
 const cats = {
-    'Coding Cat': 'https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif',
-    'Compiling Cat': 'https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif',
-    'Testing Cat': 'https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif'
+  'Coding Cat': 'https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif',
+  'Compiling Cat': 'https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif',
+  'Testing Cat': 'https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif',
 };
 function getWebviewContent(title) {
-    return `
+  return `
 		<!DOCTYPE html>
 		<html lang="en">
 		<head>
@@ -24,61 +25,60 @@ function getWebviewContent(title) {
 	`;
 }
 function activate(context) {
-    let currentPanel = undefined;
-    let disposable = vscode.commands.registerCommand('catCoding.start', () => {
-        vscode.window.showInformationMessage('Hello webviews start!');
-        const columnToShowIn = vscode.window.activeTextEditor
-            ? vscode.window.activeTextEditor.viewColumn
-            : undefined;
-        if (currentPanel) {
-            currentPanel.reveal(columnToShowIn);
-        }
-        else {
-            currentPanel = vscode.window.createWebviewPanel('catCoding', 'Cat Coding', vscode.ViewColumn.One, {});
-            let iteration = 0;
-            const updateWebview = () => {
-                const cat = iteration++ % 2 ? 'Compiling Cat' : 'Coding Cat';
-                currentPanel.title = cat;
-                currentPanel.webview.html = getWebviewContent(cat);
-            };
-            updateWebview();
-            const timer = setInterval(updateWebview, 1000);
-            const timeout = setTimeout(() => currentPanel.dispose(), 50000);
-            currentPanel.onDidDispose(() => {
-                clearInterval(timer);
-                clearTimeout(timeout);
-                currentPanel = undefined;
-            }, null, context.subscriptions);
-        }
+  let currentPanel;
+  const disposable = vscode.commands.registerCommand('catCoding.start', () => {
+    vscode.window.showInformationMessage('Hello webviews start!');
+    const columnToShowIn = vscode.window.activeTextEditor
+      ? vscode.window.activeTextEditor.viewColumn
+      : undefined;
+    if (currentPanel) {
+      currentPanel.reveal(columnToShowIn);
+    } else {
+      currentPanel = vscode.window.createWebviewPanel('catCoding', 'Cat Coding', vscode.ViewColumn.One, {});
+      let iteration = 0;
+      const updateWebview = () => {
+        const cat = iteration++ % 2 ? 'Compiling Cat' : 'Coding Cat';
+        currentPanel.title = cat;
+        currentPanel.webview.html = getWebviewContent(cat);
+      };
+      updateWebview();
+      const timer = setInterval(updateWebview, 1000);
+      const timeout = setTimeout(() => currentPanel.dispose(), 50000);
+      currentPanel.onDidDispose(() => {
+        clearInterval(timer);
+        clearTimeout(timeout);
+        currentPanel = undefined;
+      }, null, context.subscriptions);
+    }
+  });
+  const catCodingStart2 = vscode.commands.registerCommand('catCoding.start2', () => {
+    const panel = vscode.window.createWebviewPanel('catCoding', 'Cat Coding', vscode.ViewColumn.One, {});
+    panel.webview.html = getWebviewContent('Coding Cat');
+    function updateWebviewForCat(panel, catName) {
+      panel.title = catName;
+      panel.webview.html = getWebviewContent(catName);
+    }
+    panel.onDidChangeViewState((e) => {
+      const nowPanel = e.webviewPanel;
+      switch (nowPanel.viewColumn) {
+        case vscode.ViewColumn.One:
+          return updateWebviewForCat(panel, 'Coding Cat');
+        case vscode.ViewColumn.Two:
+          return updateWebviewForCat(panel, 'Compiling Cat');
+        case vscode.ViewColumn.Three:
+          return updateWebviewForCat(panel, 'Testing Cat');
+      }
+    }, null, context.subscriptions);
+  });
+  const catCodingStart3 = vscode.commands.registerCommand('catCoding.start3', () => {
+    const panel = vscode.window.createWebviewPanel('catCoding', 'Cat Coding', vscode.ViewColumn.One, {
+      localResourceRoots: [vscode.Uri.file(path.join(context.extensionPath, 'media'))],
+      enableScripts: true,
     });
-    let catCodingStart2 = vscode.commands.registerCommand('catCoding.start2', () => {
-        const panel = vscode.window.createWebviewPanel('catCoding', 'Cat Coding', vscode.ViewColumn.One, {});
-        panel.webview.html = getWebviewContent('Coding Cat');
-        function updateWebviewForCat(panel, catName) {
-            panel.title = catName;
-            panel.webview.html = getWebviewContent(catName);
-        }
-        panel.onDidChangeViewState(e => {
-            const nowPanel = e.webviewPanel;
-            switch (nowPanel.viewColumn) {
-                case vscode.ViewColumn.One:
-                    return updateWebviewForCat(panel, 'Coding Cat');
-                case vscode.ViewColumn.Two:
-                    return updateWebviewForCat(panel, 'Compiling Cat');
-                case vscode.ViewColumn.Three:
-                    return updateWebviewForCat(panel, 'Testing Cat');
-            }
-        }, null, context.subscriptions);
-    });
-    let catCodingStart3 = vscode.commands.registerCommand('catCoding.start3', () => {
-        const panel = vscode.window.createWebviewPanel('catCoding', 'Cat Coding', vscode.ViewColumn.One, {
-            localResourceRoots: [vscode.Uri.file(path.join(context.extensionPath, 'media'))],
-            enableScripts: true,
-        });
-        const onDsikPath = vscode.Uri.file(path.join(context.extensionPath, 'media', 'cat.gif'));
-        const catGifSrc = panel.webview.asWebviewUri(onDsikPath);
-        console.log(catGifSrc);
-        panel.webview.html = `
+    const onDsikPath = vscode.Uri.file(path.join(context.extensionPath, 'media', 'cat.gif'));
+    const catGifSrc = panel.webview.asWebviewUri(onDsikPath);
+    console.log(catGifSrc);
+    panel.webview.html = `
 		<!DOCTYPE html>
 		<html lang="en">
 		<head>
@@ -101,16 +101,15 @@ function activate(context) {
 		</body>
 		</html>
 		`;
-    });
-    let catCodingStart4 = vscode.commands.registerCommand('catCoding.start4', () => {
-        if (currentPanel) {
-            currentPanel.reveal(vscode.ViewColumn.One);
-        }
-        else {
-            currentPanel = vscode.window.createWebviewPanel('catCoding', 'Cat Coding', vscode.ViewColumn.One, {
-                enableScripts: true
-            });
-            currentPanel.webview.html = `<!DOCTYPE html>
+  });
+  const catCodingStart4 = vscode.commands.registerCommand('catCoding.start4', () => {
+    if (currentPanel) {
+      currentPanel.reveal(vscode.ViewColumn.One);
+    } else {
+      currentPanel = vscode.window.createWebviewPanel('catCoding', 'Cat Coding', vscode.ViewColumn.One, {
+        enableScripts: true,
+      });
+      currentPanel.webview.html = `<!DOCTYPE html>
 			<html lang="en">
 			<head>
 					<meta charset="UTF-8">
@@ -144,20 +143,20 @@ function activate(context) {
 					</script>
 			</body>
 			</html>`;
-            currentPanel.onDidDispose(() => {
-                currentPanel = undefined;
-            }, undefined, context.subscriptions);
-        }
-    });
-    const doRefactor = vscode.commands.registerCommand('catCoding.doRefactor', () => {
-        if (!currentPanel) {
-            return;
-        }
-        currentPanel.webview.postMessage({ command: 'refactor' });
-    });
-    context.subscriptions.push(disposable, catCodingStart2, catCodingStart3, catCodingStart4, doRefactor);
+      currentPanel.onDidDispose(() => {
+        currentPanel = undefined;
+      }, undefined, context.subscriptions);
+    }
+  });
+  const doRefactor = vscode.commands.registerCommand('catCoding.doRefactor', () => {
+    if (!currentPanel) {
+      return;
+    }
+    currentPanel.webview.postMessage({ command: 'refactor' });
+  });
+  context.subscriptions.push(disposable, catCodingStart2, catCodingStart3, catCodingStart4, doRefactor);
 }
 exports.activate = activate;
 function deactivate() { }
 exports.deactivate = deactivate;
-//# sourceMappingURL=extension.js.map
+// # sourceMappingURL=extension.js.map

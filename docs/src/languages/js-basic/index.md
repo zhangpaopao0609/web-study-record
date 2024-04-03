@@ -8,17 +8,17 @@ outline: deep
 
 JavaScript 共有八种数据类型，分别是 Undefined、Null、Boolean、 Number、String、Object、Symbol、BigInt。 其中 Symbol 和 BigInt 是 ES6 中新增的数据类型：
 
-- Symbol 代表创建后独一无二且不可变的数据类型，它主要是为了 解决可能出现的全局变量冲突的问题。 
-- BigInt 是一种数字类型的数据，它可以表示任意精度格式的整数， 使用 BigInt 可以安全地存储和操作大整数，即使这个数已经超出了 Number 能够表示的安全整数范围。 这些数据可以分为原始数据类型和引用数据类型： 
-- 栈：原始数据类型（Undefined、Null、Boolean、Number、String） 
-- 堆：引用数据类型（对象、数组和函数） 两种类型的区别在于存储位置的不同： 
-- 原始数据类型直接存储在栈（stack）中的简单数据段，占据空间 小、大小固定，属于被频繁使用数据，所以放入栈中存储； 
-- 引用数据类型存储在堆（heap）中的对象，占据空间大、大小不固 定。如果存储在栈中，将会影响程序运行的性能；引用数据类型在栈 中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引 用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体。 堆和栈的概念存在于数据结构和操作系统内存中，在数据结构中： 
-- 在数据结构中，栈中数据的存取方式为先进后出。 
-- 堆是一个优先队列，是按优先级来进行排序的，优先级可以按照大 小来规定。 
+- Symbol 代表创建后独一无二且不可变的数据类型，它主要是为了 解决可能出现的全局变量冲突的问题。
+- BigInt 是一种数字类型的数据，它可以表示任意精度格式的整数， 使用 BigInt 可以安全地存储和操作大整数，即使这个数已经超出了 Number 能够表示的安全整数范围。 这些数据可以分为原始数据类型和引用数据类型：
+- 栈：原始数据类型（Undefined、Null、Boolean、Number、String）
+- 堆：引用数据类型（对象、数组和函数） 两种类型的区别在于存储位置的不同：
+- 原始数据类型直接存储在栈（stack）中的简单数据段，占据空间 小、大小固定，属于被频繁使用数据，所以放入栈中存储；
+- 引用数据类型存储在堆（heap）中的对象，占据空间大、大小不固 定。如果存储在栈中，将会影响程序运行的性能；引用数据类型在栈 中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引 用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体。 堆和栈的概念存在于数据结构和操作系统内存中，在数据结构中：
+- 在数据结构中，栈中数据的存取方式为先进后出。
+- 堆是一个优先队列，是按优先级来进行排序的，优先级可以按照大 小来规定。
 
 在操作系统中，内存被分为栈区和堆区：
-- 栈区内存由编译器自动分配释放，存放函数的参数值，局部变量的 值等。其操作方式类似于数据结构中的栈。 
+- 栈区内存由编译器自动分配释放，存放函数的参数值，局部变量的 值等。其操作方式类似于数据结构中的栈。
 - 堆区内存一般由开发着分配释放，若开发者不释放，程序结束时可 能由垃圾回收机制回收
 
 ## 2. 数据类型检测的方式有哪些
@@ -37,7 +37,7 @@ JavaScript 共有八种数据类型，分别是 Undefined、Null、Boolean、 Nu
    > function customInstanceOf(instance, constructor) {
    >   // 获取实例对象的原型
    >   let proto = Object.getPrototypeOf(instance);
-   > 
+   >
    >   // 循环遍历原型链
    >   while (proto) {
    >     // 检查当前原型是否等于构造函数的prototype
@@ -47,7 +47,7 @@ JavaScript 共有八种数据类型，分别是 Undefined、Null、Boolean、 Nu
    >     // 继续向上遍历原型链
    >     proto = Object.getPrototypeOf(proto);
    >   }
-   > 
+   >
    >   // 如果没有找到匹配的原型，返回false
    >   return false;
    > }
@@ -55,15 +55,15 @@ JavaScript 共有八种数据类型，分别是 Undefined、Null、Boolean、 Nu
 
 3. constructor
 
-   constructor 有两个作用，一是判断数据的类型，二是对象实例通过 
+   constructor 有两个作用，一是判断数据的类型，二是对象实例通过
 
-   constrcutor 对象访问它的构造函数。需要注意，如果创建一个对象 
+   constrcutor 对象访问它的构造函数。需要注意，如果创建一个对象
 
    来改变它的原型，constructor 就不能用来判断数据类型了
 
 4. `Object.prototype.toString.call() `
 
-   `Object.prototype.toString.call()` 使用 Object 对象的原型方法  `toString` 来判断数据类型： 
+   `Object.prototype.toString.call()` 使用 Object 对象的原型方法  `toString` 来判断数据类型：
 
    同样是检测对象 obj 调用 `toString` 方法，`obj.toString()` 的结果和 `Object.prototype.toString.call(obj)` 的结果不一样，这是为什 么？
 
@@ -71,9 +71,9 @@ JavaScript 共有八种数据类型，分别是 Undefined、Null、Boolean、 Nu
 
 ## 3. **null 和 undefined 区别**
 
-首先 Undefined 和 Null 都是基本数据类型，这两个基本数据类型 分别都只有一个值，就是 undefined 和 null。 undefined 代表的含义是未定义，null 代表的含义是空对象。一般 变量声明了但还没有定义的时候会返回 undefined，null 主要用于 赋值给一些可能会返回对象的变量，作为初始化。 
+首先 Undefined 和 Null 都是基本数据类型，这两个基本数据类型 分别都只有一个值，就是 undefined 和 null。 undefined 代表的含义是未定义，null 代表的含义是空对象。一般 变量声明了但还没有定义的时候会返回 undefined，null 主要用于 赋值给一些可能会返回对象的变量，作为初始化。
 
-undefined 在 JavaScript 中不是一个保留字，这意味着可以使用 undefined 来作为一个变量名，但是这样的做法是非常危险的，它会 影响对 undefined 值的判断。我们可以通过一些方法获得安全的 undefined 值，比如说 void 0。 
+undefined 在 JavaScript 中不是一个保留字，这意味着可以使用 undefined 来作为一个变量名，但是这样的做法是非常危险的，它会 影响对 undefined 值的判断。我们可以通过一些方法获得安全的 undefined 值，比如说 void 0。
 
 当对这两种类型使用 typeof 进行判断时，Null 类型化会返回 “object”，这是一个历史遗留的问题。当使用双等号对两种类型的 值进行比较时会返回 true，使用三个等号时会返回 false。
 
@@ -83,12 +83,16 @@ undefined 在 JavaScript 中不是一个保留字，这意味着可以使用 und
 
 ```js
 function customInstanceOf(source, target) {
-  if(!source.__proto__) return false;
-  if(!target.prototype) return false;
-  if(source.__proto__ === target.prototype) {
-    return true
+  if (!source.__proto__) {
+    return false;
   }
-  return customInstanceOf(source.__proto__, target)
+  if (!target.prototype) {
+    return false;
+  }
+  if (source.__proto__ === target.prototype) {
+    return true;
+  }
+  return customInstanceOf(source.__proto__, target);
 }
 
 // 示例使用
@@ -136,15 +140,15 @@ console.log(customInstanceOf(child, Array)); // false
 
 ## 5. **如何获取安全的 undefined 值？**
 
-因为 undefined 是一个标识符，所以可以被当作变量来使用和赋值， 但是这样会影响 undefined 的正常判断。表达式 void ___ 没有返 
+因为 undefined 是一个标识符，所以可以被当作变量来使用和赋值， 但是这样会影响 undefined 的正常判断。表达式 void ___ 没有返
 
 回值，因此返回结果是 undefined。void 并不改变表达式的结果， 只是让表达式不返回值。因此可以用 void 0 来获得 undefined。
 
 ## 6. **Object.is() 与比较操作符 “===”、“==” 的区别？**
 
-- 使用双等号（==）进行相等判断时，如果两边的类型不一致，则会进 行强制类型转化后再进行比较。 
+- 使用双等号（==）进行相等判断时，如果两边的类型不一致，则会进 行强制类型转化后再进行比较。
 
-- 使用三等号（===）进行相等判断时，如果两边的类型不一致时，不 会做强制类型准换，直接返回 false。 
+- 使用三等号（===）进行相等判断时，如果两边的类型不一致时，不 会做强制类型准换，直接返回 false。
 
 - 使用 Object.is 来进行相等判断时，一般情况下和三等号的判断相 同，它处理了一些特殊的情况，比如 -0 和 +0 不再相等，两个 NaN 是相等的
 
@@ -160,51 +164,51 @@ JavaScript 也可以使用 Object 函数显式地将基本类型转换为包装�
 
 ## 8. **为什么会有 BigInt 的提案？**
 
-JavaScript 中 Number.MAX_SAFE_INTEGER 表示最⼤安全数字，计算 结果是 9007199254740991，即在这个数范围内不会出现精度丢失（⼩ 数除外）。但是⼀旦超过这个范围，js 就会出现计算不准确的情况， 这在⼤数计算的时候不得不依靠⼀些第三⽅库进⾏解决，因此官⽅提 出了 BigInt 来解决此问题。 
+JavaScript 中 Number.MAX_SAFE_INTEGER 表示最⼤安全数字，计算 结果是 9007199254740991，即在这个数范围内不会出现精度丢失（⼩ 数除外）。但是⼀旦超过这个范围，js 就会出现计算不准确的情况， 这在⼤数计算的时候不得不依靠⼀些第三⽅库进⾏解决，因此官⽅提 出了 BigInt 来解决此问题。
 
-## 9. **如何判断一个对象是空对象** 
+## 9. **如何判断一个对象是空对象**
 
 使用 JSON 自带的.stringify 方法来判断：
 
-使用 ES6 新增的方法 Object.keys()来判断： 
+使用 ES6 新增的方法 Object.keys()来判断：
 
 ## 10. **const 对象的属性可以修改吗**
 
-const 保证的并不是变量的值不能改动，而是变量指向的那个内存地 址不能改动。对于基本类型的数据（数值、字符串、布尔值），其值 就保存在变量指向的那个内存地址，因此等同于常量。 
+const 保证的并不是变量的值不能改动，而是变量指向的那个内存地 址不能改动。对于基本类型的数据（数值、字符串、布尔值），其值 就保存在变量指向的那个内存地址，因此等同于常量。
 
-但对于引用类型的数据（主要是对象和数组）来说，变量指向数据的 内存地址，保存的只是一个指针，const 只能保证这个指针是固定不 变的，至于它指向的数据结构是不是可变的，就完全不能控制了。 
+但对于引用类型的数据（主要是对象和数组）来说，变量指向数据的 内存地址，保存的只是一个指针，const 只能保证这个指针是固定不 变的，至于它指向的数据结构是不是可变的，就完全不能控制了。
 
 ## 11. **如果 new 一个箭头函数的会怎么样**
 
-箭头函数是ES6中的提出来的，它没有prototype，也没有自己的this 
+箭头函数是ES6中的提出来的，它没有prototype，也没有自己的this
 
 指向，更不可以使用 arguments 参数，所以不能 New 一个箭头函数。
 
-new 操作符的实现步骤如下： 
+new 操作符的实现步骤如下：
 
-1. 创建一个对象 
+1. 创建一个对象
 
 2. 将构造函数的作用域赋给新对象（也就是将对象的`__proto__` 属性 指向构造函数的 prototype 属性）
 
-3. 指向构造函数中的代码，构造函数中的 this 指向该对象（也就是 为这个对象添加属性和方法） 
+3. 指向构造函数中的代码，构造函数中的 this 指向该对象（也就是 为这个对象添加属性和方法）
 
-4. 返回新的对象 
+4. 返回新的对象
 
    所以，上面的第二、三步，箭头函数都是没有办法执行的。
 
 ## 12. **箭头函数的 this 指向哪⾥？**
 
-箭头函数不同于传统 JavaScript 中的函数，箭头函数并没有属于⾃ ⼰的 this，它所谓的 this 是捕获其所在上下⽂的 this 值，作为⾃ ⼰的 this 值，并且由于没有属于⾃⼰的 this，所以是不会被 new 调⽤的，这个所谓的 this 也不会被改变。 
+箭头函数不同于传统 JavaScript 中的函数，箭头函数并没有属于⾃ ⼰的 this，它所谓的 this 是捕获其所在上下⽂的 this 值，作为⾃ ⼰的 this 值，并且由于没有属于⾃⼰的 this，所以是不会被 new 调⽤的，这个所谓的 this 也不会被改变。
 
 ```js
-// es6 
+// es6
 const obj = {
   getArrow() {
     return () => {
       console.log(this === obj);
-    }
+    };
   }
-}
+};
 ```
 
 babel 转化后：
@@ -213,7 +217,7 @@ babel 转化后：
 // es5
 var obj = {
   getArrow: function getArrow() {
-    var _this = this;
+    const _this = this;
     return function () {
       console.log(_this === obj);
     };
@@ -229,19 +233,17 @@ var obj = {
 
    需要注意：扩展运算符对对象实例的拷贝属于浅拷贝
 
-2. 数组扩展运算符 
+2. 数组扩展运算符
 
 ## 14. **Proxy 可以实现什么功能？**
 
-在 Vue3.0 中通过 Proxy 来替换原本的 Object.defineProperty 来实现数据响应式。 
+在 Vue3.0 中通过 Proxy 来替换原本的 Object.defineProperty 来实现数据响应式。
 
 Proxy 是 ES6 中新增的功能，它可以用来自定义对象中的操作。
 
-
-
 之所以 Vue3.0 要使用 Proxy 替换原本的 API 原因在于 Proxy 无需一层层递归为每个属 性添加代理，一次即可完成以上操作，性能上更好，并且原本的实现 有一些数据更新不能监听到，但是 Proxy 可以完美监听到任何方式 的数据改变，唯一缺陷就是浏览器的兼容性不好。
 
-## 15. **常用的正则表达式有哪些？** 
+## 15. **常用的正则表达式有哪些？**
 
 ## 16. **对 JSON 的理解**
 
@@ -251,7 +253,7 @@ JSON.parse
 
 ## 17. **JavaScript 脚本延迟加载的方式有哪些？**
 
-延迟加载就是等页面加载完成之后再加载 JavaScript 文件。js 延 迟加载有助于提高页面加载速度。 
+延迟加载就是等页面加载完成之后再加载 JavaScript 文件。js 延 迟加载有助于提高页面加载速度。
 
 defer 属性：给 js 脚本添加 defer 属性，这个属性会让脚本的加 载与文档的解析同步解析，然后在文档解析完成后再执行这个脚本文 件，这样的话就能使页面的渲染不被阻塞。多个设置了 defer 属性的脚本按规范来说最后是顺序执行的，但是在一些浏览器中可能不是 这样。
 
@@ -288,22 +290,22 @@ BOM 指的是浏览器**对象模型**，它指的是把浏览器当做一个对
    - `encodeURIComponent` 函数用于对 URI 组件或参数进行编码，它会编码 URI 中的特殊字符，包括用于分隔 URI 组件的字符，如 `&`、`=`、`+`、`?` 和 `/` 等。
    - 它主要用于编码 URI 的某个部分，比如查询字符串的键值对，以确保这些字符不会被解释为 URI 的控制字符。
    - 它会编码几乎所有的非字母数字字符，除了 `-`、`_`、`.`、`!`、`~`、`*`、`'` 和 `(`、`)`。
-   
+
    示例:
-   
+
    ```javascript
    var uri = "http://example.com/参数?name=测试&age=30";
-   
+
    // escape 已废弃，不推荐使用
    console.log(escape(uri)); // 输出: http%3A//example.com/%u53C2%u6570%3Fname%3D%u6D4B%u8BD5%26age%3D30
-   
+
    // encodeURI 不会编码 URI 的特殊分隔符
    console.log(encodeURI(uri)); // 输出: http://example.com/%E5%8F%82%E6%95%B0?name=%E6%B5%8B%E8%AF%95&age=30
-   
+
    // encodeURIComponent 会编码 URI 的特殊分隔符
    console.log(encodeURIComponent(uri)); // 输出: http%3A%2F%2Fexample.com%2F%E5%8F%82%E6%95%B0%3Fname%3D%E6%B5%8B%E8%AF%95%26age%3D30
    ```
-   
+
    在实际应用中，应该使用 `encodeURI` 来编码整个 URI，而使用 `encodeURIComponent` 来编码 URI 的组件，如查询字符串中的参数值。由于 `escape` 已经废弃，应避免使用它，并且在可能的情况下使用 `encodeURI` 或 `encodeURIComponent` 替代。
 
 ## 20. **对 AJAX 的理解，实现一个 AJAX 请求**
@@ -384,13 +386,13 @@ CommonJS 模块输出的是值的拷贝，也就是说，一旦输出一个值�
 
 ```js
 // lib.js
-var counter = 3;
+let counter = 3;
 function incCounter() {
   counter++;
 }
 module.exports = {
-  counter: counter,
-  incCounter: incCounter,
+  counter,
+  incCounter,
 };
 ```
 
@@ -449,23 +451,23 @@ console.log(counter); // 4
 
 上面代码说明，ES6 模块输入的变量`counter`是活的，完全反应其所在模块`lib.js`内部的变化。
 
-## 23. **for...in 和 for...of 的区别** 
+## 23. **for...in 和 for...of 的区别**
 
-for…of 是 ES6 新增的遍历方式，允许遍历一个含有 iterator 接口 
+for…of 是 ES6 新增的遍历方式，允许遍历一个含有 iterator 接口
 
-的数据结构（数组、对象等）并且返回各项的值，和 ES3 中的 for… in 的区别如下 
+的数据结构（数组、对象等）并且返回各项的值，和 ES3 中的 for… in 的区别如下
 
 for…of 遍历获取的是对象的键值，for…in 获取的是对象的键名
 
-for… in 会遍历对象的整个原型链，性能非常差不推荐使用，而 
+for… in 会遍历对象的整个原型链，性能非常差不推荐使用，而
 
-for … of 只遍历当前对象不会遍历原型链； 
+for … of 只遍历当前对象不会遍历原型链；
 
-对于数组的遍历，for…in 会返回数组中所有可枚举的属性(包括原 型链上可枚举的属性)，for…of 只返回数组的下标对应的属性值； 
+对于数组的遍历，for…in 会返回数组中所有可枚举的属性(包括原 型链上可枚举的属性)，for…of 只返回数组的下标对应的属性值；
 
 总结：
 
-- for...in 循环主要是为了遍历对象而生，不适用于遍历数组； 
+- for...in 循环主要是为了遍历对象而生，不适用于遍历数组；
 
 - for...of 循环可以用来遍历数组、类数组对象，字符串、Set、Map 以 及 Generator 对象
 
@@ -504,19 +506,17 @@ for … of 只遍历当前对象不会遍历原型链；
 
 在选择使用哪种技术时，你应该考虑你的项目需求、浏览器兼容性、以及你对 API 的个人偏好。如果你需要更多的功能和更简单的错误处理，`axios` 可能是一个好选择。如果你更倾向于使用原生 API 并且不介意处理一些额外的细节，`fetch` 可能更适合你。如果你正在维护一个需要支持旧浏览器的项目，那么使用 `XMLHttpRequest` 可能是必要的。
 
-
-
 ## 25. **对原型、原型链的理解**
 
 在 JavaScript 中是使用构造函数来新建一个对象的，每一个构造函 数的内部都有一个 prototype 属性，它的属性值是一个对象，这个 对象包含了可以由该构造函数的所有实例共享的属性和方法。当使用 构造函数新建一个对象后，在这个对象的内部将包含一个指针，这个 指针指向构造函数的 prototype 属性对应的值，在 ES5 中这个指针 被称为对象的原型。一般来说不应该能够获取到这个值的，但是现在 浏览器中都实现了 __proto__ 属性来访问这个属性，但是最好不要 使用这个属性，因为它不是规范中规定的。ES5 中新增了一个 Object.getPrototypeOf() 方法，可以通过这个方法来获取对象的原 型。
 
-当访问一个对象的属性时，如果这个对象内部不存在这个属性，那么 它就会去它的原型对象里找这个属性，这个原型对象又会有自己的原 型，于是就这样一直找下去，也就是原型链的概念。原型链的尽头一 般来说都是 Object.prototype 所以这就是新建的对象为什么能够 使用 toString() 等方法的原因。 
+当访问一个对象的属性时，如果这个对象内部不存在这个属性，那么 它就会去它的原型对象里找这个属性，这个原型对象又会有自己的原 型，于是就这样一直找下去，也就是原型链的概念。原型链的尽头一 般来说都是 Object.prototype 所以这就是新建的对象为什么能够 使用 toString() 等方法的原因。
 
 特点：JavaScript 对象是通过引用来传递的，创建的每个新对象实 体中并没有一份属于自己的原型副本。当修改原型时，与之相关的对 象也会继承这一改变
 
 ## 26. **原型链的终点是什么？如何打印出原型链的终点？**
 
-由于 Object 是构造函数，原型链终点 `Object.prototype.__proto`__， 而 `Object.prototype.__proto__=== null // true`，所以，原型链 的终点是 null。原型链上的所有原型都是对象，所有的对象最终都 是由 Object 构造的，而 `Object.prototype` 的下一级是 `Object.prototype.__proto__`。 
+由于 Object 是构造函数，原型链终点 `Object.prototype.__proto`__， 而 `Object.prototype.__proto__=== null // true`，所以，原型链 的终点是 null。原型链上的所有原型都是对象，所有的对象最终都 是由 Object 构造的，而 `Object.prototype` 的下一级是 `Object.prototype.__proto__`。
 
 ## 27. **对作用域、作用域链的理解**
 
@@ -526,31 +526,31 @@ for … of 只遍历当前对象不会遍历原型链；
 
 this 是执行上下文中的一个属性，它指向最后一次调用这个方法的 对象。在实际开发中，this 的指向可以通过四种调用模式来判断。
 
-第一种是函数调用模式，当一个函数不是一个对象的属性时，直接作 为函数来调用时，this 指向全局对象。 
+第一种是函数调用模式，当一个函数不是一个对象的属性时，直接作 为函数来调用时，this 指向全局对象。
 
-第二种是方法调用模式，如果一个函数作为一个对象的方法来调用时， this 指向这个对象。 
+第二种是方法调用模式，如果一个函数作为一个对象的方法来调用时， this 指向这个对象。
 
-第三种是构造器调用模式，如果一个函数用 new 调用时，函数执行 前会新创建一个对象，this 指向这个新创建的对象。 
+第三种是构造器调用模式，如果一个函数用 new 调用时，函数执行 前会新创建一个对象，this 指向这个新创建的对象。
 
-第四种是 apply 、 call 和 bind 调用模式，这三个方法都可以显 示的指定调用函数的 this 指向。其中 apply 方法接收两个参数： 一个是 this 绑定的对象，一个是参数数组。call 方法接收的参数， 第一个是 this 绑定的对象，后面的其余参数是传入函数执行的参数。 也就是说，在使用 call() 方法时，传递给函数的参数必须逐个列举 出来。bind 方法通过传入一个对象，返回一个 this 绑定了传入对 象的新函数。这个函数的 this 指向除了使用 new 时会被改变，其 他情况下都不会改变。 这四种方式，使用构造器调用模式的优先级最高，然后是 apply、call 和 bind 调用模式，然后是方法调用模式，然后是函数调用模式。 
+第四种是 apply 、 call 和 bind 调用模式，这三个方法都可以显 示的指定调用函数的 this 指向。其中 apply 方法接收两个参数： 一个是 this 绑定的对象，一个是参数数组。call 方法接收的参数， 第一个是 this 绑定的对象，后面的其余参数是传入函数执行的参数。 也就是说，在使用 call() 方法时，传递给函数的参数必须逐个列举 出来。bind 方法通过传入一个对象，返回一个 this 绑定了传入对 象的新函数。这个函数的 this 指向除了使用 new 时会被改变，其 他情况下都不会改变。 这四种方式，使用构造器调用模式的优先级最高，然后是 apply、call 和 bind 调用模式，然后是方法调用模式，然后是函数调用模式。
 
-## 29. **call() 和 apply() 的区别？** 
+## 29. **call() 和 apply() 的区别？**
 
 它们的作用一模一样，区别仅在于传入参数的形式的不同。 apply 接受两个参数，第一个参数指定了函数体内 this 对象的指向， 第二个参数为一个带下标的集合，这个集合可以为数组，也可以为类 数组，apply 方法把这个集合中的元素作为参数传递给被调用的函数。 call 传入的参数数量不固定，跟 apply 相同的是，第一个参数也是 代表函数体内的 this 指向，从第二个参数开始往后，每个参数被依 次传入函数。
 
 ## 30. **异步编程的实现方式**
 
-JavaScript 中的异步机制可以分为以下几种： 
+JavaScript 中的异步机制可以分为以下几种：
 
-- 回调函数 的方式，使用回调函数的方式有一个缺点是，多个回调函 数嵌套的时候会造成回调函数地狱，上下两层的回调函数间的代码耦 合度太高，不利于代码的可维护。 
+- 回调函数 的方式，使用回调函数的方式有一个缺点是，多个回调函 数嵌套的时候会造成回调函数地狱，上下两层的回调函数间的代码耦 合度太高，不利于代码的可维护。
 
   > 最大的问题还是信任问题
 
-- Promise 的方式，使用 Promise 的方式可以将嵌套的回调函数作为链式调用。但是使用这种方法，有时会造成多个 then 的链式调用，可能会造成代码的语义不够明确。 
+- Promise 的方式，使用 Promise 的方式可以将嵌套的回调函数作为链式调用。但是使用这种方法，有时会造成多个 then 的链式调用，可能会造成代码的语义不够明确。
 
-- generator 的方式，它可以在函数的执行过程中，将函数的执行权转 移出去，在函数外部还可以将执行权转移回来。当遇到异步函数执行 的时候，将函数执行权转移出去，当异步函数执行完毕时再将执行权 给转移回来。因此在 generator 内部对于异步操作的方式，可以以 同步的顺序来书写。使用这种方式需要考虑的问题是何时将函数的控 制权转移回来，因此需要有一个自动执行 generator 的机制，比如 说 co 模块等方式来实现 generator 的自动执行。 
+- generator 的方式，它可以在函数的执行过程中，将函数的执行权转 移出去，在函数外部还可以将执行权转移回来。当遇到异步函数执行 的时候，将函数执行权转移出去，当异步函数执行完毕时再将执行权 给转移回来。因此在 generator 内部对于异步操作的方式，可以以 同步的顺序来书写。使用这种方式需要考虑的问题是何时将函数的控 制权转移回来，因此需要有一个自动执行 generator 的机制，比如 说 co 模块等方式来实现 generator 的自动执行。
 
-- async 函数 的方式，async 函数是 generator 和 promise 实现的 一个自动执行的语法糖，它内部自带执行器，当函数内部执行到一个 await 语句的时候，如果语句返回一个 promise 对象，那么函数将 会等待 promise 对象的状态变为 resolve 后再继续向下执行。因此 可以将异步逻辑，转化为同步的顺序来书写，并且这个函数可以自动 执行。 
+- async 函数 的方式，async 函数是 generator 和 promise 实现的 一个自动执行的语法糖，它内部自带执行器，当函数内部执行到一个 await 语句的时候，如果语句返回一个 promise 对象，那么函数将 会等待 promise 对象的状态变为 resolve 后再继续向下执行。因此 可以将异步逻辑，转化为同步的顺序来书写，并且这个函数可以自动 执行。
 
 ## 31. **对 Promise 的理解**
 
@@ -562,7 +562,7 @@ JavaScript 中的异步机制可以分为以下几种：
 
 Promise 怎么解决的呢？因为它是承诺机制，状态只会改变一次，并且无法逆转，而且状态改变时一定会触发对应的 then 或者 catch 函数
 
-状态的改变是通过 resolve() 和 reject() 函数来实现的，可以在 异步操作结束后调用这两个函数改变 Promise 实例的状态，它的原 型上定义了一个 then 方法，使用这个 then 方法可以为两个状态的 改变注册回调函数。这个回调函数属于微任务，会在本轮事件循环的 末尾执行。 
+状态的改变是通过 resolve() 和 reject() 函数来实现的，可以在 异步操作结束后调用这两个函数改变 Promise 实例的状态，它的原 型上定义了一个 then 方法，使用这个 then 方法可以为两个状态的 改变注册回调函数。这个回调函数属于微任务，会在本轮事件循环的 末尾执行。
 
 注意：在构造 Promise 的时候，构造函数内部的代码是立即执行的
 
@@ -577,38 +577,38 @@ async/await 其实是 Generator 的语法糖，
 ```js
 function* generatorFn() {
   console.log('start');
-  const result1 = yield request('aaa')  // result1结果是'aaa'
-  const result2 = yield request(result1 + 'bbb') // result2结果是'aaabbb'
-  const result3 = yield request(result2 + 'ccc')
-  console.log(result3)  // 'aaabbbccc'
+  const result1 = yield request('aaa'); // result1结果是'aaa'
+  const result2 = yield request(`${result1}bbb`); // result2结果是'aaabbb'
+  const result3 = yield request(`${result2}ccc`);
+  console.log(result3); // 'aaabbbccc'
   console.log('done');
 }
 
 function autoGenerator(generatorFn) {
   // 执行传递进来的生成器函数，得到生成器
   const gen = generatorFn();
-  
+
   // 定义递归函数
   function recurse(params) {
     // 调用next并传递参数，得到迭代器
     const g = gen.next(params);
     // 判断迭代器的done的状态
-    if(!g.done) {
+    if (!g.done) {
       // 生成器未结束
-      g.value.then((res)=> {
+      g.value.then((res) => {
         // 递归调用
         recurse(res);
-      })
+      });
     }
   }
 
-  recurse()
+  recurse();
 }
 
-autoGenerator(generatorFn)
+autoGenerator(generatorFn);
 ```
 
-## 34. **对象创建的方式有哪些？** 
+## 34. **对象创建的方式有哪些？**
 
 - 第一种是工厂模式
 - 第二种是构造函数模式
@@ -630,11 +630,11 @@ autoGenerator(generatorFn)
 
 以下四种情况会造成内存的泄漏：
 
-- 意外的全局变量：由于使用未声明的变量，而意外的创建了一个全局 变量，而使这个变量一直留在内存中无法被回收。 
+- 意外的全局变量：由于使用未声明的变量，而意外的创建了一个全局 变量，而使这个变量一直留在内存中无法被回收。
 
-- 被遗忘的计时器或回调函数：设置了 setInterval 定时器，而忘记 取消它，如果循环函数有对外部变量的引用的话，那么这个变量会被 一直留在内存中，而无法被回收。 
+- 被遗忘的计时器或回调函数：设置了 setInterval 定时器，而忘记 取消它，如果循环函数有对外部变量的引用的话，那么这个变量会被 一直留在内存中，而无法被回收。
 
-- 脱离 DOM 的引用：获取一个 DOM 元素的引用，而后面这个元素被删 除，由于一直保留了对这个元素的引用，所以它也无法被回收。 
+- 脱离 DOM 的引用：获取一个 DOM 元素的引用，而后面这个元素被删 除，由于一直保留了对这个元素的引用，所以它也无法被回收。
 
 - 闭包：不合理的使用闭包，从而导致某些变量一直被留在内存当中。
 
@@ -643,11 +643,11 @@ autoGenerator(generatorFn)
 ## 1. 利用 buffer 机制转换
 
 ```js
-const str = "张跑跑";
-const str_to_base64 = Buffer.from(str).toString("base64");
+const str = '张跑跑';
+const str_to_base64 = Buffer.from(str).toString('base64');
 console.log(str_to_base64);
 
-const base64_to_str = Buffer.from(str_to_base64, "base64").toString()
+const base64_to_str = Buffer.from(str_to_base64, 'base64').toString();
 console.log(base64_to_str);
 
 // 5byg6LeR6LeR

@@ -1,7 +1,7 @@
-const result = "hello".replace(/^|$/g, "&!");
+const result = 'hello'.replace(/^|$/g, '&!');
 
 console.log(result);
 
-const result_ = "I\nLOVE\nJAVASCRIPT".replace(/^|$/gm, "&");
+const result_ = 'I\nLOVE\nJAVASCRIPT'.replace(/^|$/gm, '&');
 
 console.log(result_);

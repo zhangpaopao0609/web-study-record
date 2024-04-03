@@ -1,4 +1,4 @@
-const now = document.querySelector(".now");
+const now = document.querySelector('.now');
 const clientWidth = document.documentElement.clientWidth;
 const clientHeight = document.documentElement.clientHeight;
 const body = document.body;
@@ -12,7 +12,7 @@ function Horizontal() {
     transform-origin: ${clientWidth / 2}px ${clientWidth / 2}px
     transform: rotate(90deg); 
   `;
-  body.setAttribute("style", style);
+  body.setAttribute('style', style);
 }
 
 function Vertical() {
@@ -24,7 +24,7 @@ function Vertical() {
     transform-origin: 0px 0px
     transform: rotate(0); 
   `;
-  body.setAttribute("style", style);
+  body.setAttribute('style', style);
 }
 
 function handleOrientation(event) {
@@ -34,12 +34,12 @@ function handleOrientation(event) {
   const betaBetween = beta >= -30 && beta <= 30;
   const gammaBetween = gamma >= -45 && gamma <= 45;
   if (!gammaBetween && betaBetween) {
-    now.innerHTML = "横屏";
+    now.innerHTML = '横屏';
     Horizontal();
   } else if (gammaBetween && !betaBetween) {
-    now.innerHTML = "竖屏";
+    now.innerHTML = '竖屏';
     Vertical();
   }
 }
 
-window.addEventListener("deviceorientation", handleOrientation);
+window.addEventListener('deviceorientation', handleOrientation);

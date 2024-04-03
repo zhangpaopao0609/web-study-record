@@ -1,11 +1,11 @@
 async function randomDelay(id) {
   const delay = Math.random() * 1000;
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       console.log(`${id} finished!`);
       resolve(id);
     }, delay);
-  })
+  });
 };
 
 async function foo() {

@@ -2,7 +2,7 @@
  * @lc app=leetcode.cn id=257 lang=javascript
  *
  * [257] 二叉树的所有路径
- * 
+ *
  */
 
 // @lc code=start
@@ -17,9 +17,9 @@
  * @param {TreeNode} root
  * @return {string[]}
  */
-const binaryTreePaths = root => {
-	if(!root) return "";
-    
-};
+function binaryTreePaths(root) {
+  if (!root) {
+    return '';
+  }
+}
 // @lc code=end
-

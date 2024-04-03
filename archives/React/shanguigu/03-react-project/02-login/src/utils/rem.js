@@ -4,7 +4,7 @@ function adapter() {
   // 计算根字体大小(100 是我们自己指定的， 375 是设计稿宽度)
   const rootFontSize = dip / 10;
   // 设置根字体
-  document.documentElement.style.fontSize = rootFontSize + 'px';
+  document.documentElement.style.fontSize = `${rootFontSize}px`;
 };
 
 adapter();

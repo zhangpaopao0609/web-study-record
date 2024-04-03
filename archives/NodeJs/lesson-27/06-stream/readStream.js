@@ -1,10 +1,10 @@
-const fs = require('fs');
+const fs = require('node:fs');
 
 let count = 0;
 
 const create = fs.createReadStream('./data/hello.txt');
 
-create.on('data', data => {
+create.on('data', (data) => {
   count++;
 });
 

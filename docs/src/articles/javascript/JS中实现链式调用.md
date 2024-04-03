@@ -33,15 +33,15 @@ man.work().sleep(1000).firstSleep(5000).work().sleep(1000);
 ```js
 class Man {
   constructor() {
-    this.queue = [];  // 记录调用的函数,全部是同步收集然后依次执行
-    this.index = 0;   // 执行函数的索引
-    this.firstSleepWatch = false;   // 检查 firstSleep 调用次数,最多调用一次
-    this.init();     
+    this.queue = []; // 记录调用的函数,全部是同步收集然后依次执行
+    this.index = 0; // 执行函数的索引
+    this.firstSleepWatch = false; // 检查 firstSleep 调用次数,最多调用一次
+    this.init();
   }
-	
+
   // 因为执行需要在函数收集之前，因此需要利用事件机制，先收集后执行
   init() {
-    setTimeout(() => this.run() , 0);
+    setTimeout(() => this.run(), 0);
   }
 
   run() {
@@ -51,8 +51,8 @@ class Man {
   }
 
   firstSleep(delay) {
-    if(this.firstSleepWatch) {
-      throw Error("Already declared firstSleep!!");
+    if (this.firstSleepWatch) {
+      throw new Error('Already declared firstSleep!!');
     }
     this.queue.unshift(() => {
       setTimeout(() => {

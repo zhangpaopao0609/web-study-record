@@ -3,7 +3,7 @@ class Base {
   protected b: string = '';
   private c: string = '';
   #d: string = '';
-  
+
   private a2() {
     return this.#d;
   }

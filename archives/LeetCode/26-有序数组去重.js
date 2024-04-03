@@ -3,12 +3,11 @@
 
 // 不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
 
- 
 // 示例 1:
 
-// 给定数组 nums = [1,1,2], 
+// 给定数组 nums = [1,1,2],
 
-// 函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 
+// 函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。
 
 // 你不需要考虑数组中超出新长度后面的元素。
 // 示例 2:
@@ -18,7 +17,6 @@
 // 函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。
 
 // 你不需要考虑数组中超出新长度后面的元素。
- 
 
 // 说明:
 
@@ -37,7 +35,6 @@
 //     print(nums[i]);
 // }
 
-
 /**
  * @param {number[]} nums
  * @return {number}
@@ -54,16 +51,14 @@
 //     return nums.length;
 // };
 
-
 // var removeDuplicates = function(nums) {
 //     if (nums.length < 2) return nums;
 //     let j = 0;
 //     for (let i = 1; i < nums.length; i++) {
-//         nums[j] != nums[i] && (nums[++j] = nums[i])      
+//         nums[j] != nums[i] && (nums[++j] = nums[i])
 //     }
 //     return j+1;
 // };
-
 
 // !! 双指针
 // var removeDuplicates = function(nums) {
@@ -75,24 +70,26 @@
 //         if(nums[i] != nums[i+1]){
 //             arrIndex++;  // 指针1移动一位
 //             nums[arrIndex] = nums[i+1];  // 指针1对应的位置等于后面的
-//         }    
+//         }
 //     }
 //     return arrIndex+1;
 // };
 
 // !! 双指针版本二
-var removeDuplicates = function(nums) {
-	if (nums.length < 2) return nums;
-	// 指针1 慢指针
-	let slowIndex = 0;
-	// 指针2 快指针
-	for (let fastIndex = 1; fastIndex < nums.length; fastIndex++) {
-		if(nums[fastIndex] != nums[slowIndex]){
-			slowIndex++;  // 指针1移动一位
-			nums[slowIndex] = nums[fastIndex];  // 指针1对应的位置等于后面的
-		}    
-	}
-	return slowIndex+1;
+const removeDuplicates = function (nums) {
+  if (nums.length < 2) {
+    return nums;
+  }
+  // 指针1 慢指针
+  let slowIndex = 0;
+  // 指针2 快指针
+  for (let fastIndex = 1; fastIndex < nums.length; fastIndex++) {
+    if (nums[fastIndex] != nums[slowIndex]) {
+      slowIndex++; // 指针1移动一位
+      nums[slowIndex] = nums[fastIndex]; // 指针1对应的位置等于后面的
+    }
+  }
+  return slowIndex + 1;
 };
 
-console.log(removeDuplicates([1,1, 2, 2,2,3,3,3,3]));
+console.log(removeDuplicates([1, 1, 2, 2, 2, 3, 3, 3, 3]));

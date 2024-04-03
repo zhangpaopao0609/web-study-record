@@ -10,15 +10,15 @@ module.exports = override(
   addLessLoader({
     lessOptions: {
       javascriptEnabled: true,
-      modifyVars: { 
+      modifyVars: {
         '@brand-primary': '#e1251b',
         '@brand-primary-tap': '#ac2821',
       },
-    }
+    },
   }),
   addPostcssPlugins([
     postcssPx2Rem({
-      remUnit: 375/10
+      remUnit: 375 / 10,
     }),
-  ])
+  ]),
 );

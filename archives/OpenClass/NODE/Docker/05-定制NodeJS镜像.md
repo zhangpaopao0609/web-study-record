@@ -13,5 +13,3 @@ EXPOSE 3000
 # docker run 时镜像运行的命令
 CMD ["node", "app.js"]
 ```
-
-

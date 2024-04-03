@@ -10,4 +10,4 @@ function compress(queryString) {
   return result.join('&');
 };
 
-console.log(compress("a=1&b=2&a=3&c=4"));
+console.log(compress('a=1&b=2&a=3&c=4'));

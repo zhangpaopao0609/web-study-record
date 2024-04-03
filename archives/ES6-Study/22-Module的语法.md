@@ -12,10 +12,10 @@ ES6模块的设计思想是尽量的静态化，**使得编译时就能确定模
 
 ```js
 // CommonJS模块
-let { stat, exists, readfile } = require('fs');
+let { stat, exists, readfile } = require('node:fs');
 
 // 等同于
-let _fs = require('fs');
+const _fs = require('node:fs');
 let stat = _fs.stat;
 let exists = _fs.exists;
 let readfile = _fs.readfile;
@@ -110,10 +110,10 @@ function v1() { }
 function v2() { }
 
 export {
-	v1 as streamV1,
+  v1 as streamV1,
   v2 as streamV2,
   v2 as streamLatestVersion
-}
+};
 ```
 
 上面代码使用`as`关键字，重命名了函数`v1`和`v2`的对外接口。重命名后，`v2`可以用不同的名字输出两次。
@@ -138,7 +138,7 @@ export var m = 1;
 var m = 1;
 export { m };
 // way 3
-var n = 1;
+const n = 1;
 export { n as m };
 ```
 
@@ -161,7 +161,7 @@ export { f }
 
 ```js
 export var foo = 'bar';
-setTimeout(() => foo = 'baz', 500)
+setTimeout(() => foo = 'baz', 500);
 ```
 
 上面代码输出变量foo，值为bar，500毫秒后变成baz
@@ -227,9 +227,9 @@ import {myMethod} from 'util';
 注意：import命令具有提升效果，会提升到整个谋爱的头部，首先执行
 
 ```js
-foo();
-
 import { foo } from 'my_module';
+
+foo();
 ```
 
 上面的代码不会报错，因为import的执行早于foo调用，这种行为的本质是，import命令是编译阶段执行的，在代码运行之前。由于import是静态执行的，所以不能使用表达式和变量，这些只有在运行时才能得到结果的语法结构
@@ -255,7 +255,7 @@ if (x === 1) {
 最后，import语句会执行所加载的模块，因此可以有下面的写法
 
 ```js
-import 'lodash'
+import 'lodash';
 ```
 
 上面的代码仅仅执行lodash模块，但是不输入任何值
@@ -342,7 +342,7 @@ circle.area = function () {};
 为了给用户提供方便，让他们不用阅读文档就能加载模块，就要用到`export default`命令，**为模块指定默认输出**。
 
 ```js
-export default function() {
+export default function () {
   console.log('foo');
 }
 ```
@@ -352,8 +352,8 @@ export default function() {
 其他模块加载该模块时，import命令可以为该匿名函数指定任意名字
 
 ```js
-import customName  from './export-default.js'
-customName()
+import customName from './export-default.js';
+customName();
 ```
 
 上面代码的`import`命令，可以用任意名称指向`export-default.js`输出的方法，这时就不需要知道原模块输出的函数名。需要注意的是，这时`import`命令后面，不使用大括号。
@@ -379,14 +379,14 @@ export default foo;
 
 ```js
 // one
-export default function foo() {}
+import foo from './foo';
 
-import foo from './foo'
+import { foo } from './foo';
+
+export default function foo() {}
 
 // two
 export function foo() {}
-
-import { foo } from './foo'
 ```
 
 因此，export default命令用于指定模块的默认输出，显然，一个模块只能有一个默认输出。本质上，export default就是输出一个叫做defalut的变量或者方法，然后系统允许你为它取任意名字
@@ -666,26 +666,3 @@ import(`./section-modules/${someVariable}.js`)
    }
    main();
    ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

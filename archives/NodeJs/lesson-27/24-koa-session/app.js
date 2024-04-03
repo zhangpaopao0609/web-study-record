@@ -9,10 +9,10 @@ app.keys = ['arrow'];
 
 app.use(session({ maxAge: 60000 }, app));
 
-router.get("/", ctx => {
+router.get('/', (ctx) => {
   let n = ctx.session.views || 0;
   ctx.session.views = ++n;
-  ctx.body = n + 'views';
+  ctx.body = `${n}views`;
 });
 
 // router.get("/aa", ctx => {
@@ -24,7 +24,9 @@ app
   .use(router.allowedMethods());
 
 const port = 6090;
-app.listen(port, err => {
-  if(err) throw err;
+app.listen(port, (err) => {
+  if (err) {
+    throw err;
+  }
   console.log(`app start at ${port}`);
 });

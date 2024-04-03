@@ -81,8 +81,6 @@ Thunk 函数是自动执行Generator函数的一种方法
 
 传名调用
 
-
-
 ### Thunk 函数的含义
 
 编译器的“传名调用”实现，往往就是将参数放到一个临时函数之中，再将这个临时函数传入函数体。这个临时函数就叫做Thunk函数
@@ -109,7 +107,7 @@ function f(thunk) {
 
 这就是 Thunk 函数的定义，它是“传名调用”的一种实现策略，用来替换某个表达式。
 
-### JS语言的Thunk函数 
+### JS语言的Thunk函数
 
 JS语言是传值调用
 
@@ -164,12 +162,12 @@ var gen = function* (){
 然后，手动执行上面的Generator函数
 
 ```js
-var g = gen();
-g.next().value.then(function(data){
-  g.next(data).value.then(function(data){
-    g.next(data)
-  })
-})
+const g = gen();
+g.next().value.then((data) => {
+  g.next(data).value.then((data) => {
+    g.next(data);
+  });
+});
 ```
 
 手动执行其实就是用then方法，层层添加回调函数，理解这一点，就可以写出一个自动执行器
@@ -199,8 +197,6 @@ run(gen);
 co其实就是上面那个自动执行器的扩展
 
 ## 实例： 处理Stream
-
-
 
 Node提供Stream模式读写数据，特点是一次只处理数据的一部分，数据被分成一块块依次处理，就好像“数据流”一样。这对于处理大规模数据非常有利。Stream模式使用EventEmitter API，会释放三个事件
 
@@ -237,36 +233,3 @@ co(function*() {
 ```
 
 上面代码采用 Stream 模式读取《悲惨世界》的文本文件，对于每个数据块都使用`stream.once`方法，在`data`、`end`、`error`三个事件上添加一次性回调函数。变量`res`只有在`data`事件发生时才有值，然后累加每个数据块之中`valjean`这个词出现的次数。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

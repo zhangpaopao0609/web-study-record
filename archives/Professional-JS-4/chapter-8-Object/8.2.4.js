@@ -1,8 +1,8 @@
 function Person() {};
 Person.prototype.name = 'arrow';
-Person.prototype.sayName = function() {
-    console.log(this.name);
-}
+Person.prototype.sayName = function () {
+  console.log(this.name);
+};
 
 const person1 = new Person();
 const person2 = new Person();

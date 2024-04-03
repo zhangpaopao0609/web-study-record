@@ -6,7 +6,7 @@ env.config();
 const sequelize = new Sequelize(conf.database, conf.username, conf.password, {
   dialect: 'mysql',
   host: conf.host,
-  operatorsAliases: false
+  operatorsAliases: false,
 });
 
 module.exports = sequelize;

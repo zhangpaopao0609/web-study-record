@@ -1,29 +1,29 @@
-//1. 引入mongoose
+// 1. 引入mongoose
 const mongoose = require('mongoose');
 
-//2. 建立连接
-mongoose.connect("mongodb://10.12.6.144:3308/arrow", { useNewUrlParser: true , useUnifiedTopology: true }, err => {
-  if(err) {
+// 2. 建立连接
+mongoose.connect('mongodb://10.12.6.144:3308/arrow', { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+  if (err) {
     console.log(err);
     return;
   };
-  console.log("数据库连接成功！");
+  console.log('数据库连接成功！');
 });
 
-//3. 定义 schema
+// 3. 定义 schema
 const UsersSchema = mongoose.Schema({
   name: String,
-  age: Number
+  age: Number,
 });
 
-//4. 定义数据库模型
-const Users = mongoose.model("Users", UsersSchema);
+// 4. 定义数据库模型
+const Users = mongoose.model('Users', UsersSchema);
 
-//5. 操作数据库
+// 5. 操作数据库
 
 // 查找
 Users.find({}, (err, data) => {
-  if(err) {
+  if (err) {
     console.log(err);
     return;
   };
@@ -45,7 +45,7 @@ Users.find({}, (err, data) => {
 
 // 更新
 Users.updateOne({ name: 'arrow-102' }, { $set: { name: 'arrow-1002' } }, (err, raw) => {
-  if(err) {
+  if (err) {
     console.log(err);
     return;
   };
@@ -54,7 +54,7 @@ Users.updateOne({ name: 'arrow-102' }, { $set: { name: 'arrow-1002' } }, (err, r
 
 // 删除
 Users.deleteOne({ name: 'arrow-101' }, (err, res) => {
-  if(err) {
+  if (err) {
     console.log(err);
     return;
   };

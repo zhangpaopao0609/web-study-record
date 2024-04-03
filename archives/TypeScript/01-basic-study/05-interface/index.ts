@@ -2,11 +2,11 @@
  * 1. 属性接口 对 json 的约束
  */
 
-type FullName = {
+interface FullName {
   firstName: string;
   lastName: string;
   age?: number;
-}
+};
 
 // interface FullName {
 //   firstName: string;      // 这里用 ; 结尾哟
@@ -19,10 +19,10 @@ function printName(name: FullName): void {
 
 const data: FullName = {
   firstName: 'arrow',
-  lastName: 'bullet'
+  lastName: 'bullet',
 };
 
-printName(data); 
+printName(data);
 
 /**
  * 2. 函数类型接口：对方法传入的参数 以及 返回值进行约束
@@ -32,11 +32,11 @@ interface Encrypt {
   (key: string, value: string): string;
 };
 
-const md5: Encrypt = function(key: string, value: string): string {
+const md5: Encrypt = function (key: string, value: string): string {
   return key + value;
 };
 
-md5('11', '22'); 
+md5('11', '22');
 
 /**
  * 3. 可索引接口： 数组、对象的约束（不常用）
@@ -55,11 +55,11 @@ const arr3: SpecialArr = ['a', 'b'];
 
 // 可索引接口  对对象的约束
 interface SpecialObj {
-  [index:string]: string;
+  [index: string]: string;
 };
 
 const obj1: SpecialObj = {
-  test: 'test'
+  test: 'test',
 };
 
 /**
@@ -67,20 +67,19 @@ const obj1: SpecialObj = {
  */
 interface Animal {
   name: string;
-  eat(str: string): void;
+  eat: (str: string) => void;
 };
 
-class Dog implements Animal {   // 实现接口
+class Dog implements Animal { // 实现接口
   public name: string = 'init';
   constructor(name: string) {
     this.name = name;
   };
 
   eat(str: string) {
-    console.log(this.name + '---' + str);
+    console.log(`${this.name}---${str}`);
   };
 };
-
 
 const d = new Dog('wumi');
 d.eat('meat');
@@ -91,14 +90,14 @@ d.eat('meat');
 
 interface Person {
   star: string;
-  getName(name: string): void;
+  getName: (name: string) => void;
 };
 
 interface Man extends Person {
-  getGender(): void;
+  getGender: () => void;
 };
 
-class Arrow implements Man {    // 实现接口
+class Arrow implements Man { // 实现接口
   star: string = 'Earth';
 
   getGender() {

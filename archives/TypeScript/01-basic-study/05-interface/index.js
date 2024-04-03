@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /**
  * 1. 属性接口 对 json 的约束
  */
@@ -7,64 +7,64 @@
 //   lastName: string;
 // }
 function printName(name) {
-    console.log(name.firstName + "---" + name.lastName);
+  console.log(`${name.firstName}---${name.lastName}`);
 }
 ;
-var data = {
-    firstName: 'arrow',
-    lastName: 'bullet'
+const data = {
+  firstName: 'arrow',
+  lastName: 'bullet',
 };
 printName(data);
 ;
-var md5 = function (key, value) {
-    return key + value;
+const md5 = function (key, value) {
+  return key + value;
 };
 md5('11', '22');
 /**
  * 3. 可索引接口： 数组、对象的约束（不常用）
  */
 // 一般ts定义数组的方式是：
-var arr1 = [1, 2];
-var arr2 = ['1', '2'];
+const arr1 = [1, 2];
+const arr2 = ['1', '2'];
 ;
-var arr3 = ['a', 'b'];
+const arr3 = ['a', 'b'];
 ;
-var obj1 = {
-    test: 'test'
+const obj1 = {
+  test: 'test',
 };
 ;
-var Dog = /** @class */ (function () {
-    function Dog(name) {
-        this.name = 'init';
-        this.name = name;
-    }
-    ;
-    Dog.prototype.eat = function (str) {
-        console.log(this.name + '---' + str);
-    };
-    ;
-    return Dog;
+const Dog = /** @class */ (function () {
+  function Dog(name) {
+    this.name = 'init';
+    this.name = name;
+  }
+  ;
+  Dog.prototype.eat = function (str) {
+    console.log(`${this.name}---${str}`);
+  };
+  ;
+  return Dog;
 }());
 ;
-var d = new Dog('wumi');
+const d = new Dog('wumi');
 d.eat('meat');
 ;
 ;
-var Arrow = /** @class */ (function () {
-    function Arrow() {
-        this.star = 'Earth';
-    }
-    Arrow.prototype.getGender = function () {
-        console.log('I am a man!!');
-    };
-    ;
-    Arrow.prototype.getName = function (name) {
-        console.log("my name is " + name + "!!");
-    };
-    ;
-    return Arrow;
+const Arrow = /** @class */ (function () {
+  function Arrow() {
+    this.star = 'Earth';
+  }
+  Arrow.prototype.getGender = function () {
+    console.log('I am a man!!');
+  };
+  ;
+  Arrow.prototype.getName = function (name) {
+    console.log(`my name is ${name}!!`);
+  };
+  ;
+  return Arrow;
 }());
 ;
-var a = new Arrow();
+const a = new Arrow();
 a.getGender();
 a.getName('arrow');

@@ -4,7 +4,7 @@ class Router {
   }
 
   regieter(path, methods, middleware) {
-    let route = { path, methods, middleware };
+    const route = { path, methods, middleware };
     this.stack.push(route);
   }
 
@@ -24,13 +24,13 @@ class Router {
       let route;
       for (let i = 0; i < stock.length; i++) {
         const item = stock[i];
-        if(currentPath === item.path && item.methods.indexOf(ctx.method.toLowerCase()) >= 0) {
+        if (currentPath === item.path && item.methods.includes(ctx.method.toLowerCase())) {
           // 判断 path 和 method
           route = item.middleware;
           break;
         }
       };
-      if(typeof route === 'function') {
+      if (typeof route === 'function') {
         route(ctx, next);
         return;
       }

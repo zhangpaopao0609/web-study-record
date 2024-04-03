@@ -1,20 +1,19 @@
 // 简单的原型链继承
-const A = function() {};
+const A = function () {};
 A.prototype = { name: 'ardor-zhang' };
 
-const B = function() {};
+const B = function () {};
 B.prototype = new A();
 
 const b = new B();
 console.log(b.name);
-
 
 //  盗用构造函数 + 原型链 实现继承
 function Person(feature) {
   this.feature = feature;
 };
 
-Person.prototype.getFeature = function() {
+Person.prototype.getFeature = function () {
   return this.feature;
 };
 

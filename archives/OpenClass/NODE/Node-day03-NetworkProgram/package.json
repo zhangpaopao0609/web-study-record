@@ -2,13 +2,13 @@
   "name": "Node-day03-NetworkProgram",
   "version": "1.0.0",
   "description": "",
+  "author": "paopao-arrow",
+  "license": "MIT",
+  "keywords": [],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "paopao-arrow",
-  "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",

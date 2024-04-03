@@ -33,10 +33,10 @@ app.use((ctx, next) => {
     {
       name: 'arrow'
     }
-  ]
+  ];
 });
 
-app.listen(6090, err => {
+app.listen(6090, (err) => {
   if (err) {
     console.log(`服务启动失败： ${err}`);
   } else {
@@ -74,4 +74,3 @@ else {}
 | / | GET | handlerA |
 | /user | GET | handlerB |
 把策略存到一个表（数据结构中）里面，然后执行的时候就直接去匹配这条数据执行就可以了
-

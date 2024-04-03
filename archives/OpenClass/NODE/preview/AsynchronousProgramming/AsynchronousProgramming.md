@@ -9,7 +9,7 @@
 异步操作队列化，按照预期执行
 ## 回调地狱
 ```js
-const callback = () => {
+function callback() {
   setTimeout(() => {
     logTime('callback 1');
     setTimeout(() => {
@@ -18,26 +18,28 @@ const callback = () => {
         logTime('callback 3');
         setTimeout(() => {
           logTime('callback 4');
-        },100)
-      },100)
-    },100)
-  },100);
-};
+        }, 100);
+      }, 100);
+    }, 100);
+  }, 100);
+}
 ```
 ## Promise
 异步执行的状态机，异步执行的契约
 ```js
-const promise = (name, delay = 100) => new Promise(resolve => {
-  setTimeout(() => {
-    logTime(name);
-    resolve();
-  }, 100);
-})
+function promise(name, delay = 100) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      logTime(name);
+      resolve();
+    }, 100);
+  });
+}
 
-const promiseRes = () => {
+function promiseRes() {
   promise('Promise 1')
     .then(promise('Promise 2')
-    .then(promise('Promise 3')))
+      .then(promise('Promise 3')));
 }
 ```
 ### Generator
@@ -50,7 +52,7 @@ async/await 是 es7 推出的一套关于异步的终极解决方案
 - 任何一个await语句后面的Promise对象变为reject转态，那么整个async函数都会中断执行
 - async函数返回的Promise对象，必须等到内部所有await命令后面的Promise对象执行完成，才会发生状态改变，除非遇到return语句或者抛出错误。也就是说，只有async函数内部的异步操作执行完，才会执行then方法执行的回调函数
 ```js
-const asyncAwait = async () => {
+async function asyncAwait() {
   await promise('Async/Await 1');
   await promise('Async/Await 2');
   await promise('Async/Await 3');
@@ -61,29 +63,29 @@ const asyncAwait = async () => {
 ## 事件监听方式处理异步
 采用事件驱动模型。任务的执行不取决于代码的顺序，而取决于某个事件是否发生
 ```js
-const asyncAwait = async () => {
+async function asyncAwait() {
   await promise('Async/Await 1');
   await promise('Async/Await 2');
   await promise('Async/Await 3');
   await promise('Async/Await 4');
 }
 
-const event = () => {
-  const asyncFun = name => event => {
+function event() {
+  const asyncFun = name => (event) => {
     setTimeout(() => {
       logTime(name);
       event.emit('end');
     }, 100);
     return event;
-  }
-  
+  };
+
   const arr = [
     asyncFun('event 1'),
     asyncFun('event 2'),
     asyncFun('event 3')
-  ]
-  
-  const { EventEmitter } = require('events');
+  ];
+
+  const { EventEmitter } = require('node:events');
   const event = new EventEmitter();
   let i = 0;
   event.on('end', () => i < arr.length && arr[i++](event));

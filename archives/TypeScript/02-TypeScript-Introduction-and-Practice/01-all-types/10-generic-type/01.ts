@@ -8,7 +8,6 @@ const barr = identity(true);
 
 function assign<T = boolean, U = T>(target: T, source: U): T & U {}
 
-
 function assign1<T = boolean, U>(target: T, source: U): T & U {}
 
 identity<Date>(new Date());
@@ -28,9 +27,7 @@ function identity3<T extends number = 0 | 1>(x: T): T {
   return x;
 };
 
-identity3(4)
-
-
+identity3(4);
 
 interface Point2 {
   x: number;

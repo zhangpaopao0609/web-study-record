@@ -1,17 +1,17 @@
 # vue-study
-vue-study-09 
+vue-study-09
 服务端渲染
 # Nuxt框架（还有一种备选，pupter）
 服务端渲染的优点
 1. seo 友好
 2. 首屏加载速度快
-3. 
+3.
 ## 今日目标
 1. 调试Vue项目的方式
 2. vue是如何启动的
 3. vue响应式机制逐行分析
 
-### 
+###
 术语解释：
 - runtime: 仅包含运行是的版本，包含 vue 运行核心代码但没有模板编译器，如 vue.runtime.js
 - umd: Universal Module Definition 规范，用于浏览器 script 标签， 默认包含运行时和编译器，如 vue.js
@@ -26,9 +26,8 @@ vue-study-09
 ```js
   "dev": "rollup -w -c scripts/config.js --sourcemap --environment TARGET:web-full-dev",
 ```
-- 执行打包 ``` npm run dev ``` 
-- 修改samples里面的文件引用新生成的 vue.js 
-
+- 执行打包 ``` npm run dev ```
+- 修改samples里面的文件引用新生成的 vue.js
 
 ### Vue 数据响应式
 Vue一大特点是数据响应式，数据的变化会作用于 UI 而不用进行 DOM 操作。原理上来讲，是利用了 js 语言特性 Object.defineProperty(), 通过定义对象属性 setter 方法拦截对象属性变更，从而将数值的变化转换成 UI 的变化。

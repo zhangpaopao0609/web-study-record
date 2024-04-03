@@ -1,8 +1,8 @@
-const fs = require('fs');
+const fs = require('node:fs');
 
 let str = '';
 for (let i = 0; i < 500; i++) {
-  str += 'hello world 1 \r'
+  str += 'hello world 1 \r';
 }
 
 const stream = fs.createWriteStream('./data/hello.txt');
@@ -13,4 +13,4 @@ stream.end();
 
 stream.on('finish', () => {
   console.log('over');
-})
+});

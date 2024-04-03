@@ -1,7 +1,7 @@
 # 初识Docker
 ## 1. Docker是什么
 - Build, Ship and Run Any App, Anywhere —— 一次封装，到处执行
-- 基于Linux的高效、敏捷、轻量级的容器（轻量虚拟）方案 
+- 基于Linux的高效、敏捷、轻量级的容器（轻量虚拟）方案
 
 部署一个典型的前后端分离系统
 - 前端工程化 - Taro

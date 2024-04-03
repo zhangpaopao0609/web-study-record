@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const Router = require('koa-router');
 
 // 读取指定文件
@@ -11,12 +11,12 @@ function load(dir, cb) {
   const files = fs.readdirSync(url);
 
   // 遍历文件夹
-  files.forEach(filename => {
+  files.forEach((filename) => {
     filename = filename.replace('.js', '');
     const file = require(`${url}/${filename}`);
     // 处理逻辑
     cb(filename, file);
-  })
+  });
 };
 
 function initRouter(app) {
@@ -24,9 +24,9 @@ function initRouter(app) {
   load('../routes', (filename, routes) => {
     // 路由的前缀
     const prefix = filename === 'index' ? '' : `/${filename}`;
-    routes = routes instanceof Function ? routes(app) : routes; 
+    routes = routes instanceof Function ? routes(app) : routes;
     // 遍历对象
-    Object.keys(routes).forEach(key => {
+    Object.keys(routes).forEach((key) => {
       let [method, path] = key.split(' ');
       path = path === '/' ? '' : path;
       console.log(`正在映射地址： ${method.toLocaleUpperCase()} ${prefix}${path}`);
@@ -47,5 +47,5 @@ function initController() {
 
 module.exports = {
   initRouter,
-  initController
+  initController,
 };

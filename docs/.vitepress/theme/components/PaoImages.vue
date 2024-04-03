@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import MarkdownIt  from "markdown-it";
-const md = new MarkdownIt();
+import MarkdownIt from 'markdown-it';
 
 const props = withDefaults(defineProps<{
   src: string;
@@ -8,15 +7,17 @@ const props = withDefaults(defineProps<{
   title?: string;
   reference?: string;
 }>(), {
-  width: "100%"
-})
+  width: '100%',
+});
+
+const md = new MarkdownIt();
 </script>
 
 <template>
   <div class="image-wrapper">
     <img class="image" :src="src" alt="" srcset="">
-    <div class="title" v-if="title" v-html="md.render(title)"></div>
-    <div class="reference" v-if="reference" v-html="md.render('注释: ' + reference)"></div>
+    <div v-if="title" class="title" v-html="md.render(title)" />
+    <div v-if="reference" class="reference" v-html="md.render(`注释: ${reference}`)" />
   </div>
 </template>
 
@@ -26,7 +27,7 @@ const props = withDefaults(defineProps<{
   flex-direction: column;
   align-items: center;
 }
- 
+
 .image-wrapper :deep(p) {
   margin: 0 !important;
 }
@@ -49,6 +50,4 @@ const props = withDefaults(defineProps<{
 .reference :deep(p) {
   line-height: 20px;
 }
-
-
 </style>

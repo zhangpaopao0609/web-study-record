@@ -1,21 +1,21 @@
 const user = {
-    name: 'arrow'
-}
+  name: 'arrow',
+};
 
 const handler = {
-    get(target, property, receiver) {
-        console.log(`${property} is being visited!`);
-        return Reflect.get(...arguments);
-    },
-    set(target, property, newVal, receiver) {
-        if(newVal === target[property]) {
-            console.log(`${property} has same value!`);
-            return;
-        }
-        console.log(`${property} is being setted with newValue ${newVal}`);
-        return Reflect.set(...arguments);
+  get(target, property, receiver) {
+    console.log(`${property} is being visited!`);
+    return Reflect.get(...arguments);
+  },
+  set(target, property, newVal, receiver) {
+    if (newVal === target[property]) {
+      console.log(`${property} has same value!`);
+      return;
     }
-}
+    console.log(`${property} is being setted with newValue ${newVal}`);
+    return Reflect.set(...arguments);
+  },
+};
 
 const userProxy = new Proxy(user, handler);
 

@@ -24,7 +24,7 @@ const { callback, promiseRes, generatorRes, asyncAwait, event } = require('../in
 //   setTimeout(done, 1000);
 // });
 
-test('Event', done => {
+it('event', (done) => {
   event();
   // 延迟一秒结束
   setTimeout(done, 1000);

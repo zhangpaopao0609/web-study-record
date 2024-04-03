@@ -1,6 +1,6 @@
 // 目标
-const { promisify  } = require('util');
-// 
+const { promisify } = require('node:util');
+//
 const figlet = promisify(require('figlet'));
 // 清空命令行
 const clear = require('clear');
@@ -11,19 +11,19 @@ const clone = require('./downloadTemplate.js');
 
 const log = content => console.log(chalk.green(content));
 
-const spawn = (...args) => {
-  const { spawn } = require('child_process');
-  return new Promise(resolve => {
+function spawn(...args) {
+  const { spawn } = require('node:child_process');
+  return new Promise((resolve) => {
     const proc = spawn(...args);
     proc.stdout.pipe(process.stdout);
     proc.stderr.pipe(process.stderr);
     proc.on('close', () => {
       resolve();
-    })
-  })
+    });
+  });
 }
 
-module.exports = async name => {
+module.exports = async (name) => {
   // 打印欢迎界面
   clear();
   const data = await figlet('Arrow Welcome!');
@@ -39,9 +39,9 @@ module.exports = async name => {
 ================
 已经安装完成了！！！
 ================
-    `
+    `,
   );
   // 打开浏览器
   open('http://localhost:8080');
-  await spawn('npm', ['run serve'], { cwd: `./${name}`})
+  await spawn('npm', ['run serve'], { cwd: `./${name}` });
 };

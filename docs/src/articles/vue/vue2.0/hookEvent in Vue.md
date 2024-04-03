@@ -4,7 +4,7 @@
 
 ## 1. 前言
 
-### 1.1 发现 hookEvent 
+### 1.1 发现 hookEvent
 
 2020.1.25 同事小姐姐问了一个问题，如何在 react 中监听组件的生命周期，也就是说，想知道目前页面执行到哪一个生命周期了，希望能在某个生命周期执行某个功能。就类似于 Vue 中的 hookEvent。
 
@@ -28,15 +28,15 @@ beforeDestory() {
 这段代码需要在10个组件里分别写上。如果使用 hookEvent，只需要在父组件中监听子组件的这两个生命周期，写一套代码即可。如下：
 
 ```js
-<component-a 
-	@hook:mounted="handleHookMounted" 
-	@hook:beforeDestory="handleHookBeforeDestory" 
+<component-a
+	@hook:mounted="handleHookMounted"
+	@hook:beforeDestory="handleHookBeforeDestory"
 />
-<component-b 
-	@hook:mounted="handleHookMounted" 
-	@hook:beforeDestory="handleHookBeforeDestory" 
+<component-b
+	@hook:mounted="handleHookMounted"
+	@hook:beforeDestory="handleHookBeforeDestory"
 />
-    
+
 methods: {
   handleHookMounted() {
     alert("组件渲染成功！");
@@ -52,9 +52,9 @@ methods: {
 代码中引入某一个三方 UI 组件，由于数据量过大，这个组件从 created 到 mounted 需要 5s 时间，可是这个 UI 组件并没有考虑到这一点，因此没有做加载效果，因此，页面存在 5s 的空白时间，那么这时候如果想要在 created 到 mounted 期间让页面展示一个 loading 效果，有两种方案。第一种就是修改这个 UI 组件，在这个期间加上 loading 效果，显然这很难。第二种就是利用 hookEvent 来实现，监听 UI 组件的 created 和 mounted 生命周期。如下：
 
 ```js
-<component-ui 
-	@hook:created="handleHookCreated" 
-	@hook:mounted="handleHookMounted" 
+<component-ui
+	@hook:created="handleHookCreated"
+	@hook:mounted="handleHookMounted"
 />
 
 handleHookCreated() {
@@ -94,20 +94,20 @@ callHook(vm, 'created')
 ### 2.2 callHook(`src/core/instance/lifecycle.js`)
 
 ```js
-export function callHook (vm: Component, hook: string) {
+export function callHook(vm: Component, hook: string) {
   // #7573 disable dep collection when invoking lifecycle hooks
-  pushTarget()
-  const handlers = vm.$options[hook]
-  const info = `${hook} hook`
+  pushTarget();
+  const handlers = vm.$options[hook];
+  const info = `${hook} hook`;
   if (handlers) {
     for (let i = 0, j = handlers.length; i < j; i++) {
-      invokeWithErrorHandling(handlers[i], vm, null, vm, info)
+      invokeWithErrorHandling(handlers[i], vm, null, vm, info);
     }
   }
   if (vm._hasHookEvent) {
-    vm.$emit('hook:' + hook)
+    vm.$emit(`hook:${hook}`);
   }
-  popTarget()
+  popTarget();
 }
 ```
 
@@ -150,14 +150,14 @@ export function eventsMixin (Vue: Class<Component>) {
 
 ```js
 <son-component
-  @hook:beforeCreate="handleHookBeforeCreate" 
-  @hook:created="handleHookCreated" 
-  @hook:beforeMount="handleHookBeforeMount" 
-  @hook:mounted="handleHookMounted" 
-  @hook:beforeUpdate="handleHookBeforeUpdate" 
-  @hook:updated="handleHookUpdated" 
-  @hook:beforeDestory="handleHookBeforeDestory" 
-  @hook:destoryed="handleHookDestoryed" 
+  @hook:beforeCreate="handleHookBeforeCreate"
+  @hook:created="handleHookCreated"
+  @hook:beforeMount="handleHookBeforeMount"
+  @hook:mounted="handleHookMounted"
+  @hook:beforeUpdate="handleHookBeforeUpdate"
+  @hook:updated="handleHookUpdated"
+  @hook:beforeDestory="handleHookBeforeDestory"
+  @hook:destoryed="handleHookDestoryed"
 />
 
 methods: {

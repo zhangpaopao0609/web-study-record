@@ -66,7 +66,7 @@ Javascript 提供了两种事件来负责处理设备方向信息。
 
 ```js
 window.addEventListener(
-  "deviceorientation",
+  'deviceorientation',
   (DeviceOrientationEvent) => {},
   true
 );
@@ -113,7 +113,6 @@ window.addEventListener(
   <img src='./img/v-h.gif' style="zoom:20%;"/>
 </div>
 
-
 核心代码如下，[点击可查看详细源码](https://github.com/zhangpaopao0609/web-study-record/tree/master/%E9%9B%B6%E6%95%A3%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%89%8B%E6%9C%BA%E4%BC%A0%E6%84%9F%E5%99%A8/H5-gyroscope/02-deviceorientation-v-h)
 
 ```js
@@ -124,15 +123,15 @@ function handleOrientation(event) {
   const betaBetween = beta >= -30 && beta <= 30;
   const gammaBetween = gamma >= -45 && gamma <= 45;
   if (!gammaBetween && betaBetween) {
-    now.innerHTML = "横屏";
+    now.innerHTML = '横屏';
     Horizontal();
   } else if (gammaBetween && !betaBetween) {
-    now.innerHTML = "竖屏";
+    now.innerHTML = '竖屏';
     Vertical();
   }
 }
 
-window.addEventListener("deviceorientation", handleOrientation);
+window.addEventListener('deviceorientation', handleOrientation);
 ```
 
 ## 3. 监听加速度 —— devicemotion
@@ -141,7 +140,7 @@ window.addEventListener("deviceorientation", handleOrientation);
 要接收手机在各方向上位置和方向的变化速度，只需要监听 `devicemotion` 事件即可
 
 ```js
-window.addEventListener("devicemotion", (DevicemotionEvent) => {});
+window.addEventListener('devicemotion', (DevicemotionEvent) => {});
 ```
 
 回调函数会定期地接收到手机最新的方向事件对象：`DeviceOrientationEvent`，这个对象上包含了以下四个值：
@@ -192,7 +191,7 @@ function gotoShake() {
     }
   }
 
-  window.addEventListener("devicemotion", throttle(handleShake, 200), true);
+  window.addEventListener('devicemotion', throttle(handleShake, 200), true);
 }
 ```
 

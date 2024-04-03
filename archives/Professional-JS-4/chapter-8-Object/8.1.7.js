@@ -1,10 +1,10 @@
 const person = {
-    job: {
-        title: 'software'
-    }
+  job: {
+    title: 'software',
+  },
 };
-let personCopy = {
-    test: { t: 8 }
+const personCopy = {
+  test: { t: 8 },
 };
 
 ({ job: { title: personCopy.test.t } } = person);

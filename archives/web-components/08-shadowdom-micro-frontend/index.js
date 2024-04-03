@@ -8,19 +8,18 @@ class MicroFrontendWebComponents extends HTMLElement {
     const template = document.getElementById('micro-frontend-web-components');
     const templateContent = template.content;
     const shadow = this.attachShadow({ mode: 'open' });
-    const m = document.createElement("script");
-    m.innerHTML =`  
+    const m = document.createElement('script');
+    m.innerHTML = `  
       new Vue({
         el: ,
         data: function() {
           return { visible: false }
         }
       })
-   `
-    
+   `;
+
     shadow.appendChild(templateContent.cloneNode(true));
     shadow.appendChild(m);
-
   };
 };
 

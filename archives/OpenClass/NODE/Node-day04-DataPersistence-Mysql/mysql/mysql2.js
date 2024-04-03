@@ -5,18 +5,18 @@
     host: '134.175.53.155',
     user: 'root',
     password: '123456',
-    database: 'arrow'
+    database: 'arrow',
   };
 
   const connection = await mysql.createConnection(config);
 
-  connection.connect(err => {
+  connection.connect((err) => {
     if (err) {
       throw err;
     } else {
-      console.log("链接成功！");
+      console.log('链接成功！');
     }
-  })
+  });
 
   const CREATE_TABLE = await connection.execute(`
     CREATE TABLE IF NOT EXISTS test (
@@ -31,4 +31,4 @@
   const SELECT_SQL = await connection.execute(`SELECT * FROM test`);
   const [rows, fields] = SELECT_SQL;
   console.log(rows, fields);
-})()
+})();

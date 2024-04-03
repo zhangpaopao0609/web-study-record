@@ -1,4 +1,4 @@
-const User = (sequelize, DataTypes, Model) => {
+function User(sequelize, DataTypes, Model) {
   class User extends Model {}
 
   User.init({
@@ -6,16 +6,16 @@ const User = (sequelize, DataTypes, Model) => {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      primaryKey: true
+      primaryKey: true,
     },
     userName: {
-      type: DataTypes.STRING
-    }
+      type: DataTypes.STRING,
+    },
   }, {
-    sequelize 
+    sequelize,
   });
 
   return User;
-};
+}
 
 module.exports = User;

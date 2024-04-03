@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import A from "./views/A.jsx";
+import A from './views/A.jsx';
 
 export default class App extends Component {
   render() {
@@ -7,6 +7,6 @@ export default class App extends Component {
       <div>
         <A />
       </div>
-    )
+    );
   }
 }

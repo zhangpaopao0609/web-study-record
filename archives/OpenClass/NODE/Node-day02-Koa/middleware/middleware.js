@@ -15,30 +15,30 @@ async function fn3(next) {
   console.log('fn3');
 }
 
-const delay = () => {
+function delay() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve();
     }, 2000);
-  })
+  });
 }
 
-const compose = middlewares => {
+function compose(middlewares) {
   return () => {
-    const dispatch = i => {
-      let fn = middlewares[i];
-      if(!fn) {
+    const dispatch = (i) => {
+      const fn = middlewares[i];
+      if (!fn) {
         return Promise.resolve();
-      }else {
-        const next = () => dispatch(i+1);
+      } else {
+        const next = () => dispatch(i + 1);
         return Promise.resolve(
           // Promise 完成，再执行下一个
-          fn(next)
-        )
+          fn(next),
+        );
       }
-    }
+    };
     return dispatch(0);
-  }
+  };
 }
 
 const middlewares = [fn1, fn2, fn3];

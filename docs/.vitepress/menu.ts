@@ -22,11 +22,11 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
   '/git/': [
     {
       text: 'Git',
-      link: "/git/",
+      link: '/git/',
       items: [
         {
           text: 'git 基础',
-          base: "/git/pro-git",
+          base: '/git/pro-git',
           items: [
             { text: '01-起步', link: '/01-起步.md' },
             { text: '02-git基础', link: '/02-git基础.md' },
@@ -37,7 +37,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         },
         {
           text: '常见问题',
-          base: "/git/faq",
+          base: '/git/faq',
           items: [
             { text: 'git fetch 和 git pull 的区别', link: '/fetch-pull-diff.md' },
             { text: 'git reset 和 git revert 的区别', link: '/reset-revert-diff.md' },
@@ -172,7 +172,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         {
           text: '写给张跑跑的',
           collapsed: true,
-          base: "articles/zhangpaopao",
+          base: 'articles/zhangpaopao',
           items: [
             { text: '写在 26 岁', link: '/write-in-26.md' },
             { text: '一点点感悟', link: '/a-little-insight.md' },
@@ -180,12 +180,12 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             { text: '离职到入职，有太多想要感谢的', link: '/resignation-to-employment.md' },
             { text: '20211024 —— 聊聊接下来自己的前端工程师之路', link: '/20211024.md' },
             { text: '20221024 —— 又到该怼一怼自己的时候了', link: '/20221024.md' },
-          ]
+          ],
         },
         {
           text: 'JavaScript',
           collapsed: true,
-          base: "articles/javascript",
+          base: 'articles/javascript',
           items: [
             { text: '聊2022年 JS 都有哪些更新', link: '/2022-js-update/README.md' },
             { text: '数组 fill 方法有坑呐', link: '/silly-bug-in-array-fill-method-in-es6/README.md' },
@@ -196,27 +196,27 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             { text: '树形结构和平铺结构的转换', link: '/树形结构和平铺结构的转换.md' },
             { text: 'JS 中 reduce 实现函数的 compose', link: '/JS 中 reduce 实现函数的 compose.md' },
             { text: 'JS中实现链式调用', link: '/JS中实现链式调用.md' },
-          ]
+          ],
         },
         {
           text: 'Mobile',
-          base: "articles/mobile",
-          items: [{ text: 'H5 陀螺仪', link: '/H5-gyroscope/README.md' }]
+          base: 'articles/mobile',
+          items: [{ text: 'H5 陀螺仪', link: '/H5-gyroscope/README.md' }],
         },
         {
           text: 'Repository',
           collapsed: true,
-          base: "articles/repository",
+          base: 'articles/repository',
           items: [
             { text: '守护世界守护你', link: '/guarding-the-world-guarding-you/README.md' },
             { text: '四不像项目要如何进化', link: '/how-to-evolve-four-dissimilar-projects/README.md' },
             { text: '简单介绍一下项目仓库模式', link: '/intro-different-repository/README.md' },
             { text: '你所需要了解的关于 Monorepo 的一切', link: '/monorepo/README.md' },
-          ]
+          ],
         },
         {
           text: 'Vue',
-          base: "articles/vue",
+          base: 'articles/vue',
           items: [
             { text: '谈谈如何”正确“的使用 Vuex', link: '/how-to-use-vuex-correctly/README.md' },
             { text: 'vite实现原理详解', link: '/vite/vite实现原理详解.md' },
@@ -226,28 +226,28 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             { text: 'Vue3.2 新特性之 —— `<script setup>`和 `<style> v-bind`', link: '/vue3.2/Vue3.2 新特性之 —— `<script setup>`和 `<style> v-bind`.md' },
             { text: 'Vue3.2新特性性之——web-components', link: '/vue3.2/Vue3.2新特性性之——web-components.md' },
             { text: '01-框架设计到处都体现着权衡的艺术', link: '/vuejs-design/01-框架设计到处都体现着权衡的艺术.md' },
-          ]
+          ],
         },
         {
           text: '设计模式',
-          base: "articles/design-patterns",
+          base: 'articles/design-patterns',
           items: [
             { text: '适配器模式', items: [{ text: '统一接口', link: '/adapter/uniform-interface/README.md' }] },
-          ]
+          ],
         },
         {
           text: '前端',
           collapsed: true,
-          base: "articles/front-end",
+          base: 'articles/front-end',
           items: [
             { text: '微前端的暗位面', link: '/the-dark-side-of-the-micro-front-end/README.md' },
             { text: '项目依赖的版本范围控制浅谈', link: '/study-semantic/README.md' },
             { text: '原来 peerDependencies 是这么个东东', link: '/peer-dependencies/README.md' },
-          ]
+          ],
         },
         {
           text: '网络',
-          base: "articles/network",
+          base: 'articles/network',
           items: [
             { text: '服务端推送全貌', link: '/how-to-receive-server-side-push/README.md' },
             { text: '浅谈Cookie、Session 和 Token', link: '/cooke-session-token/README.md' },
@@ -257,44 +257,44 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             { text: '半连接队列和 SYN Flood 攻击', link: '/半连接队列和 SYN Flood 攻击.md' },
             { text: 'DNS解析', link: '/DNS解析.md' },
             { text: 'PUT vs POST-Comparing HTTP Methods', link: '/PUT vs POST-Comparing HTTP Methods.md' },
-          ]
+          ],
         },
         {
           text: 'CSS',
-          base: "articles/css",
+          base: 'articles/css',
           items: [
             { text: 'Sass 还可以这么玩 —— Sass 批量生成 `padding` 和 `margin`', link: '/padding-margin-classed-with-sass/README.md' },
-          ]
+          ],
         },
         {
           text: '程序',
-          base: "articles/programming",
+          base: 'articles/programming',
           items: [
             { text: '静态类型 vs 动态类型 和 弱类型 vs 强类型', link: '/static-vs-dynamic-and-weak-vs-strong/README.md' },
-          ]
+          ],
         },
         {
           text: '算法',
-          base: "articles/alg",
+          base: 'articles/alg',
           items: [
             { text: '大数之和', link: '/big-sum/README.md' },
             { text: '25匹马，5个跑道', link: '/find-fastest-5-horse/README.md' },
-          ]
+          ],
         },
         {
           text: '浏览器',
-          base: "articles/browser",
+          base: 'articles/browser',
           items: [
             { text: '跨域及解决方案', link: '/cross-domain-and-solution/README.md' },
-          ]
+          ],
         },
         {
           text: '其它',
-          base: "articles/other",
+          base: 'articles/other',
           items: [
             { text: '一文搞懂蓝绿部署和金丝雀发布', link: '/blue-green-deployment-and-canaries.md' },
             { text: 'mac 软件', link: '/mac-software.md' },
-          ]
+          ],
         },
       ],
     },

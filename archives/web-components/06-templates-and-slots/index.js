@@ -11,7 +11,6 @@ class MyParagraph extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: 'open' });
     // shadowRoot.appendChild(templateContent);
     shadowRoot.appendChild(templateContent.cloneNode(true));
-
   };
 };
 

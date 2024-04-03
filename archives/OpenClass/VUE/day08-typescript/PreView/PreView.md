@@ -10,8 +10,8 @@ yarn add typescript --dev
 - 配置文件
 初始化配置文件
 ```js
-npx tsc --init  
-``` 
+npx tsc --init
+```
 - 生成package.json
 ```js
 yarn init

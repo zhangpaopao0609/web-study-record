@@ -25,15 +25,15 @@ function Person(name) {
   this.name = name;
 };
 
-Person.prototype.getName = function() {
+Person.prototype.getName = function () {
   return this.name;
 };
 
-const objectFactory = function() {
-  const obj = new Object();   // 从 Object.prototype 上克隆一个空的对象
-  const Constructor = Array.prototype.shift.call(arguments);    // 取得外部传入的构造器，此例是 Person
-  obj.__proto__ = Constructor.prototype;    // obj 的 __proto__ 属性指向构造函数的原型（prototype），这样可以继承到原型链上的属性和方法
-  const ret = Constructor.apply(obj, arguments);    //  构造函数执行，但是 this 的指向了 obj，这样 obj 就获取到了 实例属性 
+const objectFactory = function () {
+  const obj = new Object(); // 从 Object.prototype 上克隆一个空的对象
+  const Constructor = Array.prototype.shift.call(arguments); // 取得外部传入的构造器，此例是 Person
+  obj.__proto__ = Constructor.prototype; // obj 的 __proto__ 属性指向构造函数的原型（prototype），这样可以继承到原型链上的属性和方法
+  const ret = Constructor.apply(obj, arguments); //  构造函数执行，但是 this 的指向了 obj，这样 obj 就获取到了 实例属性
   return typeof ret === 'object' ? ret : obj;
 };
 
@@ -53,7 +53,7 @@ console.log(b.getName());
 JS 给对象提供了一个名为 `__proto__` 的隐藏属性，某个对象的 `__proto__` 属性默认会指向它的构造器的原型对象，即 `{Constructor}.prototype`。可在 chrome 或者 firefox 上验证：
 ```js
 const a = new Object();
-console.log(a.__proto__ === Object.prototype)  // true
+console.log(a.__proto__ === Object.prototype); // true
 ```
 实际上， `__proto__` 就是对象跟 "对象构造器的原型" 联系起来的纽带。
 
@@ -64,7 +64,7 @@ console.log(a.__proto__ === Object.prototype)  // true
 ```js
 const obj = { name: 'ardor' };
 
-const A = function() {};
+const A = function () {};
 A.prototype = obj;
 
 const instanceA = new A();
@@ -78,22 +78,21 @@ console.log(instanceA.name);
 当我们期望得到一个 "类" 继承自另一个 "类" 的效果时，往往会用下面的代码来模拟实现：
 ```js
 // 简单的原型链继承
-const A = function() {};
+const A = function () {};
 A.prototype = { name: 'ardor-zhang' };
 
-const B = function() {};
+const B = function () {};
 B.prototype = new A();
 
 const b = new B();
 console.log(b.name);
-
 
 //  盗用构造函数 + 原型链 实现继承
 function Person(feature) {
   this.feature = feature;
 };
 
-Person.prototype.getFeature = function() {
+Person.prototype.getFeature = function () {
   return this.feature;
 };
 

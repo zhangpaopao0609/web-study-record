@@ -1,4 +1,5 @@
 const Arrow = require('./arrow.js');
+
 const app = new Arrow();
 
 // app.use((req, res) => {
@@ -29,10 +30,10 @@ app.use(async (ctx, next) => {
   ctx.body += '3';
 });
 
-app.listen(6091, err => {
+app.listen(6091, (err) => {
   if (err) {
     console.log(`服务启动失败： ${err}`);
   } else {
     console.log('服务启动成功：6091');
   };
-})
+});

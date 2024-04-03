@@ -5,7 +5,7 @@ function getComponent() {
       element.innerHTML = _.join(['Hello', 'webpack'], ' ');
       return element;
     })
-    .catch(err => {
+    .catch((err) => {
       console.error('An error occurred while loading the component!!');
     });
 }

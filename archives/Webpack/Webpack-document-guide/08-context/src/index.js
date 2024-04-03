@@ -1,6 +1,6 @@
-import _ from "lodash";
-import b from "../context-test/index";
-import { a } from "../context-test/index-old";
+import _ from 'lodash';
+import b from '../context-test/index';
+import { a } from '../context-test/index-old';
 
 function component() {
   const element = document.createElement('div');

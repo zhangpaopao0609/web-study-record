@@ -16,10 +16,10 @@ Koa 实战 - 登录认证
 # sesson-cookie 模式
 ```js
 // 观察 cookie
-  console.log(req.headers.cookie);
+console.log(req.headers.cookie);
 
-  // 设置 cookie
-  res.setHeader('Set-Cookie', 'cookie1=arrow');
+// 设置 cookie
+res.setHeader('Set-Cookie', 'cookie1=arrow');
 ```
 每次发送请求，浏览器都会将所有 cookie 放到 req 中
 cookie 的不足：
@@ -29,20 +29,20 @@ cookie 的不足：
 
 因此，最好有一个能够直接东西能够把数据存在后端，前端只用某个字段来后端取对应的数据即可，而不是由前端来保存对应的数据
 ```js
-const http = require('http');
-const { Session } = require('inspector');
+const http = require('node:http');
+const { Session } = require('node:inspector');
 const session = {};
 
 const app = http.createServer((req, res) => {
   // 设置 cookie
   const sessionKey = 'arrow';
   const cookie = req.headers.cookie;
-  if(cookie && cookie.indexOf(sessionKey) > -1) {
+  if (cookie && cookie.includes(sessionKey)) {
     res.end('come back');
     const pattern = new RegExp(`${sessionKey}=([^;]+);?\s*`);
     const sid = pattern.exec(cookie)[1];
     console.log('session', sid, session, session[sid]);
-  }else {
+  } else {
     const sid = (Math.random() * 99999).toFixed();
     // 设置cookie
     res.setHeader('Set-Cookie', `${sessionKey}=${sid}`);
@@ -80,7 +80,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGVzdCIsImV4cCI6MTYwNjU1ODk2MCw
 ```
 Bearer Token 包含三个组成部分： 令牌头、payload、哈希
 
-第一段： base64 编码   
+第一段： base64 编码
 头部、申明部分
 ![jwt-01](./img/jwt-01.png)
 
@@ -105,7 +105,6 @@ body， 密文结果
 - token的生成方式更加多样化，可以由第三方模块来提供
 - token若被盗用，服务端无法感知，cookie信息存储在用户自己电脑中，被盗用风险略小
 
-
 RFC(Request For Comments), 征求意见稿
 
-# OAuth 
+# OAuth

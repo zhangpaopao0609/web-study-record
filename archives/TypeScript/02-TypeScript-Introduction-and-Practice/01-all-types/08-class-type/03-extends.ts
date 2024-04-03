@@ -18,4 +18,4 @@ class Circle extends Shape {
   }
 }
 
-const circle = new Circle()
+const circle = new Circle();

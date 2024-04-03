@@ -10,7 +10,7 @@ HTTP缓存技术就是为了解决这个问题出现的。简单的讲HTTP缓存
 直接从本地副本比对读取，不去请求服务器，返回的状态码为200
 
 这里面就有一个问题如果不去服务请求如果静态资源更新了而浏览器还在使用旧的静态资源怎么办？答案是使用定时器的方式也就是强缓存可以设置静态资源的有效期。如果超过有效期就认为缓存作废。
-#### HTTP 1.0 
+#### HTTP 1.0
 1. expires
 expires 是 HTTP1.0中定义的缓存字段。当我们请求一个资源，服务器返回时，可以咋Response Headers中增加expires字段表示资源的过时间
 ```http
@@ -37,7 +37,7 @@ cache-control
 
 #### last-Modified & if-Modified-Since
 这是一组通过协商修改时间为基础的策略
-![协商缓存](./last-Modified.png) 
+![协商缓存](./last-Modified.png)
 #### etag & if-None-Match
 另一种是通过内容判断，一般的做法是将返回内容进行摘要（hash），然后通过对比摘要来判断内容是否更新
-![基于内容缓存](./etag.png) 
+![基于内容缓存](./etag.png)

@@ -34,7 +34,7 @@ vue3.2 的新特性之一就是，提供了一种方案，让开发者可以完�
 `vue`支持通过 `defineCustomMelement `方法使用完全相同的 `vue` 组件 API 创建自定义元素。该方法接受与`defineComponent` 相同的参数，但返回扩展 `HtmleElement` 的自定义元素构造函数，这个构造函数可以直接用于自定义元素注册，`customElements.define`。
 
 ```js
-import { defineCustomElement } from 'vue'
+import { defineCustomElement } from 'vue';
 
 const MyVueElement = defineCustomElement({
   // 普通的 vue 组件
@@ -86,7 +86,7 @@ customElements.define('my-vue-element', MyVueElement);
 
    ```html
    <my-vue-element :user.prop="{ name: 'jack' }"></my-vue-element>
-   
+
    <!-- 简写方式 -->
    <my-vue-element .user="{ name: 'jack' }"></my-vue-element>
    ```
@@ -126,12 +126,12 @@ customElements.define('my-vue-element', MyVueElement);
 3. 要选择使用此模式，只需以 `.ce.vue` （`.ce` customElement 的缩写）结尾您的组件文件名，以使得构建工具在构建时将 `css` 注入到自定义元素的 `shadow root` 中而不是提取合并到单个 `css` 文件中
 
 ```js
-import { defineCustomElement } from 'vue'
-import Example from './Example.ce.vue'		// 引入
+import { defineCustomElement } from 'vue';
+import Example from './Example.ce.vue'; // 引入
 
-const ExampleElement = defineCustomElement(Example)  // 生成 HTMLElement 构造函数
+const ExampleElement = defineCustomElement(Example); // 生成 HTMLElement 构造函数
 
-customElements.define('my-example', ExampleElement)		// 注册
+customElements.define('my-example', ExampleElement); // 注册
 ```
 
 ## 3. 用 vue 创建自定义元素库的注意点
@@ -157,20 +157,20 @@ resolve: {
 建议导出单个元素构造函数，以便您的用户可以灵活地按需导入它们并使用所需的标记名称注册它们。您还可以导出一个方便的函数来自动注册所有元素。这是 Vue 自定义元素库的示例入口点：
 
 ```js
-import { defineCustomElement } from 'vue'
-import Foo from './MyFoo.ce.vue'
-import Bar from './MyBar.ce.vue'
+import { defineCustomElement } from 'vue';
+import Foo from './MyFoo.ce.vue';
+import Bar from './MyBar.ce.vue';
 
-const MyFoo = defineCustomElement(Foo)
-const MyBar = defineCustomElement(Bar)
+const MyFoo = defineCustomElement(Foo);
+const MyBar = defineCustomElement(Bar);
 
 // 单个导出，用户可以按需加载
-export { MyFoo, MyBar }
+export { MyFoo, MyBar };
 
 // 导出 注册函数，用户可简单一次性注册
 export function register() {
-  customElements.define('my-foo', MyFoo)
-  customElements.define('my-bar', MyBar)
+  customElements.define('my-foo', MyFoo);
+  customElements.define('my-bar', MyBar);
 }
 ```
 
@@ -195,4 +195,3 @@ export function register() {
 对于自定义元素，我想这更多的是一种拓展研究吧，`vue` `react` 框架不仅仅是在其框架本身的设计，还有是生态，所以能形成一个闭环。而自定义元素，缺少的不仅是设计层面的，更多是生态。
 
 但是 `vue3` 能够去做这样的拓展也是非常有意思的，我们开发者也多去探索探索，说不定未来就能够实现跨技术栈了呢？
-

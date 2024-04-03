@@ -1,6 +1,6 @@
 [toc]
 
-# 2022 年 JavaScript 都有哪些更新? 
+# 2022 年 JavaScript 都有哪些更新?
 
 2023 已经快一半了，不知道对于 2022 年 JavaScript 的更新点大家是否都有所尝试或者已经在项目中使用起来了呢？
 
@@ -46,7 +46,7 @@
    ```js
    async function doJob() {
      await fetch('//domain/resource-a')
-       .catch(err => {
+       .catch((err) => {
          // 开发者一般会如何包装这个错误呢?
          // 方式1. throw new Error('下载资源失败: ' + err.message);
          // 方式2. const wrapErr = new Error('下载资源失败');
@@ -59,7 +59,7 @@
          //      		}
          //    		}
          //    		throw new CustomError('下载资源失败', err);
-       })
+       });
    }
    await doJob(); // => TypeError: Failed to fetch
    ```
@@ -98,15 +98,13 @@
 
    目前浏览器都已经支持了，在调试的时候就能看到对应的支持。
 
-
-
 ## 2. findLast`/`findLastIndex (ES2023)
 
 1. 提案信息
    - 提案作者：王文璐（@Kingwl），前微软中国
    - 提案[详细内容传送门](https://github.com/tc39/proposal-array-find-from-last)
 
-2. 识别问题 
+2. 识别问题
 
    目前 ES 提供了`find` 和 `findIndex` ，即在数组中从前往后找，找出第一个符合条件的成员/成员位置，但没有提供从后往前找的方法。
 
@@ -165,13 +163,13 @@
        时间: 2023.5.3
        地点: 朝天门
    `;
-   
+
    for (const item of arranges.matchAll(/时间:\s*(.+)/g)) {
      console.log(item);
    }
    // [ '时间: 2023.5.1', '2023.5.1', index: 21, ... ]
    // [ '时间: 2023.5.3', '2023.5.3', index: 57, ... ]
-   
+
    // 有什么问题呢？问题是没有捕获组的索引位置
    ```
 
@@ -189,7 +187,7 @@
    }
    // [ '时间: 2023.5.1', '2023.5.1', index: 21, indices: [ [ 57, 69 ], [ 61, 69 ] ], ... ]
    // [ '时间: 2023.5.3', '2023.5.3', index: 57, indices: [ [ 57, 69 ], [ 61, 69 ] ], ... ]
-   
+
    // 增加一个 `indices: [ [ 57, 69 ], [ 61, 69 ] ]`
    ```
 
@@ -201,7 +199,7 @@
 
 4. 个人评价
 
-   有价值，但用得其实不多，本身场景就少。 
+   有价值，但用得其实不多，本身场景就少。
 
 ## 4. Object.hasOwn() (ES2022)
 
@@ -218,10 +216,10 @@
    - 如果创建的对象是没有原型的，如 `Object.create(null)`
 
    ```js
-   let o = { hasOwnProperty: "覆盖了原型上的方法" }
-   o.hasOwnProperty("foo")
+   const o = { hasOwnProperty: '覆盖了原型上的方法' };
+   o.hasOwnProperty('foo');
    // TypeError: o.hasOwnProperty is not a function
-   Object.create(null).hasOwnProperty("foo")
+   Object.create(null).hasOwnProperty('foo');
    // Uncaught TypeError: hasOwnProperty is not a function
    ```
 
@@ -229,13 +227,13 @@
 
    ```js
    // 健壮但繁琐的写法
-   let hasOwnProperty = Object.prototype.hasOwnProperty
-   if (hasOwnProperty.call(o, "foo")) {
-     console.log("foo 是自身的属性")
+   const hasOwnProperty = Object.prototype.hasOwnProperty;
+   if (hasOwnProperty.call(o, 'foo')) {
+     console.log('foo 是自身的属性');
    }
    // 或者
-   if (Object.getOwnPropertyDescriptor(o, "foo")) {
-   	console.log("foo 是自身的属性")
+   if (Object.getOwnPropertyDescriptor(o, 'foo')) {
+     console.log('foo 是自身的属性');
    }
    ```
 
@@ -246,8 +244,8 @@
    增加 `Object.hasOwn` 这个静态方法。
 
    ```js
-   if (Object.hasOwn(o, "foo")) {
-     console.log("foo 是自身的属性")
+   if (Object.hasOwn(o, 'foo')) {
+     console.log('foo 是自身的属性');
    }
    ```
 
@@ -257,15 +255,13 @@
    >
    >    目的不一样，`Object.getOwnPropertyDescriptor` 是返回属性的描述对象，能够判断出是否为自有属性仅是开发者利用了它的机制。
    >
-   > 2. 为什么不直接叫 `Object.hasOwnProperty` 
+   > 2. 为什么不直接叫 `Object.hasOwnProperty`
    >
    >    因为 `Object.hasOwnProperty` 已经有了，`Object` 也会指向 `Object.prototype` 的。
 
 4. 个人评价
 
    在某些场景下是有使用价值的，但相对来说场景不多。而且现有的方法基本能够满足了，当然新的方法肯定更加健壮。
-
-
 
 ## 5. Array.at() (ES2022)
 
@@ -282,7 +278,7 @@
    增加 `at` 方法，接受一个整数作为参数，返回对应位置的成员，支持负索引。
 
    ```js
-   let last = array.at(-1)
+   const last = array.at(-1);
    ```
 
 4. 个人评价
@@ -298,13 +294,13 @@
      一般常用的写法如下，取出来然后设置
 
      ```js
-     ++array[array.length - 1]
+     ++array[array.length - 1];
      ```
 
      如果使用 at，这就非常奇怪了，比之前还要麻烦。
 
      ```js
-     array[array.length - 1] = array.at(-1) + 1
+     array[array.length - 1] = array.at(-1) + 1;
      ```
 
    -  `arr.at(i)` 和 `arr[i]` 在处理非索引时语义不同
@@ -314,8 +310,6 @@
    - 当 `arr.at(-idx)` 中的 `idx` 是计算值时会有问题
 
      `arr.at(arr.length - 0)` 所要表达的意图是边界，可如果当 `arr.length` 恰好为 0 时，`arr.at(0 - 0)`  这时候程序的意图是数组的第一个了，意图上有所不同了。
-
-
 
 ## 5. Hashbang `#!` (ES2023)
 
@@ -376,11 +370,11 @@
      ```js
      let output;
      (async () => {
-       output = await new Promise((resolve) =>
+       output = await new Promise(resolve =>
          setTimeout(() => resolve(6), 500)
        );
      })();
-     
+
      export { output };
      ```
 
@@ -388,13 +382,13 @@
 
      ```js
      // test.mjs
-     import { output } from "./awaiting.mjs";
-     
-     console.log(output);  
+     import { output } from './awaiting.mjs';
+
+     console.log(output);
      // 输出：undefined
-     
-     setTimeout(() => console.log(output), 1000); 
-     // 1 秒钟后，输出 6 
+
+     setTimeout(() => console.log(output), 1000);
+     // 1 秒钟后，输出 6
      ```
 
    此时，就会出现问题，因为 `awaiting.mjs`  暴露的是一个异步值，所以直接输出时是没有值的 `undefined`，需要等待异步结束才会有值。这就是问题所在了，因为通常情况下，我们是希望暴露的就是异步后的值了。
@@ -417,10 +411,10 @@
 
      ```js
      // awaiting.js
-     let output = await new Promise((resolve) =>
+     const output = await new Promise(resolve =>
        setTimeout(() => resolve(6), 500)
      );
-     
+
      export { output };
      ```
 
@@ -431,7 +425,7 @@
        localStorage.setItem("name", "zhangpaopao");
        import "./awaiting.js";
      </script>
-     
+
      <script type="module">
        console.log(localStorage.getItem("name"));
        // 首次，打印的结果 null；刷新后打印的结果为 'zhangpaopao'
@@ -464,8 +458,6 @@
    - 任何深层依赖的 TLA 都可以阻塞整个应用（异步）
    - 无意间引入的 TLA 可以改变代码的执行序（异步）
 
-
-
 ## 7. Class fields (ES2022)
 
 1. 提案信息
@@ -485,7 +477,7 @@
      - 所有实例对象自身的属性都定义在类的最外层，看上去比较整齐，一眼就能看出这个类有哪些实例属性。
      - 写起来也相较简化一些
 
-   - 私有属性： 
+   - 私有属性：
 
      添加了私有属性，方法是在属性名之前使用`#`表示。私有属性，只能在类的内部使用。如果在类的外部使用，就会报错。
 
@@ -511,8 +503,6 @@
    }
    ```
 
-   
-
    ES2022 对于 `class` 所作的主要是这三点，当然还有一些，如公共属性、静态属性静态方法等。详细可点击[查看](https://github.com/tc39/proposal-class-fields)，这里就不赘述了。
 
 4. 个人评价
@@ -523,12 +513,12 @@
    function Animal(name) {
      this.name = name;
    }
-   
+
    Animal.prototype.isWhat = function () {
      return `This is a ${this.name}`;
    };
-   
-   const dog = new Animal("dog");
+
+   const dog = new Animal('dog');
    console.log(dog.isWhat());
    // This is a dog
    ```
@@ -538,8 +528,6 @@
    直到 ES6 才有了与传统语言写法想进的 `class`，但它的底层实际上还是原型链，它只是一个糖罢了。所以原型链有的缺陷它都有，而且，新的这些特性还存在一些使用上的坑，TS 能做一些检查，但并不能保证完全避免， 至于这些坑，这里就不一一说明了，我会另起一篇文章来聊聊 `class` 使用上的坑点，一来因为多二来也是需要细细地讲才能清楚。
 
    所以，个人对此的评价是，正常地使用不会有太大的问题，如果能使用 TS 最好使用，确实 TS 能规避异步。
-
-
 
 ## 8. 聊点其它的
 
@@ -556,8 +544,6 @@
 3. 开发者是否有机会提案
 
    能够参与 TC39 会议的代表，需要所在企业成为 TC39 的会员（当然也就是说要交钱了），然后才能有机会去参与。具体的会费和权益[点击查看](https://www.ecma-international.org/about-ecma/join-ecma/)。
-
-
 
 **参考**
 

@@ -18,8 +18,10 @@ const square = z => z * z;
 // const fn = compose(add, square, square);
 // console.log(fn(1, 2));
 
-const compose = (...[first, ...other]) => (...args) => {
-  return other.reduce((res, fn) => fn(res), first(...args))
+function compose(...[first, ...other]) {
+  return (...args) => {
+    return other.reduce((res, fn) => fn(res), first(...args));
+  };
 }
 
 const fn = compose(add, square, square);

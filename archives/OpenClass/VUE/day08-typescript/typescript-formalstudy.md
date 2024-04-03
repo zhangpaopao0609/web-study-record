@@ -60,7 +60,6 @@ interface Prop2 {
     prop: number;
 }
 
-
 类型断言
 const someValue: any = 'this is a string';
 const len = (someValue as string).length;

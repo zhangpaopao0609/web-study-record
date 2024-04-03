@@ -1,43 +1,46 @@
-// 基于原生的 http 实现一个 cookie - session 
-const http = require("http");
+// 基于原生的 http 实现一个 cookie - session
+const http = require('node:http');
+
 const session = {};
-const sessionKey = "arrow";
+const sessionKey = 'arrow';
 
 const app = http.createServer((req, res) => {
-  if(req.url === "/favicon.ico") {
+  if (req.url === '/favicon.ico') {
     res.end();
-  }else {
+  } else {
     console.log(session);
 
     const cookie = req.headers.cookie;
-    if(cookie &&  cookie.indexOf(sessionKey) > -1) {
+    if (cookie && cookie.includes(sessionKey)) {
       const re = new RegExp(`${sessionKey}=([^;]*)`);
       const sessionValue = re.exec(cookie)[1];
-      if(session[sessionValue]) {
+      if (session[sessionValue]) {
         res.end(JSON.stringify(session[sessionValue]));
-      }else {
+      } else {
         const nowKey = Date.now();
-        res.setHeader("Set-Cookie", `${sessionKey}=${nowKey}`);
+        res.setHeader('Set-Cookie', `${sessionKey}=${nowKey}`);
         session[nowKey] = {
-          name : "aa",
-          age : 12
+          name: 'aa',
+          age: 12,
         };
-        res.end("hah");
+        res.end('hah');
       }
-    }else {
+    } else {
       const nowKey = Date.now();
-      res.setHeader("Set-Cookie", `${sessionKey}=${nowKey}`);
+      res.setHeader('Set-Cookie', `${sessionKey}=${nowKey}`);
       session[nowKey] = {
-        name : "aa",
-        age : 12
+        name: 'aa',
+        age: 12,
       };
-      res.end("hah");
+      res.end('hah');
     }
   }
 });
 
 const port = 6090;
-app.listen(port, err => {
-  if(err) throw err;
+app.listen(port, (err) => {
+  if (err) {
+    throw err;
+  }
   console.log(`app start at ${port}`);
 });

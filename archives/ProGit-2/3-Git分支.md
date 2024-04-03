@@ -76,7 +76,7 @@ git merge
 
 ```bash
 # 存在分支 A
-# 切出分支 B 、 C 和 D 
+# 切出分支 B 、 C 和 D
 # 分支 B C D分别作了更改和提交
 # C 和 D 还修改了同一个文件的同一处(index.html)
 ```
@@ -99,7 +99,7 @@ git merge
    # Merge made by the 'recursive' strategy
    ```
 
-   在这种情况下，开发历史从一个更早的地方开发分叉（diverged）开来 。因为，A分支所在的提交并不是C分支提交的直接祖先， Git 不得不做一些额外的工作。出现这种情况，Git 会使用两个分支的末端所指的快照以及两个分支的工作祖先，做一个简单的三方合并。 
+   在这种情况下，开发历史从一个更早的地方开发分叉（diverged）开来 。因为，A分支所在的提交并不是C分支提交的直接祖先， Git 不得不做一些额外的工作。出现这种情况，Git 会使用两个分支的末端所指的快照以及两个分支的工作祖先，做一个简单的三方合并。
 
    和直接将分支指针向前推进所不同的是， Git 将此三方合并的结果做了一个新的快照并且自动创建一个新的提交指向它。**这个被称作一次合并提交，特别之处就在于它有不止一个父提交**
 
@@ -169,7 +169,7 @@ git branch --no-merged
 
 ```bash
 git ls-remote (remote)
-git remote show (remote) 
+git remote show (remote)
 ```
 
 ### 1. 利用远程跟踪分支
@@ -259,7 +259,7 @@ git branch -a
 #  remotes/origin/feature/sprint-6
 #  remotes/origin/feature/sprint-7
 
-# 然后可以直接 checkout 分支 
+# 然后可以直接 checkout 分支
 # 切出来的分支就是建立在对应的远程分支上的
 aispeechdeMacBook-Air:odcp-console-product aispeech$ git checkout feature/sprint-10
 Branch 'feature/sprint-10' set up to track remote branch 'feature/sprint-10' from 'origin'.
@@ -274,7 +274,7 @@ Switched to a new branch 'feature/sprint-10'
 
 ```bash
 git checkout --track origin/arrow
-# Branch arrow set up to track remote branch arrow from origin. 
+# Branch arrow set up to track remote branch arrow from origin.
 # Switched to a new branch 'arrow'
 ```
 
@@ -301,7 +301,7 @@ git push origin --delete [branch-name]
 
 ## 3.6 变基
 
-在git 中整合来自不同分支的修改主要有两种方法： merge 以及 rebase。 
+在git 中整合来自不同分支的修改主要有两种方法： merge 以及 rebase。
 
 ### 1. 变基的基本操作
 

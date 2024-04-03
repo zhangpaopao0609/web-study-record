@@ -20,7 +20,6 @@ Monorepo的优点：
 
 在采用monorepo的时候需要选择合适的工具和实践，如使用Yarn或lerna等工具管理JavaScript项目，或者使用Bazel和Pants等工具管理大型codebase。同时，需要制定代码结构、依赖管理、测试、构建和发布等方面的规范和流程。
 
-
 是的，Monorepo通常与"workspace"机制一起使用，这有助于更好地管理和操作仓库中的各个项目。Yarn（和其他一些工具，如pnpm）中的workspaces完全支持Monorepo布局，它使得你可以管理代码库里的多个软件包，并保证它们之间的互操作性。
 
 使用Yarn（或类似的工具）的workspaces功能，Monorepo的每个项目（或子模块）可以被视为一个单独的workspace，其主要的依赖关系通过root（根）级别的package.json文件进行管理和版本控制。这种方式不仅可以实现跨项目的依赖管理，而且可以在整个Monorepo中安装和管理各个项目的依赖，从而避免重复安装、节省磁盘空间并提升性能。

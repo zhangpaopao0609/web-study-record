@@ -14,7 +14,6 @@
 //     console.log(x);
 // }
 
-
 // function* test() {
 //     console.log(yield);
 // };
@@ -24,14 +23,11 @@
 // console.log(g.next('a'));
 // console.log(g.next('b'));
 
-
 function* test2() {
-    yield* [1, 2, 3];
+  yield * [1, 2, 3];
 };
 
 const g1 = test2();
 
 console.log(g1.next());
 console.log(g1.next());
-
-

@@ -1,6 +1,6 @@
 const foo = 'foo';
 
-export { foo  };
+export { foo };
 
 // // export default foo;
 

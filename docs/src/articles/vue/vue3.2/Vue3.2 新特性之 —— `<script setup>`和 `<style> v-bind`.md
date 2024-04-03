@@ -26,7 +26,7 @@
 
 <div align='center'>
   <img src="./img/setup/scripSetup.png" alt="image-20210918093055222" style="zoom:60%;" width='60%'/>
-</div>  
+</div>
 
 从编译的结果可以总结三点，也是 `<script setup>` 这个糖贯穿始终的三点：
 
@@ -44,10 +44,10 @@
 
 ```vue
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue';
 
 const a = ref(1);
-console.log('hello script setup')
+console.log('hello script setup');
 </script>
 ```
 
@@ -65,13 +65,13 @@ console.log('hello script setup')
 
 ```vue
 <script setup lang='ts'>
-import { ref } from "vue";
+import { ref } from 'vue';
 
 const inputValue = ref('输入测试');
 </script>
 
 <template>
-  <input type="text" :value="inputValue"/>
+  <input type="text" :value="inputValue">
 </template>
 ```
 
@@ -82,32 +82,30 @@ const inputValue = ref('输入测试');
 可以看到，<font color='red'>编译后 `<script setup>` 语法糖变成了 `<script>` 并导出了模板 VNode 结构的函数，并且将模板中用到的值进行了引用和自动解包</font>。这就是为什么不再需要显示 `return` 的原因了。感兴趣的同学也可在 [`Vue SFC Playground`](https://sfc.vuejs.org/) 中测试。
 
 ```js
-import { defineComponent as _defineComponent } from 'vue'
-import { createElementVNode as _createElementVNode, unref as _unref, toDisplayString as _toDisplayString, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue"
+import { Fragment as _Fragment, createElementBlock as _createElementBlock, createElementVNode as _createElementVNode, defineComponent as _defineComponent, openBlock as _openBlock, toDisplayString as _toDisplayString, unref as _unref, ref } from 'vue';
+
+import { capitalize } from './capitalize';
 // 这些都是内部的方法，可不用在意
-const _hoisted_1 = ["value"]
+const _hoisted_1 = ['value'];
 
-import { ref } from "vue";
-import { capitalize } from "./capitalize";
-
-const __sfc__ = /*#__PURE__*/_defineComponent({
-  setup(__props) {  // 编译成了普通的 script
+const __sfc__ = /* #__PURE__ */_defineComponent({
+  setup(__props) { // 编译成了普通的 script
     const inputValue = ref('输入测试');
     // 可以看到，编译后 `<script setup>` 语法糖变成了<script> 并导出了模板 VNode 结构的函数，并且将模板中用到的值进行了自动解包
-    return (_ctx,_cache) => {
+    return (_ctx, _cache) => {
       return (_openBlock(), _createElementBlock(_Fragment, null, [
-        _createElementVNode("input", {
-          type: "text",
-          value: inputValue.value   // 自动解包 ref
-        }, null, 8 /* PROPS */, _hoisted_1),    // 这里是对动态属性的标记，对 diff 算法的优化
-        _createElementVNode("p", null, _toDisplayString(_unref(capitalize)('Hello World!!')), 1 /* TEXT */)
-      ], 64 /* STABLE_FRAGMENT */))
+        _createElementVNode('input', {
+          type: 'text',
+          value: inputValue.value // 自动解包 ref
+        }, null, 8 /* PROPS */, _hoisted_1), // 这里是对动态属性的标记，对 diff 算法的优化
+        _createElementVNode('p', null, _toDisplayString(_unref(capitalize)('Hello World!!')), 1 /* TEXT */)
+      ], 64 /* STABLE_FRAGMENT */));
       // 编译后的 setup 导出的模板中自动的就引用了 `capitalize` 函数
-    }
+    };
   }
-})
-__sfc__.__file = "App.vue"
-export default __sfc__
+});
+__sfc__.__file = 'App.vue';
+export default __sfc__;
 ```
 
 > 相信看到这里的同学应该会大"哦"一声，"原来是这样的"，在没有看到编译后的结果前，我设想了很多种情况，到看到编译结果后，发现原来是这样，尤大大是真的强呀！！
@@ -115,11 +113,11 @@ export default __sfc__
 > 可以看到编译后的结果中包含了大量的 vue 内置方法和导出 `sfc`，这属于框架内部的执行，所以所有的 SFC 编译时都会有这些代码。
 >
 > ```js
-> import { defineComponent as _defineComponent } from 'vue'		// defineComponent 函数
-> import { createElementVNode as _createElementVNode, unref as _unref, toDisplayString as _toDisplayString, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue"		// 内置函数
-> 
-> __sfc__.__file = "App.vue"
-> export default __sfc__
+> import { defineComponent as _defineComponent } from 'vue'; // defineComponent 函数
+> import { Fragment as _Fragment, createElementBlock as _createElementBlock, createElementVNode as _createElementVNode, openBlock as _openBlock, toDisplayString as _toDisplayString, unref as _unref } from 'vue'; // 内置函数
+>
+> __sfc__.__file = 'App.vue';
+> export default __sfc__;
 > ```
 > 因此为了简洁在之后的编译结果中就不再罗列这些代码了。
 
@@ -139,7 +137,7 @@ export default __sfc__
 
 <div align='center'>
   <img src="./img/setup/Foo.vue.png" alt="image-20210918093055222" style="zoom:30%;" width='30%'/>
-</div>  
+</div>
 
 **注意**，这种推断的方式比显示注册或 `import` 的组件的优先级要低，所以，当遇到注册或引入的组件和推断名称冲突你，可以对注册或引入的组件重命名以避免冲突。
 
@@ -149,7 +147,7 @@ export default __sfc__
 
 ```vue
 <script lang="ts">
-export default { name: 'CustomComponentsName' }
+export default { name: 'CustomComponentsName' };
 </script>
 
 <script setup lang="ts">
@@ -157,36 +155,36 @@ export default { name: 'CustomComponentsName' }
 </script>
 
 <template>
-	<p>利用 script 自定义组件名称</p>
+  <p>利用 script 自定义组件名称</p>
 </template>
 ```
 
  上述代码在编译后的 js 代码如下，细细的品真的会发现很多有趣的东西，你会发现 <font color='red'>普通的 `<script>` 的内容会和 `<script setup>` 的内容进行 merge，也就自然实现了自定义组件名称</font>。
 
 ```js
-const __default__ = { name: 'CustomComponentsName' }		// 普通 script 的内容
+const __default__ = { name: 'CustomComponentsName' }; // 普通 script 的内容
 
-function setup(__props) {		// <script setup> 的内容
+function setup(__props) { // <script setup> 的内容
   // code
-  return (_ctx,_cache) => {
-    return (_openBlock(), _createElementBlock("p", null, "利用 script 自定义组件名称"))
-  }
+  return (_ctx, _cache) => {
+    return (_openBlock(), _createElementBlock('p', null, '利用 script 自定义组件名称'));
+  };
 }
 
-const __sfc__ = /*#__PURE__*/_defineComponent({
+const __sfc__ = /* #__PURE__ */_defineComponent({
   // 在这里可以看到普通的 script 的内容会和 <script setup> 的内容进行 merge，也就自然实现了自定义组件名称，细细的品真的会发现很多有趣的东西
   ...__default__,
   setup
-})
+});
 ```
 
 #### 2.3.2 普通组件的使用
 
-`<script setup>` 中引入组件后<font color='red'>可直接在模板使用，不再需要注册了</font>。 
+`<script setup>` 中引入组件后<font color='red'>可直接在模板使用，不再需要注册了</font>。
 
 ```vue
 <script setup lang='ts'>
-import SaySomething from "./Components/SaySomething.vue";
+import SaySomething from './Components/SaySomething.vue';
 </script>
 
 <template>
@@ -201,15 +199,15 @@ import SaySomething from "./Components/SaySomething.vue";
 上述代码编译后的 JS 代码如下，同样可以看到 `SaySomething` 被当做了变量引入
 
 ```js
-import SaySomething from "./Components/SaySomething.vue";
+import SaySomething from './Components/SaySomething.vue';
 
-const __sfc__ = /*#__PURE__*/_defineComponent({
-	setup(__props) {
- 		return (_ctx,_cache) => {
-   		return (_openBlock(), _createBlock(SaySomething))
- 		}		// SaySomething 当成变量引用且直接在 setup 函数导出
-	}
-})
+const __sfc__ = /* #__PURE__ */_defineComponent({
+  setup(__props) {
+ 		return (_ctx, _cache) => {
+   		return (_openBlock(), _createBlock(SaySomething));
+ 		}; // SaySomething 当成变量引用且直接在 setup 函数导出
+  }
+});
 ```
 
 #### 2.3.3 动态组件
@@ -218,16 +216,16 @@ const __sfc__ = /*#__PURE__*/_defineComponent({
 
 ```vue
 <script setup lang='ts'>
-import { ref } from "vue";
-import Bar from "./Components/Bar.vue";
-import Foo from "./Components/Foo.vue";
+import { ref } from 'vue';
+import Bar from './Components/Bar.vue';
+import Foo from './Components/Foo.vue';
 
 const condition = ref(false);
 setTimeout(() => condition.value = true, 2000);
 </script>
 
 <template>
-  <component :is="condition ? Bar : Foo"/>
+  <component :is="condition ? Bar : Foo" />
 </template>
 ```
 
@@ -238,7 +236,7 @@ setTimeout(() => condition.value = true, 2000);
 请注意这种方式相比于 import 导入的组件和自主注册的组件优先级更低。所有如果有命名的 import 导入和组件的推断名冲突了，可以使用 import 别名导入：
 
 ```js
-import { Foo as FooChild } from './components'
+import { Foo as FooChild } from './components';
 ```
 
 #### 2.3.5 命名空间组件
@@ -258,7 +256,7 @@ export { Foo, Bar };
 
 ```vue
 <script setup lang='ts'>
-import * as Form from "../Components";
+import * as Form from '../Components';
 </script>
 
 <template>
@@ -340,7 +338,7 @@ vue 官网中提到了这样的一个概念 —— Compiler Macros（翻译过�
 2. 类型声明（type declaration）
 
    `defineProps` 类型声明的基本用法如下，在 volar 插件下还是完美的的支持了 IDE 的校验和提示。
-   
+
    ```ts
    <script setup lang='ts'>
    const props = defineProps<{
@@ -349,22 +347,22 @@ vue 官网中提到了这样的一个概念 —— Compiler Macros（翻译过�
    }>()
    </script>
    ```
-   
+
    编译后的结果如下：
-   
+
    ```js
-   const __sfc__ = /*#__PURE__*/_defineComponent({
+   const __sfc__ = /* #__PURE__ */_defineComponent({
      props: {
        foo: { type: String, required: false },
        bar: { type: Number, required: true }
      },
      setup(__props) {
-       const props = __props 
-       return () => {}
+       const props = __props;
+       return () => {};
      }
-   })
+   });
    ```
-   
+
    从编译后的结果可以看到，两种方式最终都编译成了普通的 `<script>` 下的 `props` 模式，都编译成了运行时声明，并且结果几乎完全一致。不同的在于运行时声明 props 是基于 vue 提供的类型检查，仅支持 `String, Number, Array, Object` ，而 类型声明是基于 ts 的，可以支持所有类型的类型申明 `string, number, interface`，在 props 这里，除了写法外，这就是它们两者最大的不同。
 
 #### 2.4.4 需要注意的点
@@ -378,11 +376,11 @@ vue 官网中提到了这样的一个概念 —— Compiler Macros（翻译过�
    - 截至目前，类型声明参数必须是以下内容之一，以确保正确的静态分析：
 
      - 类型字面量，如 `string, number, boolean` 等
-   
+
      - 在**同一文件**中的 `interface` 或类型字面量的引用 <font color='red'> 已经可以了，太强了，2021年9月15</font>
-   
+
        - 说得更通俗一些就是，`props` 的  `ts` 接口只能写在本文件中，如下所示
-   
+
          ```ts
          <script setup lang="ts">
          // 暂不支持从外部导入 ts 类型，因为 setup 语法糖会将 List 编译成一个变量，因此只能在文件内写
@@ -392,42 +390,40 @@ vue 官网中提到了这样的一个概念 —— Compiler Macros（翻译过�
            content: string,
            isDone: boolean,
          };
-         
+
          const props = defineProps<{
            title: string,
            list: List[],		// ts 接口
          }>();
          </script>
          ```
-   
+
          **现在暂时还不支持复杂的类型和从其它文件进行类型导入。理论上来说，将来是可能实现类型导入的。**
-   
+
          <font color='red'>但是，因为 ts 会自动扫描项目中的 types 来自动导入类型，因此可以将 `interface` 通过 `namespace` 的方式来实现自动导入，这样就不需要在文件中引入，直接就可以使用了</font>
-   
+
          示例如下， [可点击查看示例](https://github.com/Ardor-Zhang/web-study-record/blob/master/Vue/Vue3.2-released/vue3.2-Demo/src/08-defineProps/TypeDeclaration.vue)：
-   
+
          `types` 文件夹下的 `list.ts` 文件
-   
+
          ```ts
          declare namespace List {
            export interface Basic {
-             id: number,
-             content: string,
-             isDone: boolean,
+             id: number;
+             content: string;
+             isDone: boolean;
            }
          }
          ```
-   
+
          ```ts
          // 这样是可以支持的
          const props = defineProps<{
-           title: string,
-           list: List.Basic[],
+           title: string;
+           list: List.Basic[];
          }>();
          ```
-   
-         
-   
+
    - 在开发环境下， IDE 会试着从类型声明来推断对应的运行时声明（这从 2.4.3 编译后的结果就可以看出）。
      - 例如这里从 `foo: string` 类型中推断出 `foo: String`。但如果类型声明使用的是对导入类型的引用(例如自定义的 `interface`)，这里的推断结果会是 `foo: null` (与 `any` 类型相等)，因为 IDE 没有外部文件的信息。因此，使用导入类型的引用的类型声明运行时是没有校验的，推断成 `null` 了
      - 在生产模式下，IDE 会生成数组格式的声明来减少打包体积 (这里的 props 会被编译成 `['foo', 'bar']`)。
@@ -463,16 +459,16 @@ const props = withDefaults(defineProps<{
 上面代码会被编译为等价的运行时 props 的 `default` 选项，如下所示。此外，`withDefaults` 辅助函数提供了对默认值的类型检查，并确保返回的 `props` 的类型删除了已声明默认值的属性的可选标志。
 
 ```js
-const __sfc__ = /*#__PURE__*/_defineComponent({
+const __sfc__ = /* #__PURE__ */_defineComponent({
   props: {
     title: { type: String, required: false, default: 'Hello withDefaults' },
     list: { type: Array, required: false, default: () => [{ id: 3, content: '3', isDone: false }] }
   },
   setup(__props) {
-    const props = __props
-    return () => {}
+    const props = __props;
+    return () => {};
   }
-})
+});
 ```
 
 #### 2.5.2 注意点
@@ -489,7 +485,7 @@ const __sfc__ = /*#__PURE__*/_defineComponent({
    <script setup lang="ts">
    // 这样是没有任何的类型检查的
    const emit = defineEmits(['handleClick', 'handleChange']);
-   
+
    const handleClick = () => emit('handleClick', Date.now()+'');
    const handleChange = () => emit('handleChange', Date.now());
    </script>
@@ -509,7 +505,7 @@ const __sfc__ = /*#__PURE__*/_defineComponent({
      (e: 'handleClickWithTypeDeclaration', data: Click): void,
      (e: 'handleChangeWithTypeDeclaration', data: List.Basic): void,
    }>();
-   
+
    const handleClickWithTypeDeclaration = () => emit('handleClickWithTypeDeclaration', { id: '1', val: Date.now() });
    const handleChangeWithTypeDeclaration = () => emit('handleChangeWithTypeDeclaration', {
      id: 1,
@@ -531,15 +527,15 @@ const __sfc__ = /*#__PURE__*/_defineComponent({
 
 ```vue
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const a = 1
-const b = ref(2)
+const a = 1;
+const b = ref(2);
 
 defineExpose({
   a,
   b
-})
+});
 </script>
 ```
 
@@ -567,18 +563,18 @@ defineExpose({
 
 ```vue
 <script setup lang="ts">
-import { useSlots, useAttrs } from "vue";
+import { useAttrs, useSlots } from 'vue';
 
 const slot = useSlots();
-console.log('TestUseSlots', slot.header && slot.header());		// 获取到使用插槽的具体信息
-  
+console.log('TestUseSlots', slot.header && slot.header()); // 获取到使用插槽的具体信息
+
 const attrs = useAttrs();
-console.log('TestUseAttrs', attrs);		// 获取到使用组件时传递的 attributes
+console.log('TestUseAttrs', attrs); // 获取到使用组件时传递的 attributes
 </script>
 
 <template>
   <h1> Here is slots test!!</h1>
-  <slot name="header"></slot>
+  <slot name="header" />
 </template>
 ```
 
@@ -595,13 +591,13 @@ console.log('TestUseAttrs', attrs);		// 获取到使用组件时传递的 attrib
 ```vue
 <script>
 // 普通 <script>, 在模块范围下执行(只执行一次)
-runSideEffectOnce()
+runSideEffectOnce();
 
 // 声明额外的选项
 export default {
   inheritAttrs: false,
   customOptions: {}
-}
+};
 </script>
 
 <script setup>
@@ -617,7 +613,7 @@ export default {
 
 ```vue
 <script setup>
-const post = await fetch(`/api/post/1`).then(r => r.json())
+const post = await fetch(`/api/post/1`).then(r => r.json());
 </script>
 ```
 
@@ -625,14 +621,13 @@ const post = await fetch(`/api/post/1`).then(r => r.json())
 
 ```js
 const __sfc__ = {
-  async setup(__props) {		// 不再是 setup， 而是 async setup
+  async setup(__props) { // 不再是 setup， 而是 async setup
+    let __temp, __restore;
+    const post = (([__temp, __restore] = _withAsyncContext(() => (fetch(`/api/post/1`).then(r => r.json())))), __temp = await __temp, __restore(), __temp);
 
-    let __temp, __restore
-    const post = (([__temp,__restore]=_withAsyncContext(()=>(fetch(`/api/post/1`).then(r => r.json())))),__temp=await __temp,__restore(),__temp)
-
-    return () => {}
+    return () => {};
   }
-}
+};
 ```
 
 另外，await 的表达式会自动编译成在 `await` 之后保留当前组件实例上下文的格式。
@@ -647,9 +642,11 @@ const __sfc__ = {
 SFC 的三个模块都可以通过 `src` 的方式进行导入，如下所示：
 
 ```vue
-<template src="./template.html"></template>
-<style src="./style.css"></style>
 <script src="./script.js"></script>
+
+<template src="./template.html"></template>
+
+<style src="./style.css"></style>
 ```
 
 但是在 `<script setup> `下<font color='red'>强烈建议不使用 Src 导入</font>。
@@ -667,9 +664,9 @@ scoped 跟 vue2.x 的设计和使用完全是一样的，因此不再赘述。
 
 ```vue
 <script setup lang="ts">
-import { useCssModule } from "vue";
+import { useCssModule } from 'vue';
 const css = useCssModule();
-console.log(css);		// { blue: "_blue_13cse_5", red: "_red_13cse_2"}
+console.log(css); // { blue: "_blue_13cse_5", red: "_red_13cse_2"}
 </script>
 
 <style module>
@@ -690,10 +687,10 @@ console.log(css);		// { blue: "_blue_13cse_5", red: "_red_13cse_2"}
 
 ```vue
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue';
 const color = ref('red');
 
-setTimeout(() => color.value = 'blue' , 2000);
+setTimeout(() => color.value = 'blue', 2000);
 </script>
 
 <template>
@@ -724,20 +721,20 @@ p[data-v-f13b4d11] {
 2. 编译后的 js
 
 ```js
-const __sfc__ = /*#__PURE__*/_defineComponent({
+const __sfc__ = /* #__PURE__ */_defineComponent({
   setup(__props) {
     _useCssVars(_ctx => ({
-      "f13b4d11-color": (color.value)		// 可以看到，编译后的值 和 一个 hash 值映射，并且具备响应式， css 的 var 便可以获取到这个 hash 映射的值
-    }))
+      'f13b4d11-color': (color.value) // 可以看到，编译后的值 和 一个 hash 值映射，并且具备响应式， css 的 var 便可以获取到这个 hash 映射的值
+    }));
 
     const color = ref('red');
-    setTimeout(() => color.value = 'blue' , 2000);
+    setTimeout(() => color.value = 'blue', 2000);
 
-    return (_ctx,_cache) => {
-      return (_openBlock(), _createElementBlock("p", null, "hello"))
-    }
+    return (_ctx, _cache) => {
+      return (_openBlock(), _createElementBlock('p', null, 'hello'));
+    };
   }
-})
+});
 ```
 
 #### 3.2.2 小小解析——css var 函数探究
@@ -780,7 +777,7 @@ const __sfc__ = /*#__PURE__*/_defineComponent({
      :root {
        --main-bg-color: pink;
      }
-     
+
      body {
        background-color: var(--main-bg-color);
      }
@@ -790,12 +787,12 @@ const __sfc__ = /*#__PURE__*/_defineComponent({
 
      ```css
      /* 后备值 */
-     
+
      /* 在父元素样式中定义一个值 */
      .component {
        --text-color: #080; /* header-color 并没有被设定 */
      }
-     
+
      /* 在 component 的样式中使用它： */
      .component .text {
        color: var(--text-color, black); /* 此处 color 正常取值 --text-color */
@@ -811,7 +808,7 @@ const __sfc__ = /*#__PURE__*/_defineComponent({
 
 <div align='center'>
   <img src="./img/setup/caniuse-var.png" alt="image-20210918093055222" style="zoom:80%;" width='80%'/>
-</div>  
+</div>
 
 以上部分内容来自 MDN，关于 `var` 的更多内容可[点击查看](https://developer.mozilla.org/zh-CN/docs/Web/CSS/var())。
 
@@ -825,4 +822,4 @@ const __sfc__ = /*#__PURE__*/_defineComponent({
 
 细细的品了 `<script setup>` 以及 `<style> v-bind`，这些新的写法以及完美的 ts 类型推断和检查，再配上 `Volar`，写起来真实如丝般顺滑。
 
-说起来，`Volar` 也是 3.2 版本推出后的必备插件了，下一篇文章就来好好讲讲 `Volar` 吧，从体验、使用以及和 `Ventur` 的区别聊聊吧！		
+说起来，`Volar` 也是 3.2 版本推出后的必备插件了，下一篇文章就来好好讲讲 `Volar` 吧，从体验、使用以及和 `Ventur` 的区别聊聊吧！

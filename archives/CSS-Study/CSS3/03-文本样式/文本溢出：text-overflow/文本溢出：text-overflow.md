@@ -1,6 +1,6 @@
 # 文本溢出：text-overflow
 ```css
-text-overflow: ellipsis | clip 
+text-overflow: ellipsis | clip
 ```
 选项|说明
 --- |:---

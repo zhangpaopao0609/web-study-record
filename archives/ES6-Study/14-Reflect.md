@@ -15,8 +15,7 @@ Reflect 对象 也是ES6为操作对象儿提供的新API，目的如下：
    ```javascript
    // 老写法
    'assign' in Object // true
-   
+
    // 新写法
    Reflect.has(Object, 'assign') // true
    ```
-

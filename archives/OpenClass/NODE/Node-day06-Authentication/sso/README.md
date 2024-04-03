@@ -18,7 +18,7 @@ $ yarn install
 
 2. **启动服务**
 然后分别启动三个服务：
-  
+
 ```bash
 $ cd passport
 $ node app.js

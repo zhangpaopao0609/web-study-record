@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import './index.scss';
 
-import axios from "axios";
+import axios from 'axios';
 
 export default class Search extends Component {
   state = {
     searchValue: '',
   };
 
-  setStateSearchValue = value => {
+  setStateSearchValue = (value) => {
     this.setState({
       searchValue: value,
     });
   };
 
-  handleSearchValueChange = e => {
-    this.setStateSearchValue(e.target.value)
+  handleSearchValueChange = (e) => {
+    this.setStateSearchValue(e.target.value);
   };
 
-  searchAction = (url, params, method='GET') => {
+  searchAction = (url, params, method = 'GET') => {
     return axios({
       url,
       params,
@@ -28,7 +28,7 @@ export default class Search extends Component {
 
   handleSearch = async () => {
     const { searchValue } = this.state;
-    if(!searchValue.trim()) {
+    if (!searchValue.trim()) {
       alert('输入不能为空！');
       return;
     };
@@ -38,20 +38,20 @@ export default class Search extends Component {
       { q: searchValue },
     );
     this.setStateSearchValue('');
-    this.props.updateUserState({ 
+    this.props.updateUserState({
       userList: res.data.items,
-      userRequestStatus: 2, 
+      userRequestStatus: 2,
     });
-  }; 
+  };
 
   render() {
     const { searchValue } = this.state;
     return (
       <div>
         <h2>GitHub 搜索引擎</h2>
-        <input type="text" value={ searchValue } onChange={ this.handleSearchValueChange }/>
-        <button onClick={ this.handleSearch }>搜索</button>
+        <input type="text" value={searchValue} onChange={this.handleSearchValueChange} />
+        <button onClick={this.handleSearch}>搜索</button>
       </div>
-    )
+    );
   };
 };

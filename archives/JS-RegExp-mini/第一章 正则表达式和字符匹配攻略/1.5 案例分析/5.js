@@ -15,9 +15,8 @@
 
 // console.log(string.match(regex));
 
-
 const regex = /id="[^"]*"/;
 
-const string ="<div id=\"container\" class=\"main\"></div>"
+const string = '<div id="container" class="main"></div>';
 
 console.log(string.match(regex));

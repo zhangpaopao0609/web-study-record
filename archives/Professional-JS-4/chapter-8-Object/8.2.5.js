@@ -1,7 +1,7 @@
 const obj = {
-    name: 'arrow',
-    test: {}
-}
+  name: 'arrow',
+  test: {},
+};
 
 console.log(obj);
 

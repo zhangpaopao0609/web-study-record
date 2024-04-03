@@ -1,8 +1,8 @@
-type T0 = {
+interface T0 {
   name: T0;
-};
+}
 
-type Json = 
+type Json =
   | string
   | number
   | boolean

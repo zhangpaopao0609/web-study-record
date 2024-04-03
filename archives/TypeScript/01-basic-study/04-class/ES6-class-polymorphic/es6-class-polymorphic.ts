@@ -25,6 +25,6 @@ class Cat extends Animal {
 };
 
 const dog = new Dog('dog');
-dog.eat()
+dog.eat();
 
 export {};

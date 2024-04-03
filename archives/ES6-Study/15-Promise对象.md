@@ -51,7 +51,7 @@ console.log('Hi!');
 ```
 
 ```js
-let promise = new Promise(function(resolve, reject) {
+const promise = new Promise((resolve, reject) => {
   console.log('Promise');
   resolve();
 });
@@ -102,9 +102,9 @@ Promise**只要新建就会执行**
 new Promise((resolve, reject) => {
   resolve(1);
   console.log(2);
-}).then(res => {
-  console.log(res)
-})
+}).then((res) => {
+  console.log(res);
+});
 
 // 2
 // 1
@@ -118,7 +118,7 @@ new Promise((resolve, reject) => {
 new Promise((resolve, reject) => {
   return resolve(1);
   console.log(2); // 这是不会执行的
-})
+});
 ```
 
 ## 3. Promise.prototype.then()
@@ -239,7 +239,7 @@ const p = Promise.all([p1, p2, p3]);
 同样是将多个Promise实例，包装成一个新的Promise实例
 
 ```js
-const p = Promise.race([p1, ,p2, p3])
+const p = Promise.race([p1, ,p2, p3]);
 ```
 
 上面代码中，只要p1，p2，p3之中有一个实例率先改变状态，p的状态就跟着改变。那个率先改变的Promise实例的返回值，就传递给p的回调函数。
@@ -269,7 +269,7 @@ const p = Promise.race([p1, ,p2, p3])
 实际开发中，经常遇到一种情况：不知道或者不想区分，函数`f`是同步函数还是异步操作，但是想用 Promise 来处理它。因为这样就可以不管`f`是否包含异步操作，都用`then`方法指定下一步流程，用`catch`方法处理`f`抛出的错误。一般就会采用下面的写法。
 
 ```js
-Promise.resolve().then(f)
+Promise.resolve().then(f);
 ```
 
 上面的写法有一个缺点，就是如果f是同步函数，那么它会在本轮事件循环的末尾执行
@@ -293,44 +293,3 @@ console.log('next');
 // now
 // next
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-

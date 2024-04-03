@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class App extends Component {
   handleGetStduentsInfo = async () => {
     const res = await axios({
       method: 'GET',
-      url: '/api_1/students'
+      url: '/api_1/students',
     });
     console.log(res.data);
   };
@@ -13,7 +13,7 @@ export default class App extends Component {
   handleGetCarsInfo = async () => {
     const res = await axios({
       method: 'GET',
-      url: '/api_2/cars'
+      url: '/api_2/cars',
     });
     console.log(res.data);
   };
@@ -21,9 +21,9 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <button onClick={ this.handleGetStduentsInfo }>点击获取学生信息</button>
+        <button onClick={this.handleGetStduentsInfo}>点击获取学生信息</button>
         <br />
-        <button onClick={ this.handleGetCarsInfo }>点击获取轿车信息</button>
+        <button onClick={this.handleGetCarsInfo}>点击获取轿车信息</button>
       </div>
     );
   };

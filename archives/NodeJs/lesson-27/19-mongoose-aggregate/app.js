@@ -3,14 +3,14 @@ const OrdersModel = require('./models/OrdersModel');
 OrdersModel.aggregate([
   {
     $lookup: {
-      from: "orderitems",
-      localField: "order_id",
-      foreignField: "order_id",
-      as: "items"
-    }
-  }
+      from: 'orderitems',
+      localField: 'order_id',
+      foreignField: 'order_id',
+      as: 'items',
+    },
+  },
 ], (err, data) => {
-  if(err) {
+  if (err) {
     console.log(err);
     return;
   };

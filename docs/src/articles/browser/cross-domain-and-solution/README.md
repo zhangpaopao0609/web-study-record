@@ -38,24 +38,24 @@ jsonp 跨域其实也是 JS 设计模式中的一种代理模式。方式为 动
 </body>
 ```
 
-
-
 ```js
-const http = require('http');
-const url = require('url');
+const http = require('node:http');
+const url = require('node:url');
 
 const app = http.createServer((req, res) => {
-  if(req.url !== "/favicon.icon") {
+  if (req.url !== '/favicon.icon') {
     const { query } = url.parse(req.url, true);
-    res.writeHead(200, { "Content-Type": "application/javascript" });
-    const data = "这是一个后端数据，通过 jsonp 的方式传给了前端";
+    res.writeHead(200, { 'Content-Type': 'application/javascript' });
+    const data = '这是一个后端数据，通过 jsonp 的方式传给了前端';
     res.end(`${query.cb}(${JSON.stringify(data)})`);
   }
 });
 
 const port = 6090;
-app.listen(port, err => {
-  if(err) throw err;
+app.listen(port, (err) => {
+  if (err) {
+    throw err;
+  }
   console.log(`app start at ${port}`);
 });
 ```
@@ -84,17 +84,17 @@ cors 其实是 W3C 的一个标准，全称跨域资源共享。需要浏览器�
 // 客户端
 <script>
   const xhr = new XMLHttpRequest();
-	xhr.open('GET', 'http://127.0.0.1:6090');
-	xhr.send();
-</script>
+  xhr.open('GET', 'http://127.0.0.1:6090');
+  xhr.send();
+</script>;
 
 // 服务端
 const app = http.createServer((req, res) => {
   console.log(req.method);
   res.writeHead(200, {
-    'Access-Control-Allow-Origin': "*"
+    'Access-Control-Allow-Origin': '*'
   });
-  res.end("test for cors");
+  res.end('test for cors');
 });
 ```
 
@@ -109,16 +109,16 @@ cors 默认不发送 cookies 和 HTTP 认证信息。如果要把 Cookie 发送�
   xhr.withCredentials = true;
   xhr.open('GET', 'http://127.0.0.1:6090');
   xhr.send();
-</script>
+</script>;
 
 // 服务端
 const app = http.createServer((req, res) => {
   console.log(req.method);
   res.writeHead(200, {
-    'Access-Control-Allow-Origin': "http://127.0.0.1:5500",
+    'Access-Control-Allow-Origin': 'http://127.0.0.1:5500',
     'Access-Control-Allow-Credentials': true // 允许携带 cookie
   });
-  res.end("test for cors");
+  res.end('test for cors');
 });
 ```
 
@@ -137,17 +137,17 @@ const app = http.createServer((req, res) => {
   xhr.open('PUT', 'http://127.0.0.1:6090');
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.send();
-</script>
+</script>;
 
 // 服务端
 const app = http.createServer((req, res) => {
   console.log(req.method);
   res.writeHead(200, {
-    'Access-Control-Allow-Origin': "http://127.0.0.1:5500",
+    'Access-Control-Allow-Origin': 'http://127.0.0.1:5500',
     'Access-Control-Allow-Methods': 'POST, PUT, DELETE', // 支持
     'Access-Control-Max-Age': '1000' // 指定本次预检请求的有效期，单位为秒
   });
-  res.end("test for cors");
+  res.end('test for cors');
 });
 ```
 
@@ -155,7 +155,7 @@ const app = http.createServer((req, res) => {
 
 ![image-20210308094043707](./images/put.png)
 
-### 4. nginx 
+### 4. nginx
 
 利用服务器进行代理
 
@@ -170,6 +170,3 @@ server {
 ```
 
 ### 5. iframe + postMessage
-
-
-

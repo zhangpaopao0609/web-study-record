@@ -1,9 +1,9 @@
-const logTime = name => {
+function logTime(name) {
   console.log(`Log...${name} : ${new Date().toLocaleDateString()}`);
 }
 
 // 回调地狱
-const callback = () => {
+function callback() {
   setTimeout(() => {
     logTime('callback 1');
     setTimeout(() => {
@@ -12,66 +12,68 @@ const callback = () => {
         logTime('callback 3');
         setTimeout(() => {
           logTime('callback 4');
-        },100)
-      },100)
-    },100)
-  },100);
-};
-
-const promise = (name, delay = 100) => new Promise(resolve => {
-  setTimeout(() => {
-    logTime(name);
-    resolve();
+        }, 100);
+      }, 100);
+    }, 100);
   }, 100);
-})
+}
 
-const promiseRes = () => {
+function promise(name, delay = 100) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      logTime(name);
+      resolve();
+    }, 100);
+  });
+}
+
+function promiseRes() {
   promise('Promise 1')
     .then(promise('Promise 2')
-    .then(promise('Promise 3')))
+      .then(promise('Promise 3')));
 }
 
 const generator = function* (name) {
   yield promise(name + 1);
   yield promise(name + 2);
   yield promise(name + 3);
-}
+};
 
-const co = generator => {
-  if(it = generator.next().value) {
-    it.then(res => {
+function co(generator) {
+  if (it = generator.next().value) {
+    it.then((res) => {
       co(generator);
     });
-  }else {
-    return;
+  } else {
+
   }
 }
 
 const generatorRes = co(generator('Co-Generator-'));
 
-const asyncAwait = async () => {
+async function asyncAwait() {
   await promise('Async/Await 1');
   await promise('Async/Await 2');
   await promise('Async/Await 3');
   await promise('Async/Await 4');
 }
 
-const event = () => {
-  const asyncFun = name => event => {
+function event() {
+  const asyncFun = name => (event) => {
     setTimeout(() => {
       logTime(name);
       event.emit('end');
     }, 100);
     return event;
-  }
-  
+  };
+
   const arr = [
     asyncFun('event 1'),
     asyncFun('event 2'),
-    asyncFun('event 3')
-  ]
-  
-  const { EventEmitter } = require('events');
+    asyncFun('event 3'),
+  ];
+
+  const { EventEmitter } = require('node:events');
   const event = new EventEmitter();
   let i = 0;
   event.on('end', () => i < arr.length && arr[i++](event));
@@ -80,4 +82,3 @@ const event = () => {
 
 module.exports = { callback, promiseRes, generatorRes, asyncAwait, event };
 // exports.callback
-

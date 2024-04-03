@@ -3,37 +3,37 @@ module.exports = {
     console.log(ctx.params);
     const { list } = ctx.params;
     const model = ctx.app.$model[list];
-    if(model) {
+    if (model) {
       ctx.list = model;
       await next();
-    }else {
+    } else {
       ctx.body = 'no this model';
     }
   },
 
-  get: async ctx => {
+  get: async (ctx) => {
     ctx.body = await ctx.list.findOne({ _id: ctx.params.id });
   },
 
-  list: async ctx => {
+  list: async (ctx) => {
     ctx.body = await ctx.list.find({});
   },
 
-  create: async ctx => {
+  create: async (ctx) => {
     console.log(ctx.request.body);
     ctx.body = await ctx.list.create(ctx.request.body);
   },
 
-  update: async ctx => {
+  update: async (ctx) => {
     ctx.body = await ctx.list.updateOne({ _id: ctx.params.id });
   },
 
-  del: async ctx => {
+  del: async (ctx) => {
     ctx.body = await ctx.list.deleteOne({ _id: ctx.params.id });
   },
 
-  page: async ctx => {
+  page: async (ctx) => {
     console.log('page...', ctx.params.page);
     ctx.body = await ctx.list.find({});
-  }
+  },
 };

@@ -21,7 +21,7 @@ pnpm create stylelint
 2. 在根目录创建 _.stylelintrc.json_ 文件
 3. 在 _.stylelintrc.json_ 文件中添加 `{ "extends": ["stylelint-config-standard"] }`
 :::
-- 运行 Stylelint 
+- 运行 Stylelint
 
 ```bash
 # 命令会检查项目中的所有 css 文件
@@ -47,18 +47,18 @@ pnpm add -D stylelint postcss-scss
 ```
 
 2. 配置文件 _.stylelintrc.js_
-  
+
 > 因为 json 文件无法添加注释，因此，这里使用了 js 文件，看个人爱好哈。具体[可查看](https://stylelint.io/user-guide/configure)
 
 ```js
 // .stylelintrc.js
 module.exports = {
-  customSyntax: "postcss-scss",
+  customSyntax: 'postcss-scss',
   rules: {
     // stylelint 内置规则
-    "unit-allowed-list": ["em"],
+    'unit-allowed-list': ['em'],
   }
-}
+};
 ```
 
 3. 如果想针对 SCSS 添加额外的补充规则，可按照以下步骤
@@ -70,34 +70,34 @@ pnpm add -D stylelint-scss
 ```
 
 - 配置文件添加 `plugin`
-  
+
 ```js
 // .stylelintrc.js
 module.exports = {
-  customSyntax: "postcss-scss",
+  customSyntax: 'postcss-scss',
   plugins: [
-    "stylelint-scss"
+    'stylelint-scss'
   ],
   rules: {
     // stylelint 内置规则
-    "unit-allowed-list": ["em"],
+    'unit-allowed-list': ['em'],
     // stylelint-scss 特定的规则
-    "scss/dollar-variable-colon-newline-after": 'always',
+    'scss/dollar-variable-colon-newline-after': 'always',
   }
-}
+};
 ```
 
 点击可查看 [stylelint-scc](https://github.com/stylelint-scss/stylelint-scss) 的具体内容以及如何配置。
 
-4. 社区推荐配置 
- 
+4. 社区推荐配置
+
 社区还提供了 `stylelint-config-recommended-scss` 作为 SCSS 的推荐配置。`stylelint-config-recommended-scss` 其实就是一套 Stylelint 配置，如下图所示：
 
 <PaoImages
-  src="./images/stylelint-config-recommended-scss.png" 
+  src="./images/stylelint-config-recommended-scss.png"
   width="80%"
-  title="stylelint-config-recommended-scss" 
-  reference="图片来至：[stylelint-config-recommended-scss](https://github.com/stylelint-scss/stylelint-config-recommended-scss/blob/master/index.js)" 
+  title="stylelint-config-recommended-scss"
+  reference="图片来至：[stylelint-config-recommended-scss](https://github.com/stylelint-scss/stylelint-config-recommended-scss/blob/master/index.js)"
 />
 
 - 安装
@@ -110,14 +110,14 @@ pnpm add -D stylelint-config-recommended-scss
 // .stylelintrc.js
 module.exports = {
   // 使用社区推荐的配置
-  extends: "stylelint-config-recommended-scss",
+  extends: 'stylelint-config-recommended-scss',
   rules: {
     // stylelint 内置规则
-    "unit-allowed-list": ["em"],
+    'unit-allowed-list': ['em'],
     // stylelint-scss 特定的规则
-    "scss/dollar-variable-colon-newline-after": 'always',
+    'scss/dollar-variable-colon-newline-after': 'always',
   }
-}
+};
 ```
 :::tip
 是否使用看个人偏好，爱用就用，推荐的配置也不一定适合自己，完全可以根据 `stylelint` 内置的规则和 `stylelint-scss` 的规则来自己定义。
@@ -139,12 +139,12 @@ pnpm add -D stylelint postcss-less
 // .stylelintrc.js
 module.exports = {
   // less 解析器
-  customSyntax: "postcss-less",
+  customSyntax: 'postcss-less',
   rules: {
     // stylelint 内置规则
-    "unit-allowed-list": ["em"],
+    'unit-allowed-list': ['em'],
   }
-}
+};
 ```
 ### 2.3 HTML 中的 CSS
 
@@ -163,12 +163,12 @@ pnpm add -D stylelint postcss-html
 // .stylelintrc.js
 module.exports = {
   // html 解析器
-  customSyntax: "postcss-html",
+  customSyntax: 'postcss-html',
   rules: {
     // stylelint 内置规则
-    "unit-allowed-list": ["em"],
+    'unit-allowed-list': ['em'],
   }
-}
+};
 ```
 :::tip
 [stylelint-config-html](https://github.com/ota-meshi/stylelint-config-html) 是社区推荐的一个 HMTL（类HTML）Stylelint 的配置，其中包含了 html, php, svelte, vue 以及 xml 的配置。Vue 官方[推荐的 Stylelint 配置](https://github.com/ota-meshi/stylelint-config-recommended-vue)就使用了这一配置。
@@ -190,16 +190,16 @@ pnpm add -D stylelint postcss-html
 module.exports = {
   overrides: [
     {
-      files: ["*.html"],
+      files: ['*.html'],
       // html 解析器
-      customSyntax: "postcss-html",
+      customSyntax: 'postcss-html',
     }
   ],
   rules: {
     // stylelint 内置规则
-    "unit-allowed-list": ["em"],
+    'unit-allowed-list': ['em'],
   }
-}
+};
 ```
 
 > 为什么要这样写才能同时检测 html 文件和 css 文件呢？
@@ -217,21 +217,21 @@ pnpm add -D stylelint postcss-html postcss-sass
 module.exports = {
   overrides: [
     {
-      files: ["*.html"],
+      files: ['*.html'],
       // html 解析器
-      customSyntax: "postcss-html",
+      customSyntax: 'postcss-html',
     },
     {
-      files: ["*.scss"],
+      files: ['*.scss'],
       // scss 解析器
-      customSyntax: "postcss-scss",
+      customSyntax: 'postcss-scss',
     }
   ],
   rules: {
     // stylelint 内置规则
-    "unit-allowed-list": ["em"],
+    'unit-allowed-list': ['em'],
   }
-}
+};
 ```
 
 ### 2.4 Vue
@@ -241,12 +241,12 @@ module.exports = {
 stylelint-config-recommended-vue 就是：[stylelint-config-recommended](https://github.com/stylelint/stylelint-config-recommended) + [stylelint-config-html]() + 一点点 vue 特定配置，如下图所示：
 
 <PaoImages
-  src="./imgs/stylelint-config-recommended-vue-01.png" 
+  src="./imgs/stylelint-config-recommended-vue-01.png"
   width="80%"
 />
 <PaoImages
-  src="./imgs/stylelint-config-recommended-vue-02.png" 
+  src="./imgs/stylelint-config-recommended-vue-02.png"
   width="80%"
-  title="stylelint-config-recommended-vue" 
-  reference="图片来至：[stylelint-config-recommended-vue](https://github.com/ota-meshi/stylelint-config-recommended-vue/blob/main/lib/index.js)" 
+  title="stylelint-config-recommended-vue"
+  reference="图片来至：[stylelint-config-recommended-vue](https://github.com/ota-meshi/stylelint-config-recommended-vue/blob/main/lib/index.js)"
 />

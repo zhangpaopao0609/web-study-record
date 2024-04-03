@@ -175,7 +175,7 @@ exports字段的优先级高于main字段，有很多用用法
        "./features/": "./src/features/"
      }
    }
-   
+
    import feature from 'es-module-package/features/x.js';
    // 加载 ./node_modules/es-module-package/src/features/x.js
    ```
@@ -185,7 +185,7 @@ exports字段的优先级高于main字段，有很多用用法
    ```javascript
    // 报错
    import submodule from 'es-module-package/private-module.js';
-   
+
    // 不报错
    import submodule from './node_modules/es-module-package/private-module.js';
    ```
@@ -200,7 +200,7 @@ exports字段的优先级高于main字段，有很多用用法
        ".": "./main.js"
      }
    }
-   
+
    // 等同于
    {
      "exports": "./main.js"
@@ -342,74 +342,3 @@ CommonJS 的一个模块，就是一个脚本文件。`require`命令第一次�
 ### 4.2 CommonJS模块的循环加载
 
 ### 4.3 ES6模块的循环加载
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

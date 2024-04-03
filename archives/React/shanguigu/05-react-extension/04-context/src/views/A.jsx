@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import B from "./B";
-import { MyContext } from "./MyContext.js";
+import B from './B';
+import { MyContext } from './MyContext.js';
+
 const { Provider } = MyContext;
 
 export default class A extends Component {
   state = {
     name: 'ardor',
     age: 18,
-  }
+  };
 
   render() {
     return (
@@ -18,6 +19,6 @@ export default class A extends Component {
           <B />
         </Provider>
       </div>
-    )
+    );
   }
 }

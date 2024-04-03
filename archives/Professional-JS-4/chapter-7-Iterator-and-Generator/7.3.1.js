@@ -1,5 +1,5 @@
 function* genetatorFn() {
-    return 'foo';
+  return 'foo';
 };
 
 const g = genetatorFn();

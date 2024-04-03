@@ -7,5 +7,5 @@
 sayColor();
 
 var sayColor = () => {
-    console.log(1);
-}
+  console.log(1);
+};

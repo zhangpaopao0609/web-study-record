@@ -1,6 +1,6 @@
 async function foo() {
   console.log(1);
-  console.log(await Promise.resolve(2)); 
+  console.log(await Promise.resolve(2));
   console.log(3);
 };
 

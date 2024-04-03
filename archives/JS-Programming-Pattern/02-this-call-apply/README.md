@@ -9,4 +9,3 @@ JS 的 this 总是指向一个对象，而具体指向哪个对象是在运行�
 - 作为普通函数调用
 - 构造器调用
 - Function.prototype.call 或 Function.prototype.apply 调用
-

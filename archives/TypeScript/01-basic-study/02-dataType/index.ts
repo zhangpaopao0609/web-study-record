@@ -1,39 +1,38 @@
-let stat: boolean = false;
+const stat: boolean = false;
 
-let n: number = 1;
+const n: number = 1;
 
-let str: string = "this is string";
+const str: string = 'this is string';
 
 // 数组
-let arr1: number[] = [1, 2];
-let arr2: Array<number> = [1, 2];
+const arr1: number[] = [1, 2];
+const arr2: Array<number> = [1, 2];
 
 // 元组
-let tup1: [string, number, boolean] = ['1', 2, true];
+const tup1: [string, number, boolean] = ['1', 2, true];
 
 // 枚举
 // pay_status 0 未支付， 1 支付， 2 交易成功
 // flag 1表示true， -1表示false
 enum Flag {
   success = 1,
-  error = -1
+  error = -1,
 };
 
-let flag: Flag = Flag.error;
+const flag: Flag = Flag.error;
 console.log(flag);
 
 enum PayStatus {
   notPay = 0,
   hasPay = 1,
-  dealSuccess = 2
+  dealSuccess = 2,
 };
 
-let businessStatus: PayStatus = PayStatus.dealSuccess;
+const businessStatus: PayStatus = PayStatus.dealSuccess;
 console.log(businessStatus);
 
-
 // 任意类型
-let hard: any = "sd";
+let hard: any = 'sd';
 hard = 2;
 
 // null 和 undefined 是其它类型（never）的子类型
@@ -46,7 +45,7 @@ console.log(unde);
 let num_unde: number | undefined;
 console.log(num_unde);
 
-let null_data: null = null;
+const null_data: null = null;
 console.log(null_data);
 
 let special: number | null | undefined;
@@ -70,7 +69,7 @@ console.log(s1);
 const obj = {
   [s1]: 'try',
   age: 1,
-  name: 'arr'
+  name: 'arr',
 };
 console.log(obj);
 
@@ -86,18 +85,18 @@ console.log(Reflect.ownKeys(obj));
 
 // Symbol.for()  Symbol.keyFor()
 
-Symbol.hasInstance
-Symbol.isConcatSpreadable
+Symbol.hasInstance;
+Symbol.isConcatSpreadable;
 
-Symbol.match
-Symbol.replace
-Symbol.search
-Symbol.split
+Symbol.match;
+Symbol.replace;
+Symbol.search;
+Symbol.split;
 
-Symbol.iterator
+Symbol.iterator;
 
-Symbol.toPrimitive
+Symbol.toPrimitive;
 
-Symbol.toString
+Symbol.toString;
 
-Symbol.unscopables
+Symbol.unscopables;

@@ -11,4 +11,4 @@ function test2(x: unknown) {
   }
 };
 
-test2(undefined)
+test2(undefined);

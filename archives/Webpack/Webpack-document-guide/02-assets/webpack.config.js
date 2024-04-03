@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('node:path');
 const toml = require('toml');
 
 module.exports = {
@@ -35,10 +35,10 @@ module.exports = {
         test: /\.toml$/i,
         type: 'json',
         parser: {
-          parse: toml.parse
+          parse: toml.parse,
         },
       },
-    ]
+    ],
   },
 
   mode: 'development',

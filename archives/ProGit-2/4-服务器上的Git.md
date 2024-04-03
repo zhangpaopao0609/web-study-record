@@ -31,18 +31,18 @@ ls
 我们需要寻找一对以 `id_dsa` 或 `id_rsa` 命名的文件，其中一个带有 `.pub` 扩展名。 `.pub` 文件是你的公钥，另一个则是私钥。如果找不到这样的文件，或者根本没有 `.ssh` 目录，可以通过运行 `ssh-keygen` 程序来创建它们。在 Linux/mac 系统中， `ssh-keygen` 随着 SSH 软件包提供；在 Windows 上，该程序包含于 MSysGit 软件包中。
 
 ```bash
-$ ssh-keygen 
+$ ssh-keygen
 Generating public/private rsa key pair.
-Enter file in which to save the key (/home/schacon/.ssh/id_rsa): 
+Enter file in which to save the key (/home/schacon/.ssh/id_rsa):
 Created directory '/home/schacon/.ssh'.
-Enter passphrase (empty for no passphrase): 
-Enter same passphrase again: 
-Your identification has been saved in /home/schacon/.ssh/id_rsa. 
-Your public key has been saved in /home/schacon/.ssh/id_rsa.pub. 
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/schacon/.ssh/id_rsa.
+Your public key has been saved in /home/schacon/.ssh/id_rsa.pub.
 The key fingerprint is: d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local
 ```
 
-首先 `ssh-keygen` 会确认密钥的存储位置（默认是 `.ssh/id_rsa`），然后它会要求你输入两次密钥口令。如果你不想在使用密钥时输入口令，将其留空即可。  
+首先 `ssh-keygen` 会确认密钥的存储位置（默认是 `.ssh/id_rsa`），然后它会要求你输入两次密钥口令。如果你不想在使用密钥时输入口令，将其留空即可。
 
 现在，找到你的公钥，大致是以下这样的。
 
@@ -63,29 +63,4 @@ ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU GPl+na
 
 ## 4.8 GitLab
 
-
-
-
-
-
-
-
-
 ``
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

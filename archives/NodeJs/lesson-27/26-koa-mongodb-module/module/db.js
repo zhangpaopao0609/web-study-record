@@ -3,12 +3,12 @@ const Config = require('./config');
 
 class DB {
   constructor() {
-    this.dbClient = "";
+    this.dbClient = '';
     this.connect();
   }
 
   static getInstance() {
-    if(!DB.instance) {
+    if (!DB.instance) {
       DB.instance = new DB();
     }
     return DB.instance;
@@ -16,76 +16,76 @@ class DB {
 
   connect() {
     return new Promise((resolve, reject) => {
-      if(this.dbClient) { /* 解决数据库多次连接的问题 */ 
+      if (this.dbClient) { /* 解决数据库多次连接的问题 */
         resolve(this.dbClient);
-      }else {
+      } else {
         MongoClient.connect(Config.dbUrl, { useUnifiedTopology: true }, (err, client) => {
-          if(err) {
+          if (err) {
             reject(err);
-          }else {
+          } else {
             this.dbClient = client.db(Config.dbName);
             resolve(this.dbClient);
           }
-        })
+        });
       }
-    })
+    });
   }
 
   find(collectionName, json) {
     return new Promise((resolve, reject) => {
-      this.connect().then(db => {
+      this.connect().then((db) => {
         const result = db.collection(collectionName).find(json);
         result.toArray((err, data) => {
-          if(err) {
+          if (err) {
             reject(err);
-          }else {
+          } else {
             resolve(data);
           }
-        })
-      })
-    })
+        });
+      });
+    });
   }
 
   insert(collectionName, json) {
     return new Promise((resolve, reject) => {
-      this.connect().then(db => {
+      this.connect().then((db) => {
         db.collection(collectionName).insert(json, (err, result) => {
-          if(err) {
+          if (err) {
             reject(err);
-          }else {
+          } else {
             resolve(result);
           }
         });
-      })
-    })
+      });
+    });
   }
 
   update(collectionName, query, json) {
     return new Promise((resolve, reject) => {
-      this.connect().then(db => {
-        db.collection(collectionName).update(query, {$set: json}, (err, result) => {
-          if(err) {
+      this.connect().then((db) => {
+        db.collection(collectionName).update(query, { $set: json }, (err, result) => {
+          if (err) {
             reject(err);
-          }else {
+          } else {
             resolve(result);
           }
         });
-      })
-    })
+      });
+    });
   }
 
   remove(collectionName, query) {
     return new Promise((resolve, reject) => {
-      this.connect().then(db => {
+      this.connect().then((db) => {
         db.collection(collectionName).remove(query, (err, result) => {
-          if(err) {
+          if (err) {
             reject(err);
-          }else {
+          } else {
             resolve(result);
           }
         });
-      })
-    })
+      });
+    });
   }
 
   getObjectId(id) {
@@ -106,7 +106,6 @@ class DB {
 // })
 // console.timeEnd("start1")
 
-
 // const test_01 = DB.getInstance();
 // console.time("start");
 // test_01.find("orders", {}).then(data => {
@@ -121,7 +120,7 @@ class DB {
 // })
 // console.timeEnd("start1");
 
-// console.time("start1") 
+// console.time("start1")
 // test.find("orders", {}).then(data => {
 //   console.log(data);
 // })

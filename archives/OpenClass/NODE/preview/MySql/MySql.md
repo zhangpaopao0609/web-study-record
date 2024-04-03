@@ -57,4 +57,4 @@ SELECT name, AVG(score) FROM TBL_RESULT GROUP BY name;
 2. 外连接（需要有一个主表）
 SELECT a.name, a.score, b.postion FROM TBL_RESULT a LEFT JOIN TBL_POSITION b ON a.name = b.name;
 
-### 
+###

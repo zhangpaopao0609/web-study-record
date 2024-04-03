@@ -15,8 +15,8 @@
 // console.log(dest, result);
 const dest = {};
 const src = {
-    id: '1'
-}
+  id: '1',
+};
 
 Object.assign(dest, src);
 

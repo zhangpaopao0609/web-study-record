@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 ;
 ;
 ;
 const c = {
-    name: '1',
-    color: '',
-    radius: 1,
+  name: '1',
+  color: '',
+  radius: 1,
 };

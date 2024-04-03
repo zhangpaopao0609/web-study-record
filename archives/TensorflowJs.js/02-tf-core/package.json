@@ -2,13 +2,13 @@
   "name": "npm",
   "version": "1.0.0",
   "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@tensorflow/tfjs": "^3.9.0",
     "webpack": "^5.52.0",

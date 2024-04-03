@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "private": "true",
   "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
   "devDependencies": {
     "css-loader": "^5.2.6",
     "csv-loader": "^3.0.3",
@@ -18,8 +21,5 @@
     "webpack": "^5.43.0",
     "webpack-cli": "^3.3.12",
     "xml-loader": "^1.2.1"
-  },
-  "dependencies": {
-    "lodash": "^4.17.21"
   }
 }

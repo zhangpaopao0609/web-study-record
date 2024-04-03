@@ -2,11 +2,11 @@
   "name": "AsynchronousProgramming",
   "version": "1.0.0",
   "description": "",
+  "author": "paopao-arrow",
+  "license": "MIT",
+  "keywords": [],
   "main": "index.js",
   "scripts": {
     "test": "jest"
-  },
-  "keywords": [],
-  "author": "paopao-arrow",
-  "license": "MIT"
+  }
 }

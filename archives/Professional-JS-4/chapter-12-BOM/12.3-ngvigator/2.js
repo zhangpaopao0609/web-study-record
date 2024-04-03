@@ -1,31 +1,29 @@
-const hasPlugin = function(name) {
-  for(const plugin of navigator.plugins) {
-    if(plugin.name.toLowerCase().indexOf(name.toLowerCase()) !== -1) {
+const hasPlugin = function (name) {
+  for (const plugin of navigator.plugins) {
+    if (plugin.name.toLowerCase().includes(name.toLowerCase())) {
       console.log('has yo!');
       return;
     }
   }
   console.log('no yo!');
-  return;
-}
+};
 
-hasPlugin('chrome')
+hasPlugin('chrome');
 console.log(navigator);
 console.log(history);
 setTimeout(() => {
   location.hash = 'arrow';
-  history.pushState({arrow: 'arrow'}, 'title')
+  history.pushState({ arrow: 'arrow' }, 'title');
   // history.pushState({arrow: 'arrow'}, 'title', 'baz.html')
-
 }, 1000);
-window.onhashchange = function() {
+window.onhashchange = function () {
   console.log('hash change');
   console.log(history);
-}
+};
 
-window.onpopstate = event => {
+window.onpopstate = (event) => {
   const state = event.state;
-  if(state) {
+  if (state) {
     console.log(state, 123);
   }
-}
+};

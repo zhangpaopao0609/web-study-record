@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./index.less";
+import './index.less';
 
 export default class User extends Component {
   render() {
@@ -7,6 +7,6 @@ export default class User extends Component {
       <div>
         User
       </div>
-    )
+    );
   }
 }

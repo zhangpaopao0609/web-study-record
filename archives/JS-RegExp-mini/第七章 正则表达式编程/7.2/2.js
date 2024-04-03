@@ -1,4 +1,4 @@
-const string = "2016.06.09";
+const string = '2016.06.09';
 const regex = /\b(\d+)\b/g;
 
 console.log(regex.exec(string));

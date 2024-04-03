@@ -12,12 +12,12 @@ class ExpandingList extends HTMLUListElement {
 
     // Hide all child uls
     // These lists will be shown when the user clicks a higher level container
-    uls.forEach(ul => {
+    uls.forEach((ul) => {
       ul.style.display = 'none';
     });
 
-        // Look through each li element in the ul
-    lis.forEach(li => {
+    // Look through each li element in the ul
+    lis.forEach((li) => {
       // If this li has a ul as a child, decorate it and add a click handler
       if (li.querySelectorAll('ul').length > 0) {
         // Add an attribute which can be used  by the style
@@ -32,10 +32,10 @@ class ExpandingList extends HTMLUListElement {
         // Copy text from li to span, set cursor style
         newSpan.textContent = childText.textContent;
         newSpan.style.cursor = 'pointer';
-        
+
         // Add click handler to this span
         newSpan.onclick = this.showul;
-        
+
         // Add the span and remove the bare text node from the li
         childText.parentNode.insertBefore(newSpan, childText);
         childText.parentNode.removeChild(childText);

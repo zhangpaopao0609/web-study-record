@@ -21,11 +21,7 @@ web components 旨在解决这些问题 —— 它由三项主要技术组成，
 3. Element.attachShadow
 4.  `<template>` 和 `<slot>` 元素
 
-
-
 ## 2. 使用 custom elements
-
-
 
 ## 3. 使用生命周期回调函数
 
@@ -35,10 +31,6 @@ web components 旨在解决这些问题 —— 它由三项主要技术组成，
 - disconnectedCallback: 当custom element 从文档 DOM 中删除时，被调用
 - adoptedCallback: 当custom element 被移动到新的文档时，被调用
 - attributeChangedCallback: 当 custom element 增加、删除、修改自身属性时，被调用
-
-
-
-
 
 ## 4. 使用 shadow DOM
 
@@ -66,14 +58,14 @@ Shadow DOM 允许将隐藏的 DOM 树附加到常规的 DOM 树中——它以 s
 可以使用`Element.attachShdow()`方法来将一个 shadow root 附加到任何一个元素上。它接受一个配置对象作为参数，该对象有一个  `mode` 属性，值可以是 `open` 或者 `closed`
 
 ```js
-let shadow = elementRef.attachShadow({ mode: 'open'});
-let shadow = elementRef.attachShadow({ mode: 'closed'});
+let shadow = elementRef.attachShadow({ mode: 'open' });
+let shadow = elementRef.attachShadow({ mode: 'closed' });
 ```
 
 `open` 表示可以通过页面内的 JS 方法来获取 Shadow DOM ， 例如使用 `Element.shadowRoot`属性：
 
 ```js
-let myShadowDom = myCustomElem.shadowRoot;
+const myShadowDom = myCustomElem.shadowRoot;
 ```
 
 如果你将一个 Shadow root 附加到一个 Custom element 上，并且将 `mode` 设置为 `closed`，那么就不可以从外部获取 Shadow DOM 了  —— `myCustomElem.shadowRoot`将会返回 `null`。浏览器中的某些内置元素就是如此，比如 `<video>`，包含了不可访问的  Shadow DOM.
@@ -81,7 +73,7 @@ let myShadowDom = myCustomElem.shadowRoot;
 如果期望将一个 Shadow DOM 附加到 custom element 上，可以在 custom element 的构造函数中添加如下实现（目前，这就是 Shadow DOM 最实用的用法）：
 
 ```js
-let shadow = this.attachShadow({ mode: 'open' });
+const shadow = this.attachShadow({ mode: 'open' });
 ```
 
 将 Shadow DOM 附加到一个元素后，就可以使用 DOM APIs 对它进行操作，就和处理常规 DOM 一样。
@@ -91,8 +83,6 @@ const para = document.createElement('p');
 shadow.appendChild(para);
 // etc..
 ```
-
-
 
 ## 5. 使用 templates and slots
 
@@ -113,8 +103,8 @@ shadow.appendChild(para);
 上面的代码不会展示在你的页面中，直到你使用 JS 获取它的引用，然后再添加到 DOM 中，如下：
 
 ```js
-let template = document.getEmelentById('my-paragraph');
-let tempalteContent = tempalte.content;
+const template = document.getEmelentById('my-paragraph');
+const tempalteContent = tempalte.content;
 document.body.appednChild(templateContent);
 ```
 
@@ -136,7 +126,6 @@ class MyParagraph extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: 'open' });
     // shadowRoot.appendChild(templateContent);
     shadowRoot.appendChild(templateContent.cloneNode(true));
-
   };
 };
 
@@ -164,40 +153,3 @@ customElements.define('my-paragraph', MyParagraph);
 ```
 
 ### 5.3 使用槽(slots)添加灵活度
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

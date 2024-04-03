@@ -1,1 +1,1 @@
-module.exports = () => 'function run'
+module.exports = () => 'function run';

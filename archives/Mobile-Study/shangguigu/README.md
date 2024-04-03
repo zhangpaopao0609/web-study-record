@@ -27,7 +27,7 @@
   - 屏幕分辨率是一个固定值,无法修改！！
   - 屏幕分辨率、显示分辨率是两个概念，系统设置中可以修改的是： 显示分辨率
   - 屏幕分辨率 >= 显示分辨率
-  
+
 - 常见手机分辨率
 
   <img src="/Users/ardor/Desktop/MyGitHub/web-study-record/Mobile-Study/shangguigu/img/norma-pixel.png" alt="image-20210828221144990" style="zoom:65%;" />
@@ -51,8 +51,6 @@ $$
 物理像素图示：
 
 <img src="/Users/ardor/Desktop/MyGitHub/web-study-record/Mobile-Study/shangguigu/img/ppp.png" alt="image-20210828222749477" style="zoom:50%;" />
-
-
 
 #### 1.2.2 CSS 像素
 
@@ -155,8 +153,6 @@ css 像素又名：逻辑像素，css 像素是一个抽象的长度单位，单
 </body>
 ```
 
-
-
 ### 1.4 视口相关
 
 #### 1.4.1 pc 端视口
@@ -181,7 +177,7 @@ console.log('与浏览器无关，当前设备显示分辨率横向的值', scre
    移动端获取布局视口方式：
 
    ```js
-   document.documentElement.clientWidth
+   document.documentElement.clientWidth;
    ```
 
    注意： 布局视口经过压缩后，**横向的宽度用 css 像素表达就不再是 375px 了，而是 980px**， 因为布局视口是被压缩而不是截图。
@@ -200,10 +196,10 @@ console.log('与浏览器无关，当前设备显示分辨率横向的值', scre
 
    视觉视口就是用户可见的区域，**它的绝对宽度永远和设备(这里的设备用布局视口来衡量)一样宽**，但是这个宽度里所包含的 css 像素值是变化的，例如：一般手机会将 980 个 css 像素放入视觉视口中，而 ipad Pro 会将 1024 个 css 像素放入视觉视口中.
 
-   移动端获取视觉视口方式： 
+   移动端获取视觉视口方式：
 
    ```js
-   window.innerWidth
+   window.innerWidth;
    ```
 
    不过在 Android2、Opera mini、UC8 中无法正确获取（一般不通过代码看视觉视口，因为和布局视口一样宽，直接用查看布局视口即可）。
@@ -212,17 +208,17 @@ console.log('与浏览器无关，当前设备显示分辨率横向的值', scre
 
 3. **理想视口标准**
    **与屏幕等宽(用设备独立像素来衡量)的布局视口**，称之为理想视口。所以也可以说理想视口是一种标准：让布局视口与屏幕等宽（设备独立像素），这就靠 `meta` 标签实现。
-   
+
    理想视口的特点：
-   
+
    - 布局视口和屏幕等宽，以 iphone6 为例，符合理想视口标准之后
      - 设备独立像素： 375px
      - 布局视口宽度： 375px
    - 用户不需要缩放、滚动就能看到网站的全部内容
    - **<font color='red'>要为移动端设备单独设计一个移动端网站</font>**
-   
+
    设置理想视口的具体方法
-   
+
    ```html
    <meta name='viewport' content='width=device-width' />
    ```
@@ -271,7 +267,7 @@ console.log('与浏览器无关，当前设备显示分辨率横向的值', scre
 
 移动端缩放不会影响页面布局，因为缩放的时候，**布局视口大小没有变化**
 
-## 2. viewport 
+## 2. viewport
 `meta-viewport` 标签是苹果公司在 2007 年引进的，用于移动端布局视口的控制
 使用示例：
 
@@ -307,7 +303,7 @@ width 值可以是 device-width,也可以是具体值，但是有些安卓手机
 **4. minimum-scale**
 
 - 设置允许用户最小缩放比例，苹果浏览器 safari 不认识该属性
-- maximum-scale=屏幕宽度（设备独立像素）/ 视觉视口宽度值 
+- maximum-scale=屏幕宽度（设备独立像素）/ 视觉视口宽度值
 
 **5. user-scalable**
 
@@ -317,7 +313,6 @@ width 值可以是 device-width,也可以是具体值，但是有些安卓手机
 
 - 解决刘海屏问题
 viewport-fit 设置为 cover 值可以解决刘海屏的留白问题
-
 
 ## 3. 适配
 ### 3.1 为什么要做适配？
@@ -388,7 +383,7 @@ rem 适配的原理：**编写样式时统一使用 rem 为单位，在不同设
          document.documentElement.style.fontSize = `${val}px`;
        };
        adapter();
-   
+
        window.onresize = adapter;
      </script>
    </body>
@@ -404,7 +399,7 @@ rem 适配的原理：**编写样式时统一使用 rem 为单位，在不同设
   - 编写样式时：
 
     - 直接以 rem 为单位
-    - 值为： 设计值 / (设计稿宽度 / 10)  
+    - 值为： 设计值 / (设计稿宽度 / 10)
 
     > 这种方案相比较方案二的优点就在于设置根字体的方法简单，但是缺点在于程序猿在写 css 样式的时候就麻烦了，需要计算，比如设计值 345，那么需要 345/(375/10)rem，这种计算就麻烦了，不过这也能很好的解决，用 less 就可以完美解决了，但是总的来说，还是方案一更简单实用
 
@@ -414,7 +409,7 @@ rem 适配的原理：**编写样式时统一使用 rem 为单位，在不同设
 
   ```less
   @font: 375/10rem;
-  
+
   .a {
     width: 345/@font;
     height: 150/@font;
@@ -439,14 +434,13 @@ rem 适配的原理：**编写样式时统一使用 rem 为单位，在不同设
         document.documentElement.style.fontSize = `${dip / 10}px`;
       };
       adapter();
-  
+
       window.onresize = adapter;
     </script>
   </body>
   </html>
   ```
 
-  
 ### 3.4 vw 适配方案
 vw 和 vh 是两个相对单位
 - 1vw = 等于布局视口宽度的 1%
@@ -461,13 +455,13 @@ vw 和 vh 是两个相对单位
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1-vw适配方案</title>
   <style>
-    .a { 
+    .a {
       width: 9.2vw;
       height: 4vw;
       margin: 0.4vw auto 0;
       background-color: aquamarine;
     }
-    
+
   </style>
 </head>
 <body>
@@ -528,13 +522,13 @@ vw 和 vh 是两个相对单位
       background-color: #000;
       height: 1px;
     }
- 
+
     @media screen and (-webkit-min-device-pixel-ratio: 2){
       .a::after {
         transform: scaleY(0.5);
       }
     }
-   
+
     @media screen and (-webkit-min-device-pixel-ratio: 3){
       .a::after {
         transform: scaleY(0.3333);
@@ -573,7 +567,6 @@ vw 和 vh 是两个相对单位
 - 触发 touchmove 与 touchend 事件，一定要先触发 touchstart
 - 事件的作用在于实现移动端的界面交互
 
-
 ### 4.2 点击穿透
 **touch 事件结束后会默认触发元素的 click 事件**，如果没有设置完美视口，则事件触发的时间间隔为 300 ms 左右，如果设置完美视口则时间间隔为 30ms 左右（当然也得看具体的设备的特性）
 
@@ -583,34 +576,34 @@ vw 和 vh 是两个相对单位
 
 1. 阻止默认事件
 ```js
-node.addEventListener('touchstart', e => {
-   e.preventDefault();
-})
+node.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+});
 ```
 2. 使背后的元素不具备 click 特性，用 touchXXXX 来代替 click
 如将 a 标签改写成 touchend 事件
 ```js
 btn.addEventListener('touchend', () => {
-   window.location.href = 'https://www.baidu.co'
+  window.location.href = 'https://www.baidu.co';
 });
 ```
 3. 让背后的元素暂时失去 click 事件， 300 毫秒左右在恢复
 其实这只是一个非常老的知识点，元素的样式上有一个 ‘pointer-events’属性，设置为 'none' 后将不再响应任何事件
 ```js
-btn.addEventListener('touchend', e => {
-   baidu.style.pointerEvents = 'none';
-   mask.style.display = 'none';
-   setTimeout(() => {
-      baidu.style.pointerEvents = 'auto';
-   }, 300);
+btn.addEventListener('touchend', (e) => {
+  baidu.style.pointerEvents = 'none';
+  mask.style.display = 'none';
+  setTimeout(() => {
+    baidu.style.pointerEvents = 'auto';
+  }, 300);
 });
 ```
 4. 让隐藏元素延迟 300 毫秒再隐藏
 ```js
-btn.addEventListener('touchend', e => {
-   setTimeout(() => {
-      mask.style.display = 'none';
-   }, 300);
+btn.addEventListener('touchend', (e) => {
+  setTimeout(() => {
+    mask.style.display = 'none';
+  }, 300);
 });
 ```
 

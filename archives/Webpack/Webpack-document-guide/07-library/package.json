@@ -2,14 +2,14 @@
   "name": "07-library",
   "version": "1.0.0",
   "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "lodash": "^4.17.21",
     "webpack": "^5.43.0",

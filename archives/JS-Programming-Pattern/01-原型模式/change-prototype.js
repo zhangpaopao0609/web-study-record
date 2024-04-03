@@ -1,6 +1,6 @@
 const obj = { name: 'ardor' };
 
-const A = function() {};
+const A = function () {};
 A.prototype = obj;
 
 const instanceA = new A();

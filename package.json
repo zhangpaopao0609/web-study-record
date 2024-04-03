@@ -1,38 +1,33 @@
 {
   "name": "web-study-record",
+  "type": "module",
   "version": "1.0.0",
   "description": "zhangpaopao web study record",
-  "scripts": {
-    "eslint": "eslint",
-    "eslint:fix": "eslint --fix",
-    "stylelint": "stylelint \"**/*.{css,scss}\"",
-    "stylelint:fix": "stylelint --fix \"**/*.{css,scss}\"",
-    "prepare": "husky",
-    "docs:dev": "cd docs && pnpm run docs:dev",
-    "docs:build": "cd docs && pnpm run docs:build"
-  },
+  "author": "zhangpaopao0609",
+  "license": "ISC",
+  "homepage": "https://github.com/zhangpaopao0609/web-study-record#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhangpaopao0609/web-study-record.git"
   },
-  "keywords": [],
-  "author": "zhangpaopao0609",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/zhangpaopao0609/web-study-record/issues"
   },
-  "homepage": "https://github.com/zhangpaopao0609/web-study-record#readme",
+  "keywords": [],
+  "scripts": {
+    "eslint:fix": "eslint --fix -c eslint.config.js .",
+    "prepare": "husky",
+    "docs:dev": "cd docs && pnpm run docs:dev",
+    "docs:build": "cd docs && pnpm run docs:build"
+  },
   "devDependencies": {
-    "@commitlint/cli": "^17.6.1",
-    "@commitlint/config-conventional": "^17.6.1",
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
+    "@antfu/eslint-config": "^2.8.0",
+    "@commitlint/cli": "^19.0.3",
+    "@commitlint/config-conventional": "^19.0.3",
     "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.22.0",
     "husky": "^9.0.11",
-    "lint-staged": "^13.2.1",
-    "stylelint": "^16.2.1",
-    "stylelint-config-standard-scss": "^13.0.0"
+    "lint-staged": "^15.2.2",
+    "typescript": "^5.3.3"
   },
   "pnpm": {
     "peerDependencyRules": {
@@ -42,7 +37,11 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,vue}": ["eslint --fix"],
-    "*.{css, scss, vue, tsx}": ["stylelint --fix"]
+    "*.{js,ts,vue}": [
+      "eslint --fix"
+    ],
+    "*.{css, scss, vue, tsx}": [
+      "stylelint --fix"
+    ]
   }
 }

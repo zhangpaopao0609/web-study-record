@@ -26,17 +26,17 @@ code  如下：
 // toString(): 返回对象的字符串表示
 // valueOf(): 返回对象对应的字符串、数值或布尔值表示，通常与 toString() 相同
 
-function sum_1() {      
-  const args = [...arguments]
+function sum_1() {
+  const args = [...arguments];
   // 收集参数的角度
-  const add = function () {
-    args.push(...arguments)
-    return add
-  }
+  const add = function () {
+    args.push(...arguments);
+    return add;
+  };
 
   add.toString = () => args.reduce((a, b) => a + b);
 
-  return add
+  return add;
 }
 
 console.log(sum_1(1)(2) == 3);
@@ -53,9 +53,9 @@ function sum_2() {
   // 参数传递的角度
   const fn = function () {
     const arg_fn = [...arguments];
-    
+
     return sum_2(...args.concat(arg_fn));
-  }
+  };
 
   fn.valueOf = () => args.reduce((a, b) => a + b);
 

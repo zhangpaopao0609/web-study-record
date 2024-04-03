@@ -10,7 +10,7 @@ HTTP Cache 使我们开发中接触最多的缓存，一般把它分为强缓存
   - Expires: time
   - Cache-Control: max-age
 - 协商缓存： 按照首部与服务器进行比对，若结果为false则直接使用副本，状态码 304，为true则返回服务器对应的资源
-  - If-None-Match    Etag   
+  - If-None-Match    Etag
   - If-Modified-Since  Last-Modified
 
 缓存优先级
@@ -19,8 +19,6 @@ Pragma > Cache-Control > Expires > Etag > Last-Modified
 
 ![image-20210302114913250](./images/caching-flowchart.png)
 
-
-
 ## 2. 强缓存
 
 ### 2.1 Expires
@@ -28,31 +26,33 @@ Pragma > Cache-Control > Expires > Etag > Last-Modified
 当请求一个资源，服务器返回是，可以在 `Response Headers` 中增加 `expires` 字段表示资源的过期时间。是一个绝对时间。
 
 ```js
-const http = require('http');
-const fs = require('fs');
+const http = require('node:http');
+const fs = require('node:fs');
 
 const app = http.createServer((req, res) => {
   const { url } = req;
   if (url === '/') {
-    const file = fs.readFileSync("./index.html");
-    res.setHeader("Content-Type", "text/html");
+    const file = fs.readFileSync('./index.html');
+    res.setHeader('Content-Type', 'text/html');
     res.end(file);
   } else if (url === '/script.js') {
-    const file = fs.readFileSync("./script.js");
+    const file = fs.readFileSync('./script.js');
     const now = new Date();
     now.setSeconds(now.getSeconds() + 60); // 获取当前时间的 60 秒后
 
     res.writeHead(200, {
       'Content-Type': 'text/javascript',
-      Expires: now.toGMTString()
+      'Expires': now.toGMTString()
     });
     res.end(file);
   }
 });
 
 const port = 6090;
-app.listen(port, err => {
-  if (err) throw err;
+app.listen(port, (err) => {
+  if (err) {
+    throw err;
+  }
   console.log(`app start at ${port}`);
 });
 ```
@@ -111,7 +111,7 @@ Last-Modified 记录资源最后修改的时间。启用后，请求资源之后
   > 2. 时间的精确度只能到秒，如果在一秒内修改，那么是检测不到的
 
 ```js
-let now = new Date();
+const now = new Date();
 setInterval(() => {
   now.setSeconds(now.getSeconds() + 1);
   console.log('lastModified:', now.toUTCString());
@@ -120,24 +120,24 @@ setInterval(() => {
 const app = http.createServer((req, res) => {
   const { url } = req;
   if (url === '/') {
-    const file = fs.readFileSync("./index.html");
-    res.setHeader("Content-Type", "text/html");
+    const file = fs.readFileSync('./index.html');
+    res.setHeader('Content-Type', 'text/html');
     res.end(file);
   } else if (url === '/script.js') {
-    const file = fs.readFileSync("./script.js");
-    const isModifiedSince = req.headers["if-modified-since"];
+    const file = fs.readFileSync('./script.js');
+    const isModifiedSince = req.headers['if-modified-since'];
     const lastModified = now.toUTCString();
-    if(lastModified === isModifiedSince) {
-      res.writeHead(304, { 'Last-Modified':  lastModified});
+    if (lastModified === isModifiedSince) {
+      res.writeHead(304, { 'Last-Modified': lastModified });
       res.end();
-    }else {
+    } else {
       res.writeHead(200, {
         'Content-Type': 'text/javascript',
-        'Cache-Control': "no-cache",
+        'Cache-Control': 'no-cache',
         'Last-Modified': lastModified
       });
       res.end(file);
-    }  
+    }
   }
 });
 ```
@@ -155,8 +155,6 @@ Etag 是服务器根据当前文件协商内容，给文件生成的唯一标识
 - 如果两者一样，说明为更新，返回304，浏览器使用缓存
 - 否者说明更新了，返回新的资源
 
-
-
 ### 3.3 两者对比
 
 1. 精度上， Etag 优于 Last-Modified。
@@ -169,10 +167,6 @@ Etag 是服务器根据当前文件协商内容，给文件生成的唯一标识
 2. 性能上，Last-Modified 优于 Etag
 
    也很简单理解，Last-Modified 仅仅只是记录一个时间点，而 Etag 需要根据文件的具体内容生成哈希值。
-
-
-
-
 
 ## 4. 缓存位置
 

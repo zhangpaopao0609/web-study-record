@@ -1,10 +1,10 @@
 const file = 'blah.txt';
- 
-const helpers = { 
+
+const helpers = {
   test() {
     console.log('test something!!');
   },
   parse() {
     console.log('parser somhing!!');
   },
- };
+};

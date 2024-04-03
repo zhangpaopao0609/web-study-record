@@ -1,6 +1,6 @@
 const regex = /^((\d)(\d(\d)))\1\2\3\4$/;
 
-const string = "1231231233";
+const string = '1231231233';
 
 console.log(regex.test(string));
 console.log(RegExp.$1);

@@ -1,9 +1,9 @@
 'use strict';
 
+const path = require('node:path');
+const http = require('node:http');
 const express = require('express');
-const path = require('path');
 const session = require('express-session');
-const http = require('http');
 
 const index = require('./routes/index');
 
@@ -25,11 +25,11 @@ app.use(session({
 
 app.use('/', index);
 
-let port = process.env.PORT || 8081;
+const port = process.env.PORT || 8081;
 app.set('port', port);
 
-let server = http.createServer(app);
+const server = http.createServer(app);
 
-server.listen(port, function () {
+server.listen(port, () => {
   console.log(`Server ${process.env.SERVER_NAME} listening on port: ${port}`);
 });

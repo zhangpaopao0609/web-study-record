@@ -11,4 +11,4 @@
   - componentDidUpdate()
 
 3. 卸载组件： 由 ReactDOM.unmountComponentAtNode() 触发
-  - componentWillUnmount() 
+  - componentWillUnmount()

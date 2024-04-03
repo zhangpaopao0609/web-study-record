@@ -1,46 +1,45 @@
-<template>
-  <div class="ss" v-if="isShow">
-    {{ title }}
-    {{ message }}
-  </div>
-</template>
-
 <script>
-
 export default {
   name: 'Notice',
   props: {
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     message: {
       type: String,
-      default: ''
+      default: '',
     },
     duration: {
       type: Number,
-      default: 1000
-    }
+      default: 1000,
+    },
   },
   data() {
     return {
-      isShow: false
-    }
+      isShow: false,
+    };
   },
   methods: {
     show() {
       this.isShow = true;
       setTimeout(() => {
-        this.isShow = false
-      }, this.duration)
+        this.isShow = false;
+      }, this.duration);
     },
     hide() {
-      this.isShow = false
-    }
-  }
-}
+      this.isShow = false;
+    },
+  },
+};
 </script>
+
+<template>
+  <div v-if="isShow" class="ss">
+    {{ title }}
+    {{ message }}
+  </div>
+</template>
 
 <style>
 

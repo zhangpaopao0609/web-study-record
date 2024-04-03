@@ -13,20 +13,20 @@
     this.name = name;
     this.age = age;
     // 实例方法
-    this.run = function() {
+    this.run = function () {
       console.log(this.name + this.age);
     };
   };
-  
+
   // 静态方法
-  Person.prototype.work = function() {
-    console.log("work")
-  }
-  
-  const newOne = new Person("arr", 13);
-  
+  Person.prototype.work = function () {
+    console.log('work');
+  };
+
+  const newOne = new Person('arr', 13);
+
   newOne.run();
-  newOne.work()
+  newOne.work();
   ```
 
 - 利用 原型链 和 盗用构造函数来实现
@@ -34,12 +34,12 @@
   ```js
   // 盗用构造函数来传值（不能继承到原型链上的方法和属性）
   function Arrow(name, age) {
-    Person.call(this, name, age)
+    Person.call(this, name, age);
   }
-  
+
   // 原型链来继承方法（单独的原型链继承可以继承实例和方法，但是实例化子类的时候没法给父类传值）
   Arrow.prototype = new Person();
-  
+
   const arrow = new Arrow('arr', 12);
   arrow.run();
   arrow.work();
@@ -55,22 +55,27 @@
       this.name = name;
       this.age = age;
     }
-  
+
     // 实例方法
-    run() { console.log(this.name + this.age); }
-  
-    work() { console.log("work"); }
-  
+    run() {
+      console.log(this.name + this.age);
+    }
+
+    work() {
+      console.log('work');
+    }
+
     // 静态方法
-    static test() { console.log("static"); }
+    static test() {
+      console.log('static');
+    }
   };
-  
-  
-  const arrow = new Person("arr", 12);
-  
+
+  const arrow = new Person('arr', 12);
+
   arrow.run();
   arrow.work();
-  
+
   Person.test();
   ```
 
@@ -82,8 +87,8 @@
       super(name, age);
     }
   };
-  
-  const arr = new Arrow("arr", 13);
+
+  const arr = new Arrow('arr', 13);
   arr.run();
   arr.work();
   ```
@@ -97,22 +102,22 @@
     constructor() {
       this.connect();
     }
-  
+
     connect() {
-      console.log("连接数据库！");
+      console.log('连接数据库！');
     }
-  
+
     find() {
-      console.log("查找数据！");
+      console.log('查找数据！');
     }
   };
-  
+
   const instance_1 = new DB();
   instance_1.find();
-  
+
   const instance_2 = new DB();
   instance_2.find();
-  
+
   const instance_3 = new DB();
   instance_3.find();
   // 连接数据库！
@@ -127,8 +132,6 @@
 
 ## 2. 单例模式
 
-
-
 ```js
 class DB {
   constructor() {
@@ -136,18 +139,18 @@ class DB {
   }
 
   static getInstance() {
-    if(!DB.instance) {
+    if (!DB.instance) {
       DB.instance = new DB();
     };
     return DB.instance;
   }
 
   connect() {
-    console.log("连接数据库！");
+    console.log('连接数据库！');
   }
 
   find() {
-    console.log("查找数据！");
+    console.log('查找数据！');
   }
 };
 

@@ -297,8 +297,6 @@ gen.next().value // "hello!"
 gen.next().value // "close"
 ```
 
-
-
 ## 8. 作为对象属性的generator函数
 
 如果一个对象的属性是 Generator 函数，可以简写成下面的形式。
@@ -448,32 +446,3 @@ loader.next()
 ### （3）部署Iterator接口
 
 ### （4）作为数据结构
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

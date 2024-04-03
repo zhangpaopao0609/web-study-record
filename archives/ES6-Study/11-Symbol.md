@@ -21,8 +21,8 @@ const sym = Symbol('foo');
 ```js
 const sym = Symbol('foo');
 
-String(sym)  // 'Symbol(foo)'
-sym.toString()  // 'Symbol(foo)'
+String(sym); // 'Symbol(foo)'
+sym.toString(); // 'Symbol(foo)'
 ```
 
 上面的用法不是很方便，因此提供了这个方法description
@@ -104,20 +104,3 @@ const shapeType = {
 `Object.getOwnPropertySymbols()`返回对象可用的Symbol值,返回一个数组,成员是当前对象的所有用作属性名的Synbol的值
 
 另一个新的API， `Reflect.ownKeys()` 方法可以返回所有类型的键名，包括常规键名和Symbol键名
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

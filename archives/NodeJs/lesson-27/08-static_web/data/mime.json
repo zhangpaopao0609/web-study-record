@@ -1,5 +1,5 @@
 {
-  ".html" : "text/html",
-  ".css" : "text/css",
-  ".js" : "text/javascript"
+  ".html": "text/html",
+  ".css": "text/css",
+  ".js": "text/javascript"
 }

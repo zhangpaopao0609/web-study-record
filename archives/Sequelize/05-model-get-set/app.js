@@ -1,16 +1,17 @@
 const { Sequelize, DataTypes, Op } = require('sequelize');
 
 const db = require('./config');
+
 const sequelize = new Sequelize(db.database, db.username, db.password, db.options);
 
-const User = sequelize.define("User", {
+const User = sequelize.define('User', {
   username: {
     type: DataTypes.STRING,
     // 获取器
     get() {
       const rawValue = this.getDataValue('username');
       return rawValue ? rawValue.toUpperCase() : null;
-    }
+    },
   },
   password: {
     type: DataTypes.STRING,
@@ -19,9 +20,9 @@ const User = sequelize.define("User", {
       return val ? val.slice(0, -1) : null;
     },
     set(val) {
-      this.setDataValue('password', val + 1)
-    } 
-  }
+      this.setDataValue('password', val + 1);
+    },
+  },
 });
 
 (async () => {

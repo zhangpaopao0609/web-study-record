@@ -61,7 +61,7 @@ Date:   Mon Nov 30 19:08:27 2020 +0800
 
   最常用的指明提交区间语法的是双点。这种语法可以让 Git 选出在一个分支而不在另一个分支中的提交。
 
-  比如 
+  比如
 
   - master 上 提交记录为  M-A  M-B  M-C  M-D  M-E
   - test 以master  M-C 为父提交切分支，新增提交记录 T-D T-E
@@ -73,8 +73,6 @@ Date:   Mon Nov 30 19:08:27 2020 +0800
   ```
 
   反过来，想查看在 master分支却不在 test 分支中的提交，只要交换分支名即可。
-
-  
 
   另一个常用的场景是查看你即将推送到远端的内容：
 
@@ -100,7 +98,7 @@ aispeechdeMacBook-Air:web-study-record aispeech$ git add -i
 *** Commands ***
   1: status	  2: update	  3: revert	  4: add untracked
   5: patch	  6: diff	  7: quit	  8: help
-What now> 
+What now>
 ```
 
 ## 7.3 储藏与清理
@@ -124,7 +122,7 @@ Please commit your changes or stash them before you switch branches.
 Aborting
 aispeechdeMacBook-Air:git-test aispeech$ git stash
 Saved working directory and index state WIP on master: 2e13a8e A
-aispeechdeMacBook-Air:git-test aispeech$ 
+aispeechdeMacBook-Air:git-test aispeech$
 ```
 
 现在，工作目录是干净的了。
@@ -162,7 +160,7 @@ Dropped stash@{2} (95315d6a56a658204aa77055f883c88e409883fb)
 aispeechdeMacBook-Air:git-test aispeech$ git stash list
 stash@{0}: WIP on B: 521988e Merge branch 'A' into B
 stash@{1}: WIP on A: 3108d6a A2
-aispeechdeMacBook-Air:git-test aispeech$ 
+aispeechdeMacBook-Air:git-test aispeech$
 ```
 
   ### 2. 清理工作目录
@@ -171,7 +169,7 @@ aispeechdeMacBook-Air:git-test aispeech$
 git clean
 ```
 
-一个更安全的选项是运行 
+一个更安全的选项是运行
 
 ```bash
 git stash --all
@@ -226,7 +224,7 @@ OpenClass/NODE/Node-day07-EggJs/agg-v4-router-controller-service-mysql/config/in
 OpenClass/NODE/Node-day07-EggJs/agg-v5-router-controller-service-mysql-middle/config/index.js:1
 OpenClass/NODE/Node-day07-EggJs/agg-v6-router-controller-service-mysql-middle-schedule/config/index.js:1
 OpenClass/NODE/Node-day07-EggJs/egg/config/config.default.js:1
-aispeechdeMacBook-Air:web-study-record aispeech$ 
+aispeechdeMacBook-Air:web-study-record aispeech$
 ```
 
 查看匹配的的行是输入哪一个方法或函数，可以使用 `-p`
@@ -279,7 +277,7 @@ git commit --amend
 通过变基来实现
 
 ```bash
-git rebase -i 
+git rebase -i
 ```
 
 如果想要修改最近三次提交信息，或者那组提交中的任意一个提交信息，将想要修改的最近一次提交的提交作为参数传递给 `git rebease -i`命令，即 `HEAD~2^` 或 `HEAD~3`。
@@ -297,11 +295,11 @@ git rebase -i HEAD~3
 拆分一个提交其实很简单，首先撤销这个提交，然后多次地部分地暂存与提交直到完成你所需次数的提交。
 
 ```bash
-$ git reset HEAD^ 
-$ git add README 
-$ git commit -m 'updated README formatting' 
-$ git add lib/simplegit.rb 
-$ git commit -m 'added blame' 
+$ git reset HEAD^
+$ git add README
+$ git commit -m 'updated README formatting'
+$ git add lib/simplegit.rb
+$ git commit -m 'added blame'
 $ git rebase --continue
 ```
 
@@ -332,7 +330,6 @@ $ git rebase --continue
   '
   ```
 
-
 ## 7.7 重置揭密
 
 ### 1. 三棵树
@@ -342,8 +339,8 @@ $ git rebase --continue
 git reset --soft HEAD~
 # --mixed, 这也是默认行为，撤销上一次的 commit, 并且取消暂存所有的东西，于是回到了git  add 和 git commit 的命令执行之前
 git reset [--mixed] HEAD~
-# --hard 是 reset 命令唯一危险的用法，也是 Git 会真正销毁数据的仅有的几个操作之一 
-git reset --hard 
+# --hard 是 reset 命令唯一危险的用法，也是 Git 会真正销毁数据的仅有的几个操作之一
+git reset --hard
 ```
 
 回顾
@@ -405,8 +402,6 @@ git merge -Xignore-space-change [branch-name]
   git revert -m 1 HEAD
   ```
 
-  
-
 ### 7.9 Rerere
 
 ```bash
@@ -421,14 +416,14 @@ git rerere
 追踪代码的bug，并且想知道什么时候以及为何会引入。git blame 标注这个文件，查看这个方法每一行的最后修改时间以及是被谁修改的。
 
 ```bash
-aispeechdeMacBook-Air:magic-desktop aispeech$ git blame -L 2,10 ./docker-compose.yml 
-974da998 (bo.zhang 2020-11-25 21:07:37 +0800 2) services: 
+aispeechdeMacBook-Air:magic-desktop aispeech$ git blame -L 2,10 ./docker-compose.yml
+974da998 (bo.zhang 2020-11-25 21:07:37 +0800 2) services:
 974da998 (bo.zhang 2020-11-25 21:07:37 +0800 3)   nginx:
 974da998 (bo.zhang 2020-11-25 21:07:37 +0800 4)     image: docker.v2.aispeech.com/aispeech/nginx:1.11.10
 974da998 (bo.zhang 2020-11-25 21:07:37 +0800 5)     restart: always
-974da998 (bo.zhang 2020-11-25 21:07:37 +0800 6)     ports: 
+974da998 (bo.zhang 2020-11-25 21:07:37 +0800 6)     ports:
 974da998 (bo.zhang 2020-11-25 21:07:37 +0800 7)       - 50000:80
-974da998 (bo.zhang 2020-11-25 21:07:37 +0800 8)     volumes: 
+974da998 (bo.zhang 2020-11-25 21:07:37 +0800 8)     volumes:
 974da998 (bo.zhang 2020-11-25 21:07:37 +0800 9)       - ./today/:/usr/share/nginx/html
 ```
 
@@ -437,18 +432,3 @@ aispeechdeMacBook-Air:magic-desktop aispeech$ git blame -L 2,10 ./docker-compose
 ```bash
 git bisect
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

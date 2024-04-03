@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('node:path');
 
 module.exports = {
   mode: 'development',
@@ -17,6 +17,6 @@ module.exports = {
       commonjs2: 'lodash',
       amd: 'lodash',
       root: '_',
-    }
+    },
   },
 };

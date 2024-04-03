@@ -34,13 +34,13 @@ module.exports = {
     node: true,
     browser: true,
   },
-  extends: "eslint:recommended",
+  extends: 'eslint:recommended',
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: 'latest',
   },
   rules: {
-    semi: ["error", "always"],
-    quotes: ["error", "double"]
+    semi: ['error', 'always'],
+    quotes: ['error', 'double']
   }
 };
 ```
@@ -120,16 +120,16 @@ module.exports = {
     // 'plugin:vue/recommended' // Use this if you are using Vue.js 2.x.
     'plugin:@typescript-eslint/recommended'
   ],
-  parser: "vue-eslint-parser",
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: "@typescript-eslint/parser",
-    sourceType: "module"
+    parser: '@typescript-eslint/parser',
+    sourceType: 'module'
   },
   plugins: ['@typescript-eslint'],
   rules: {
     // override/add rules settings here, such as:
     // 'vue/no-unused-vars': 'error'
-    "semi": ["error", "always"], // 强制使用分号结尾
+    semi: ['error', 'always'], // 强制使用分号结尾
   }
 };
 ```
@@ -160,7 +160,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true, // 启用 JSX 语法支持
     },
-    ecmaVersion: "latest", // 指定使用的 ECMAScript 版本
+    ecmaVersion: 'latest', // 指定使用的 ECMAScript 版本
     sourceType: 'module', // 指定 ECMAScript 模块化
   },
   plugins: [
@@ -207,7 +207,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true, // 启用 JSX 语法支持
     },
-    ecmaVersion: "latest", // 指定使用的 ECMAScript 版本
+    ecmaVersion: 'latest', // 指定使用的 ECMAScript 版本
     sourceType: 'module', // 指定 ECMAScript 模块化
   },
   plugins: [

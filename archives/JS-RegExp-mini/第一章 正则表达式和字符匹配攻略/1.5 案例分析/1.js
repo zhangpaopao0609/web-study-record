@@ -5,7 +5,7 @@ const string = '#ffbbad #Fc01DF #FFF #ffE';
 
 const res = string.match(regex);
 
-const re = regex.test(string)
+const re = regex.test(string);
 
 console.log(res);
 

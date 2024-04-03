@@ -7,9 +7,7 @@
 // // x 兼容 y
 // x = y;
 
-
-
-let x = (a: number) => 0;
+const x = (a: number) => 0;
 let y = (b: number, s: string) => 0;
 
 y = x; // OK

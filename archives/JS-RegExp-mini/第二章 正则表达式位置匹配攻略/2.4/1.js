@@ -2,7 +2,6 @@
 // const regex = /[^\w\W]/;
 const regex = /.^/;
 
-
 const string = 'test';
 
 console.log(regex.test(string));

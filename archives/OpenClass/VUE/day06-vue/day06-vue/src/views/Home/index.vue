@@ -1,18 +1,19 @@
-<template>
-    <div>
-        Home
-    </div>
-</template>
-
 <script>
 export default {
 
-}
+};
 </script>
+
+<template>
+  <div>
+    Home
+  </div>
+</template>
 
 <style scoped>
 
 </style>
+
 <style>
 
 </style>

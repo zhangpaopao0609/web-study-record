@@ -1,11 +1,12 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
+const http = require('node:http');
+const fs = require('node:fs');
+const path = require('node:path');
+
 const chunk = [];
-let size = 0;
+const size = 0;
 
 const server = http.createServer((request, response) => {
-  const { pathname } = require('url').parse(request.url);
+  const { pathname } = require('node:url').parse(request.url);
   if (pathname === '/upload') {
     console.log('>>>>uploading......');
     const fileName = request.headers['file-name'] ? request.headers['file-name'] : 'abc.png';
@@ -28,7 +29,7 @@ const server = http.createServer((request, response) => {
     // });
 
     // 方式二： 流事件写入
-    request.on('data', data => {
+    request.on('data', (data) => {
       console.log('data', data);
       fis.write(data);
     });
@@ -43,15 +44,15 @@ const server = http.createServer((request, response) => {
     // console.log('>>>>>end......');
   } else {
     const filename = pathname === '/' ? 'index.html' : pathname.substring();
-    const type = (_type => {
+    const type = ((_type) => {
       switch (_type) {
         case 'html':
-        case 'htm': return 'text/html charset=UTF-8'
-        case 'js': return 'application/javascript charset=UTF-8'
-        case 'css': return 'text/css charset=UTF-8'
-        case 'txt': return 'text/plain charset=UTF-8'
-        case 'mainfest': return 'text/cahe-mainfest charset=UTF-8'
-        default: return 'application/octet-stream'
+        case 'htm': return 'text/html charset=UTF-8';
+        case 'js': return 'application/javascript charset=UTF-8';
+        case 'css': return 'text/css charset=UTF-8';
+        case 'txt': return 'text/plain charset=UTF-8';
+        case 'mainfest': return 'text/cahe-mainfest charset=UTF-8';
+        default: return 'application/octet-stream';
       }
     })(filename.substring(filename.lastIndexOf('.') + 1));
 
@@ -64,7 +65,7 @@ const server = http.createServer((request, response) => {
         response.write(content);
       }
       response.end();
-    })
+    });
   }
 });
 

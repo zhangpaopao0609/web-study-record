@@ -1,11 +1,11 @@
-const { Controller } = require("egg");
+const { Controller } = require('egg');
 
 /**
  * @Controller 用户管理
  */
 class UserController extends Controller {
   constructor(ctx) {
-    super(ctx)
+    super(ctx);
   }
 
   /**
@@ -25,7 +25,7 @@ class UserController extends Controller {
     // 调用 service
     const res = await this.service.user.create(payload);
     // 设置响应内容
-    ctx.helper.success({ctx, res});
+    ctx.helper.success({ ctx, res });
   }
 }
 

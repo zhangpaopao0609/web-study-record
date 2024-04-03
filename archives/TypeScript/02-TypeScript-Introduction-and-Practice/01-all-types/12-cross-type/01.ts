@@ -9,8 +9,8 @@ interface Rectangle {
   z: number;
 };
 
-type Shape4 = Circle & Rectangle
+type Shape4 = Circle & Rectangle;
 
 declare const s1: Shape4;
 
-s1.color
+s1.color;

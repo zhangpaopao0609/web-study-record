@@ -47,9 +47,3 @@
    ```bash
    source ~/.bash_profile
    ```
-
-   
-
-   
-
-   

@@ -1,12 +1,12 @@
-# 一个旧物件 —— webpack 的 require.context 
+# 一个旧物件 —— webpack 的 require.context
 
 项目模块化开发，经常需要大量的 import 或者 export 各种模块，如下：
 
 ```js
-import A from "./modules/a";
-import B from "./modules/b";
-import C from "./modules/c";
-import D from "./modules/d";
+import A from './modules/a';
+import B from './modules/b';
+import C from './modules/c';
+import D from './modules/d';
 
 export { A, B, C, D };
 ```
@@ -49,38 +49,37 @@ require.context(
 ### 2. 简单使用
 
 ```js
-const context = require.context("./modules", true, /\.ts$/, "sync");
+const context = require.context('./modules', true, /\.ts$/, 'sync');
 ```
 
 上面调用方法，到底返回的是什么？
 
 ```js
-var map = {
-	"./a.ts": "./src/modules/modules/a.ts",
-	"./b.ts": "./src/modules/modules/b.ts",
-	"./c.ts": "./src/modules/modules/c.ts",
-	"./d.ts": "./src/modules/modules/d.ts"
+const map = {
+  './a.ts': './src/modules/modules/a.ts',
+  './b.ts': './src/modules/modules/b.ts',
+  './c.ts': './src/modules/modules/c.ts',
+  './d.ts': './src/modules/modules/d.ts'
 };
 
-
 function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
+  const id = webpackContextResolve(req);
+  return __webpack_require__(id);
 }
 function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
+  if (!__webpack_require__.o(map, req)) {
+    const e = new Error(`Cannot find module '${req}'`);
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+  }
+  return map[req];
 }
 webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
+  return Object.keys(map);
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = "./src/modules/modules sync recursive \\.ts$";
+webpackContext.id = './src/modules/modules sync recursive \\.ts$';
 ```
 
 代码很简单，require.context执行后，返回一个方法webpackContext，这个方法又返回一个__webpack_require__，这个__webpack_require__就相当于require或者import。同时webpackContext还有二个静态方法keys与resolve，一个id属性。
@@ -92,36 +91,33 @@ webpackContext.id = "./src/modules/modules sync recursive \\.ts$";
 看下keys是作用
 
 ```js
-const ctx = require.context('./components/', true, /\.js$/)
-console.log(ctx.keys())
+const ctx = require.context('./components/', true, /\.js$/);
+console.log(ctx.keys());
 // ["./A.js", "./B.js", "./C.js", "./D.js"]
 ```
 
 其实就是
 
 ```js
-var map = {
-	"./A.js": "./src/components/test/components/A.js",
-	"./B.js": "./src/components/test/components/B.js",
-	"./C.js": "./src/components/test/components/C.js",
-	"./D.js": "./src/components/test/components/D.js"
+const map = {
+  './A.js': './src/components/test/components/A.js',
+  './B.js': './src/components/test/components/B.js',
+  './C.js': './src/components/test/components/C.js',
+  './D.js': './src/components/test/components/D.js'
 };
 
-Object.keys(map)
+Object.keys(map);
 ```
-
-
 
 ```js
 function importAll(context: __WebpackModuleApi.RequireContext) {
   return context.keys().reduce((modules: Record<string, any>, modulePath) => {
-    const moduleName = modulePath.replace(/^.\/([^.]+).ts$/, "$1");
+    const moduleName = modulePath.replace(/^.\/([^.]+).ts$/, '$1');
     modules[moduleName] = context(modulePath).default;
     return modules;
   }, {});
 }
 
-const context = require.context("./modules", true, /\.ts$/, "sync");
+const context = require.context('./modules', true, /\.ts$/, 'sync');
 export default importAll(context);
-
 ```

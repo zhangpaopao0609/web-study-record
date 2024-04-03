@@ -20,28 +20,29 @@
  * @param {string[]} strs
  * @return {string}
  */
-var longestCommonPrefix = function(strs) {
-	let res = "";
-	let flag = true;
-	if (strs == null || strs.length == 0) {
-		return "";
-	}
-  
-	for (let i = 0; i < strs[0].length; i++) {
-		const s = strs[0].charAt(i);
-		strs.forEach(item => {
-			item.charAt(i) !== s && (flag = false);
-		});
-		if(!flag) break;
-		res += s;
-	}
-	return res;
+const longestCommonPrefix = function (strs) {
+  let res = '';
+  let flag = true;
+  if (strs == null || strs.length == 0) {
+    return '';
+  }
+
+  for (let i = 0; i < strs[0].length; i++) {
+    const s = strs[0].charAt(i);
+    strs.forEach((item) => {
+      item.charAt(i) !== s && (flag = false);
+    });
+    if (!flag) {
+      break;
+    }
+    res += s;
+  }
+  return res;
 };
 
-console.log(longestCommonPrefix(["rrrrdo","rrrrrracecar","rrrrcar"]));
+console.log(longestCommonPrefix(['rrrrdo', 'rrrrrracecar', 'rrrrcar']));
 
-
-//! @doc https://leetcode-cn.com/problems/longest-common-prefix/solution/zui-chang-gong-gong-qian-zhui-by-leetcode-solution/
+// ! @doc https://leetcode-cn.com/problems/longest-common-prefix/solution/zui-chang-gong-gong-qian-zhui-by-leetcode-solution/
 // ! 横向比较
 // class Solution {
 //   public String longestCommonPrefix(String[] strs) {
@@ -69,9 +70,6 @@ console.log(longestCommonPrefix(["rrrrdo","rrrrrracecar","rrrrcar"]));
 //   }
 // }
 
-
-
-
 // ! 分治的思想
 // class Solution {
 //   public String longestCommonPrefix(String[] strs) {
@@ -94,7 +92,7 @@ console.log(longestCommonPrefix(["rrrrdo","rrrrrracecar","rrrrcar"]));
 //   }
 
 //   public String commonPrefix(String lcpLeft, String lcpRight) {
-//       int minLength = Math.min(lcpLeft.length(), lcpRight.length());       
+//       int minLength = Math.min(lcpLeft.length(), lcpRight.length());
 //       for (int i = 0; i < minLength; i++) {
 //           if (lcpLeft.charAt(i) != lcpRight.charAt(i)) {
 //               return lcpLeft.substring(0, i);

@@ -2,6 +2,9 @@
   "name": "Build-Your-Own-Webpack",
   "version": "1.0.0",
   "description": "[toc]",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
   "main": "bundler.js",
   "directories": {
     "example": "example"
@@ -9,9 +12,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",

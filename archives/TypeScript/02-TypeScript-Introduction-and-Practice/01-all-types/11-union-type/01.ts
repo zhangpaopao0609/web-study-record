@@ -9,9 +9,9 @@ interface Rectangle {
   z: number;
 };
 
-type Shape3 = Circle | Rectangle
+type Shape3 = Circle | Rectangle;
 
 declare const s: Shape3;
 
-s.x
-s.y
+s.x;
+s.y;

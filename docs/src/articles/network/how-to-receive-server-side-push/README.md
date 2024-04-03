@@ -6,7 +6,6 @@
 
 使用 server-sent 事件，服务器可以在任何时刻向我们的 Web 页面推送数据和信息。这些被推送进来的信息可以在这个页面上作为 *[Events](https://developer.mozilla.org/zh-CN/docs/Web/API/Event) + data* 的形式来处理。
 
-
 `EventSource` 是服务器推送的一个网络事件接口。一个 `EventSource` 实例会对 HTTP 服务开启一个持久化的连接，以`text/event-stream` 格式发送事件，会一直保持开启直到被要求关闭。
 
 一旦连接开启，来自服务端传入的消息会以事件的形式分发至你代码中。如果接收消息中有一个事件字段，触发的事件与事件字段的值相同。如果没有事件字段存在，则将触发通用事件。
@@ -50,32 +49,32 @@
 服务端代码
 
 ```js
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const cors = require('cors');
 
 const app = express();
 app.use(cors());
 
-app.get("/events", (req, res) => {
-    res.setHeader("Content-Type", "text/event-stream");
-    res.setHeader("Cache-Control", "no-cache");
-    res.setHeader("Connection", "keep-alive");
-    res.flushHeaders();
+app.get('/events', (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  res.flushHeaders();
 
-    // 每隔一秒发送一个时间戳
-    setInterval(() => {
-        res.write(`data: ${new Date().toISOString()}`);
-    }, 1000);
+  // 每隔一秒发送一个时间戳
+  setInterval(() => {
+    res.write(`data: ${new Date().toISOString()}`);
+  }, 1000);
 
-    // 当客户端关闭连接时，停止发送事件
-    req.on("close", () => {
-        clearInterval();
-        res.end();
-    });
+  // 当客户端关闭连接时，停止发送事件
+  req.on('close', () => {
+    clearInterval();
+    res.end();
+  });
 });
 
 app.listen(8000, () => {
-    console.log("Server started on port 8000");
+  console.log('Server started on port 8000');
 });
 ```
 

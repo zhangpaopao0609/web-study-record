@@ -2,7 +2,7 @@
   "extends": "../tsconfig-base.json",
   "compilerOptions": {
     "rootDir": ".",
-    "outDir": "../../out/test",
+    "outDir": "../../out/test"
   },
   "references": []
 }

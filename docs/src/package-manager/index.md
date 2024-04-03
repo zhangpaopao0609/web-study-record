@@ -15,7 +15,6 @@
 
 ### 1.2 幽灵依赖问题
 
-
 通常所说的幽灵依赖是指：**没有**在 _package.json_ 文件中显示地指定但能在项目中导入并使用的依赖。
 
 什么情况下会导致幽灵依赖呢？目前用 npm 和 yarn 包管理工具来管理依赖的项目均可能出现幽灵依赖。
@@ -29,7 +28,7 @@
 [幽灵依赖](https://broadcrunch.com/technology/computing/phantom-dependencies-in-nodejs-and-how-pnpm-prevents-them/)
 [ss](https://juejin.cn/post/7097973833600073758)
 
-### 1.3 _node_modules_ 
+### 1.3 _node_modules_
 
 前端项目通常会在 `_node_modules_` 目录中查找它们的依赖。
 
@@ -67,19 +66,19 @@ npm，于 2010 年1月12日发布，是 Node 的第一个包注册表和包管�
 > “依赖地狱” 问题：[dependency hell](https://npm.github.io/how-npm-works-docs/theory-and-design/dependency-hell.html)，指同一个依赖需要不同的版本。举个例子，你的项目直接依赖有包 A 和包 C，包 A依赖于 v1 的包 B，包 C 依赖于v2 的包 B。包 A 和包 C 将位于你的根 _node_modules_ 中。包 B v1 将位于包 A 的 _node_modules_ 文件夹中，包 B v2 将在包 C 的 _node_modules_ 文件夹中。所以嵌套的结构永远不会出现“依赖地狱” 问题。
 
 <PaoImages
-  src="https://npm.github.io/how-npm-works-docs/gitbook/images/deps4.png" 
+  src="https://npm.github.io/how-npm-works-docs/gitbook/images/deps4.png"
   width="40%"
-  title="how-npm2-works" 
-  reference="[how-npm2-works](https://npm.github.io/how-npm-works-docs/npm2/how-npm2-works.html)" 
+  title="how-npm2-works"
+  reference="[how-npm2-works](https://npm.github.io/how-npm-works-docs/npm2/how-npm2-works.html)"
 />
 
 于是 [npm v3](https://npm.github.io/how-npm-works-docs/npm3/how-npm3-works.html) 基于 "扁平化" 的依赖树解决了这个问题。什么是 ”扁平化“ 呢？就是所有的直接依赖和间接依赖均放置在根 _node_modules_ 文件夹中。如果一个包的某个版本已经在根 _node_modules_ 文件夹中，为了避免依赖地狱，它将被放置在使用它的依赖项的 _node_modules_ 文件夹中。因此，依赖树并不完全扁平，但是扁平程度足够，使得 Windows 用户的文件路径问题大大减少。
 
 <PaoImages
-  src="https://npm.github.io/how-npm-works-docs/gitbook/images/npm3deps4.png" 
+  src="https://npm.github.io/how-npm-works-docs/gitbook/images/npm3deps4.png"
   width="70%"
-  title="how-npm3-works" 
-  reference="[how-npm3-works](https://npm.github.io/how-npm-works-docs/npm3/how-npm3-works.html)" 
+  title="how-npm3-works"
+  reference="[how-npm3-works](https://npm.github.io/how-npm-works-docs/npm3/how-npm3-works.html)"
 />
 
 这种扁平化 + 嵌套的结构不仅尽可能地解决了嵌套过深导致 windows 崩溃的问题，同时也有助于节省磁盘空间和加快安装速度，因为纯嵌套的模式，即便是一模一样的依赖，只要是身处不同的父级，那么都需要安装，这样即浪费安装时间也浪费磁盘空间。
@@ -117,7 +116,5 @@ pnpm 由 Zoltan Kochan 创建并于 2017 年 6 月发布 1.0 版本。它的核�
 - 节省空间占用：使用软链接 + 硬链接组合的方式极大地节省了空间占用
 - 完美解决幽灵依赖：_node_modules_ 平铺
 - 完美解决依赖地狱：依赖名 + 版本号
-
-
 
 尽管pnpm存在一些挑战，但是它用硬链接和符号链接的方式解决了磁盘空间和node_modules结构的问题，使其在严格性、磁盘使用效率和性能上有显著的优势。但是，请注意，pnpm使用的符号链接方式可能使得某些文件监视工具，如Watchman，无法正常工作，这也是Yarn放弃使用符号链接的一个原因。

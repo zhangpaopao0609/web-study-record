@@ -14,11 +14,11 @@ function Point(x, y) {
   this.y = y;
 }
 
-Point.prototype.toString = function (){
-  return '(' + this.x + ',' + this.y + ')';
-}
+Point.prototype.toString = function () {
+  return `(${this.x},${this.y})`;
+};
 
-let p = new Point(1, 2);
+const p = new Point(1, 2);
 ```
 
 这种写法和传统的面向对象的语言（c++, java）差异很大，新手很容易困惑
@@ -33,11 +33,11 @@ class Point {
     this.x = x;
     this.y = y;
   }
-  
+
   toString() {
-    return '(' + this.x + ', ' + this.y + ')';
+    return `(${this.x}, ${this.y})`;
   }
-} 
+}
 ```
 
 上面的代码定义了一个类，可以看到里面有一个Constructor方法,这就是构造方法,而this关键字则代表实例对象.也就是说,ES5的构造函数Point，对应ES6的Point类的构造方法。
@@ -102,9 +102,9 @@ class Porint {
 }
 
 Object.assign(Point.prototype, {
-  toString(){},
-  toValue(){}
-})
+  toString() {},
+  toValue() {}
+});
 ```
 
 另外，类的内部所有定义的方法，都是不可枚举的（non-enumerable）
@@ -112,34 +112,34 @@ Object.assign(Point.prototype, {
 ```js
 class Point {
   constructor(x, y) {
-    
+
   }
-  
+
   toString() {
-    
+
   }
 }
 
-Object.keys(Point.prototype)
+Object.keys(Point.prototype);
 // []
-Object.getOwnPropertyNames(Point.prototype)
+Object.getOwnPropertyNames(Point.prototype);
 // ['constructor', 'toString']
 ```
 
 上面代码中，toString方法是Point类内部定义的方法，它是不可枚举的。这一点与ES5的行为不一致。
 
 ```js
-var Point = function(x, y) {
-  
-}
+const Point = function (x, y) {
 
-Point.prototype.toString = function() {
-  
-}
+};
 
-Oject.keys(Point.prototype)
+Point.prototype.toString = function () {
+
+};
+
+Oject.keys(Point.prototype);
 // ['toString']
-Object.getOwnPropertyNames(Point.prototype)
+Object.getOwnPropertyNames(Point.prototype);
 // ['constructor', 'toString']
 ```
 
@@ -162,11 +162,11 @@ constructor方法默认返回实例对象（即this），完全可以指定返�
 ```js
 class Foo {
   constructor() {
-    return Object.create(null)
+    return Object.create(null);
   }
 }
 
-new Foo() instanceof Foo
+new Foo() instanceof Foo;
 // false
 ```
 
@@ -308,17 +308,17 @@ class有以下两种定义方式
 
 ```js
 class Foo {
-  
+
 }
 
 let Foo = class {
-  
-}
+
+};
 
 // 也可以为class增加一个名字
 let Foo = class name {
-  
-}
+
+};
 // 这个name只是内部使用和Foo.getClassName() 使用
 // 创建实例时还是使用 Foo  new Foo()
 ```
@@ -334,7 +334,7 @@ let Foo = class name {
    类不存在变量提升（hoist）,这一点和ES5完全不同
 
    ```js
-   new Foo();		// ReferenceError
+   new Foo(); // ReferenceError
    class Foo {};
    ```
 
@@ -372,12 +372,12 @@ let Foo = class name {
      printName(name = 'there') {
        this.print(`Hello ${name}`);
      }
-   
+
      print(text) {
        console.log(text);
      }
    }
-   
+
    const logger = new Logger();
    const { printName } = logger;
    printName(); // TypeError: Cannot read property 'print' of undefined
@@ -403,7 +403,7 @@ let Foo = class name {
        this.getThis = () => this;
      }
    }
-   
+
    const myObj = new Obj();
    myObj.getThis() === myObj // true
    ```
@@ -413,24 +413,21 @@ let Foo = class name {
      constructor() {
        this.getThis = () => this;
      }
-   
+
      getTest = () => {
        return this;
-     }
+     };
    }
-   
+
    const myObj = new Obj();
    myObj.aa = 1;
    myObj.cc = 2;
-   let a = myObj.getTest() === myObj // true
+   const a = myObj.getTest() === myObj; // true
    // myObj.getThis();
-   
+
    console.log(a, myObj.getThis());
    console.log(myObj.getTest());
-   
-   ```
-
-   
+```
 
    箭头函数内部的`this`总是指向定义时所在的对象。上面代码中，箭头函数位于构造函数内部，它的定义生效的时候，是在构造函数执行的时候。这时，箭头函数所在的运行环境，肯定是实例对象，所以`this`会总是指向实例对象。
 
@@ -456,7 +453,7 @@ let Foo = class name {
      const proxy = new Proxy(target, handler);
      return proxy;
    }
-   
+
    const logger = selfish(new Logger());
    ```
 
@@ -470,9 +467,9 @@ let Foo = class name {
        return 'hello';
      }
    }
-   
+
    Foo.classMethod() // 'hello'
-   
+
    var foo = new Foo();
    foo.classMethod()
    // TypeError: foo.classMethod is not a function
@@ -492,7 +489,7 @@ let Foo = class name {
        console.log('world');
      }
    }
-   
+
    Foo.bar() // hello
    ```
 
@@ -506,10 +503,10 @@ let Foo = class name {
        return 'hello';
      }
    }
-   
+
    class Bar extends Foo {
    }
-   
+
    Bar.classMethod() // 'hello'
    ```
 
@@ -521,13 +518,13 @@ let Foo = class name {
        return 'hello';
      }
    }
-   
+
    class Bar extends Foo {
      static classMethod() {
        return super.classMethod() + ', too';
      }
    }
-   
+
    Bar.classMethod() // "hello, too"
    ```
 
@@ -606,17 +603,17 @@ Foo.prop // 1
 
    ```javascript
    class Widget {
-   
+
      // 公有方法
      foo (baz) {
        this._bar(baz);
      }
-   
+
      // 私有方法
      _bar(baz) {
        return this.snaf = baz;
      }
-   
+
      // ...
    }
    ```
@@ -630,10 +627,10 @@ Foo.prop // 1
      foo (baz) {
        bar.call(this, baz);
      }
-   
+
      // ...
    }
-   
+
    function bar(baz) {
      return this.snaf = baz;
    }
@@ -646,19 +643,19 @@ Foo.prop // 1
    ```javascript
    const bar = Symbol('bar');
    const snaf = Symbol('snaf');
-   
+
    export default class myClass{
-   
+
      // 公有方法
      foo(baz) {
        this[bar](baz);
      }
-   
+
      // 私有方法
      [bar](baz) {
        return this[snaf] = baz;
      }
-   
+
      // ...
    };
    ```
@@ -667,7 +664,7 @@ Foo.prop // 1
 
    ```javascript
    const inst = new myClass();
-   
+
    Reflect.ownKeys(myClass.prototype)
    // [ 'constructor', 'foo', Symbol(bar) ]
    ```
@@ -756,22 +753,3 @@ class Rectangle extends Shape {
 var x = new Shape();  // 报错
 var y = new Rectangle(3, 4);  // 正确
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

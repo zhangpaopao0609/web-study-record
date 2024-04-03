@@ -4,6 +4,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 
 const app = express();
 const config = require('./webpack.config.js');
+
 const compiler = webpack(config);
 
 // 告知 express 使用 webpack-dev-middleware

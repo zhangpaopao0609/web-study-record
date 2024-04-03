@@ -10,5 +10,5 @@ interface B extends A {};
 
 declare const b1: B;
 
-b1.x
-b1.y
+b1.x;
+b1.y;

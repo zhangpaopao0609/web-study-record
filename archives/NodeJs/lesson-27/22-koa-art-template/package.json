@@ -2,13 +2,13 @@
   "name": "22-koa-art-template",
   "version": "1.0.0",
   "description": "",
+  "author": "paopao-arrow",
+  "license": "MIT",
+  "keywords": [],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "paopao-arrow",
-  "license": "MIT",
   "dependencies": {
     "art-template": "^4.13.2",
     "koa": "^2.13.1",

@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { MyContext } from "./MyContext.js";
+import { MyContext } from './MyContext.js';
+
 const { Consumer } = MyContext;
 
 export default function D() {
@@ -9,9 +10,17 @@ export default function D() {
       <h6>我是孙子辈</h6>
       <Consumer>
         {
-          ({name, age}) => <p>{ name } -- { age }</p>
+          ({ name, age }) => (
+            <p>
+              { name }
+              {' '}
+              --
+              {' '}
+              { age }
+            </p>
+          )
         }
       </Consumer>
     </div>
-  )
+  );
 }

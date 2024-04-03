@@ -6,20 +6,20 @@
  */
 
 function propertyDecorator(target: any, key: any) {
-  target[key] = 'test'
+  target[key] = 'test';
 };
 
 function propertyDecoratorWithParams(params: string) {
-  return function(target: any, key: any) {
+  return function (target: any, key: any) {
     target[key] = params;
-  }
+  };
 }
 
 class Url {
   @propertyDecorator
   public data: string | undefined;
 
-  @propertyDecoratorWithParams("default value")
+  @propertyDecoratorWithParams('default value')
   public value: string | undefined;
 
   getData() {
@@ -29,6 +29,6 @@ class Url {
 };
 
 const h = new Url();
-h.getData()
+h.getData();
 
-export {}
+export {};

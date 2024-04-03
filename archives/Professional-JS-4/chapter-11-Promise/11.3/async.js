@@ -7,7 +7,6 @@
 
 // console.log(2);
 
-
 async function foo() {
   console.log(1);
   throw 3;

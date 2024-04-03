@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": "true",
   "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
@@ -10,9 +13,9 @@
     "start": "webpack serve --open",
     "server": "node server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
   "devDependencies": {
     "css-loader": "^5.2.6",
     "express": "^4.17.1",
@@ -22,8 +25,5 @@
     "webpack-cli": "^4.2.0",
     "webpack-dev-middleware": "^5.0.0",
     "webpack-dev-server": "^3.11.2"
-  },
-  "dependencies": {
-    "lodash": "^4.17.21"
   }
 }

@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 class Circle {
-    constructor() {
-        this.radius = 1;
-    }
+  constructor() {
+    this.radius = 1;
+  }
 }

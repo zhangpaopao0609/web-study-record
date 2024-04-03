@@ -9,7 +9,7 @@
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
+const lengthOfLongestSubstring = function (s) {
 
 };
 // @lc code=end

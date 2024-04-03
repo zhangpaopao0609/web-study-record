@@ -121,9 +121,9 @@ async function f() {
        console.log(err);
      }
    }
-   
+
    // 另一种写法
-   
+
    async function myFunction() {
      await somethingThatReturnsAPromise()
      .catch(function (err) {
@@ -144,7 +144,7 @@ async function f() {
    ```javascript
    // 写法一
    let [foo, bar] = await Promise.all([getFoo(), getBar()]);
-   
+
    // 写法二
    let fooPromise = getFoo();
    let barPromise = getBar();
@@ -182,71 +182,4 @@ function fn(args) {
 
 ## 7. 顶层await
 
-
-
-
-
-
-
-
-
-
-
-
-
 ``
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

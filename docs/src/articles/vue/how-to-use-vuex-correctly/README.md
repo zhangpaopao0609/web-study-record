@@ -6,8 +6,6 @@
 
 摘要：vuex 等全局状态管理技术的主要目的是集中式的存储管理状态(数据)，并以相应的规则保证状态以一种可预测的方式发生变化。状态定义(`state.xx`)、状态获取(`store.state.xx`)以及状态更改（异`action`同`commit`步） ，简单的几个 API 使得我们在多层级、多数量组件之间实现状态共享异常的轻松。但如果你曾维护过大型项目并且其中大量使用 vuex 进行状态管理，相信你曾遇到过因不知道某个状态是在哪一个组件初始化、哪一个组件更新而不得不逐个检查的困境，可项目中的确又需要这样的状态管理，那么如何”正确“的使用 Vuex 便成了本文的主题。
 
-
-
 ## 1. 前言
 
 项目的开发难免会遇到需要状态共享的需求，例如用户信息，因此使用 vuex 等**全局状态管理**技术**是必不可少**的。vuex 等集中式管理状态的思想为项目共享全局状态带来了极大的便利，简单的几个 API 就能轻易实现，初始化 (`state、mutations、actions`)、获取 (`store.state.xx`)、同步修改 (`store.commit`)以及异步修改(`store.dispatch`)。
@@ -55,12 +53,16 @@ export default {
   namespaced: true,
   state: {
     activeInfo: {
-      key: value,		// 注册各字段
+      key: value, // 注册各字段
     }
   },
   mutations: {
-    UPDATE_ACTIVE: (state, val) => {state.activeInfo = { ...state.activeInfo, ...val,	}}, // 更新 commit
-    CLEAR_ACTIVE: (state) => { state.activeInfo = { key: value }},	// 清空
+    UPDATE_ACTIVE: (state, val) => {
+      state.activeInfo = { ...state.activeInfo, ...val,	};
+    }, // 更新 commit
+    CLEAR_ACTIVE: (state) => {
+      state.activeInfo = { key: value };
+    },	// 清空
   },
 };
 ```
@@ -69,20 +71,20 @@ export default {
 
 ```vue
 // App.vue
+<script>
+export default {
+  created() { // 编辑时异步获取活动数据并且保存到全局状态
+    this.$store.commit('active/UPDATE_ACTIVE', { ...异步获取的活动数据 });
+  },
+};
+</script>
+
 <template>
   <div id="app">
     <basic-info />
     <active-content />
   </div>
 </template>
-
-<script>
-  export default {
-    created() {		// 编辑时异步获取活动数据并且保存到全局状态
-      this.$store.commit('active/UPDATE_ACTIVE', { ...异步获取的活动数据 });
-    },
-  }
-</script>
 ```
 
 其它的组件自主从 `Store` 中获取数据以及更新时调用 `commit` 方法，所有的子组件都是同样的思路，因为都是从全局获取并且调用全局 `commit` 方法更新，因此写法都是一致的，就不再多赘述。
@@ -92,13 +94,21 @@ export default {
 <script>
 export default {
   computed: {
-    activeName:  {		
-      get() {	return this.$store.state.active.activeInfo.activeName; },	// 从全局状态获取
-      set(val) { this.$store.commit('active/UPDATE_ACTIVE', { activeName: val }); } // 调用 commit 方法更新
+    activeName: {
+      get() {
+        return this.$store.state.active.activeInfo.activeName;
+      },	// 从全局状态获取
+      set(val) {
+        this.$store.commit('active/UPDATE_ACTIVE', { activeName: val });
+      } // 调用 commit 方法更新
     },
-    activeTime:  {
-      get() { return this.$store.state.active.activeInfo.activeTime; },	// 从全局状态获取
-      set(val) { this.$store.commit('active/UPDATE_ACTIVE', { activeTime: val, }); }	// 调用 commit 方法更新
+    activeTime: {
+      get() {
+        return this.$store.state.active.activeInfo.activeTime;
+      },	// 从全局状态获取
+      set(val) {
+        this.$store.commit('active/UPDATE_ACTIVE', { activeTime: val, });
+      }	// 调用 commit 方法更新
     },
   },
 };
@@ -126,7 +136,6 @@ export default {
 <img src="./img/使用vuex场景描述图3.png" alt="image-20210705102844208" style="zoom:60%;" align="left"/>
 
 因此，如何”正确的“使用 `Vuex` 便成为了一个需要探讨的问题。
-
 
 ## 3. 如何正确的使用 Vuex
 
@@ -182,33 +191,32 @@ export default {
 
 ```vue
 // App.vue 组件
-<template>
-  <basic-info	:activeInfo="activeInfo" @stateChange="handleStateChange" />
-  <store-list :activeInfo="activeInfo" @stateChange="handleStateChange" />
-	<active-content :activeInfo="activeInfo" @stateChange="handleStateChange" />
-</template>
-
 <script>
 export default {
-  data() { return { activeInfo: { key: value } } },		// 数据定义
+  data() {
+    return { activeInfo: { key: value } };
+  }, // 数据定义
   methods: {
-    handleStateChange(key, val) {		// 父组件更新状态
+    handleStateChange(key, val) { // 父组件更新状态
       this.activeInfo = { ...this.activeInfo, [key]: val, };
     },
-    handleClearAll() { this.activeInfo = { key: '' } }		// 清空
+    handleClearAll() {
+      this.activeInfo = { key: '' };
+    } // 清空
   },
-}
+};
 </script>
+
+<template>
+  <basic-info	:active-info="activeInfo" @state-change="handleStateChange" />
+  <store-list :active-info="activeInfo" @state-change="handleStateChange" />
+  <active-content :active-info="activeInfo" @state-change="handleStateChange" />
+</template>
 ```
 
 2. `BasicInfo.vue` 接收来自父组件的 `props` 显示以及通过触发父组件监听的子组件方法 `stateChange` 将修改传递回父组件，这里使用了两种方式来实现， `value` 和 `input` 事件实现方式和 `computed get set` 方法实现。
 
 ```vue
-<template>
-	<el-input :value="activeInfo.activeName" @input="(val) => handleStateChange('activeName', val)" />
-  <el-date-picker v-model="activeTime" />
-</template>
-
 <script>
 export default {
   props: {
@@ -219,15 +227,26 @@ export default {
   },
   computed: {
     activeTime: {
-      get() { return this.activeInfo.activeTime },
-      set(val) { this.handleStateChange('activeTime', val) }
+      get() {
+        return this.activeInfo.activeTime;
+      },
+      set(val) {
+        this.handleStateChange('activeTime', val);
+      }
     }
   },
   methods: {
-    handleStateChange(key, val) { this.$emit("stateChange", key, val); },
+    handleStateChange(key, val) {
+      this.$emit('stateChange', key, val);
+    },
   },
 };
 </script>
+
+<template>
+  <el-input :value="activeInfo.activeName" @input="(val) => handleStateChange('activeName', val)" />
+  <el-date-picker v-model="activeTime" />
+</template>
 ```
 
 其它的组件实现方式都类似，完整的代码可以点击查看  [vuex-demo/src/views/version-2-props](https://github.com/Ardor-Zhang/web-study-record/tree/master/%E9%9B%B6%E6%95%A3%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/%E8%B0%88%E8%B0%88%E5%A6%82%E4%BD%95%E2%80%9D%E6%AD%A3%E7%A1%AE%E2%80%9C%E7%9A%84%E4%BD%BF%E7%94%A8Vuex/vuex-demo/src/views/version-2-props)。

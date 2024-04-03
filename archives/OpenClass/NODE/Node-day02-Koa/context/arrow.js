@@ -1,4 +1,4 @@
-const http = require('http');
+const http = require('node:http');
 const context = require('./context.js');
 const request = require('./request.js');
 const response = require('./response.js');
@@ -24,9 +24,11 @@ class Arrow {
     });
     server.listen(...args);
   }
+
   use(middleware) {
     this.middleware.push(middleware);
   }
+
   /**
    * 构建上下文
    */
@@ -43,25 +45,25 @@ class Arrow {
 
   /**
    * 中间件组合
-   * @param {*} middlewares 
+   * @param {*} middlewares
    */
-  compose = middlewares => {
-    return ctx => {
-      const dispatch = i => {
-        let fn = middlewares[i];
+  compose = (middlewares) => {
+    return (ctx) => {
+      const dispatch = (i) => {
+        const fn = middlewares[i];
         if (!fn) {
           return Promise.resolve();
         } else {
           const next = () => dispatch(i + 1);
           return Promise.resolve(
             // Promise 完成，再执行下一个
-            fn(ctx, next)
-          )
+            fn(ctx, next),
+          );
         }
-      }
+      };
       return dispatch(0);
-    }
-  }
+    };
+  };
 };
 
 module.exports = Arrow;

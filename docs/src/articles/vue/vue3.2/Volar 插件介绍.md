@@ -16,7 +16,7 @@
 
 > 可以这样说， `volar`  是 `vue3` 的配套，`vetur` 是  `vue2` 的配套，所以，建议大家在使用的时候依据自己使用的 `vue` 版本来选择。
 
-<div align='center'><img src="./img/volar/volar-插件.png" alt="image-20210918093055222" style="zoom:60%;" width='60%'/></div>  
+<div align='center'><img src="./img/volar/volar-插件.png" alt="image-20210918093055222" style="zoom:60%;" width='60%'/></div>
 
 直接在 `vscode` 中搜索 `volar` 即可安装。
 
@@ -39,10 +39,7 @@
 <div align='center'>
   <img src="./img/volar/ref-sugar-1.png" alt="image-20210918093055222" style="zoom:40%;" width='40%'/>&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="./img/volar/ref-sugar-2.png" alt="image-20210918093055222" style="zoom:40%;" width='40%'/>
-</div>  
-
-
-
+</div>
 
 这里使用 `ref` 定义了一个 `count`，左边是我们普通的写法，注意看 `script setup` 上面的 `ref sugar`，当我点击这个 `checkbox` 后，就切换成了右边的写法了，自动为我们切换成了 `ref` 语法糖的写法了。这个 `checkbox` 还可以取消的，取消后就切换回普通的 `script setup` 的写法了。挺有意思吧！~
 
@@ -50,13 +47,12 @@
 
 ### 2.2 `template` 语法转换
 
-再来看一张图： 
+再来看一张图：
 
 <div align='center'>
   <img src="./img/volar/template-html.png" alt="image-20210918093055222" style="zoom:40%;" width='40%'/>&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="./img/volar/template-pug.png" alt="image-20210918093055222" style="zoom:34%;" width='34%'/>
-</div>  
-
+</div>
 
 `vue` 中默认我们可以写两种 `template` 语法，一种是常用的 `html` , 一种是 `pug`， `pug` 的更加的精炼和简洁，但似乎大家用得不多，不知道是不是因为虽然简洁，但是却不直观的原因。
 
@@ -65,8 +61,7 @@
 <div align='center'>
   <img src="./img/volar/template-html-2.png" alt="image-20210918093055222" style="zoom:40%;" width='40%'/>
   <p>这是切换回来的模板，会有一些格式问题</p>
-</div>  
-
+</div>
 
 ### 2.3 `class references`
 
@@ -75,8 +70,7 @@
 <div align='center'>
   <img src="./img/volar/class-references-1.png" alt="image-20210918093055222" style="zoom:27%;" width='27%'/> &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="./img/volar/class-references-2.png" alt="image-20210918093055222" style="zoom:40%;" width='40%'/>
-</div>  
-
+</div>
 
 我们在 `style` 中所写的 `class` 是否有被引用，引用了几次，`volar` 插件都为我们安排得明明白白的，这样可以极快的发现哪些样式根本就没有被使用过，然后将其删除。
 
@@ -84,10 +78,7 @@
 
 <div align='center'>
   <img src="./img/volar/class-references-3.png" alt="image-20210918093055222" style="zoom:40%;" width='40%'/>
-</div>  
-
-
-
+</div>
 
 ### 2.4 `props` 类型检测
 
@@ -96,17 +87,14 @@
 <div align='center'>
   <img src="./img/volar/props-1.png" alt="image-20210918093055222" style="zoom:40%;" width='40%'/>
    <p> 子组件中使用类型声明接收 msg 和 list props, 且必传 </p>
-</div>  
-
-
+</div>
 
 <div align='center'>
   <img src="./img/volar/props-2.png" alt="image-20210918093055222" style="zoom:50%;" width='50%'/>
   <p> 未传递 list props 时提示必传 </p>
   <img src="./img/volar/props-3.png" alt="image-20210918093055222" style="zoom:60%;" width='60%'/>
    <p> 类型传错是提示类型错误 </p>
-</div>  
-
+</div>
 
 简直是太巴适了，完美的语法提示。并且，点击传递的 `props` 还可以实现跳转，这里演示不出来，大家可以试试看。
 
@@ -119,8 +107,7 @@
 <div align='center'>
   <img src="./img/volar/tips-4.png" alt="image-20210918093055222" style="zoom:40%;" width='40%'/> &nbsp;&nbsp;&nbsp;&nbsp;
   <p>模板中语法提示</p>
-</div>  
-
+</div>
 
 `vue2` 中最我们比较头疼的一点是，在模板中使用变量是没有任何提示的，你只能凭借着记忆或者上下跳转查看才能在模板中写对应的字段，这一点在循环 `v-for` 中最能提现。`volar` 做到了，在模板中使用，再也不用担心我记不住对象的字段名字了。
 
@@ -128,8 +115,7 @@
 
 <div align='center'>
   <img src="./img/volar/tips-2-css-module.png" alt="image-20210918093055222" style="zoom:27%;" width='27%'/> &nbsp;&nbsp;&nbsp;&nbsp;
-</div> 
-
+</div>
 
 默认情况下，css module 在组件中维护了 `$style` 对象，使用时，也会有语法提示了
 
@@ -138,8 +124,7 @@
 <div align='center'>
   <img src="./img/volar/tips-1.png" alt="image-20210918093055222" style="zoom:30%;" width='30%'/> &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="./img/volar/tips-3.png" alt="image-20210918093055222" style="zoom:36%;" width='36%'/>
-</div>  
-
+</div>
 
 这是 `script` 和 `style` 的 `lang` 提示。
 
@@ -150,19 +135,15 @@
 `volar` 让我们得以三分天下，安装完 `volar` 插件后，编辑器右上角将出现这个图标。
 
 <div align='center'>
-  <img src="./img/volar/three-part.png" alt="image-20210918093055222" style="zoom:30%;" width='30%'/> 
-</div>  
-
+  <img src="./img/volar/three-part.png" alt="image-20210918093055222" style="zoom:30%;" width='30%'/>
+</div>
 
 在开发组件过程中，点击这个图标，你会发现，编辑器分成了三个部分，左侧是 `script`,右侧上方是`template`，右侧下方是 `style` ，分别呢其它的模块都自动折叠起来了，哇塞，真香，不说了，赶快用起来。
 
 <div align='center'>
-  <img src="./img/volar/three-part-1.png" alt="image-20210918093055222" style="zoom:50%;" width='40%'/> 
-  <img src="./img/volar/three-part-2.png" alt="image-20210918093055222" style="zoom:55%;" width='55%'/> 
-</div>  
-
-
-
+  <img src="./img/volar/three-part-1.png" alt="image-20210918093055222" style="zoom:50%;" width='40%'/>
+  <img src="./img/volar/three-part-2.png" alt="image-20210918093055222" style="zoom:55%;" width='55%'/>
+</div>
 
 ## 3. 总结
 
@@ -171,16 +152,5 @@
 `vue3.2 + TS + volar` = 正香。
 
 <div align='center'>
-  <img src="./img/volar/evanyou.png" alt="image-20210918093055222" style="zoom:60%;" width='60%'/> 
-</div>  
-
-
-
-
-
-
-
-
-
-
-
+  <img src="./img/volar/evanyou.png" alt="image-20210918093055222" style="zoom:60%;" width='60%'/>
+</div>

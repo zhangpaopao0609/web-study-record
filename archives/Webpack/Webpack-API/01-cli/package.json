@@ -1,4 +1,14 @@
 {
+  "name": "my-webpack-project",
+  "version": "1.0.0",
+  "description": "My webpack project",
+  "scripts": {
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
+  },
   "devDependencies": {
     "@webpack-cli/generators": "^2.2.0",
     "autoprefixer": "^10.3.1",
@@ -17,15 +27,5 @@
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
-  },
-  "version": "1.0.0",
-  "description": "My webpack project",
-  "name": "my-webpack-project",
-  "scripts": {
-    "build": "webpack --mode=production --node-env=production",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
-    "watch": "webpack --watch",
-    "serve": "webpack serve"
   }
 }

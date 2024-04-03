@@ -35,16 +35,16 @@ class CustonSquare extends HTMLElement {
   updateStyle(elem) {
     const shadow = elem.shadowRoot;
     const childNodes = shadow.childNodes;
-    childNodes.forEach(item => {
-      if(item.nodeName === 'STYLE') {
+    childNodes.forEach((item) => {
+      if (item.nodeName === 'STYLE') {
         item.textContent = `
           div { 
             width: ${elem.getAttribute('l')}px;
             height: ${elem.getAttribute('l')}px;
             background-color: ${elem.getAttribute('c')};
           }
-        `
-      } 
+        `;
+      }
     });
   }
 };

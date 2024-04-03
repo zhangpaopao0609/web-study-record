@@ -1,5 +1,5 @@
 function run1(): string {
-  return 'run1'
+  return 'run1';
 };
 
 // 定义方法参数
@@ -11,9 +11,9 @@ console.log(getInfo('arrow', 2));
 
 // 可选参数
 function optionParameters(name: string, age?: number): string {
-  if(age) {
+  if (age) {
     return `姓名：${name}---年龄：${age}`;
-  }else {
+  } else {
     return `姓名：${name}---年龄保密`;
   }
 };
@@ -35,14 +35,13 @@ function resetParameters(...res: Array<number>): number {
 console.log(resetParameters(...[1, 2, 4, 5]));
 console.log(resetParameters(1, 2, 4, 5));
 
-
 // 函数重载
 function functionReload(name: string): string;
 function functionReload(age: number): number;
 function functionReload(par: any): any {
-  if(typeof par === 'string') {
+  if (typeof par === 'string') {
     return `my name is ${par}`;
-  }else {
+  } else {
     return `my age is ${par}`;
   }
 };

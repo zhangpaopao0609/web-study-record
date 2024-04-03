@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Weather from "./views/Weather/index.jsx";
+import React, { Component } from 'react';
+import Weather from './views/Weather/index.jsx';
 
 export default class App extends Component {
   render() {

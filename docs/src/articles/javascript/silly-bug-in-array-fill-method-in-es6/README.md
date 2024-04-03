@@ -9,7 +9,7 @@
 循环就不写了，直接看看 `fill` 方法，如下：
 
 ```js
-const arr1 = new Array(3).fill(-1);
+const arr1 = Array.from({ length: 3 }).fill(-1);
 console.log(arr1);
 ```
 
@@ -24,27 +24,26 @@ console.log(arr1);
 双循环还是不写了哈，直接使用 fill 来实现呀，走起，不知道你会怎么写哈，小生是这样写的，客官看这样可以吗？
 
 ```js
-const arr2 = new Array(3).fill(new Array(3).fill(-1));
+const arr2 = Array.from({ length: 3 }).fill(Array.from({ length: 3 }).fill(-1));
 console.log(arr2);
 ```
 
 小生说呀，这是可以的，不信我们执行看看结果
 
 ```js
-[ 
-  [ -1, -1, -1 ], 
-  [ -1, -1, -1 ], 
-  [ -1, -1, -1 ] 
-]
+[
+  [-1, -1, -1],
+  [-1, -1, -1],
+  [-1, -1, -1]
+];
 ```
 
 看起来没啥毛病哈，杠杠的！
 
-
 但真的没问题吗？？好吧，明说了，这样是有大问题的，我们来看下面的代码
 
 ```js
-const arr2 = new Array(3).fill(new Array(3).fill(-1));
+const arr2 = Array.from({ length: 3 }).fill(Array.from({ length: 3 }).fill(-1));
 
 arr2[0][0] = 1;
 arr2[1][1] = 2;
@@ -62,32 +61,28 @@ console.log(arr2);
 按照正常的逻辑，这里应该是如下输出：
 
 ```js
-[ 
-  [ 1, -1, -1 ], 
-  [ -1, 2, -1 ], 
-  [ -1, -1, 3 ] 
-]
+[
+  [1, -1, -1],
+  [-1, 2, -1],
+  [-1, -1, 3]
+];
 ```
 
 嗯嗯，正常来说应该是这样，可实际上呢？
 
 ```js
-[ 
-  [ 1, 2, 3 ], 
-  [ 1, 2, 3 ], 
-  [ 1, 2, 3 ] 
-]
+[
+  [1, 2, 3],
+  [1, 2, 3],
+  [1, 2, 3]
+];
 ```
 
 哎，咋个成这样了，其实很简单，`fill` 方法所填充的**如果是对象的话，那么每一个填充的元素都是这个对象的浅拷贝，也就是同一个内存地址的对象。** 所以就出现了这种情况，因此，在使用 `fill` 时，一旦填充的是对象，就要格外小心了。
 
-
-
 最后还是给一个小生自己常用的二维数组的快速生成方法吧：
 
 ```js
-const arr3 = new Array(3).fill(-1).map(() => new Array(3).fill(-1));
+const arr3 = Array.from({ length: 3 }).fill(-1).map(() => Array.from({ length: 3 }).fill(-1));
 console.log(arr3);
 ```
-
-

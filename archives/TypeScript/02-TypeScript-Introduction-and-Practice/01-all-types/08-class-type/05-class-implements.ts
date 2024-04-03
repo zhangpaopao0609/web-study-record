@@ -3,13 +3,13 @@ interface Color1 {
 };
 
 interface Shape1 {
-  area(): number;
+  area: () => number;
 };
 
 class Circle1 implements Color1, Shape1 {
   radius: number = 1;
   color: string = '';
   area(): number {
-    return 1
+    return 1;
   }
 }

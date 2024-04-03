@@ -7,27 +7,27 @@ const views = require('koa-views');
 const app = new Koa();
 const router = new Router();
 
-app.use(views(__dirname + '/views', { extension: 'ejs' }));
+app.use(views(`${__dirname}/views`, { extension: 'ejs' }));
 
 // 配置公共信息
 app.use(async (ctx, next) => {
-  ctx.state.name = "arrow";
+  ctx.state.name = 'arrow';
   await next();
 });
 
 // post 的 body 数据
 app.use(async (ctx, next) => {
-  if(ctx.method.toLowerCase() === 'post' || ctx.method.toLowerCase() === 'put') {
-    let res = await new Promise((resolve, reject) => {
+  if (ctx.method.toLowerCase() === 'post' || ctx.method.toLowerCase() === 'put') {
+    const res = await new Promise((resolve, reject) => {
       try {
-        let res = "";
-        ctx.req.on("data", chunk => {
+        let res = '';
+        ctx.req.on('data', (chunk) => {
           res += chunk;
         });
-  
-        ctx.req.on("end", () => {
+
+        ctx.req.on('end', () => {
           resolve(res);
-        })
+        });
       } catch (error) {
         reject(error);
       }
@@ -37,24 +37,26 @@ app.use(async (ctx, next) => {
   await next();
 });
 
-router.get("/", async ctx => {
-  await ctx.render('index', { msg: "hello" });
+router.get('/', async (ctx) => {
+  await ctx.render('index', { msg: 'hello' });
 });
 
-router.get("/login", async ctx => {
-  await ctx.render("login")
-})
+router.get('/login', async (ctx) => {
+  await ctx.render('login');
+});
 
-router.post("/doLogin", async ctx => {
+router.post('/doLogin', async (ctx) => {
   ctx.body = ctx.request.body;
-})
+});
 
 app
   .use(router.routes())
   .use(router.allowedMethods());
 
 const port = 6090;
-app.listen(port, err => {
-  if (err) throw err;
+app.listen(port, (err) => {
+  if (err) {
+    throw err;
+  }
   console.log(`app start at ${port}`);
 });

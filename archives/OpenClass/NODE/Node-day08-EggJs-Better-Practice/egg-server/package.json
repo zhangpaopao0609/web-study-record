@@ -1,10 +1,31 @@
 {
   "name": "egg-server",
   "version": "1.0.0",
-  "description": "",
   "private": true,
+  "description": "",
   "egg": {
     "declarations": true
+  },
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon --title=egg-server-",
+    "stop": "egg-scripts stop --title=egg-server-",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
   },
   "dependencies": {
     "egg": "^2.15.1",
@@ -25,28 +46,7 @@
     "eslint": "^5.13.0",
     "eslint-config-egg": "^7.1.0"
   },
-  "engines": {
-    "node": ">=10.0.0"
-  },
-  "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-",
-    "stop": "egg-scripts stop --title=egg-server-",
-    "dev": "egg-bin dev",
-    "debug": "egg-bin debug",
-    "test": "npm run lint -- --fix && npm run test-local",
-    "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
-    "lint": "eslint .",
-    "ci": "npm run lint && npm run cov",
-    "autod": "autod"
-  },
   "ci": {
     "version": "10"
-  },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "author": "",
-  "license": "MIT"
+  }
 }

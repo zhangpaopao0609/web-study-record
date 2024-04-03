@@ -7,7 +7,7 @@
  */
 
 class Person {
-  public name:string;
+  public name: string;
   protected age: number;
 
   constructor(name: string, age: number) {
@@ -24,32 +24,31 @@ class Person {
   }
 
   private getNameAndAge(): string {
-    return `${this.name} + ${this.age}`
+    return `${this.name} + ${this.age}`;
   }
 
   public init() {
-    return this.getNameAndAge();    // 私有方法只能当前类中获取
+    return this.getNameAndAge(); // 私有方法只能当前类中获取
   }
 
-  static nationality(): string {     // 静态方法，只能类自身调用  Person.nationality(),相当于Person.nationality = function() {}
+  static nationality(): string { // 静态方法，只能类自身调用  Person.nationality(),相当于Person.nationality = function() {}
     return 'China';
   }
 };
 
 console.log(Person.nationality());
 
-
 const p = new Person('arow', 2);
-console.log(p.name);    // 公有属性实例可直接访问
+console.log(p.name); // 公有属性实例可直接访问
 
 class Man extends Person {
   public getManAge() {
-    return this.getAge();     // 受保护的方法只能 类 和 子类中获取，实例无法获取
+    return this.getAge(); // 受保护的方法只能 类 和 子类中获取，实例无法获取
   }
 }
 
 const tom = new Man('tom', 16);
-console.log(tom.name);    // 公有属性实例可直接访问
-console.log(tom.getManAge());   // 公有属性实例可直接访问
+console.log(tom.name); // 公有属性实例可直接访问
+console.log(tom.getManAge()); // 公有属性实例可直接访问
 
 export {};

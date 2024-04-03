@@ -2,10 +2,10 @@
 
 ## 实战走起
 
-husky + commitlint + eslint + stylelint + prettier + lint-staged + vscode 
+husky + commitlint + eslint + stylelint + prettier + lint-staged + vscode
 
 > 先介绍一下 [lint-staged](https://github.com/lint-staged/lint-staged)
-> 
+>
 > 一句话：使得 linter 仅仅校验在 git staged 中的文件。说得更通俗点就是，使得 linter 校验时仅仅校验git 要提交的那些文件，那些不提交的，就不去做校验（这也是我们想要的效果嘛）。
 > 1. 安装：`pnpm add -D lint-staged`
 > 2. 在 `pre-commit` git 钩子中运行 `lint-staged`，可以用之前提到的 husky，当然也可以自己去写哈
@@ -52,10 +52,10 @@ _package.json_ 设置 `script`
 
 ```json
 {
-    "scripts": {
-      "eslint": "eslint .", // 可按照自己的需要来进行配置
-      "eslint:fix": "eslint --fix .",
-    },
+  "scripts": {
+    "eslint": "eslint .", // 可按照自己的需要来进行配置
+    "eslint:fix": "eslint --fix ."
+  }
 }
 ```
 [点击可查看](https://eslint.org/docs/latest/use/command-line-interface)关于如何设置命令行命令的详细。
@@ -95,7 +95,7 @@ _stylelint.config.js_
 
 ```js
 module.exports = {
-  "extends": ["stylelint-config-standard-scss"]
+  extends: ['stylelint-config-standard-scss']
 };
 ```
 
@@ -103,10 +103,10 @@ _package.json_ 设置 `script`
 
 ```json
 {
-    "scripts": {
-      "stylelint": "stylelint '**/*.{css,scss}'", // 可按照自己的需要来进行配置
-      "stylelint:fix": "stylelint --fix '**/*.{css,scss}'"
-    },
+  "scripts": {
+    "stylelint": "stylelint '**/*.{css,scss}'", // 可按照自己的需要来进行配置
+    "stylelint:fix": "stylelint --fix '**/*.{css,scss}'"
+  }
 }
 ```
 
@@ -154,4 +154,3 @@ _vscode -> setting -> setting.json_
       "source.fixAll.stylelint": "explicit"
   },
 ```
-

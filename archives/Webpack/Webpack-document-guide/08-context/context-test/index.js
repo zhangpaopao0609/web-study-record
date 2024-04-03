@@ -1,9 +1,9 @@
 const modules = {};
 
 const res = require.context('./', true, /\.js/);
-res.keys().forEach(module => {
+res.keys().forEach((module) => {
   const m = module.replace(/(\.\/|\.js)/g, '');
-  if(m !== 'index') {
+  if (m !== 'index') {
     modules[m] = res(module);
   };
 });

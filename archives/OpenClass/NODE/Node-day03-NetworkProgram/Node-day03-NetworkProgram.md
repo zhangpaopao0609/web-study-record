@@ -64,7 +64,7 @@ SSL/TLS： 加密
 - requestUrl
 - httpVersion
 消息报头:
-> Host: www.baidu.com       
+> Host: www.baidu.com
 > User-Agent: curl/7.64.1   用户代理
 > Accept: */*               我想要接收什么类型的数据，通常MIME
 请求正文
@@ -80,12 +80,12 @@ SSL/TLS： 加密
 (async () => {
   const res = await axios.get('/api/users');
   console.log(res);
-  document.writeln(`Response ${JSON.stringify(res)}`)
-})()
+  document.writeln(`Response ${JSON.stringify(res)}`);
+})();
 
 // 埋点
 const img = new Image();
-img.src = '/api/users?button=123'
+img.src = '/api/users?button=123';
 ```
 
 # 跨域
