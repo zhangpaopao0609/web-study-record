@@ -241,3 +241,12 @@ Vue-Router 有两种模式：hash 模式和 history 模式。
 - history 模式下， 前端的 url 必须和实际向后端发起请求的 url 一致，如果没有对用的路由处理，将返回 404 错误。
 
 hash 模式和 history 模式都有各自的优势和缺陷，还是要根据实际 情况选择性的使用
+
+## 13. vue3 比较 vue2 有哪些变化？
+
+## 14. vue3 proxy 为什么比 object.defineProperty？
+
+## 15. vue diff 算法，三种
+
+- 简单 diff
+  新的在旧的里面直接找，找到了直接 patch，然后判断是否移动（按照新节点的在旧节点的位置来判断）
