@@ -225,7 +225,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             { text: 'Vue 3.2 Released', link: '/vue3.2/Vue 3.2 Released.md' },
             { text: 'Vue3.2 新特性之 —— `<script setup>`和 `<style> v-bind`', link: '/vue3.2/Vue3.2 新特性之 —— `<script setup>`和 `<style> v-bind`.md' },
             { text: 'Vue3.2新特性性之——web-components', link: '/vue3.2/Vue3.2新特性性之——web-components.md' },
-            { text: '01-框架设计到处都体现着权衡的艺术', link: '/vuejs-design/01-框架设计到处都体现着权衡的艺术.md' },
+            { text: '框架设计到处都体现着权衡的艺术', link: '/vuejs-design/01-框架设计到处都体现着权衡的艺术.md' },
+            { text: 'vue基础', link: '/vue-basic.md' },
           ],
         },
         {

@@ -10,6 +10,10 @@ export default antfu({
     },
   },
 
+  formatters: {
+    markdown: true,
+  },
+
   vue: true,
   markdown: true,
   typescript: true,
