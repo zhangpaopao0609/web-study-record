@@ -244,6 +244,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             { text: '微前端的暗位面', link: '/the-dark-side-of-the-micro-front-end/README.md' },
             { text: '项目依赖的版本范围控制浅谈', link: '/study-semantic/README.md' },
             { text: '原来 peerDependencies 是这么个东东', link: '/peer-dependencies/README.md' },
+            { text: '工程化基础', link: '/engineering/basic.md' },
           ],
         },
         {
