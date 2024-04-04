@@ -245,6 +245,14 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             { text: '项目依赖的版本范围控制浅谈', link: '/study-semantic/README.md' },
             { text: '原来 peerDependencies 是这么个东东', link: '/peer-dependencies/README.md' },
             { text: '工程化基础', link: '/engineering/basic.md' },
+            {
+              text: 'web 安全',
+              items: [
+                { text: 'xss', link: '/web-security/xss.md' },
+                { text: 'csrf', link: '/web-security/csrf.md' },
+                { text: 'SameSite', link: '/web-security/SameSite.md' },
+              ],
+            },
           ],
         },
         {
@@ -259,6 +267,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             { text: '半连接队列和 SYN Flood 攻击', link: '/半连接队列和 SYN Flood 攻击.md' },
             { text: 'DNS解析', link: '/DNS解析.md' },
             { text: 'PUT vs POST-Comparing HTTP Methods', link: '/PUT vs POST-Comparing HTTP Methods.md' },
+            { text: 'encryption-algorithm', link: '/encryption-algorithm.md' },
+            { text: 'https', link: '/https.md' },
           ],
         },
         {
