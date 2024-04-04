@@ -21,6 +21,7 @@ export default antfu({
   ignores: ['tsconfig.json', 'archives/*'],
   rules: {
     // https://eslint.org/docs/latest/rules/curly
-    curly: ['error', 'all'],
+    'curly': ['error', 'all'],
+    'no-console': ['warn'],
   },
 });

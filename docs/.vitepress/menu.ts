@@ -290,6 +290,13 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
           ],
         },
         {
+          text: '性能',
+          base: 'articles/performance',
+          items: [
+            { text: '性能基础', link: '/index.md' },
+          ],
+        },
+        {
           text: '其它',
           base: 'articles/other',
           items: [

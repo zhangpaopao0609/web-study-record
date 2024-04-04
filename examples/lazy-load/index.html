@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lazy load</title>
+  <style>
+    img {
+      display: block;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://i.gifer.com/ZKZg.gif" data-src="https://cdn.pixabay.com/photo/2023/11/23/20/40/ocean-8408693_1280.jpg">
+  <img src="https://i.gifer.com/ZKZg.gif" data-src="https://cdn.pixabay.com/photo/2014/11/03/11/06/hippo-515027_1280.jpg">
+  <img src="https://i.gifer.com/ZKZg.gif" data-src="https://cdn.pixabay.com/photo/2023/12/17/20/31/car-8454879_1280.jpg">
+  <img src="https://i.gifer.com/ZKZg.gif" data-src="https://cdn.pixabay.com/photo/2023/06/05/17/19/shopping-8042865_1280.png">
+  <img src="https://i.gifer.com/ZKZg.gif" data-src="https://cdn.pixabay.com/photo/2024/02/22/15/18/clouds-8590310_1280.jpg">
+  
+  <script>
+    function lazyLoad() {
+      const imgs = document.getElementsByTagName('img');
+
+      const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+      const innerHeight = window.innerHeight;
+
+      for (const img of imgs) {
+        const offsetTop = img.offsetTop;
+        if(offsetTop <= scrollTop + innerHeight) {
+          const src = img.getAttribute('data-src');
+          img.setAttribute('src', src);
+        }
+      }
+    }
+    lazyLoad()
+
+    window.onscroll = lazyLoad
+  </script>
+</body>
+</html>
