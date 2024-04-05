@@ -9,18 +9,23 @@ Stylelint 官网给出了非常详细的[配置说明](https://stylelint.io/user
 这里记录一下在不同的场景下如何使用 Stylelint。
 
 ## 1. CSS
+
 通常直接使用 [stylelint-config-standard](https://www.npmjs.com/package/stylelint-config-standard)。
 
 - 使用 Stylelint "脚手架" 进行快速配置
+
 ```bash
 pnpm create stylelint
 ```
+
 :::info
 命令会执行三件事情
+
 1. 安装 stylelint 和 stylelint-config-standard 依赖
 2. 在根目录创建 _.stylelintrc.json_ 文件
 3. 在 _.stylelintrc.json_ 文件中添加 `{ "extends": ["stylelint-config-standard"] }`
-:::
+   :::
+
 - 运行 Stylelint
 
 ```bash
@@ -42,6 +47,7 @@ npx stylelint "**/*.css"
 ### 2.1 SCSS
 
 1. 安装依赖
+
 ```bash
 pnpm add -D stylelint postcss-scss
 ```
@@ -101,9 +107,11 @@ module.exports = {
 />
 
 - 安装
+
 ```bash
 pnpm add -D stylelint-config-recommended-scss
 ```
+
 - _.stylelintrc.js_
 
 ```js
@@ -119,16 +127,19 @@ module.exports = {
   }
 };
 ```
+
 :::tip
 是否使用看个人偏好，爱用就用，推荐的配置也不一定适合自己，完全可以根据 `stylelint` 内置的规则和 `stylelint-scss` 的规则来自己定义。
 :::
 
 ### 2.2 LESS
+
 跟 SCSS 一样，社区提供了 [`postcss-less`](https://www.npmjs.com/package/postcss-less) 这一 “解析器” 来解析 LESS。
 
 > 但目前暂未发现 LESS 提供类似 `stylelint-scss` 这样的 LESS 自定义规则，也不知道是为啥没有，是不需要吗？比如说 `mixin` 呀、变量呀这些个的写法，不需要校验吗？不懂不懂
 
 1. 安装依赖
+
 ```bash
 pnpm add -D stylelint postcss-less
 ```
@@ -146,6 +157,7 @@ module.exports = {
   }
 };
 ```
+
 ### 2.3 HTML 中的 CSS
 
 [`postcss-html`](https://www.npmjs.com/package/postcss-less) 用于 HTML 中的 css。
@@ -153,6 +165,7 @@ module.exports = {
 #### 2.3.1 纯 HTML
 
 1. 安装依赖
+
 ```bash
 pnpm add -D stylelint postcss-html
 ```
@@ -170,6 +183,7 @@ module.exports = {
   }
 };
 ```
+
 :::tip
 [stylelint-config-html](https://github.com/ota-meshi/stylelint-config-html) 是社区推荐的一个 HMTL（类HTML）Stylelint 的配置，其中包含了 html, php, svelte, vue 以及 xml 的配置。Vue 官方[推荐的 Stylelint 配置](https://github.com/ota-meshi/stylelint-config-recommended-vue)就使用了这一配置。
 
@@ -179,6 +193,7 @@ stylelint-config-html 所用的解析器就是 `postcss-html`。
 #### 2.3.2 HTML + CSS 文件
 
 1. 安装依赖
+
 ```bash
 pnpm add -D stylelint postcss-html
 ```
@@ -205,7 +220,9 @@ module.exports = {
 > 为什么要这样写才能同时检测 html 文件和 css 文件呢？
 
 #### 2.3.3 HTML + SCSS
+
 1. 安装依赖
+
 ```bash
 pnpm add -D stylelint postcss-html postcss-sass
 ```

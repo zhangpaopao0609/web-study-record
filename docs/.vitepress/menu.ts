@@ -200,6 +200,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         },
         {
           text: 'Mobile',
+          collapsed: true,
           base: 'articles/mobile',
           items: [{ text: 'H5 陀螺仪', link: '/H5-gyroscope/README.md' }],
         },
@@ -216,6 +217,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         },
         {
           text: 'Vue',
+          collapsed: true,
           base: 'articles/vue',
           items: [
             { text: '谈谈如何”正确“的使用 Vuex', link: '/how-to-use-vuex-correctly/README.md' },
@@ -231,6 +233,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         },
         {
           text: '设计模式',
+          collapsed: true,
           base: 'articles/design-patterns',
           items: [
             { text: '适配器模式', items: [{ text: '统一接口', link: '/adapter/uniform-interface/README.md' }] },
@@ -257,6 +260,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         },
         {
           text: '网络',
+          collapsed: true,
           base: 'articles/network',
           items: [
             { text: '服务端推送全貌', link: '/how-to-receive-server-side-push/README.md' },
@@ -298,6 +302,9 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
           base: 'articles/browser',
           items: [
             { text: '跨域及解决方案', link: '/cross-domain-and-solution/README.md' },
+            { text: 'web workers 和 service workers', link: '/web-worker-vs-service-worker.md' },
+            { text: '浏览器基础', link: '/basic.md' },
+            { text: '浏览器缓存', link: '/cache/index.md' },
           ],
         },
         {
