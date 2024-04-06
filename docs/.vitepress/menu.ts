@@ -305,6 +305,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             { text: 'web workers 和 service workers', link: '/web-worker-vs-service-worker.md' },
             { text: '浏览器基础', link: '/basic.md' },
             { text: '浏览器缓存', link: '/cache/index.md' },
+            { text: 'cookielsss', link: '/cookielsss.md' },
           ],
         },
         {
