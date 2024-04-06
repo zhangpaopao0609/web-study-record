@@ -18,12 +18,14 @@ JavaScript 共有八种数据类型，分别是 Undefined、Null、Boolean、 Nu
 - 堆是一个优先队列，是按优先级来进行排序的，优先级可以按照大 小来规定。
 
 在操作系统中，内存被分为栈区和堆区：
+
 - 栈区内存由编译器自动分配释放，存放函数的参数值，局部变量的 值等。其操作方式类似于数据结构中的栈。
 - 堆区内存一般由开发着分配释放，若开发者不释放，程序结束时可 能由垃圾回收机制回收
 
 ## 2. 数据类型检测的方式有哪些
+
 1. typeof
-  其中数组、对象、null 都会被判断为 object，其他判断都正确。
+   其中数组、对象、null 都会被判断为 object，其他判断都正确。
 
 2. instanceof
 
@@ -63,7 +65,7 @@ JavaScript 共有八种数据类型，分别是 Undefined、Null、Boolean、 Nu
 
 4. `Object.prototype.toString.call() `
 
-   `Object.prototype.toString.call()` 使用 Object 对象的原型方法  `toString` 来判断数据类型：
+   `Object.prototype.toString.call()` 使用 Object 对象的原型方法 `toString` 来判断数据类型：
 
    同样是检测对象 obj 调用 `toString` 方法，`obj.toString()` 的结果和 `Object.prototype.toString.call(obj)` 的结果不一样，这是为什 么？
 
@@ -140,7 +142,7 @@ console.log(customInstanceOf(child, Array)); // false
 
 ## 5. **如何获取安全的 undefined 值？**
 
-因为 undefined 是一个标识符，所以可以被当作变量来使用和赋值， 但是这样会影响 undefined 的正常判断。表达式 void ___ 没有返
+因为 undefined 是一个标识符，所以可以被当作变量来使用和赋值， 但是这样会影响 undefined 的正常判断。表达式 void \_\_\_ 没有返
 
 回值，因此返回结果是 undefined。void 并不改变表达式的结果， 只是让表达式不返回值。因此可以用 void 0 来获得 undefined。
 
@@ -156,7 +158,7 @@ console.log(customInstanceOf(child, Array)); // false
 
 在 JavaScript 中，基本类型是没有属性和方法的，但是为了便于操 作基本类型的值，在调用基本类型的属性或方法时 JavaScript 会在 后台隐式地将基本类型的值转换为对象
 
-在 访 问 'abc'.length 时 ， JavaScript 将 'abc' 在 后 台 转 换 成  String('abc')，然后再访问其 length 属性
+在 访 问 'abc'.length 时 ， JavaScript 将 'abc' 在 后 台 转 换 成 String('abc')，然后再访问其 length 属性
 
 JavaScript 也可以使用 Object 函数显式地将基本类型转换为包装类型：
 
@@ -265,6 +267,8 @@ async 属性：给 js 脚本添加 async 属性，这个属性会使脚本异步
 
 让 JS 最后加载：将 js 脚本放在文档的底部，来使 js 脚本尽可能 的在最后来加载执行
 
+> defer 与 async 的区别是：defer要等到整个页面在内存中正常渲染结束（DOM 结构完全生成，以及其他脚本执行完成），才会执行；async一旦下载完，渲染引擎就会中断渲染，执行这个脚本以后，再继续渲染。一句话，defer是“渲染完再执行”，async是“下载完就执行”。另外，如果有多个defer脚本，会按照它们在页面出现的顺序加载，而多个async脚本是不能保证加载顺序的。
+
 ## 18. **什么是 DOM 和 BOM？**
 
 DOM 指的是文档对象模型，它指的是把文档当做一个对象，这个对象 主要定义了处理网页内容的方法和接口。
@@ -276,17 +280,20 @@ BOM 指的是浏览器**对象模型**，它指的是把浏览器当做一个对
 `escape`, `encodeURI`, 和 `encodeURIComponent` 是 JavaScript 中用于编码字符串的三个不同的函数，它们在处理字符串时有不同的用途和行为。
 
 1. **escape()**:
+
    - `escape` 函数是早期 JavaScript 中用于编码字符串的方法，它已经被废弃，不推荐在现代Web开发中使用。
    - 它主要用于对字符串中的某些字符进行编码，比如非拉丁字符和特殊字符。
    - 它不会对 ASCII 字母和数字进行编码，但会对空格转换为 `%20`，对特殊字符（如 `@`、`*`、`/`、`+`、`-`、`.` 和 `_`）不进行编码。
    - 对于 Unicode 字符，`escape` 会产生一个 `%uXXXX` 格式的编码，其中 `XXXX` 是 Unicode 码点的四位十六进制数。
 
 2. **encodeURI()**:
+
    - `encodeURI` 函数用于对整个 URI 进行编码，它不会对属于 URI 的特殊字符进行编码，如冒号 `:`、正斜杠 `/`、问号 `?` 和井号 `#` 等。
    - 它主要用于编码一个完整的 URI，而不会破坏 URI 的结构。
    - 它会编码大多数非 ASCII 字符和一些特殊字符，但不会编码用于分隔 URI 组件的字符。
 
 3. **encodeURIComponent()**:
+
    - `encodeURIComponent` 函数用于对 URI 组件或参数进行编码，它会编码 URI 中的特殊字符，包括用于分隔 URI 组件的字符，如 `&`、`=`、`+`、`?` 和 `/` 等。
    - 它主要用于编码 URI 的某个部分，比如查询字符串的键值对，以确保这些字符不会被解释为 URI 的控制字符。
    - 它会编码几乎所有的非字母数字字符，除了 `-`、`_`、`.`、`!`、`~`、`*`、`'` 和 `(`、`)`。
@@ -500,6 +507,7 @@ for … of 只遍历当前对象不会遍历原型链；
 - Axios 会自动处理 HTTP 错误状态，并且当响应状态码不在 2xx 范围内时，Promise 会被 reject。
 
 ### 比较:
+
 - **兼容性**: `XMLHttpRequest` 是最早的 HTTP 通信技术，所有现代浏览器都支持它。`fetch` 是较新的 API，大多数现代浏览器都支持，但在一些旧浏览器中可能需要 polyfill。`axios` 是一个第三方库，需要额外引入，但它可以在所有支持 Promise 的浏览器中工作。
 - **语法和易用性**: `fetch` 提供了更现代和简洁的 API，但需要手动处理一些情况（如 HTTP 错误状态）。`axios` 提供了更多的特性和默认行为，这可能使得它在某些情况下更容易使用。
 - **性能**: `fetch` 和 `XMLHttpRequest` 的性能相当，因为它们都是浏览器内置的。`axios` 作为一个额外的库，可能会有轻微的性能开销，但通常这不会成为一个问题。
@@ -508,7 +516,7 @@ for … of 只遍历当前对象不会遍历原型链；
 
 ## 25. **对原型、原型链的理解**
 
-在 JavaScript 中是使用构造函数来新建一个对象的，每一个构造函 数的内部都有一个 prototype 属性，它的属性值是一个对象，这个 对象包含了可以由该构造函数的所有实例共享的属性和方法。当使用 构造函数新建一个对象后，在这个对象的内部将包含一个指针，这个 指针指向构造函数的 prototype 属性对应的值，在 ES5 中这个指针 被称为对象的原型。一般来说不应该能够获取到这个值的，但是现在 浏览器中都实现了 __proto__ 属性来访问这个属性，但是最好不要 使用这个属性，因为它不是规范中规定的。ES5 中新增了一个 Object.getPrototypeOf() 方法，可以通过这个方法来获取对象的原 型。
+在 JavaScript 中是使用构造函数来新建一个对象的，每一个构造函 数的内部都有一个 prototype 属性，它的属性值是一个对象，这个 对象包含了可以由该构造函数的所有实例共享的属性和方法。当使用 构造函数新建一个对象后，在这个对象的内部将包含一个指针，这个 指针指向构造函数的 prototype 属性对应的值，在 ES5 中这个指针 被称为对象的原型。一般来说不应该能够获取到这个值的，但是现在 浏览器中都实现了 **proto** 属性来访问这个属性，但是最好不要 使用这个属性，因为它不是规范中规定的。ES5 中新增了一个 Object.getPrototypeOf() 方法，可以通过这个方法来获取对象的原 型。
 
 当访问一个对象的属性时，如果这个对象内部不存在这个属性，那么 它就会去它的原型对象里找这个属性，这个原型对象又会有自己的原 型，于是就这样一直找下去，也就是原型链的概念。原型链的尽头一 般来说都是 Object.prototype 所以这就是新建的对象为什么能够 使用 toString() 等方法的原因。
 
@@ -516,7 +524,7 @@ for … of 只遍历当前对象不会遍历原型链；
 
 ## 26. **原型链的终点是什么？如何打印出原型链的终点？**
 
-由于 Object 是构造函数，原型链终点 `Object.prototype.__proto`__， 而 `Object.prototype.__proto__=== null // true`，所以，原型链 的终点是 null。原型链上的所有原型都是对象，所有的对象最终都 是由 Object 构造的，而 `Object.prototype` 的下一级是 `Object.prototype.__proto__`。
+由于 Object 是构造函数，原型链终点 `Object.prototype.__proto`**， 而 `Object.prototype.**proto**=== null // true`，所以，原型链 的终点是 null。原型链上的所有原型都是对象，所有的对象最终都 是由 Object 构造的，而 `Object.prototype`的下一级是`Object.prototype.**proto\_\_`。
 
 ## 27. **对作用域、作用域链的理解**
 
