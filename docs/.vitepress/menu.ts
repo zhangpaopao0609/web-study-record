@@ -196,6 +196,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             { text: '树形结构和平铺结构的转换', link: '/树形结构和平铺结构的转换.md' },
             { text: 'JS 中 reduce 实现函数的 compose', link: '/JS 中 reduce 实现函数的 compose.md' },
             { text: 'JS中实现链式调用', link: '/JS中实现链式调用.md' },
+            { text: 'for-in-for-of', link: '/for-in-for-of.md' },
           ],
         },
         {
